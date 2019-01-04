@@ -16,6 +16,7 @@
 		91D5B93921BFAF2600F0373C /* IncomeExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5B93821BFAF2600F0373C /* IncomeExpenseViewController.swift */; };
 		91D5B93B21BFAF4400F0373C /* IncomeExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5B93A21BFAF4400F0373C /* IncomeExpense.swift */; };
 		91D5B93D21BFAF7C00F0373C /* IncomeExpense.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D5B93C21BFAF7C00F0373C /* IncomeExpense.storyboard */; };
+		F39AA20021DF15B500EAF89D /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F39AA1FF21DF15B500EAF89D /* Register.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		91D5B93821BFAF2600F0373C /* IncomeExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseViewController.swift; sourceTree = "<group>"; };
 		91D5B93A21BFAF4400F0373C /* IncomeExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpense.swift; sourceTree = "<group>"; };
 		91D5B93C21BFAF7C00F0373C /* IncomeExpense.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IncomeExpense.storyboard; sourceTree = "<group>"; };
+		F39AA1FF21DF15B500EAF89D /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		91D5B92121BFA9A900F0373C /* PersonalFinance */ = {
 			isa = PBXGroup;
 			children = (
+				F39AA1FE21DF0FA300EAF89D /* Register */,
 				91D5B93421BFADAE00F0373C /* Helper */,
 				91D5B93721BFAE5900F0373C /* IncomeExpense */,
 				91D5B92221BFA9A900F0373C /* AppDelegate.swift */,
@@ -90,6 +93,14 @@
 				91D5B93C21BFAF7C00F0373C /* IncomeExpense.storyboard */,
 			);
 			path = IncomeExpense;
+			sourceTree = "<group>";
+		};
+		F39AA1FE21DF0FA300EAF89D /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				F39AA1FF21DF15B500EAF89D /* Register.storyboard */,
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +165,7 @@
 				91D5B92A21BFA9AA00F0373C /* Assets.xcassets in Resources */,
 				91D5B93D21BFAF7C00F0373C /* IncomeExpense.storyboard in Resources */,
 				91D5B92821BFA9A900F0373C /* Main.storyboard in Resources */,
+				F39AA20021DF15B500EAF89D /* Register.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
