@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		91606AE921E2FCFD00182E03 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91606AE821E2FCFD00182E03 /* Category.swift */; };
+		91606AEB21E2FE1A00182E03 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91606AEA21E2FE1A00182E03 /* CoreDataHelper.swift */; };
+		91606AED21E2FFB500182E03 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91606AEC21E2FFB500182E03 /* Transaction.swift */; };
+		91606AEF21E2FFC300182E03 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91606AEE21E2FFC300182E03 /* Wallet.swift */; };
+		91606AF221E30A2300182E03 /* PersonalFinance.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91606AF021E30A2300182E03 /* PersonalFinance.xcdatamodeld */; };
 		91D5B92321BFA9A900F0373C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5B92221BFA9A900F0373C /* AppDelegate.swift */; };
 		91D5B92521BFA9A900F0373C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5B92421BFA9A900F0373C /* ViewController.swift */; };
 		91D5B92821BFA9A900F0373C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D5B92621BFA9A900F0373C /* Main.storyboard */; };
@@ -20,6 +25,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		91606AE821E2FCFD00182E03 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		91606AEA21E2FE1A00182E03 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		91606AEC21E2FFB500182E03 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		91606AEE21E2FFC300182E03 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		91606AF121E30A2300182E03 /* PersonalFinance.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalFinance.xcdatamodel; sourceTree = "<group>"; };
 		91D5B91F21BFA9A900F0373C /* PersonalFinance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalFinance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D5B92221BFA9A900F0373C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91D5B92421BFA9A900F0373C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +55,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		91606AE721E2FA2300182E03 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				91606AE821E2FCFD00182E03 /* Category.swift */,
+				91606AEC21E2FFB500182E03 /* Transaction.swift */,
+				91606AEE21E2FFC300182E03 /* Wallet.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		91606AF321E319AC00182E03 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				91606AF021E30A2300182E03 /* PersonalFinance.xcdatamodeld */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		91D5B91621BFA9A900F0373C = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +92,8 @@
 		91D5B92121BFA9A900F0373C /* PersonalFinance */ = {
 			isa = PBXGroup;
 			children = (
+				91606AF321E319AC00182E03 /* Resources */,
+				91606AE721E2FA2300182E03 /* Model */,
 				F39AA1FE21DF0FA300EAF89D /* Register */,
 				91D5B93421BFADAE00F0373C /* Helper */,
 				91D5B93721BFAE5900F0373C /* IncomeExpense */,
@@ -81,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				91D5B93521BFADC600F0373C /* ApiHelper.swift */,
+				91606AEA21E2FE1A00182E03 /* CoreDataHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -178,9 +209,14 @@
 			files = (
 				91D5B93621BFADC600F0373C /* ApiHelper.swift in Sources */,
 				91D5B92521BFA9A900F0373C /* ViewController.swift in Sources */,
+				91606AED21E2FFB500182E03 /* Transaction.swift in Sources */,
 				91D5B93B21BFAF4400F0373C /* IncomeExpense.swift in Sources */,
+				91606AEB21E2FE1A00182E03 /* CoreDataHelper.swift in Sources */,
 				91D5B93921BFAF2600F0373C /* IncomeExpenseViewController.swift in Sources */,
+				91606AEF21E2FFC300182E03 /* Wallet.swift in Sources */,
 				91D5B92321BFA9A900F0373C /* AppDelegate.swift in Sources */,
+				91606AF221E30A2300182E03 /* PersonalFinance.xcdatamodeld in Sources */,
+				91606AE921E2FCFD00182E03 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,7 +363,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4S25B8KB84;
+				DEVELOPMENT_TEAM = 7DQGP7DU26;
 				INFOPLIST_FILE = PersonalFinance/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -345,7 +381,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4S25B8KB84;
+				DEVELOPMENT_TEAM = 7DQGP7DU26;
 				INFOPLIST_FILE = PersonalFinance/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -380,6 +416,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		91606AF021E30A2300182E03 /* PersonalFinance.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				91606AF121E30A2300182E03 /* PersonalFinance.xcdatamodel */,
+			);
+			currentVersion = 91606AF121E30A2300182E03 /* PersonalFinance.xcdatamodel */;
+			path = PersonalFinance.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 91D5B91721BFA9A900F0373C /* Project object */;
 }
