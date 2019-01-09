@@ -17,6 +17,8 @@
 		91D5B93B21BFAF4400F0373C /* IncomeExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5B93A21BFAF4400F0373C /* IncomeExpense.swift */; };
 		91D5B93D21BFAF7C00F0373C /* IncomeExpense.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D5B93C21BFAF7C00F0373C /* IncomeExpense.storyboard */; };
 		F39AA20021DF15B500EAF89D /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F39AA1FF21DF15B500EAF89D /* Register.storyboard */; };
+		F3F21C8A21E44B340035DEB0 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3F21C8921E44B340035DEB0 /* Setting.storyboard */; };
+		F3F21C8E21E44E1A0035DEB0 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F21C8D21E44E1A0035DEB0 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		91D5B93A21BFAF4400F0373C /* IncomeExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpense.swift; sourceTree = "<group>"; };
 		91D5B93C21BFAF7C00F0373C /* IncomeExpense.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IncomeExpense.storyboard; sourceTree = "<group>"; };
 		F39AA1FF21DF15B500EAF89D /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
+		F3F21C8921E44B340035DEB0 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		F3F21C8D21E44E1A0035DEB0 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 		91D5B92121BFA9A900F0373C /* PersonalFinance */ = {
 			isa = PBXGroup;
 			children = (
+				F3F21C8821E44B170035DEB0 /* Setting */,
 				F39AA1FE21DF0FA300EAF89D /* Register */,
 				91D5B93421BFADAE00F0373C /* Helper */,
 				91D5B93721BFAE5900F0373C /* IncomeExpense */,
@@ -101,6 +106,15 @@
 				F39AA1FF21DF15B500EAF89D /* Register.storyboard */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		F3F21C8821E44B170035DEB0 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				F3F21C8921E44B340035DEB0 /* Setting.storyboard */,
+				F3F21C8D21E44E1A0035DEB0 /* TableViewController.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +180,7 @@
 				91D5B93D21BFAF7C00F0373C /* IncomeExpense.storyboard in Resources */,
 				91D5B92821BFA9A900F0373C /* Main.storyboard in Resources */,
 				F39AA20021DF15B500EAF89D /* Register.storyboard in Resources */,
+				F3F21C8A21E44B340035DEB0 /* Setting.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +194,7 @@
 				91D5B93621BFADC600F0373C /* ApiHelper.swift in Sources */,
 				91D5B92521BFA9A900F0373C /* ViewController.swift in Sources */,
 				91D5B93B21BFAF4400F0373C /* IncomeExpense.swift in Sources */,
+				F3F21C8E21E44E1A0035DEB0 /* TableViewController.swift in Sources */,
 				91D5B93921BFAF2600F0373C /* IncomeExpenseViewController.swift in Sources */,
 				91D5B92321BFA9A900F0373C /* AppDelegate.swift in Sources */,
 			);
