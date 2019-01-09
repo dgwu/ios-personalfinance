@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        preloadWallets()
+        preloadIncomeCategory()
+        preloadExpenseCategory()
+        
         return true
     }
 
@@ -40,6 +44,133 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    // MARK: - Preload Data
+    private func preloadWallets() {
+        let setupManager = SetupManager.shared
+        
+        if !setupManager.isWalletsPreloaded {
+            guard let urlPath = Bundle.main.url(forResource: "DefaultWallets", withExtension: "plist") else {
+                return
+            }
+            
+            let backgroundContext = persistentContainer.newBackgroundContext()
+            persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
+            
+            backgroundContext.perform {
+                do {
+                    if let arrayOfWallets = NSArray(contentsOf: urlPath) as? [Any] {
+                        
+                        for wallet in arrayOfWallets {
+                            if let wallet = wallet as? [String:String] {
+                                let newWallet = Wallet(context: backgroundContext)
+                                newWallet.colorCode = wallet["colorCode"]
+                                newWallet.desc = wallet["desc"]
+                                newWallet.iconName = wallet["iconName"]
+                                newWallet.initialAmount = 0
+                                newWallet.createdDate = Date()
+                            }
+                        }
+                        
+                        try backgroundContext.save()
+                        
+                        setupManager.isWalletsPreloaded = true
+                    }
+                    print("Successfully preloaded wallet")
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    private func preloadIncomeCategory() {
+        let setupManager = SetupManager.shared
+        
+        if !setupManager.isIncomeCategoriesPreloaded {
+            guard let urlPath = Bundle.main.url(forResource: "DefaultIncomeCategories", withExtension: "plist") else {
+                return
+            }
+            
+            let backgroundContext = persistentContainer.newBackgroundContext()
+            persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
+            
+            backgroundContext.perform {
+                do {
+                    if let arrayOfCategories = NSArray(contentsOf: urlPath) as? [Any] {
+                        
+                        for category in arrayOfCategories {
+                            if let category = category as? [String:String] {
+                                let newMainCategory = Category(context: backgroundContext)
+                                newMainCategory.desc = category["desc"]
+                                newMainCategory.iconName = category["iconName"]
+                                newMainCategory.colorCode = category["colorCode"]
+                                newMainCategory.type = Int16(CategoryType.income.rawValue)
+                            }
+                        }
+                        
+                        try backgroundContext.save()
+                        
+                        setupManager.isIncomeCategoriesPreloaded = true
+                    }
+                    print("Successfully preloaded income category")
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    private func preloadExpenseCategory() {
+        let setupManager = SetupManager.shared
+        
+        if !setupManager.isExpenseCategoriesPreloaded {
+            guard let urlPath = Bundle.main.url(forResource: "DefaultExpenseCategories", withExtension: "plist") else {
+                return
+            }
+            
+            let backgroundContext = persistentContainer.newBackgroundContext()
+            persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
+            
+            backgroundContext.perform {
+                do {
+                    if let arrayOfCategories = NSArray(contentsOf: urlPath) as? [Any] {
+                        
+                        for category in arrayOfCategories {
+                            
+                            if let category = category as? [String:Any] {
+                                let newMainCategory = Category(context: backgroundContext)
+                                newMainCategory.desc = category["desc"] as? String
+                                newMainCategory.iconName = category["iconName"] as? String
+                                newMainCategory.colorCode = category["colorCode"] as? String
+                                newMainCategory.type = Int16(CategoryType.expense.rawValue)
+                                
+                                if let subCategories = category["childs"] as? [Any] {
+                                    for subCategory in subCategories {
+                                        if let subCategory = subCategory as? [String:String] {
+                                            let newSubCategory = Category(context: backgroundContext)
+                                            newSubCategory.desc = subCategory["desc"]
+                                            newSubCategory.iconName = subCategory["iconName"]
+                                            newSubCategory.colorCode = subCategory["colorCode"]
+                                            newSubCategory.type = newMainCategory.type
+                                            newSubCategory.parent = newMainCategory
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+                        try backgroundContext.save()
+                        
+                        setupManager.isExpenseCategoriesPreloaded = true
+                    }
+                    print("Successfully preloaded expense category")
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+        }
     }
 
     // MARK: - Core Data stack
