@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Category" representedClassName=".Category" syncable="YES" codeGenerationType="class">
+        <attribute name="colorCode" attributeType="String" syncable="YES"/>
+        <attribute name="desc" attributeType="String" syncable="YES"/>
+        <attribute name="iconName" attributeType="String" syncable="YES"/>
+        <attribute name="type" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="childs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="parent" inverseEntity="Category" syncable="YES"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="childs" inverseEntity="Category" syncable="YES"/>
+        <relationship name="transactions" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Transaction" inverseName="category" inverseEntity="Transaction" syncable="YES"/>
+    </entity>
+    <entity name="Transaction" representedClassName=".Transaction" syncable="YES" codeGenerationType="class">
+        <attribute name="amount" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="createdDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isSynced" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="transactionDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="transactionType" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="beneficiaryWallet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Wallet" inverseName="incomes" inverseEntity="Wallet" syncable="YES"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="transactions" inverseEntity="Category" syncable="YES"/>
+        <relationship name="sourceWallet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Wallet" inverseName="expenses" inverseEntity="Wallet" syncable="YES"/>
+    </entity>
+    <entity name="Wallet" representedClassName=".Wallet" syncable="YES" codeGenerationType="class">
+        <attribute name="colorCode" attributeType="String" syncable="YES"/>
+        <attribute name="createdDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="desc" attributeType="String" syncable="YES"/>
+        <attribute name="iconName" attributeType="String" syncable="YES"/>
+        <attribute name="initialAmount" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="expenses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="sourceWallet" inverseEntity="Transaction" syncable="YES"/>
+        <relationship name="incomes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="beneficiaryWallet" inverseEntity="Transaction" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Transaction" positionX="-54" positionY="-9" width="128" height="180"/>
+        <element name="Category" positionX="-36" positionY="9" width="128" height="150"/>
+        <element name="Wallet" positionX="-18" positionY="27" width="128" height="150"/>
+    </elements>
+</model>
