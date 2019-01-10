@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6774510921DF1B9600F88BBF /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6774510821DF1B8C00F88BBF /* Register.storyboard */; };
+		67B24A0821E48E69009FF028 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B24A0721E48E69009FF028 /* TableViewCell.swift */; };
 		91D5B92321BFA9A900F0373C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5B92221BFA9A900F0373C /* AppDelegate.swift */; };
 		91D5B92521BFA9A900F0373C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5B92421BFA9A900F0373C /* ViewController.swift */; };
 		91D5B92821BFA9A900F0373C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D5B92621BFA9A900F0373C /* Main.storyboard */; };
@@ -16,10 +18,11 @@
 		91D5B93921BFAF2600F0373C /* IncomeExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5B93821BFAF2600F0373C /* IncomeExpenseViewController.swift */; };
 		91D5B93B21BFAF4400F0373C /* IncomeExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5B93A21BFAF4400F0373C /* IncomeExpense.swift */; };
 		91D5B93D21BFAF7C00F0373C /* IncomeExpense.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D5B93C21BFAF7C00F0373C /* IncomeExpense.storyboard */; };
-		F39AA20021DF15B500EAF89D /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F39AA1FF21DF15B500EAF89D /* Register.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6774510821DF1B8C00F88BBF /* Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
+		67B24A0721E48E69009FF028 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		91D5B91F21BFA9A900F0373C /* PersonalFinance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalFinance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D5B92221BFA9A900F0373C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91D5B92421BFA9A900F0373C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -31,7 +34,6 @@
 		91D5B93821BFAF2600F0373C /* IncomeExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseViewController.swift; sourceTree = "<group>"; };
 		91D5B93A21BFAF4400F0373C /* IncomeExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpense.swift; sourceTree = "<group>"; };
 		91D5B93C21BFAF7C00F0373C /* IncomeExpense.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IncomeExpense.storyboard; sourceTree = "<group>"; };
-		F39AA1FF21DF15B500EAF89D /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6774510721DF1B8C00F88BBF /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				6774510821DF1B8C00F88BBF /* Register.storyboard */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
 		91D5B91621BFA9A900F0373C = {
 			isa = PBXGroup;
 			children = (
@@ -64,7 +74,7 @@
 		91D5B92121BFA9A900F0373C /* PersonalFinance */ = {
 			isa = PBXGroup;
 			children = (
-				F39AA1FE21DF0FA300EAF89D /* Register */,
+				6774510721DF1B8C00F88BBF /* Register */,
 				91D5B93421BFADAE00F0373C /* Helper */,
 				91D5B93721BFAE5900F0373C /* IncomeExpense */,
 				91D5B92221BFA9A900F0373C /* AppDelegate.swift */,
@@ -91,16 +101,9 @@
 				91D5B93821BFAF2600F0373C /* IncomeExpenseViewController.swift */,
 				91D5B93A21BFAF4400F0373C /* IncomeExpense.swift */,
 				91D5B93C21BFAF7C00F0373C /* IncomeExpense.storyboard */,
+				67B24A0721E48E69009FF028 /* TableViewCell.swift */,
 			);
 			path = IncomeExpense;
-			sourceTree = "<group>";
-		};
-		F39AA1FE21DF0FA300EAF89D /* Register */ = {
-			isa = PBXGroup;
-			children = (
-				F39AA1FF21DF15B500EAF89D /* Register.storyboard */,
-			);
-			path = Register;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,7 +168,7 @@
 				91D5B92A21BFA9AA00F0373C /* Assets.xcassets in Resources */,
 				91D5B93D21BFAF7C00F0373C /* IncomeExpense.storyboard in Resources */,
 				91D5B92821BFA9A900F0373C /* Main.storyboard in Resources */,
-				F39AA20021DF15B500EAF89D /* Register.storyboard in Resources */,
+				6774510921DF1B9600F88BBF /* Register.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +182,7 @@
 				91D5B93621BFADC600F0373C /* ApiHelper.swift in Sources */,
 				91D5B92521BFA9A900F0373C /* ViewController.swift in Sources */,
 				91D5B93B21BFAF4400F0373C /* IncomeExpense.swift in Sources */,
+				67B24A0821E48E69009FF028 /* TableViewCell.swift in Sources */,
 				91D5B93921BFAF2600F0373C /* IncomeExpenseViewController.swift in Sources */,
 				91D5B92321BFA9A900F0373C /* AppDelegate.swift in Sources */,
 			);
@@ -327,7 +331,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4S25B8KB84;
+				DEVELOPMENT_TEAM = 55CQAZ789D;
 				INFOPLIST_FILE = PersonalFinance/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -345,7 +349,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4S25B8KB84;
+				DEVELOPMENT_TEAM = 55CQAZ789D;
 				INFOPLIST_FILE = PersonalFinance/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
