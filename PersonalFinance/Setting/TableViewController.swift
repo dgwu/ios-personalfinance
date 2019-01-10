@@ -14,8 +14,7 @@ class TableViewController: UITableViewController
 {
     
     let defaults = UserDefaults.resetStandardUserDefaults()
-    
-    
+    let setupManager = SetupManager.shared
     
     //defaults.setObject("Coding Explorer", forKey: "userNameKey")
     
@@ -26,7 +25,6 @@ class TableViewController: UITableViewController
         if (notifState.isOn == true)
         {
         print("aktif")
-           // defaults.
         }else
         {
             print("gak aktif")
@@ -34,6 +32,10 @@ class TableViewController: UITableViewController
     }
     override func viewDidLoad()
     {
+        setupManager.isWalletsPreloaded = true
+        setupManager.userMonthlySalary = 123123123
+        
+        
         super.viewDidLoad()
     }
     
@@ -43,21 +45,6 @@ class TableViewController: UITableViewController
         print("selected row is \(indexPath.row)")
     }
     
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let myCell:UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as? UITableViewCell
-//
-//        print(myCell)
-//
-//            if(indexPath.row == 0)
-//            {
-//                myCell?.isHidden = true
-//            }
-//            else
-//            {
-//                myCell?.isHidden = false
-//            }
-//        return myCell!
-//    }
     
 }
 
