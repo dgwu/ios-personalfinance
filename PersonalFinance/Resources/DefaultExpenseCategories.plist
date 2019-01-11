@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>desc</key>
+		<string>Food &amp; Beverage</string>
+		<key>colorCode</key>
+		<string>ffffff</string>
+		<key>iconName</key>
+		<string>food</string>
+		<key>childs</key>
+		<array>
+			<dict>
+				<key>desc</key>
+				<string>Cafe</string>
+				<key>colorCode</key>
+				<string>ffffff</string>
+				<key>iconName</key>
+				<string>food</string>
+			</dict>
+			<dict>
+				<key>desc</key>
+				<string>Restaurant</string>
+				<key>colorCode</key>
+				<string>ffffff</string>
+				<key>iconName</key>
+				<string>food</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>desc</key>
+		<string>Bills &amp; Utilities</string>
+		<key>colorCode</key>
+		<string>000000</string>
+		<key>iconName</key>
+		<string>bill</string>
+		<key>childs</key>
+		<array>
+			<dict>
+				<key>desc</key>
+				<string>Phone</string>
+				<key>colorCode</key>
+				<string>000000</string>
+				<key>iconName</key>
+				<string>bill</string>
+			</dict>
+			<dict>
+				<key>desc</key>
+				<string>Water</string>
+				<key>colorCode</key>
+				<string>000000</string>
+				<key>iconName</key>
+				<string>bill</string>
+			</dict>
+		</array>
+	</dict>
+</array>
+</plist>

@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		91606AE921E2FCFD00182E03 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91606AE821E2FCFD00182E03 /* Category.swift */; };
+		910DBF0721E5E459004C27CF /* CategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910DBF0621E5E459004C27CF /* CategoryType.swift */; };
+		910DBF0921E5E478004C27CF /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910DBF0821E5E478004C27CF /* TransactionType.swift */; };
+		910DBF0B21E5E488004C27CF /* FinanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910DBF0A21E5E488004C27CF /* FinanceManager.swift */; };
+		910DBF0D21E5E4A5004C27CF /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910DBF0C21E5E4A5004C27CF /* DateHelper.swift */; };
+		910DBF0F21E5E5CE004C27CF /* DefaultExpenseCategories.plist in Resources */ = {isa = PBXBuildFile; fileRef = 910DBF0E21E5E5CE004C27CF /* DefaultExpenseCategories.plist */; };
+		910DBF1121E5E5FB004C27CF /* DefaultIncomeCategories.plist in Resources */ = {isa = PBXBuildFile; fileRef = 910DBF1021E5E5FB004C27CF /* DefaultIncomeCategories.plist */; };
+		910DBF1321E5E626004C27CF /* DefaultWallets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 910DBF1221E5E626004C27CF /* DefaultWallets.plist */; };
+		910DBF1521E5E93C004C27CF /* SetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910DBF1421E5E93C004C27CF /* SetupManager.swift */; };
 		91606AEB21E2FE1A00182E03 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91606AEA21E2FE1A00182E03 /* CoreDataHelper.swift */; };
-		91606AED21E2FFB500182E03 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91606AEC21E2FFB500182E03 /* Transaction.swift */; };
-		91606AEF21E2FFC300182E03 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91606AEE21E2FFC300182E03 /* Wallet.swift */; };
 		91606AF221E30A2300182E03 /* PersonalFinance.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91606AF021E30A2300182E03 /* PersonalFinance.xcdatamodeld */; };
 		91D5B92321BFA9A900F0373C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5B92221BFA9A900F0373C /* AppDelegate.swift */; };
 		91D5B92521BFA9A900F0373C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5B92421BFA9A900F0373C /* ViewController.swift */; };
@@ -22,13 +27,20 @@
 		91D5B93B21BFAF4400F0373C /* IncomeExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5B93A21BFAF4400F0373C /* IncomeExpense.swift */; };
 		91D5B93D21BFAF7C00F0373C /* IncomeExpense.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D5B93C21BFAF7C00F0373C /* IncomeExpense.storyboard */; };
 		F39AA20021DF15B500EAF89D /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F39AA1FF21DF15B500EAF89D /* Register.storyboard */; };
+		F3F21C8A21E44B340035DEB0 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3F21C8921E44B340035DEB0 /* Setting.storyboard */; };
+		F3F21C8E21E44E1A0035DEB0 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F21C8D21E44E1A0035DEB0 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		91606AE821E2FCFD00182E03 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		910DBF0621E5E459004C27CF /* CategoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryType.swift; sourceTree = "<group>"; };
+		910DBF0821E5E478004C27CF /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
+		910DBF0A21E5E488004C27CF /* FinanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceManager.swift; sourceTree = "<group>"; };
+		910DBF0C21E5E4A5004C27CF /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		910DBF0E21E5E5CE004C27CF /* DefaultExpenseCategories.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultExpenseCategories.plist; sourceTree = "<group>"; };
+		910DBF1021E5E5FB004C27CF /* DefaultIncomeCategories.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultIncomeCategories.plist; sourceTree = "<group>"; };
+		910DBF1221E5E626004C27CF /* DefaultWallets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultWallets.plist; sourceTree = "<group>"; };
+		910DBF1421E5E93C004C27CF /* SetupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupManager.swift; sourceTree = "<group>"; };
 		91606AEA21E2FE1A00182E03 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
-		91606AEC21E2FFB500182E03 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
-		91606AEE21E2FFC300182E03 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		91606AF121E30A2300182E03 /* PersonalFinance.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalFinance.xcdatamodel; sourceTree = "<group>"; };
 		91D5B91F21BFA9A900F0373C /* PersonalFinance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalFinance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D5B92221BFA9A900F0373C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +54,8 @@
 		91D5B93A21BFAF4400F0373C /* IncomeExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpense.swift; sourceTree = "<group>"; };
 		91D5B93C21BFAF7C00F0373C /* IncomeExpense.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IncomeExpense.storyboard; sourceTree = "<group>"; };
 		F39AA1FF21DF15B500EAF89D /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
+		F3F21C8921E44B340035DEB0 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		F3F21C8D21E44E1A0035DEB0 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +72,9 @@
 		91606AE721E2FA2300182E03 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				91606AE821E2FCFD00182E03 /* Category.swift */,
-				91606AEC21E2FFB500182E03 /* Transaction.swift */,
-				91606AEE21E2FFC300182E03 /* Wallet.swift */,
+				910DBF0621E5E459004C27CF /* CategoryType.swift */,
+				910DBF0821E5E478004C27CF /* TransactionType.swift */,
+				910DBF0A21E5E488004C27CF /* FinanceManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -69,6 +83,9 @@
 			isa = PBXGroup;
 			children = (
 				91606AF021E30A2300182E03 /* PersonalFinance.xcdatamodeld */,
+				910DBF0E21E5E5CE004C27CF /* DefaultExpenseCategories.plist */,
+				910DBF1021E5E5FB004C27CF /* DefaultIncomeCategories.plist */,
+				910DBF1221E5E626004C27CF /* DefaultWallets.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -92,6 +109,7 @@
 		91D5B92121BFA9A900F0373C /* PersonalFinance */ = {
 			isa = PBXGroup;
 			children = (
+				F3F21C8821E44B170035DEB0 /* Setting */,
 				91606AF321E319AC00182E03 /* Resources */,
 				91606AE721E2FA2300182E03 /* Model */,
 				F39AA1FE21DF0FA300EAF89D /* Register */,
@@ -112,6 +130,8 @@
 			children = (
 				91D5B93521BFADC600F0373C /* ApiHelper.swift */,
 				91606AEA21E2FE1A00182E03 /* CoreDataHelper.swift */,
+				910DBF0C21E5E4A5004C27CF /* DateHelper.swift */,
+				910DBF1421E5E93C004C27CF /* SetupManager.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -132,6 +152,15 @@
 				F39AA1FF21DF15B500EAF89D /* Register.storyboard */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		F3F21C8821E44B170035DEB0 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				F3F21C8921E44B340035DEB0 /* Setting.storyboard */,
+				F3F21C8D21E44E1A0035DEB0 /* TableViewController.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,11 +221,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				910DBF1121E5E5FB004C27CF /* DefaultIncomeCategories.plist in Resources */,
 				91D5B92D21BFA9AA00F0373C /* LaunchScreen.storyboard in Resources */,
 				91D5B92A21BFA9AA00F0373C /* Assets.xcassets in Resources */,
 				91D5B93D21BFAF7C00F0373C /* IncomeExpense.storyboard in Resources */,
 				91D5B92821BFA9A900F0373C /* Main.storyboard in Resources */,
 				F39AA20021DF15B500EAF89D /* Register.storyboard in Resources */,
+				F3F21C8A21E44B340035DEB0 /* Setting.storyboard in Resources */,
+				910DBF0F21E5E5CE004C27CF /* DefaultExpenseCategories.plist in Resources */,
+				910DBF1321E5E626004C27CF /* DefaultWallets.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,16 +240,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				910DBF0B21E5E488004C27CF /* FinanceManager.swift in Sources */,
 				91D5B93621BFADC600F0373C /* ApiHelper.swift in Sources */,
+				910DBF0921E5E478004C27CF /* TransactionType.swift in Sources */,
 				91D5B92521BFA9A900F0373C /* ViewController.swift in Sources */,
-				91606AED21E2FFB500182E03 /* Transaction.swift in Sources */,
 				91D5B93B21BFAF4400F0373C /* IncomeExpense.swift in Sources */,
+				F3F21C8E21E44E1A0035DEB0 /* TableViewController.swift in Sources */,
 				91606AEB21E2FE1A00182E03 /* CoreDataHelper.swift in Sources */,
 				91D5B93921BFAF2600F0373C /* IncomeExpenseViewController.swift in Sources */,
-				91606AEF21E2FFC300182E03 /* Wallet.swift in Sources */,
+				910DBF0721E5E459004C27CF /* CategoryType.swift in Sources */,
 				91D5B92321BFA9A900F0373C /* AppDelegate.swift in Sources */,
+				910DBF1521E5E93C004C27CF /* SetupManager.swift in Sources */,
+				910DBF0D21E5E4A5004C27CF /* DateHelper.swift in Sources */,
 				91606AF221E30A2300182E03 /* PersonalFinance.xcdatamodeld in Sources */,
-				91606AE921E2FCFD00182E03 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
