@@ -21,6 +21,19 @@ class FinanceManager {
         return appDelegate.persistentContainer.viewContext
     }()
     
+    public func walletList() -> [Wallet]? {
+        let walletFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Wallet")
+        
+        do {
+            let result = try objectContext.fetch(walletFetch) as! [Wallet]
+            return result
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        return nil
+    }
+    
     // for test purposes
     public func defaultWallet() -> Wallet? {
         let walletFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Wallet")
@@ -30,6 +43,22 @@ class FinanceManager {
             if let firstWallet = result.first {
                 return firstWallet
             }
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        return nil
+    }
+    
+    public func categoryList(type: CategoryType) -> [Category]? {
+        let categoryFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Category")
+        // filter parent category only
+        let predicate = NSPredicate(format: "(parent == nil || parent.@count = 0) && type=%d", type.rawValue)
+        categoryFetch.predicate = predicate
+        
+        do {
+            let result = try objectContext.fetch(categoryFetch) as! [Category]
+            return result
         } catch {
             print(error.localizedDescription)
         }
