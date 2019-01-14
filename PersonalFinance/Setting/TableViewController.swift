@@ -12,29 +12,69 @@ import UIKit
 
 class TableViewController: UITableViewController
 {
-    
-    let defaults = UserDefaults.resetStandardUserDefaults()
     let setupManager = SetupManager.shared
     
-    //defaults.setObject("Coding Explorer", forKey: "userNameKey")
+    @IBOutlet weak var lblSalary: UILabel!
+    @IBOutlet weak var lblSaving: UILabel!
+    @IBOutlet weak var lblCurrency: UILabel!
     
+    // for notification
     @IBOutlet weak var notifState: UISwitch!
-    
     @IBAction func actNotifState(_ sender: Any)
     {
         if (notifState.isOn == true)
         {
-        print("aktif")
+            setupManager.isUserAllowNotification = true
         }else
         {
-            print("gak aktif")
+            setupManager.isUserAllowNotification = false
         }
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showAccount", let destination = segue.destination as? AccountViewController, let _ = tableView.indexPathForSelectedRow?.row
+        {
+            print("segue jalan")
+            destination.bangke = "bangke jason!!!!"
+        }else if segue.identifier == "showSal", let destination = segue.destination as? SalaryViewController, let indexTable = tableView.indexPathForSelectedRow?.row
+        {
+        }
+    }
+    
+    
+    //for Decimal
+    @IBOutlet weak var decimalState: UISwitch!
+    @IBAction func actDecimal(_ sender: Any)
+    {
+        if (decimalState.isOn == true)
+        {
+            setupManager.isUserUsingDecimal = true
+        }else
+        {
+            setupManager.isUserUsingDecimal = false
+        }
+    }
+    
+    //defaults.setObject("Coding Explorer", forKey: "userNameKey")
+ 
+    
+    func initialLoad()
+    {
+        lblSalary.text = "\(NumberFormatter.localizedString(from: NSNumber(value: setupManager.userMonthlySalary), number: .decimal))"
+        lblSaving.text = "\(NumberFormatter.localizedString(from: NSNumber(value: setupManager.userMonthlySaving), number: .decimal))"
+        lblCurrency.text = setupManager.userDefaultCurrency
+        
+        
+        notifState.isOn = setupManager.isUserAllowNotification
+        decimalState.isOn = setupManager.isUserUsingDecimal
+        
+        
+    }
+    
     override func viewDidLoad()
     {
-        setupManager.isWalletsPreloaded = true
-        setupManager.userMonthlySalary = 123123123
-        
+        initialLoad()
         
         super.viewDidLoad()
     }

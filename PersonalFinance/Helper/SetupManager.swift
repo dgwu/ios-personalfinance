@@ -72,4 +72,10 @@ class SetupManager {
             UserDefaults.standard.set(isUserUsingFingerLock, forKey: "isUserUsingFingerLock")
         }
     }
+    
+    public var userDefaultCurrency = UserDefaults.standard.string(forKey: "userDefaultCurrency") ?? "" {
+        didSet {
+            UserDefaults.standard.set(userDefaultCurrency ,forKey: "userDefaultCurrency")
+        }
+    }
 }
