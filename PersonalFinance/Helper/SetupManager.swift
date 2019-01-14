@@ -29,6 +29,12 @@ class SetupManager {
         }
     }
     
+    public var isSimulationPreloaded = UserDefaults.standard.bool(forKey: "simulationPreloaded") {
+        didSet {
+            UserDefaults.standard.set(isWalletsPreloaded, forKey: "simulationPreloaded")
+        }
+    }
+    
     
     // setting page
     public var userMonthlySalary = UserDefaults.standard.double(forKey: "userMonthlySalary") {

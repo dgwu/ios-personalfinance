@@ -86,11 +86,13 @@ class FinanceManager {
 
 // handle transaction
 extension FinanceManager {
-    public func insertTransaction(date: Date, amount: Double, type: TransactionType, category: Category, sourceWallet: Wallet) {
+    public func insertTransaction(date: Date, amount: Double, type: TransactionType, category: Category, sourceWallet: Wallet?, benefWallet: Wallet? = nil) {
         if type == .expense {
+            guard let sourceWallet = sourceWallet else {return}
             insertExpense(date: date, amount: amount, category: category, wallet: sourceWallet)
         } else {
-            insertIncome(date: date, amount: amount, category: category, wallet: sourceWallet)
+            guard let benefWallet = benefWallet else {return}
+            insertIncome(date: date, amount: amount, category: category, wallet: benefWallet)
         }
     }
     
