@@ -32,6 +32,10 @@
 		F343F34C21EC6D870047F1F2 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F343F34B21EC6D870047F1F2 /* CategoryViewController.swift */; };
 		F343F34F21EC6E840047F1F2 /* Saving.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F343F34E21EC6E840047F1F2 /* Saving.storyboard */; };
 		F343F35121EC6EB10047F1F2 /* SavingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F343F35021EC6EB10047F1F2 /* SavingViewController.swift */; };
+		9294028B21EC3788005B5EA3 /* ReportCategoryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9294028721EC3788005B5EA3 /* ReportCategoryDetailsViewController.swift */; };
+		9294028C21EC3788005B5EA3 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9294028821EC3788005B5EA3 /* Report.storyboard */; };
+		9294028D21EC3788005B5EA3 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9294028921EC3788005B5EA3 /* ReportViewController.swift */; };
+		9294028E21EC3788005B5EA3 /* ReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9294028A21EC3788005B5EA3 /* ReportTableViewCell.swift */; };
 		F39AA20021DF15B500EAF89D /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F39AA1FF21DF15B500EAF89D /* Register.storyboard */; };
 		F3DA9B6021EC4EB1001D9C02 /* Salary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3DA9B5F21EC4EB1001D9C02 /* Salary.storyboard */; };
 		F3DA9B6221EC4ED2001D9C02 /* SalaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA9B6121EC4ED2001D9C02 /* SalaryViewController.swift */; };
@@ -67,6 +71,10 @@
 		F343F34B21EC6D870047F1F2 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		F343F34E21EC6E840047F1F2 /* Saving.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Saving.storyboard; sourceTree = "<group>"; };
 		F343F35021EC6EB10047F1F2 /* SavingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingViewController.swift; sourceTree = "<group>"; };
+		9294028721EC3788005B5EA3 /* ReportCategoryDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCategoryDetailsViewController.swift; sourceTree = "<group>"; };
+		9294028821EC3788005B5EA3 /* Report.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
+		9294028921EC3788005B5EA3 /* ReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		9294028A21EC3788005B5EA3 /* ReportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportTableViewCell.swift; sourceTree = "<group>"; };
 		F39AA1FF21DF15B500EAF89D /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		F3DA9B5F21EC4EB1001D9C02 /* Salary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Salary.storyboard; sourceTree = "<group>"; };
 		F3DA9B6121EC4ED2001D9C02 /* SalaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryViewController.swift; sourceTree = "<group>"; };
@@ -125,9 +133,11 @@
 		91D5B92121BFA9A900F0373C /* PersonalFinance */ = {
 			isa = PBXGroup;
 			children = (
+				9294028621EC3788005B5EA3 /* Report */,
 				F3F21C8821E44B170035DEB0 /* Setting */,
 				91606AF321E319AC00182E03 /* Resources */,
 				91606AE721E2FA2300182E03 /* Model */,
+				9221E98921E89B8B0086F74A /* Report */,
 				F39AA1FE21DF0FA300EAF89D /* Register */,
 				91D5B93421BFADAE00F0373C /* Helper */,
 				91D5B93721BFAE5900F0373C /* IncomeExpense */,
@@ -187,6 +197,19 @@
 				F343F35021EC6EB10047F1F2 /* SavingViewController.swift */,
 			);
 			path = Saving;
+			sourceTree = "<group>";
+		};
+
+		9294028621EC3788005B5EA3 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				9294028721EC3788005B5EA3 /* ReportCategoryDetailsViewController.swift */,
+				9294028821EC3788005B5EA3 /* Report.storyboard */,
+				9294028921EC3788005B5EA3 /* ReportViewController.swift */,
+				9294028A21EC3788005B5EA3 /* ReportTableViewCell.swift */,
+			);
+			path = Report;
+
 			sourceTree = "<group>";
 		};
 		F39AA1FE21DF0FA300EAF89D /* Register */ = {
@@ -285,6 +308,7 @@
 				F3DA9B6021EC4EB1001D9C02 /* Salary.storyboard in Resources */,
 				F343F34A21EC6D420047F1F2 /* Category.storyboard in Resources */,
 				91D5B93D21BFAF7C00F0373C /* IncomeExpense.storyboard in Resources */,
+				9294028C21EC3788005B5EA3 /* Report.storyboard in Resources */,
 				91D5B92821BFA9A900F0373C /* Main.storyboard in Resources */,
 				F39AA20021DF15B500EAF89D /* Register.storyboard in Resources */,
 				F3F21C8A21E44B340035DEB0 /* Setting.storyboard in Resources */,
@@ -307,10 +331,13 @@
 				F3DA9B6221EC4ED2001D9C02 /* SalaryViewController.swift in Sources */,
 				F343F34C21EC6D870047F1F2 /* CategoryViewController.swift in Sources */,
 				910DBF0921E5E478004C27CF /* TransactionType.swift in Sources */,
+				9294028E21EC3788005B5EA3 /* ReportTableViewCell.swift in Sources */,
 				91D5B92521BFA9A900F0373C /* ViewController.swift in Sources */,
 				91D5B93B21BFAF4400F0373C /* IncomeExpense.swift in Sources */,
+				9294028B21EC3788005B5EA3 /* ReportCategoryDetailsViewController.swift in Sources */,
 				F3F21C8E21E44E1A0035DEB0 /* TableViewController.swift in Sources */,
 				91606AEB21E2FE1A00182E03 /* CoreDataHelper.swift in Sources */,
+				9294028D21EC3788005B5EA3 /* ReportViewController.swift in Sources */,
 				91D5B93921BFAF2600F0373C /* IncomeExpenseViewController.swift in Sources */,
 				910DBF0721E5E459004C27CF /* CategoryType.swift in Sources */,
 				91D5B92321BFA9A900F0373C /* AppDelegate.swift in Sources */,

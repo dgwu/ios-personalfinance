@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         preloadWallets()
         preloadIncomeCategory()
         preloadExpenseCategory()
+        preloadSimulationData()
         
         return true
     }
@@ -170,6 +171,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     print(error.localizedDescription)
                 }
             }
+        }
+    }
+    
+    private func preloadSimulationData() {
+        let setupManager = SetupManager.shared
+        let financeManager = FinanceManager.shared
+        
+        if !setupManager.isSimulationPreloaded {
+            guard let defaultWallet = financeManager.defaultWallet() else {return}
+            
+            // simulate expense
+            if let expenseCategoryList = financeManager.categoryList(type: .expense) {
+                for category in expenseCategoryList {
+                    financeManager.insertTransaction(date: Date(), amount: Double(exactly: Int.random(in: 1000 ..< 10000))!, type: .expense, category: category, sourceWallet: defaultWallet)
+                }
+            }
+            
+            if let incomeCategoryList = financeManager.categoryList(type: .income) {
+                for category in incomeCategoryList {
+                    financeManager.insertTransaction(date: Date(), amount: Double(exactly: Int.random(in: 5000 ..< 20000))!, type: .income, category: category, sourceWallet: nil, benefWallet: defaultWallet)
+                }
+            }
+            
+            setupManager.isSimulationPreloaded = true;
+            print("Successfully preloaded transaction simulation")
         }
     }
 
