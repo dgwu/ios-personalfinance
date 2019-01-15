@@ -139,11 +139,13 @@ extension FinanceManager {
     public func getExpenseResultController(fromDate: Date?, toDate: Date?) -> NSFetchedResultsController<Transaction> {
         let fetchRequest = NSFetchRequest<Transaction>(entityName:"Transaction")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "transactionDate", ascending:false)]
-        fetchRequest.predicate = NSPredicate(format: "transactionType == %d", TransactionType.expense.rawValue)
+        
+        var predicates = [NSPredicate(format: "transactionType == %d", TransactionType.expense.rawValue)]
         
         if let fromDate = fromDate, let toDate = toDate {
-            fetchRequest.predicate = NSPredicate(format: "transactionDate >= %@ && transactionDate <= %@", argumentArray: [fromDate, toDate])
+            predicates.append(NSPredicate(format: "transactionDate >= %@ && transactionDate <= %@", argumentArray: [fromDate, toDate]))
         }
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                     managedObjectContext: self.objectContext,
@@ -158,11 +160,12 @@ extension FinanceManager {
     public func getIncomeResultController(fromDate: Date?, toDate: Date?) -> NSFetchedResultsController<Transaction> {
         let fetchRequest = NSFetchRequest<Transaction>(entityName:"Transaction")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "transactionDate", ascending:false)]
-        fetchRequest.predicate = NSPredicate(format: "transactionType == %d", TransactionType.income.rawValue)
         
+        var predicates = [NSPredicate(format: "transactionType == %d", TransactionType.income.rawValue)]
         if let fromDate = fromDate, let toDate = toDate {
-            fetchRequest.predicate = NSPredicate(format: "transactionDate >= %@ && transactionDate <= %@", argumentArray: [fromDate, toDate])
+            predicates.append(NSPredicate(format: "transactionDate >= %@ && transactionDate <= %@", argumentArray: [fromDate, toDate]))
         }
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                     managedObjectContext: self.objectContext,
