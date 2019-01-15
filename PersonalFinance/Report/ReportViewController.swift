@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ReportViewController: UIViewController {
     @IBOutlet weak var displayedMonth: UILabel!
@@ -14,18 +15,47 @@ class ReportViewController: UIViewController {
     @IBOutlet weak var prevMonthButton: UIButton!
     @IBOutlet weak var topExpensesTable: UITableView!
     @IBOutlet weak var graphBG: UIImageView!
-    @IBOutlet var barChartButtons: [UIButton]?
+    @IBOutlet weak var noTransactionsLabel: UILabel!
     
     var expenses : [String : Float] = ["Makan" : 200000, "Belanja" : 300000, "Nonton" : 150000, "Parkir" : 55000]
     var categories : [String] = ["Makan", "Parkir", "Belanja", "Nonton"]
     
+    var currentlyDisplayedMonth = 1
+    var currentlyDisplayedYear = 2000
     var decimalSetting : Bool = false
     var selectedCategory : String = ""
+    var myTransaction : NSFetchedResultsController<NSFetchRequestResult>?
+    let myFinanceManager = FinanceManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
         topExpensesTable.delegate = self
         topExpensesTable.dataSource = self
+        noTransactionsLabel.isEnabled = false
+        
+        myTransaction = myFinanceManager.getExpenseResultController(fromDate: Date().startOfMonth(), toDate: Date().endOfMonth().endOfDay) as? NSFetchedResultsController<NSFetchRequestResult>
+        
+        myTransaction?.delegate = self
+        do {
+            try myTransaction?.performFetch()
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+//        print ("myTransactions: ", myTransaction?.fetchedObjects!)
+        noTransactionsLabel.isEnabled = myTransaction?.fetchedObjects! == nil ? false : true
+       
+        /*
+         // Buat kalo pindah ke bulan laen
+        let calendar = Calendar(identifier: .gregorian)
+        var components = DateComponents()
+        components.month = 5
+        components.year = 2019
+        components.timeZone = TimeZone.current
+        
+        let myDate = calendar.date(from: components)
+        print ("COBA DATE START OF MONTH: ", myDate!.startOfMonth().description(with: Locale.current), ", ", myDate!.endOfMonth().endOfDay.description(with: Locale.current) )
+        */
         
         let chartStackView = UIStackView()
         let stackViewSpacing = 1
@@ -53,6 +83,12 @@ class ReportViewController: UIViewController {
             expenseBarButton.addTarget(self, action: #selector(self.expenseBarButtonTapped(sender:)), for: .touchUpInside)
             chartStackView.addArrangedSubview(expenseBarButton)
         }
+        
+        guard let transactions = myTransaction?.fetchedObjects as? [Transaction] else {return}
+        for transaction in transactions {
+            print("transaction amount = ", transaction.amount)
+            
+        }
     }
     
     func highestExpenseValue () -> Float {
@@ -76,6 +112,20 @@ class ReportViewController: UIViewController {
         self.selectedCategory = (sender.titleLabel?.text)!
         self.performSegue(withIdentifier: "reportDetailSegue", sender: nil)
     }
+    
+    @IBAction func dateToggleButtonPressed(_ sender: UIButton) {
+        
+        let calendar = Calendar(identifier: .gregorian)
+        var components = DateComponents()
+        
+        
+        if sender.tag == 0 { // Back
+            
+        } else { // Next
+            
+        }
+    }
+    
 }
 
 extension ReportViewController: UITableViewDataSource, UITableViewDelegate {
@@ -94,13 +144,15 @@ extension ReportViewController: UITableViewDataSource, UITableViewDelegate {
         formatter.numberStyle = .currency
         formatter.maximumFractionDigits = decimalSetting ? 2 : 0
         let expenseValue = formatter.string(from: NSNumber(value: expenses[categories[indexPath.row]]!))
-        
         cell.expenseCategoryValue.text = expenseValue
-        
         return cell
     }
-    
-    
-    
+}
+
+extension ReportViewController: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        // run code kalo ada perubahan data:
+        
+    }
 }
 
