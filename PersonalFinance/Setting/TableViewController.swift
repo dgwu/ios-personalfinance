@@ -12,28 +12,70 @@ import UIKit
 
 class TableViewController: UITableViewController
 {
+    let setupManager = SetupManager.shared
     
-    let defaults = UserDefaults.resetStandardUserDefaults()
+    @IBOutlet weak var lblSalary: UILabel!
+    @IBOutlet weak var lblSaving: UILabel!
+    @IBOutlet weak var lblCurrency: UILabel!
     
-    
-    
-    //defaults.setObject("Coding Explorer", forKey: "userNameKey")
-    
+    // for notification
     @IBOutlet weak var notifState: UISwitch!
-    
     @IBAction func actNotifState(_ sender: Any)
     {
         if (notifState.isOn == true)
         {
-        print("aktif")
-           // defaults.
+            setupManager.isUserAllowNotification = true
         }else
         {
-            print("gak aktif")
+            setupManager.isUserAllowNotification = false
         }
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showAccount", let destination = segue.destination as? AccountViewController, let _ = tableView.indexPathForSelectedRow?.row
+        {
+            print("segue jalan")
+            destination.bangke = "bangke jason!!!!"
+        }else if segue.identifier == "showSal", let destination = segue.destination as? SalaryViewController, let indexTable = tableView.indexPathForSelectedRow?.row
+        {
+        }
+    }
+    
+    
+    //for Decimal
+    @IBOutlet weak var decimalState: UISwitch!
+    @IBAction func actDecimal(_ sender: Any)
+    {
+        if (decimalState.isOn == true)
+        {
+            setupManager.isUserUsingDecimal = true
+        }else
+        {
+            setupManager.isUserUsingDecimal = false
+        }
+    }
+    
+    //defaults.setObject("Coding Explorer", forKey: "userNameKey")
+ 
+    
+    func initialLoad()
+    {
+        lblSalary.text = "\(NumberFormatter.localizedString(from: NSNumber(value: setupManager.userMonthlySalary), number: .decimal))"
+        lblSaving.text = "\(NumberFormatter.localizedString(from: NSNumber(value: setupManager.userMonthlySaving), number: .decimal))"
+        lblCurrency.text = setupManager.userDefaultCurrency
+        
+        
+        notifState.isOn = setupManager.isUserAllowNotification
+        decimalState.isOn = setupManager.isUserUsingDecimal
+        
+        
+    }
+    
     override func viewDidLoad()
     {
+        initialLoad()
+        
         super.viewDidLoad()
     }
     
@@ -43,21 +85,6 @@ class TableViewController: UITableViewController
         print("selected row is \(indexPath.row)")
     }
     
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let myCell:UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as? UITableViewCell
-//
-//        print(myCell)
-//
-//            if(indexPath.row == 0)
-//            {
-//                myCell?.isHidden = true
-//            }
-//            else
-//            {
-//                myCell?.isHidden = false
-//            }
-//        return myCell!
-//    }
     
 }
 

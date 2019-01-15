@@ -26,11 +26,19 @@
 		91D5B93921BFAF2600F0373C /* IncomeExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5B93821BFAF2600F0373C /* IncomeExpenseViewController.swift */; };
 		91D5B93B21BFAF4400F0373C /* IncomeExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5B93A21BFAF4400F0373C /* IncomeExpense.swift */; };
 		91D5B93D21BFAF7C00F0373C /* IncomeExpense.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D5B93C21BFAF7C00F0373C /* IncomeExpense.storyboard */; };
+		F342487721EC3370009EABDE /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F342487621EC3370009EABDE /* Account.storyboard */; };
+		F342487921EC3B10009EABDE /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F342487821EC3B10009EABDE /* AccountViewController.swift */; };
+		F343F34A21EC6D420047F1F2 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F343F34921EC6D420047F1F2 /* Category.storyboard */; };
+		F343F34C21EC6D870047F1F2 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F343F34B21EC6D870047F1F2 /* CategoryViewController.swift */; };
+		F343F34F21EC6E840047F1F2 /* Saving.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F343F34E21EC6E840047F1F2 /* Saving.storyboard */; };
+		F343F35121EC6EB10047F1F2 /* SavingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F343F35021EC6EB10047F1F2 /* SavingViewController.swift */; };
 		9294028B21EC3788005B5EA3 /* ReportCategoryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9294028721EC3788005B5EA3 /* ReportCategoryDetailsViewController.swift */; };
 		9294028C21EC3788005B5EA3 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9294028821EC3788005B5EA3 /* Report.storyboard */; };
 		9294028D21EC3788005B5EA3 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9294028921EC3788005B5EA3 /* ReportViewController.swift */; };
 		9294028E21EC3788005B5EA3 /* ReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9294028A21EC3788005B5EA3 /* ReportTableViewCell.swift */; };
 		F39AA20021DF15B500EAF89D /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F39AA1FF21DF15B500EAF89D /* Register.storyboard */; };
+		F3DA9B6021EC4EB1001D9C02 /* Salary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3DA9B5F21EC4EB1001D9C02 /* Salary.storyboard */; };
+		F3DA9B6221EC4ED2001D9C02 /* SalaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA9B6121EC4ED2001D9C02 /* SalaryViewController.swift */; };
 		F3F21C8A21E44B340035DEB0 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3F21C8921E44B340035DEB0 /* Setting.storyboard */; };
 		F3F21C8E21E44E1A0035DEB0 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F21C8D21E44E1A0035DEB0 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -57,11 +65,19 @@
 		91D5B93821BFAF2600F0373C /* IncomeExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseViewController.swift; sourceTree = "<group>"; };
 		91D5B93A21BFAF4400F0373C /* IncomeExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpense.swift; sourceTree = "<group>"; };
 		91D5B93C21BFAF7C00F0373C /* IncomeExpense.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IncomeExpense.storyboard; sourceTree = "<group>"; };
+		F342487621EC3370009EABDE /* Account.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
+		F342487821EC3B10009EABDE /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		F343F34921EC6D420047F1F2 /* Category.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
+		F343F34B21EC6D870047F1F2 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		F343F34E21EC6E840047F1F2 /* Saving.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Saving.storyboard; sourceTree = "<group>"; };
+		F343F35021EC6EB10047F1F2 /* SavingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingViewController.swift; sourceTree = "<group>"; };
 		9294028721EC3788005B5EA3 /* ReportCategoryDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCategoryDetailsViewController.swift; sourceTree = "<group>"; };
 		9294028821EC3788005B5EA3 /* Report.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
 		9294028921EC3788005B5EA3 /* ReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		9294028A21EC3788005B5EA3 /* ReportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportTableViewCell.swift; sourceTree = "<group>"; };
 		F39AA1FF21DF15B500EAF89D /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
+		F3DA9B5F21EC4EB1001D9C02 /* Salary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Salary.storyboard; sourceTree = "<group>"; };
+		F3DA9B6121EC4ED2001D9C02 /* SalaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryViewController.swift; sourceTree = "<group>"; };
 		F3F21C8921E44B340035DEB0 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		F3F21C8D21E44E1A0035DEB0 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,6 +172,34 @@
 			path = IncomeExpense;
 			sourceTree = "<group>";
 		};
+		F342487521EC3318009EABDE /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				F342487621EC3370009EABDE /* Account.storyboard */,
+				F342487821EC3B10009EABDE /* AccountViewController.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		F343F34821EC6D310047F1F2 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				F343F34921EC6D420047F1F2 /* Category.storyboard */,
+				F343F34B21EC6D870047F1F2 /* CategoryViewController.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		F343F34D21EC6E750047F1F2 /* Saving */ = {
+			isa = PBXGroup;
+			children = (
+				F343F34E21EC6E840047F1F2 /* Saving.storyboard */,
+				F343F35021EC6EB10047F1F2 /* SavingViewController.swift */,
+			);
+			path = Saving;
+			sourceTree = "<group>";
+		};
+
 		9294028621EC3788005B5EA3 /* Report */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +209,7 @@
 				9294028A21EC3788005B5EA3 /* ReportTableViewCell.swift */,
 			);
 			path = Report;
+
 			sourceTree = "<group>";
 		};
 		F39AA1FE21DF0FA300EAF89D /* Register */ = {
@@ -175,9 +220,22 @@
 			path = Register;
 			sourceTree = "<group>";
 		};
+		F3DA9B5E21EC4E98001D9C02 /* Salary */ = {
+			isa = PBXGroup;
+			children = (
+				F3DA9B5F21EC4EB1001D9C02 /* Salary.storyboard */,
+				F3DA9B6121EC4ED2001D9C02 /* SalaryViewController.swift */,
+			);
+			path = Salary;
+			sourceTree = "<group>";
+		};
 		F3F21C8821E44B170035DEB0 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				F343F34D21EC6E750047F1F2 /* Saving */,
+				F343F34821EC6D310047F1F2 /* Category */,
+				F342487521EC3318009EABDE /* Account */,
+				F3DA9B5E21EC4E98001D9C02 /* Salary */,
 				F3F21C8921E44B340035DEB0 /* Setting.storyboard */,
 				F3F21C8D21E44E1A0035DEB0 /* TableViewController.swift */,
 			);
@@ -243,8 +301,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				910DBF1121E5E5FB004C27CF /* DefaultIncomeCategories.plist in Resources */,
+				F343F34F21EC6E840047F1F2 /* Saving.storyboard in Resources */,
 				91D5B92D21BFA9AA00F0373C /* LaunchScreen.storyboard in Resources */,
+				F342487721EC3370009EABDE /* Account.storyboard in Resources */,
 				91D5B92A21BFA9AA00F0373C /* Assets.xcassets in Resources */,
+				F3DA9B6021EC4EB1001D9C02 /* Salary.storyboard in Resources */,
+				F343F34A21EC6D420047F1F2 /* Category.storyboard in Resources */,
 				91D5B93D21BFAF7C00F0373C /* IncomeExpense.storyboard in Resources */,
 				9294028C21EC3788005B5EA3 /* Report.storyboard in Resources */,
 				91D5B92821BFA9A900F0373C /* Main.storyboard in Resources */,
@@ -263,7 +325,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				910DBF0B21E5E488004C27CF /* FinanceManager.swift in Sources */,
+				F343F35121EC6EB10047F1F2 /* SavingViewController.swift in Sources */,
 				91D5B93621BFADC600F0373C /* ApiHelper.swift in Sources */,
+				F342487921EC3B10009EABDE /* AccountViewController.swift in Sources */,
+				F3DA9B6221EC4ED2001D9C02 /* SalaryViewController.swift in Sources */,
+				F343F34C21EC6D870047F1F2 /* CategoryViewController.swift in Sources */,
 				910DBF0921E5E478004C27CF /* TransactionType.swift in Sources */,
 				9294028E21EC3788005B5EA3 /* ReportTableViewCell.swift in Sources */,
 				91D5B92521BFA9A900F0373C /* ViewController.swift in Sources */,

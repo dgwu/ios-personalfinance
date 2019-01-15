@@ -23,4 +23,10 @@ extension Date {
     func endOfMonth() -> Date {
         return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth())!
     }
+    func previousStartOfMonth() -> Date {
+        return Calendar.current.date(byAdding: DateComponents(month: -1), to: self.startOfMonth())!
+    }
+    func nextStartOfMonth() -> Date {
+        return Calendar.current.date(byAdding: DateComponents(month: 1), to: self.startOfMonth())!
+    }
 }
