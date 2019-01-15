@@ -185,6 +185,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let expenseCategoryList = financeManager.categoryList(type: .expense) {
                 for category in expenseCategoryList {
                     financeManager.insertTransaction(date: Date(), amount: Double(exactly: Int.random(in: 1000 ..< 10000))!, type: .expense, category: category, sourceWallet: defaultWallet)
+                    financeManager.insertTransaction(date: Date().previousStartOfMonth(), amount: Double(exactly: Int.random(in: 1000 ..< 10000))!, type: .expense, category: category, sourceWallet: defaultWallet)
                 }
             }
             
