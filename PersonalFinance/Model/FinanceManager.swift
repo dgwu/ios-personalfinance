@@ -86,17 +86,17 @@ class FinanceManager {
 
 // handle transaction
 extension FinanceManager {
-    public func insertTransaction(date: Date, amount: Double, type: TransactionType, category: Category, sourceWallet: Wallet?, benefWallet: Wallet? = nil) {
+    public func insertTransaction(date: Date, amount: Double, type: TransactionType, category: Category, desc: String?, sourceWallet: Wallet?, benefWallet: Wallet? = nil) {
         if type == .expense {
             guard let sourceWallet = sourceWallet else {return}
-            insertExpense(date: date, amount: amount, category: category, wallet: sourceWallet)
+            insertExpense(date: date, amount: amount, category: category, wallet: sourceWallet, desc: desc)
         } else {
             guard let benefWallet = benefWallet else {return}
-            insertIncome(date: date, amount: amount, category: category, wallet: benefWallet)
+            insertIncome(date: date, amount: amount, category: category, wallet: benefWallet, desc: desc)
         }
     }
     
-    public func insertExpense(date: Date, amount: Double, category: Category, wallet: Wallet) {
+    public func insertExpense(date: Date, amount: Double, category: Category, wallet: Wallet, desc: String?) {
         let newTransaction = Transaction(context: self.objectContext)
         newTransaction.createdDate = Date()
         newTransaction.transactionType = Int16(TransactionType.expense.rawValue)
@@ -104,6 +104,7 @@ extension FinanceManager {
         newTransaction.category = category
         newTransaction.amount = amount
         newTransaction.sourceWallet = wallet
+        newTransaction.desc = desc
         
         do {
             try self.objectContext.save()
@@ -112,14 +113,15 @@ extension FinanceManager {
         }
     }
     
-    public func insertIncome(date: Date, amount: Double, category: Category, wallet: Wallet) {
+    public func insertIncome(date: Date, amount: Double, category: Category, wallet: Wallet, desc: String?) {
         let newTransaction = Transaction(context: self.objectContext)
         newTransaction.createdDate = Date()
         newTransaction.transactionType = Int16(TransactionType.income.rawValue)
         newTransaction.transactionDate = date
         newTransaction.category = category
         newTransaction.amount = amount
-        newTransaction.sourceWallet = wallet
+        newTransaction.beneficiaryWallet = wallet
+        newTransaction.desc = desc
         
         do {
             try self.objectContext.save()
