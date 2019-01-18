@@ -81,6 +81,20 @@ class FinanceManager {
         
         return nil
     }
+    
+    public func insertCategory(categoryType: CategoryType, desc: String, iconName: String?, colorCode: String?) {
+        let newCategory = Category(context: self.objectContext)
+        newCategory.type = Int16(categoryType.rawValue)
+        newCategory.desc = desc
+        newCategory.iconName = iconName
+        newCategory.colorCode = colorCode
+        
+        do {
+            try self.objectContext.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
 }
 
 
