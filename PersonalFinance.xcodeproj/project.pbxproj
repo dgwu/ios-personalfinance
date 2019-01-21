@@ -17,6 +17,7 @@
 		910DBF1521E5E93C004C27CF /* SetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910DBF1421E5E93C004C27CF /* SetupManager.swift */; };
 		91606AEB21E2FE1A00182E03 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91606AEA21E2FE1A00182E03 /* CoreDataHelper.swift */; };
 		91606AF221E30A2300182E03 /* PersonalFinance.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91606AF021E30A2300182E03 /* PersonalFinance.xcdatamodeld */; };
+		9189BA7421F566E9004F9194 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9189BA7321F566E9004F9194 /* CategoryTableViewCell.swift */; };
 		91D5B92321BFA9A900F0373C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5B92221BFA9A900F0373C /* AppDelegate.swift */; };
 		91D5B92521BFA9A900F0373C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5B92421BFA9A900F0373C /* ViewController.swift */; };
 		91D5B92821BFA9A900F0373C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D5B92621BFA9A900F0373C /* Main.storyboard */; };
@@ -55,6 +56,7 @@
 		910DBF1421E5E93C004C27CF /* SetupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupManager.swift; sourceTree = "<group>"; };
 		91606AEA21E2FE1A00182E03 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		91606AF121E30A2300182E03 /* PersonalFinance.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalFinance.xcdatamodel; sourceTree = "<group>"; };
+		9189BA7321F566E9004F9194 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		91D5B91F21BFA9A900F0373C /* PersonalFinance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalFinance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D5B92221BFA9A900F0373C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91D5B92421BFA9A900F0373C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				F343F34921EC6D420047F1F2 /* Category.storyboard */,
 				F343F34B21EC6D870047F1F2 /* CategoryViewController.swift */,
 				91DB80B221F07ED500076182 /* CategoryAddViewController.swift */,
+				9189BA7321F566E9004F9194 /* CategoryTableViewCell.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				91D5B93921BFAF2600F0373C /* IncomeExpenseViewController.swift in Sources */,
 				910DBF0721E5E459004C27CF /* CategoryType.swift in Sources */,
 				91D5B92321BFA9A900F0373C /* AppDelegate.swift in Sources */,
+				9189BA7421F566E9004F9194 /* CategoryTableViewCell.swift in Sources */,
 				91DB80B321F07ED500076182 /* CategoryAddViewController.swift in Sources */,
 				910DBF1521E5E93C004C27CF /* SetupManager.swift in Sources */,
 				910DBF0D21E5E4A5004C27CF /* DateHelper.swift in Sources */,

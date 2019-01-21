@@ -77,25 +77,14 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
         
         let category = categoryList[indexPath.row]
-        cell.textLabel?.text = category.desc
-        cell.imageView?.image = UIImage(named: category.iconName!)
-        cell.imageView!.translatesAutoresizingMaskIntoConstraints = false
-        cell.imageView!.backgroundColor = nil
-        NSLayoutConstraint.activate([
-            cell.imageView!.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 15),
-            cell.imageView!.centerYAnchor.constraint(equalTo: cell.centerYAnchor),
-            cell.imageView!.widthAnchor.constraint(equalToConstant: 25),
-            cell.imageView!.heightAnchor.constraint(equalToConstant: 25)
-        ])
-//        cell.separatorInset.left = 10
-//        cell.separatorInset.right = 10
+        cell.categoryDescLabel.text = category.desc
+        cell.categoryIconImageView.image = UIImage(named: category.iconName!)
         
         return cell
     }
-    
 }
 
 
