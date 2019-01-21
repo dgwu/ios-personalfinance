@@ -71,9 +71,6 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="accountAmountLabel" destination="f9Y-Kh-VnD" id="H4T-Ux-V32"/>
-                                            <outlet property="accountDescLabel" destination="mzI-EX-fxV" id="a64-Ow-D69"/>
-                                            <outlet property="accountIconImageView" destination="WBl-2Q-4U3" id="lTL-Z5-aZj"/>
                                             <outlet property="walletAmountLabel" destination="f9Y-Kh-VnD" id="mcP-Ao-rT6"/>
                                             <outlet property="walletDescLabel" destination="mzI-EX-fxV" id="YyY-AC-DHt"/>
                                             <outlet property="walletIconImageView" destination="WBl-2Q-4U3" id="7se-cG-UBB"/>

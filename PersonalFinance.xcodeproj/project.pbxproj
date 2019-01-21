@@ -30,7 +30,6 @@
 		91D5B93921BFAF2600F0373C /* IncomeExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5B93821BFAF2600F0373C /* IncomeExpenseViewController.swift */; };
 		91D5B93B21BFAF4400F0373C /* IncomeExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5B93A21BFAF4400F0373C /* IncomeExpense.swift */; };
 		91D5B93D21BFAF7C00F0373C /* IncomeExpense.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D5B93C21BFAF7C00F0373C /* IncomeExpense.storyboard */; };
-
 		91DB80B321F07ED500076182 /* CategoryAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DB80B221F07ED500076182 /* CategoryAddViewController.swift */; };
 		9294028B21EC3788005B5EA3 /* ReportCategoryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9294028721EC3788005B5EA3 /* ReportCategoryDetailsViewController.swift */; };
 		9294028C21EC3788005B5EA3 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9294028821EC3788005B5EA3 /* Report.storyboard */; };
@@ -40,8 +39,6 @@
 		F342487921EC3B10009EABDE /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F342487821EC3B10009EABDE /* AccountViewController.swift */; };
 		F343F34A21EC6D420047F1F2 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F343F34921EC6D420047F1F2 /* Category.storyboard */; };
 		F343F34C21EC6D870047F1F2 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F343F34B21EC6D870047F1F2 /* CategoryViewController.swift */; };
-		F343F34F21EC6E840047F1F2 /* Saving.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F343F34E21EC6E840047F1F2 /* Saving.storyboard */; };
-		F343F35121EC6EB10047F1F2 /* SavingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F343F35021EC6EB10047F1F2 /* SavingViewController.swift */; };
 		F39AA20021DF15B500EAF89D /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F39AA1FF21DF15B500EAF89D /* Register.storyboard */; };
 		F3D823A321F56EAC00EED53F /* Currency.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3D823A221F56EAC00EED53F /* Currency.storyboard */; };
 		F3D823A521F56EBB00EED53F /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D823A421F56EBB00EED53F /* CurrencyViewController.swift */; };
@@ -76,7 +73,6 @@
 		91D5B93A21BFAF4400F0373C /* IncomeExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpense.swift; sourceTree = "<group>"; };
 		91D5B93C21BFAF7C00F0373C /* IncomeExpense.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IncomeExpense.storyboard; sourceTree = "<group>"; };
 		91DB80B221F07ED500076182 /* CategoryAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAddViewController.swift; sourceTree = "<group>"; };
-
 		9294028721EC3788005B5EA3 /* ReportCategoryDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCategoryDetailsViewController.swift; sourceTree = "<group>"; };
 		9294028821EC3788005B5EA3 /* Report.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
 		9294028921EC3788005B5EA3 /* ReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
@@ -85,8 +81,6 @@
 		F342487821EC3B10009EABDE /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		F343F34921EC6D420047F1F2 /* Category.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
 		F343F34B21EC6D870047F1F2 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
-		F343F34E21EC6E840047F1F2 /* Saving.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Saving.storyboard; sourceTree = "<group>"; };
-		F343F35021EC6EB10047F1F2 /* SavingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingViewController.swift; sourceTree = "<group>"; };
 		F39AA1FF21DF15B500EAF89D /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		F3D823A221F56EAC00EED53F /* Currency.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Currency.storyboard; sourceTree = "<group>"; };
 		F3D823A421F56EBB00EED53F /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
@@ -224,16 +218,6 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
-
-		F343F34D21EC6E750047F1F2 /* Saving */ = {
-			isa = PBXGroup;
-			children = (
-				F343F34E21EC6E840047F1F2 /* Saving.storyboard */,
-				F343F35021EC6EB10047F1F2 /* SavingViewController.swift */,
-			);
-			path = Saving;
-			sourceTree = "<group>";
-		};
 		F39AA1FE21DF0FA300EAF89D /* Register */ = {
 			isa = PBXGroup;
 			children = (
@@ -256,7 +240,6 @@
 			children = (
 				F3D823A121F56E9900EED53F /* Currency */,
 				9189BA7721F5836F004F9194 /* Wallet */,
-				F343F34D21EC6E750047F1F2 /* Saving */,
 				F343F34821EC6D310047F1F2 /* Category */,
 				F342487521EC3318009EABDE /* Account */,
 				F3F21C8921E44B340035DEB0 /* Setting.storyboard */,

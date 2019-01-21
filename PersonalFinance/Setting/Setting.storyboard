@@ -164,12 +164,36 @@
                                             <segue destination="BLS-E0-o1O" kind="show" identifier="showCategory" id="N0Z-9O-69e"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="50" id="e6J-Pi-Wis">
+                                        <rect key="frame" x="0.0" y="379" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e6J-Pi-Wis" id="MSh-ic-HId">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="49.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="category" translatesAutoresizingMaskIntoConstraints="NO" id="NC4-v1-VAO">
+                                                    <rect key="frame" x="16" y="10" width="25" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bb3-DS-i5y">
+                                                    <rect key="frame" x="53" y="14" width="43" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="jzF-XN-yrY" kind="show" identifier="walletID" id="rL2-M0-DzU"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Display" id="BRk-tW-oTz">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="xNx-i0-DPt">
-                                        <rect key="frame" x="0.0" y="407" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="457" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xNx-i0-DPt" id="S9v-qN-axp">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="49.666666666666664"/>
@@ -201,7 +225,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="pGW-dO-exu">
-                                        <rect key="frame" x="0.0" y="457" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="507" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pGW-dO-exu" id="yti-Vw-6d7">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="49.666666666666664"/>
@@ -233,7 +257,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="50" id="aUU-Fu-Xwt">
-                                        <rect key="frame" x="0.0" y="507" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="557" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aUU-Fu-Xwt" id="PQA-dC-h97">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="49.666666666666664"/>
@@ -272,7 +296,7 @@
                             <tableViewSection headerTitle="Security" id="koK-F6-6DC">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TVCfaceid" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="bag-yo-MwZ">
-                                        <rect key="frame" x="0.0" y="585" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="635" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bag-yo-MwZ" id="2H6-I1-2VS">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="49.666666666666664"/>
@@ -304,7 +328,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TVCfinger" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="WGB-S9-kaG">
-                                        <rect key="frame" x="0.0" y="635" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="685" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WGB-S9-kaG" id="s56-Rm-adI">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="49.666666666666664"/>
@@ -340,10 +364,10 @@
                             <tableViewSection headerTitle="  " footerTitle="Version 1.1 (Beta)" id="5lE-rz-fA7">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="50" id="MDn-Di-Yka">
-                                        <rect key="frame" x="0.0" y="713" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="763" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MDn-Di-Yka" id="IST-xy-qys">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="49.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="49.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="History Log" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZnQ-7I-t9M">
@@ -405,7 +429,15 @@
                 <viewControllerPlaceholder storyboardName="Currency" id="aGE-T4-tfj" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wKq-hv-hgc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1127" y="67"/>
+            <point key="canvasLocation" x="1288" y="-13"/>
+        </scene>
+        <!--Wallet-->
+        <scene sceneID="fxY-Vs-PUE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Wallet" id="jzF-XN-yrY" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Apz-od-jWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1279" y="50"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="l6F-rk-xan">

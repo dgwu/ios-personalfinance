@@ -107,6 +107,10 @@ class TableViewController: UITableViewController
         {
             destination.title = "Category"
         }
+        else if segue.identifier == "walletID", let destination = segue.destination as? WalletViewController
+        {
+            destination.title = "Wallet"
+        }
     }
     
     
