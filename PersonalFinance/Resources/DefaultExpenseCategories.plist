@@ -8,7 +8,7 @@
 		<key>colorCode</key>
 		<string>ffffff</string>
 		<key>iconName</key>
-		<string>food</string>
+		<string>category</string>
 		<key>childs</key>
 		<array>
 			<dict>
@@ -35,7 +35,7 @@
 		<key>colorCode</key>
 		<string>000000</string>
 		<key>iconName</key>
-		<string>bill</string>
+		<string>category</string>
 		<key>childs</key>
 		<array>
 			<dict>
