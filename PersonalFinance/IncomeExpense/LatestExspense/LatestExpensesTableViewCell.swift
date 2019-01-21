@@ -1,19 +1,18 @@
 //
-//  TableViewCell.swift
+//  LatestExpensesTableViewCell.swift
 //  PersonalFinance
 //
-//  Created by Gun Eight  on 08/01/19.
+//  Created by Gun Eight  on 21/01/19.
 //  Copyright © 2019 Daniel Gunawan. All rights reserved.
 //
 
 import UIKit
 
-class TableViewCell: UITableViewCell {
-
-    @IBOutlet weak var expansesNameLabel: UILabel!
-    @IBOutlet weak var amountExpensesLabel: UILabel!
+class LatestExpensesTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var categoryLabel: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var categoryImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
