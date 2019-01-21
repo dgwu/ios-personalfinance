@@ -8,7 +8,7 @@
 		<key>colorCode</key>
 		<string>hijau</string>
 		<key>iconName</key>
-		<string>income</string>
+		<string>category</string>
 	</dict>
 	<dict>
 		<key>desc</key>
@@ -16,7 +16,7 @@
 		<key>colorCode</key>
 		<string>hijau</string>
 		<key>iconName</key>
-		<string>income</string>
+		<string>category</string>
 	</dict>
 </array>
 </plist>

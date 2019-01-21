@@ -21,6 +21,19 @@ class FinanceManager {
         return appDelegate.persistentContainer.viewContext
     }()
     
+    public func walletList() -> [Wallet]? {
+        let walletFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Wallet")
+        
+        do {
+            let result = try objectContext.fetch(walletFetch) as! [Wallet]
+            return result
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        return nil
+    }
+    
     // for test purposes
     public func defaultWallet() -> Wallet? {
         let walletFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Wallet")
@@ -30,6 +43,37 @@ class FinanceManager {
             if let firstWallet = result.first {
                 return firstWallet
             }
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        return nil
+    }
+    
+    public func insertWallet(desc: String, openDate: Date, initialAmount: Double, iconName: String?, colorCode: String?) {
+        let newWallet = Wallet(context: self.objectContext)
+        newWallet.desc = desc
+        newWallet.createdDate = openDate
+        newWallet.initialAmount = initialAmount
+        newWallet.colorCode = colorCode
+        newWallet.iconName = iconName
+        
+        do {
+            try self.objectContext.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    public func categoryList(type: CategoryType) -> [Category]? {
+        let categoryFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Category")
+        // filter parent category only
+        let predicate = NSPredicate(format: "(parent == nil || parent.@count = 0) && type=%d", type.rawValue)
+        categoryFetch.predicate = predicate
+        
+        do {
+            let result = try objectContext.fetch(categoryFetch) as! [Category]
+            return result
         } catch {
             print(error.localizedDescription)
         }
@@ -52,20 +96,36 @@ class FinanceManager {
         
         return nil
     }
+    
+    public func insertCategory(categoryType: CategoryType, desc: String, iconName: String?, colorCode: String?) {
+        let newCategory = Category(context: self.objectContext)
+        newCategory.type = Int16(categoryType.rawValue)
+        newCategory.desc = desc
+        newCategory.iconName = iconName
+        newCategory.colorCode = colorCode
+        
+        do {
+            try self.objectContext.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
 }
 
 
 // handle transaction
 extension FinanceManager {
-    public func insertTransaction(date: Date, amount: Double, type: TransactionType, category: Category, sourceWallet: Wallet) {
+    public func insertTransaction(date: Date, amount: Double, type: TransactionType, category: Category, desc: String?, sourceWallet: Wallet?, benefWallet: Wallet? = nil) {
         if type == .expense {
-            insertExpense(date: date, amount: amount, category: category, wallet: sourceWallet)
+            guard let sourceWallet = sourceWallet else {return}
+            insertExpense(date: date, amount: amount, category: category, wallet: sourceWallet, desc: desc)
         } else {
-            insertIncome(date: date, amount: amount, category: category, wallet: sourceWallet)
+            guard let benefWallet = benefWallet else {return}
+            insertIncome(date: date, amount: amount, category: category, wallet: benefWallet, desc: desc)
         }
     }
     
-    public func insertExpense(date: Date, amount: Double, category: Category, wallet: Wallet) {
+    public func insertExpense(date: Date, amount: Double, category: Category, wallet: Wallet, desc: String?) {
         let newTransaction = Transaction(context: self.objectContext)
         newTransaction.createdDate = Date()
         newTransaction.transactionType = Int16(TransactionType.expense.rawValue)
@@ -73,6 +133,7 @@ extension FinanceManager {
         newTransaction.category = category
         newTransaction.amount = amount
         newTransaction.sourceWallet = wallet
+        newTransaction.desc = desc
         
         do {
             try self.objectContext.save()
@@ -81,14 +142,15 @@ extension FinanceManager {
         }
     }
     
-    public func insertIncome(date: Date, amount: Double, category: Category, wallet: Wallet) {
+    public func insertIncome(date: Date, amount: Double, category: Category, wallet: Wallet, desc: String?) {
         let newTransaction = Transaction(context: self.objectContext)
         newTransaction.createdDate = Date()
         newTransaction.transactionType = Int16(TransactionType.income.rawValue)
         newTransaction.transactionDate = date
         newTransaction.category = category
         newTransaction.amount = amount
-        newTransaction.sourceWallet = wallet
+        newTransaction.beneficiaryWallet = wallet
+        newTransaction.desc = desc
         
         do {
             try self.objectContext.save()
@@ -108,11 +170,13 @@ extension FinanceManager {
     public func getExpenseResultController(fromDate: Date?, toDate: Date?) -> NSFetchedResultsController<Transaction> {
         let fetchRequest = NSFetchRequest<Transaction>(entityName:"Transaction")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "transactionDate", ascending:false)]
-        fetchRequest.predicate = NSPredicate(format: "transactionType == %d", TransactionType.expense.rawValue)
+        
+        var predicates = [NSPredicate(format: "transactionType == %d", TransactionType.expense.rawValue)]
         
         if let fromDate = fromDate, let toDate = toDate {
-            fetchRequest.predicate = NSPredicate(format: "transactionDate >= %@ && transactionDate <= %@", argumentArray: [fromDate, toDate])
+            predicates.append(NSPredicate(format: "transactionDate >= %@ && transactionDate <= %@", argumentArray: [fromDate, toDate]))
         }
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                     managedObjectContext: self.objectContext,
@@ -127,11 +191,12 @@ extension FinanceManager {
     public func getIncomeResultController(fromDate: Date?, toDate: Date?) -> NSFetchedResultsController<Transaction> {
         let fetchRequest = NSFetchRequest<Transaction>(entityName:"Transaction")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "transactionDate", ascending:false)]
-        fetchRequest.predicate = NSPredicate(format: "transactionType == %d", TransactionType.income.rawValue)
         
+        var predicates = [NSPredicate(format: "transactionType == %d", TransactionType.income.rawValue)]
         if let fromDate = fromDate, let toDate = toDate {
-            fetchRequest.predicate = NSPredicate(format: "transactionDate >= %@ && transactionDate <= %@", argumentArray: [fromDate, toDate])
+            predicates.append(NSPredicate(format: "transactionDate >= %@ && transactionDate <= %@", argumentArray: [fromDate, toDate]))
         }
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                     managedObjectContext: self.objectContext,

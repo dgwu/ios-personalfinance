@@ -29,6 +29,12 @@ class SetupManager {
         }
     }
     
+    public var isSimulationPreloaded = UserDefaults.standard.bool(forKey: "simulationPreloaded") {
+        didSet {
+            UserDefaults.standard.set(isWalletsPreloaded, forKey: "simulationPreloaded")
+        }
+    }
+    
     
     // setting page
     public var userMonthlySalary = UserDefaults.standard.double(forKey: "userMonthlySalary") {
@@ -70,6 +76,12 @@ class SetupManager {
     public var isUserUsingFingerLock = UserDefaults.standard.bool(forKey: "isUserUsingFingerLock") {
         didSet {
             UserDefaults.standard.set(isUserUsingFingerLock, forKey: "isUserUsingFingerLock")
+        }
+    }
+    
+    public var userDefaultCurrency = UserDefaults.standard.string(forKey: "userDefaultCurrency") ?? "" {
+        didSet {
+            UserDefaults.standard.set(userDefaultCurrency ,forKey: "userDefaultCurrency")
         }
     }
 }

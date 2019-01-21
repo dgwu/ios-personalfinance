@@ -5,9 +5,9 @@
         <attribute name="desc" attributeType="String" syncable="YES"/>
         <attribute name="iconName" attributeType="String" syncable="YES"/>
         <attribute name="type" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="childs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="parent" inverseEntity="Category" syncable="YES"/>
+        <relationship name="childs" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Category" inverseName="parent" inverseEntity="Category" syncable="YES"/>
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="childs" inverseEntity="Category" syncable="YES"/>
-        <relationship name="transactions" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Transaction" inverseName="category" inverseEntity="Transaction" syncable="YES"/>
+        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="category" inverseEntity="Transaction" syncable="YES"/>
     </entity>
     <entity name="Transaction" representedClassName=".Transaction" syncable="YES" codeGenerationType="class">
         <attribute name="amount" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -30,8 +30,8 @@
         <relationship name="incomes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="beneficiaryWallet" inverseEntity="Transaction" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Transaction" positionX="-54" positionY="-9" width="128" height="180"/>
         <element name="Category" positionX="-36" positionY="9" width="128" height="150"/>
+        <element name="Transaction" positionX="-54" positionY="-9" width="128" height="180"/>
         <element name="Wallet" positionX="-18" positionY="27" width="128" height="150"/>
     </elements>
 </model>
