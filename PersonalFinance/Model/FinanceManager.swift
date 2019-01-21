@@ -50,6 +50,21 @@ class FinanceManager {
         return nil
     }
     
+    public func insertWallet(desc: String, openDate: Date, initialAmount: Double, iconName: String?, colorCode: String?) {
+        let newWallet = Wallet(context: self.objectContext)
+        newWallet.desc = desc
+        newWallet.createdDate = openDate
+        newWallet.initialAmount = initialAmount
+        newWallet.colorCode = colorCode
+        newWallet.iconName = iconName
+        
+        do {
+            try self.objectContext.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
     public func categoryList(type: CategoryType) -> [Category]? {
         let categoryFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Category")
         // filter parent category only
