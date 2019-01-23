@@ -52,7 +52,7 @@
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o67-Pf-XX8">
-                                <rect key="frame" x="35" y="424" width="305" height="304"/>
+                                <rect key="frame" x="35" y="424" width="305" height="255"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="topExpenseCell" id="xll-oG-AHY" customClass="ReportTableViewCell" customModule="PersonalFinance" customModuleProvider="target">
@@ -165,11 +165,13 @@
             </objects>
             <point key="canvasLocation" x="-1796" y="-3086.4532019704434"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Report-->
         <scene sceneID="RzJ-bp-I73">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zOb-ki-rsG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Report" image="main_tabbar_report" selectedImage="main_tabbar_report_active" id="AnG-7H-aIo"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Nrg-gc-syU">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -184,4 +186,8 @@
             <point key="canvasLocation" x="-3377" y="-3086"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="main_tabbar_report" width="29" height="36"/>
+        <image name="main_tabbar_report_active" width="29" height="36"/>
+    </resources>
 </document>
