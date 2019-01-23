@@ -1,14 +1,14 @@
 //
-//  IncomeExpenseViewController.swift
+//  RegisterViewController.swift
 //  PersonalFinance
 //
-//  Created by Daniel Gunawan on 11/12/18.
-//  Copyright © 2018 Daniel Gunawan. All rights reserved.
+//  Created by Gun Eight  on 07/01/19.
+//  Copyright © 2019 Daniel Gunawan. All rights reserved.
 //
 
 import UIKit
 
-class IncomeExpenseViewController: UIViewController {
+class RegisterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
