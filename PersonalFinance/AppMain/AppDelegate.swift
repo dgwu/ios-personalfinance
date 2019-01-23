@@ -70,6 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 newWallet.desc = wallet["desc"]
                                 newWallet.iconName = wallet["iconName"]
                                 newWallet.initialAmount = 0
+                                newWallet.isActive = true
                                 newWallet.createdDate = Date()
                             }
                         }

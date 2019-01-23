@@ -23,6 +23,8 @@ class FinanceManager {
     
     public func walletList() -> [Wallet]? {
         let walletFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Wallet")
+        let predicate = NSPredicate(format: "isActive == %@", NSNumber(value: true))
+        walletFetch.predicate = predicate
         
         do {
             let result = try objectContext.fetch(walletFetch) as! [Wallet]
@@ -57,6 +59,7 @@ class FinanceManager {
         newWallet.initialAmount = initialAmount
         newWallet.colorCode = colorCode
         newWallet.iconName = iconName
+        newWallet.isActive = true
         
         do {
             try self.objectContext.save()
