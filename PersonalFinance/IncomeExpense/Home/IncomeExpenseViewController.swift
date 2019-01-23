@@ -55,14 +55,6 @@ class IncomeExpenseViewController: UIViewController, UICollectionViewDelegate, U
 
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "latestCell", for: indexPath) as! LatestExpensesTVC
-//        cell.categoryImage.image = UIImage(named: "\(arrayTemp[indexPath.row])")
-//        cell.trasactionNameLabel.text  = arrayTemp[indexPath.row]
-//        print("cetakk -> \(indexPath.row)")
-//        print("ini transaction label : \(cell.transactionAmountLabel.frame.width)")
-//        print("ini maount label : \(cell.trasactionNameLabel.frame.width)")
-//        print("ini imagw : \(cell.categoryImage.frame.width)")
-//        print("index right now : \(indexPath.row)")
-
         if let transaction = transactionFecthControler.fetchedObjects?[indexPath.row] {
                             cell.trasactionNameLabel.text = transaction.desc
                             cell.transactionAmountLabel.text = "\(transaction.amount)"
@@ -278,28 +270,15 @@ extension IncomeExpenseViewController : UICollectionViewDelegateFlowLayout {
         
         return sections
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row != 5 {
+        let vc =  storyboard?.instantiateViewController(withIdentifier: "addrecord") as? AddRecordViewController
+        vc?.category = arrayTemp[indexPath.row]
+        self.navigationController?.pushViewController(vc!, animated: true)
+        }
+    }
 }
-
-
-//    func GetDate()  {
-//               print(" atau yang ini dulu ya")
-//            let datePicker = UIDatePicker()
-//            datePicker.datePickerMode = UIDatePicker.Mode.date
-//            datePicker.addTarget(self, action: #selector(self.DatePickerValue(sender:)), for: .valueChanged)
-//            self.dateTextField.inputView = datePicker
-//
-//
-//    }
-//
-//    @objc func DatePickerValue(sender : UIDatePicker)   {
-//        let formatter = DateFormatter()
-//        formatter.dateStyle = DateFormatter.Style.long
-//        formatter.timeStyle = DateFormatter.Style.none
-//        dateTextField.text = formatter.string(from: sender.date)
-//
-//
-//    }
-// }
 
 extension IncomeExpenseViewController: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

@@ -16,6 +16,7 @@
 		67DEF8D021F55C5C007A7E6A /* LatestExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DEF8CF21F55C5C007A7E6A /* LatestExpensesViewController.swift */; };
 		67DEF8D221F55C7A007A7E6A /* LatestExpenses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67DEF8D121F55C7A007A7E6A /* LatestExpenses.storyboard */; };
 		67DEF8D421F56272007A7E6A /* LatestExpensesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DEF8D321F56272007A7E6A /* LatestExpensesTableViewCell.swift */; };
+		67DEF8D621F6D00A007A7E6A /* CategoryTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DEF8D521F6D00A007A7E6A /* CategoryTVC.swift */; };
 		910DBF0721E5E459004C27CF /* CategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910DBF0621E5E459004C27CF /* CategoryType.swift */; };
 		910DBF0921E5E478004C27CF /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910DBF0821E5E478004C27CF /* TransactionType.swift */; };
 		910DBF0B21E5E488004C27CF /* FinanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910DBF0A21E5E488004C27CF /* FinanceManager.swift */; };
@@ -65,6 +66,7 @@
 		67DEF8CF21F55C5C007A7E6A /* LatestExpensesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestExpensesViewController.swift; sourceTree = "<group>"; };
 		67DEF8D121F55C7A007A7E6A /* LatestExpenses.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LatestExpenses.storyboard; sourceTree = "<group>"; };
 		67DEF8D321F56272007A7E6A /* LatestExpensesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestExpensesTableViewCell.swift; sourceTree = "<group>"; };
+		67DEF8D521F6D00A007A7E6A /* CategoryTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTVC.swift; sourceTree = "<group>"; };
 		910DBF0621E5E459004C27CF /* CategoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryType.swift; sourceTree = "<group>"; };
 		910DBF0821E5E478004C27CF /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
 		910DBF0A21E5E488004C27CF /* FinanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceManager.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			children = (
 				67DEF8CB21F4D66C007A7E6A /* AddRecordViewController.swift */,
 				67DEF8CD21F4D6AE007A7E6A /* AddRecord.storyboard */,
+				67DEF8D521F6D00A007A7E6A /* CategoryTVC.swift */,
 			);
 			path = AddRecord;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67DEF8C321F16966007A7E6A /* CategoryCollectionViewCell.swift in Sources */,
+				67DEF8D621F6D00A007A7E6A /* CategoryTVC.swift in Sources */,
 				9189BA7B21F583D3004F9194 /* WalletTableViewCell.swift in Sources */,
 				910DBF0B21E5E488004C27CF /* FinanceManager.swift in Sources */,
 				F3D823A521F56EBB00EED53F /* CurrencyViewController.swift in Sources */,

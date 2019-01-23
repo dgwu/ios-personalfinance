@@ -36,7 +36,7 @@ class LatestExpensesTVC: UITableViewCell {
             ])
         
         NSLayoutConstraint.activate([
-            transactionAmountLabel.leadingAnchor.constraint(equalTo: trasactionNameLabel.trailingAnchor),
+            transactionAmountLabel.leadingAnchor.constraint(equalTo: trasactionNameLabel.trailingAnchor, constant : 10),
             transactionAmountLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
             transactionAmountLabel.widthAnchor.constraint(equalToConstant: (contentView.frame.width / 2) - (contentView.frame.width / 8) - 10 ),
             ])

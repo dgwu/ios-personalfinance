@@ -22,10 +22,21 @@
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="btG-DW-Cqc"/>
                     <navigationItem key="navigationItem" id="nOj-rJ-O82"/>
+                    <connections>
+                        <segue destination="oAg-95-7KV" kind="show" id="dKV-my-0z9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jvx-CM-OhS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-744.79999999999995" y="-2269.2118226600987"/>
+        </scene>
+        <!--AddRecord-->
+        <scene sceneID="idv-04-d90">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="addrecord" storyboardName="AddRecord" id="oAg-95-7KV" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lc5-Gn-ijA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="235" y="-2535"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="N2J-L4-5RP">
