@@ -8,10 +8,15 @@
 
 import UIKit
 
-class CurrencyViewController: TableViewController
+class CurrencyViewController: UITableViewController
 {
 
-    let currency = ["IDR","ENG"]
+    let currency = [
+        "IDR - Indonesia",
+        "USD - US Dollar",
+        "SGD - Singapore Dollar",
+        "MYR - Malaysian Ringgit",
+        "CNY - Chinese Yuan Renminbi"]
     
     override func viewDidLoad()
     {
@@ -23,12 +28,12 @@ class CurrencyViewController: TableViewController
         return currency.count
     }
     
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-//    {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-//        cell.textLabel?.text = currency[indexPath.row]
-//        return cell
-//    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = currency[indexPath.row]
+        return cell
+    }
     
     
     

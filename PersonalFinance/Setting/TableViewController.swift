@@ -94,10 +94,6 @@ class TableViewController: UITableViewController
         {
             destination.title = "My Account"
         }
-//        else if segue.identifier == "showSalary", let destination = segue.destination as? SalaryViewController
-//        {
-//             destination.title = "Salary"
-//        }
         else if segue.identifier == "currencyId", let destination = segue.destination as? CurrencyViewController
         {
             destination.title = "Currency"
@@ -114,15 +110,14 @@ class TableViewController: UITableViewController
     }
     
     
-    //defaults.setObject("Coding Explorer", forKey: "userNameKey")
     func initialLoad()
     {
         print(isFaceIDSupported)
         
-        lblSalary.text = "\(NumberFormatter.localizedString(from: NSNumber(value: setupManager.userMonthlySalary), 	number: .decimal))"
+        lblSalary.text = "\(NumberFormatter.localizedString(from: NSNumber(value: setupManager.userMonthlySalary),     number: .decimal))"
         lblSaving.text = "\(NumberFormatter.localizedString(from: NSNumber(value: setupManager.userMonthlySaving), number: .decimal))"
         lblCurrency.text = setupManager.userDefaultCurrency
-        
+
         notifState.isOn = setupManager.isUserAllowNotification
         decimalState.isOn = setupManager.isUserUsingDecimal
         faceIdState.isOn = setupManager.isUserUsingFaceLock
