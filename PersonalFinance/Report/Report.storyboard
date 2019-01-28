@@ -411,12 +411,14 @@
             </objects>
             <point key="canvasLocation" x="-1762" y="-3086"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Report-->
         <scene sceneID="RzJ-bp-I73">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zOb-ki-rsG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Report" image="main_tabbar_report" selectedImage="main_tabbar_report_active" id="AnG-7H-aIo"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="Nrg-gc-syU">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.35686274509803922" green="0.59215686274509804" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
@@ -441,4 +443,6 @@
         <image name="nextArrow" width="12" height="22"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <image name="main_tabbar_report" width="29" height="36"/>
+        <image name="main_tabbar_report_active" width="29" height="36"/>
 </document>

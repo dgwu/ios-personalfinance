@@ -1,14 +1,14 @@
 //
-//  SavingViewController.swift
+//  RegisterViewController.swift
 //  PersonalFinance
 //
-//  Created by okky pribadi on 14/01/19.
+//  Created by Gun Eight  on 07/01/19.
 //  Copyright © 2019 Daniel Gunawan. All rights reserved.
 //
 
 import UIKit
 
-class SavingViewController: UIViewController {
+class RegisterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

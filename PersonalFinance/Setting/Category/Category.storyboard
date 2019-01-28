@@ -22,29 +22,40 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="720"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CategoryCell" textLabel="5Q0-QK-cRG" detailTextLabel="v1M-8d-Ubz" style="IBUITableViewCellStyleValue1" id="YNP-HE-VWv">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CategoryCell" id="YNP-HE-VWv" customClass="CategoryTableViewCell" customModule="PersonalFinance" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YNP-HE-VWv" id="Bom-hm-5ij">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Q0-QK-cRG">
-                                                    <rect key="frame" x="15" y="11.999999999999998" width="33.333333333333336" height="20.333333333333332"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="v1M-8d-Ubz">
-                                                    <rect key="frame" x="296" y="11.999999999999998" width="44" height="20.333333333333332"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fgD-Ta-Ejz">
+                                                    <rect key="frame" x="15" y="9.3333333333333357" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="cgx-0A-JtX"/>
+                                                        <constraint firstAttribute="height" constant="25" id="uAp-Yc-VBb"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2TB-JX-oSe">
+                                                    <rect key="frame" x="50" y="10" width="277" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="2TB-JX-oSe" firstAttribute="leading" secondItem="fgD-Ta-Ejz" secondAttribute="trailing" constant="10" id="g0d-zu-YfO"/>
+                                                <constraint firstAttribute="trailing" secondItem="2TB-JX-oSe" secondAttribute="trailing" constant="15" id="lir-JZ-qth"/>
+                                                <constraint firstItem="fgD-Ta-Ejz" firstAttribute="leading" secondItem="Bom-hm-5ij" secondAttribute="leading" constant="15" id="mAW-K5-A3g"/>
+                                                <constraint firstItem="2TB-JX-oSe" firstAttribute="centerY" secondItem="Bom-hm-5ij" secondAttribute="centerY" id="pyb-Gg-aG4"/>
+                                                <constraint firstItem="fgD-Ta-Ejz" firstAttribute="centerY" secondItem="Bom-hm-5ij" secondAttribute="centerY" id="qwY-KP-eMq"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="categoryDescLabel" destination="2TB-JX-oSe" id="e9H-zR-znA"/>
+                                            <outlet property="categoryIconImageView" destination="fgD-Ta-Ejz" id="egL-iR-bul"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

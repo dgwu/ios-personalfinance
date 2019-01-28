@@ -4,11 +4,91 @@
 <array>
 	<dict>
 		<key>desc</key>
+		<string>Category 10</string>
+		<key>colorCode</key>
+		<string>000000</string>
+		<key>iconName</key>
+		<string>category</string>
+	</dict>
+	<dict>
+		<key>desc</key>
+		<string>Category 9</string>
+		<key>colorCode</key>
+		<string>000000</string>
+		<key>iconName</key>
+		<string>category</string>
+	</dict>
+	<dict>
+		<key>desc</key>
+		<string>Category 8</string>
+		<key>colorCode</key>
+		<string>000000</string>
+		<key>iconName</key>
+		<string>category</string>
+	</dict>
+	<dict>
+		<key>desc</key>
+		<string>Category 7</string>
+		<key>colorCode</key>
+		<string>000000</string>
+		<key>iconName</key>
+		<string>category</string>
+	</dict>
+	<dict>
+		<key>desc</key>
+		<string>Category 6</string>
+		<key>colorCode</key>
+		<string>000000</string>
+		<key>iconName</key>
+		<string>category</string>
+	</dict>
+	<dict>
+		<key>desc</key>
+		<string>Category 5</string>
+		<key>colorCode</key>
+		<string>000000</string>
+		<key>iconName</key>
+		<string>category</string>
+	</dict>
+	<dict>
+		<key>desc</key>
+		<string>Category 4</string>
+		<key>colorCode</key>
+		<string>000000</string>
+		<key>iconName</key>
+		<string>category</string>
+	</dict>
+	<dict>
+		<key>desc</key>
+		<string>Category 3</string>
+		<key>colorCode</key>
+		<string>000000</string>
+		<key>iconName</key>
+		<string>category</string>
+	</dict>
+	<dict>
+		<key>desc</key>
+		<string>Category 2</string>
+		<key>colorCode</key>
+		<string>000000</string>
+		<key>iconName</key>
+		<string>category</string>
+	</dict>
+	<dict>
+		<key>desc</key>
+		<string>Category 1</string>
+		<key>colorCode</key>
+		<string>000000</string>
+		<key>iconName</key>
+		<string>category</string>
+	</dict>
+	<dict>
+		<key>desc</key>
 		<string>Food &amp; Beverage</string>
 		<key>colorCode</key>
 		<string>ffffff</string>
 		<key>iconName</key>
-		<string>food</string>
+		<string>category</string>
 		<key>childs</key>
 		<array>
 			<dict>
@@ -35,7 +115,7 @@
 		<key>colorCode</key>
 		<string>000000</string>
 		<key>iconName</key>
-		<string>bill</string>
+		<string>category</string>
 		<key>childs</key>
 		<array>
 			<dict>

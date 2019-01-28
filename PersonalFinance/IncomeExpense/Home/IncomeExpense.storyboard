@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4s0-R8-fCN">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--IncomeExpense-->
+        <scene sceneID="87I-XN-LFq">
+            <objects>
+                <viewController title="IncomeExpense" id="7ao-18-l9E" customClass="IncomeExpenseViewController" customModule="PersonalFinance" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SZD-mC-kQq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="VhB-jZ-SGn"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nOj-rJ-O82"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="oAg-95-7KV" kind="show" id="dKV-my-0z9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jvx-CM-OhS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="197.59999999999999" y="-2269.2118226600987"/>
+        </scene>
+        <!--AddRecord-->
+        <scene sceneID="idv-04-d90">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="addrecord" storyboardName="AddRecord" id="oAg-95-7KV" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lc5-Gn-ijA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1176.8" y="-2535.2216748768474"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="fiQ-0d-ui0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4s0-R8-fCN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="main_tabbar_home" selectedImage="main_tabbar_home_active" id="PW1-ta-vUF"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pow-WO-Dv6">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7ao-18-l9E" kind="relationship" relationship="rootViewController" id="BUO-Aw-hib"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LUQ-P8-v9w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-744.79999999999995" y="-2269.2118226600987"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="main_tabbar_home" width="26" height="28"/>
+        <image name="main_tabbar_home_active" width="26" height="28"/>
+    </resources>
+</document>

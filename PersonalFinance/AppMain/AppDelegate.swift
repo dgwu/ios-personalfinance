@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func applicationWillResignActive(_ application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {	
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
     }
@@ -70,6 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 newWallet.desc = wallet["desc"]
                                 newWallet.iconName = wallet["iconName"]
                                 newWallet.initialAmount = 0
+                                newWallet.isActive = true
                                 newWallet.createdDate = Date()
                             }
                         }
@@ -147,18 +148,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 newMainCategory.colorCode = category["colorCode"] as? String
                                 newMainCategory.type = Int16(CategoryType.expense.rawValue)
                                 
-                                if let subCategories = category["childs"] as? [Any] {
-                                    for subCategory in subCategories {
-                                        if let subCategory = subCategory as? [String:String] {
-                                            let newSubCategory = Category(context: backgroundContext)
-                                            newSubCategory.desc = subCategory["desc"]
-                                            newSubCategory.iconName = subCategory["iconName"]
-                                            newSubCategory.colorCode = subCategory["colorCode"]
-                                            newSubCategory.type = newMainCategory.type
-                                            newSubCategory.parent = newMainCategory
-                                        }
-                                    }
-                                }
+//                                if let subCategories = category["childs"] as? [Any] {
+//                                    for subCategory in subCategories {
+//                                        if let subCategory = subCategory as? [String:String] {
+//                                            let newSubCategory = Category(context: backgroundContext)
+//                                            newSubCategory.desc = subCategory["desc"]
+//                                            newSubCategory.iconName = subCategory["iconName"]
+//                                            newSubCategory.colorCode = subCategory["colorCode"]
+//                                            newSubCategory.type = newMainCategory.type
+//                                            newSubCategory.parent = newMainCategory
+//                                        }
+//                                    }
+//                                }
                             }
                         }
                         
@@ -184,14 +185,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // simulate expense
             if let expenseCategoryList = financeManager.categoryList(type: .expense) {
                 for category in expenseCategoryList {
-                    financeManager.insertTransaction(date: Date(), amount: Double(exactly: Int.random(in: 1000 ..< 10000))!, type: .expense, category: category, sourceWallet: defaultWallet)
-                    financeManager.insertTransaction(date: Date().previousStartOfMonth(), amount: Double(exactly: Int.random(in: 1000 ..< 10000))!, type: .expense, category: category, sourceWallet: defaultWallet)
+                    financeManager.insertTransaction(date: Date(), amount: Double(exactly: Int.random(in: 1000 ..< 10000))!, type: .expense, category: category, desc: "Preloaded expense", sourceWallet: defaultWallet)
+                    financeManager.insertTransaction(date: Date().previousStartOfMonth(), amount: Double(exactly: Int.random(in: 1000 ..< 10000))!, type: .expense, category: category, desc: "Preloaded expense", sourceWallet: defaultWallet)
                 }
             }
             
             if let incomeCategoryList = financeManager.categoryList(type: .income) {
                 for category in incomeCategoryList {
-                    financeManager.insertTransaction(date: Date(), amount: Double(exactly: Int.random(in: 5000 ..< 20000))!, type: .income, category: category, sourceWallet: nil, benefWallet: defaultWallet)
+                    financeManager.insertTransaction(date: Date(), amount: Double(exactly: Int.random(in: 5000 ..< 20000))!, type: .income, category: category, desc: "Preloaded income", sourceWallet: nil, benefWallet: defaultWallet)
                 }
             }
             

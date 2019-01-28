@@ -14,6 +14,7 @@ class CategoryViewController: UIViewController {
     @IBOutlet weak var categoryTable: UITableView!
     let financeManager = FinanceManager.shared
     var categoryList = [Category]()
+    var selectedCategory = CategoryType.expense
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,11 @@ class CategoryViewController: UIViewController {
     }
     
     func initialSetup() {
+        // setup navigation bar
+        self.navigationItem.title = "Category"
+        let addCategoryButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(segueToAddCategory))
+        self.navigationItem.rightBarButtonItem = addCategoryButton
+        
         if let expenseCategory = financeManager.categoryList(type: .expense) {
             categoryList = expenseCategory
         }
@@ -29,16 +35,28 @@ class CategoryViewController: UIViewController {
         categoryTable.dataSource = self
         categoryTable.delegate = self
     }
+    
+    @objc func segueToAddCategory() {
+        
+        let categoryAddViewController = CategoryAddViewController()
+        let newNavigationController = UINavigationController(rootViewController: categoryAddViewController)
+        
+        newNavigationController.modalPresentationStyle = .overCurrentContext
+        newNavigationController.modalTransitionStyle = .coverVertical
+        categoryAddViewController.delegate = self
+        categoryAddViewController.selectedCategory = self.selectedCategory
+        self.present(newNavigationController, animated: true, completion: nil)
+    }
 
     @IBAction func changeCategoryType(_ sender: UISegmentedControl) {
         if sender.titleForSegment(at: sender.selectedSegmentIndex) == "Income" {
-            if let incomeCategory = financeManager.categoryList(type: .income) {
-                categoryList = incomeCategory
-            }
+            self.selectedCategory = .income
         } else {
-            if let expenseCategory = financeManager.categoryList(type: .expense) {
-                categoryList = expenseCategory
-            }
+            self.selectedCategory = .expense
+        }
+        
+        if let expenseCategory = financeManager.categoryList(type: self.selectedCategory) {
+            categoryList = expenseCategory
         }
         
         self.categoryTable.reloadData()
@@ -49,54 +67,35 @@ class CategoryViewController: UIViewController {
 // table view extension
 extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 50))
-        sectionView.backgroundColor = UIColor.lightGray
-        
-        let stackView = UIStackView(frame: CGRect(x: 10, y: 0, width: tableView.bounds.width - 20, height: 50))
-        stackView.alignment = .center
-        stackView.distribution = .equalCentering
-        
-        
-        let label = UILabel(frame: CGRect(x: 15, y: 0, width: tableView.bounds.width - 30, height: 50))
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.textColor = UIColor.black
-        label.text = self.categoryList[section].desc
-        
-        
-        let addSubcategoryButton = UIButton.init(type: .system)
-        addSubcategoryButton.frame = CGRect(x: 15, y: 0, width: 20, height: 50)
-        addSubcategoryButton.setTitle("+", for: .normal)
-        
-        stackView.addArrangedSubview(label)
-        stackView.addArrangedSubview(addSubcategoryButton)
-
-        sectionView.addSubview(stackView)
-        return sectionView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
-    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.categoryList.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.categoryList[section].childs?.count ?? 0
+        return self.categoryList.count
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
         
-        if let childList = categoryList[indexPath.section].childs, let child = childList[indexPath.row] as? Category {
-            cell.textLabel?.text = child.desc
-        }
-        
-        
+        let category = categoryList[indexPath.row]
+        cell.categoryDescLabel.text = category.desc
+        cell.categoryIconImageView.image = UIImage(named: category.iconName!)
         
         return cell
     }
 }
 
+
+
+extension CategoryViewController: CategoryAddDelegate {
+    func categoryUpdate() {
+        if let expenseCategory = financeManager.categoryList(type: self.selectedCategory) {
+            categoryList = expenseCategory
+        }
+        
+        self.categoryTable.reloadData()
+    }
+    
+}
