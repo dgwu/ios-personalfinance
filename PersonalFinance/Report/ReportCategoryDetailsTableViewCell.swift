@@ -10,7 +10,7 @@ import UIKit
 
 class ReportCategoryDetailsTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var rankLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var expenseDescLabel: UILabel!
     @IBOutlet weak var expenseDescValueLabel: UILabel!
     
