@@ -26,6 +26,8 @@ class ReportViewController: UIViewController {
     @IBOutlet weak var yAxisTopLabel: UILabel!
     @IBOutlet weak var graphArea: UIImageView!
     @IBOutlet weak var chartStackView: UIStackView!
+    @IBOutlet weak var legendStackView: UIStackView!
+    @IBOutlet weak var displayedMonthBG: UIImageView!
     
     @IBOutlet var arrowButtonCollection: [UIButton]!
     
@@ -43,23 +45,29 @@ class ReportViewController: UIViewController {
     let stackViewSpacing = 15
     let barWidth = 40
     var stackViewWidth = 0
+    var categoryColors : [UIColor] = [#colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1), #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1), #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1), #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1), #colorLiteral(red: 0.4575039148, green: 1, blue: 0.718978703, alpha: 1), #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1), #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1), #colorLiteral(red: 0.3098039329, green: 0.01568627544, blue: 0.1294117719, alpha: 1), #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1), #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1), #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1),]
     
-    let barChartMultiplier : Float = 1 // faktor buat dikaliin ke tinggi bar chart-nya biar gak mentok ke atas
+    let barChartMultiplier : Float = 0.95 // faktor buat dikaliin ke tinggi bar chart-nya biar gak mentok ke atas
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        graphArea.layer.cornerRadius = 8
+        
+        displayedMonthBG.layer.cornerRadius = 9
+        displayedMonthBG.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        displayedMonthBG.layer.borderWidth = 1
+        
+        graphArea.layer.cornerRadius = 9
         graphArea.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         graphArea.layer.borderWidth = 1
-        graphArea.layer.shadowRadius = 2
-        graphArea.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        graphArea.layer.shadowOffset = CGSize(width: 2, height: 2)
-        graphArea.layer.shadowOpacity = 0.5
+//        graphArea.layer.shadowRadius = 2
+//        graphArea.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+//        graphArea.layer.shadowOffset = CGSize(width: 2, height: 2)
+//        graphArea.layer.shadowOpacity = 0.5
         
         for button in arrowButtonCollection {
             button.layer.cornerRadius = button.frame.width / 10
-            button.layer.borderWidth = 1
-            button.layer.borderColor = #colorLiteral(red: 0.3568627451, green: 0.5921568627, blue: 0.8392156863, alpha: 1)
+//            button.layer.borderWidth = 1
+//            button.layer.borderColor = #colorLiteral(red: 0.3568627451, green: 0.5921568627, blue: 0.8392156863, alpha: 1)
         }
         
         topExpensesTable.delegate = self
@@ -91,6 +99,7 @@ class ReportViewController: UIViewController {
         print ("Categories: ", categories)
         
         setupBarChart()
+        
         
         // kalo gak ada transaksi, show "no transactions"
         print ("No Transactions = ", transactions.count)
@@ -236,6 +245,27 @@ class ReportViewController: UIViewController {
             chartStackView.distribution = .equalCentering
             chartStackView.spacing = CGFloat(stackViewSpacing)
             view.addSubview(chartStackView)
+            view.addSubview(graphAxisArea) // ini biar posisi garis chart nya ada di atas bar chart nya
+            
+            legendStackView.axis = .horizontal
+            legendStackView.alignment = .center
+            legendStackView.distribution = .equalCentering
+            legendStackView.spacing = CGFloat(30)
+            
+            let legendVerticalStackViewLeft = UIStackView()
+            legendVerticalStackViewLeft.axis = .vertical
+            legendVerticalStackViewLeft.alignment = .center
+            legendVerticalStackViewLeft.frame = CGRect(x: 0, y: 0, width: chartStackView.frame.width / 2, height: 1)
+            legendVerticalStackViewLeft.spacing = CGFloat(2)
+            
+            let legendVerticalStackViewRight = UIStackView()
+            legendVerticalStackViewRight.axis = .vertical
+            legendVerticalStackViewRight.alignment = .center
+            legendVerticalStackViewRight.frame = legendVerticalStackViewLeft.frame
+            legendVerticalStackViewRight.spacing = legendVerticalStackViewLeft.spacing
+            
+            legendStackView.addArrangedSubview(legendVerticalStackViewLeft)
+            legendStackView.addArrangedSubview(legendVerticalStackViewRight)
             
             let highestExpenseVal = highestExpenseValue()
             
@@ -249,8 +279,8 @@ class ReportViewController: UIViewController {
                 let buttonHeight = Float(expenses[category]!) / Float(highestExpenseVal) * (Float(graphAxisArea.bounds.height) * barChartMultiplier)
                 //            print ("Button Height", buttonHeight)
                 let expenseBarButton = UIButton(frame: CGRect(x: 0, y: 0, width: barWidth, height: Int(buttonHeight)))
-                let colorAlpha = 0.4 + (expenses[category]! / highestExpenseVal * 0.6)
-                expenseBarButton.backgroundColor = UIColor(displayP3Red: 0.3, green: 0.1, blue: 0.5, alpha: CGFloat(colorAlpha))
+//                let colorAlpha = 0.4 + (expenses[category]! / highestExpenseVal * 0.6)
+                expenseBarButton.backgroundColor = categoryColors[categories.firstIndex(of: category)!] //UIColor(displayP3Red: 0.3, green: 0.1, blue: 0.5, alpha: CGFloat(colorAlpha))
                 expenseBarButton.translatesAutoresizingMaskIntoConstraints = false;
                 let expenseBarHeightConstraint = NSLayoutConstraint(item: expenseBarButton, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(buttonHeight))
                 expenseBarHeightConstraint.isActive = true
@@ -260,6 +290,35 @@ class ReportViewController: UIViewController {
                 //            print("Bar Position: \(expenseBarButton.frame.minX), \(expenseBarButton.frame.minY)")
                 chartStackView.addArrangedSubview(expenseBarButton)
                 //            print ("Constraints: ", expenseBarButton.constraints[0].constant)
+                
+                // SETUP LEGEND UNTUK BAR CHART
+                
+                let newHorizontalStackView = UIStackView()
+                newHorizontalStackView.axis = .horizontal
+                newHorizontalStackView.alignment = .center
+                newHorizontalStackView.spacing = 5
+                
+                let colorLegend = UIImageView()
+                colorLegend.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
+                colorLegend.layer.borderWidth = 0
+                colorLegend.layer.cornerRadius = 2
+                colorLegend.image = UIImage(named: "emptyImage10px.png")
+                colorLegend.backgroundColor = categoryColors[categories.firstIndex(of: category)!]
+                colorLegend.contentMode = .scaleAspectFit
+                view.addSubview(colorLegend)
+                
+                let legendLabel = UILabel()
+                legendLabel.text = category
+                legendLabel.font = legendLabel.font.withSize(10)
+                
+                newHorizontalStackView.addArrangedSubview(colorLegend)
+                newHorizontalStackView.addArrangedSubview(legendLabel)
+                
+                if categories.firstIndex(of: category)! % 2 == 0 {
+                    legendVerticalStackViewLeft.addArrangedSubview(newHorizontalStackView)
+                } else {
+                    legendVerticalStackViewRight.addArrangedSubview(newHorizontalStackView)
+                }
             }
             
             yAxisTopLabel.text = formatYAxisLabel(number: highestExpenseVal)
@@ -276,6 +335,17 @@ class ReportViewController: UIViewController {
             chartStackView.isHidden = true
             topExpensesTable.isHidden = true
             topExpensesTitleLabel.isHidden = true
+        }
+        
+        print ("chart")
+    }
+    
+    func setupLegend() {
+        if categories.count != 0 {
+            legendStackView.isHidden = false
+            
+            
+            
         }
     }
     
