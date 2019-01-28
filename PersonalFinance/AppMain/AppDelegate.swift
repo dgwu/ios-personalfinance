@@ -148,18 +148,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 newMainCategory.colorCode = category["colorCode"] as? String
                                 newMainCategory.type = Int16(CategoryType.expense.rawValue)
                                 
-                                if let subCategories = category["childs"] as? [Any] {
-                                    for subCategory in subCategories {
-                                        if let subCategory = subCategory as? [String:String] {
-                                            let newSubCategory = Category(context: backgroundContext)
-                                            newSubCategory.desc = subCategory["desc"]
-                                            newSubCategory.iconName = subCategory["iconName"]
-                                            newSubCategory.colorCode = subCategory["colorCode"]
-                                            newSubCategory.type = newMainCategory.type
-                                            newSubCategory.parent = newMainCategory
-                                        }
-                                    }
-                                }
+//                                if let subCategories = category["childs"] as? [Any] {
+//                                    for subCategory in subCategories {
+//                                        if let subCategory = subCategory as? [String:String] {
+//                                            let newSubCategory = Category(context: backgroundContext)
+//                                            newSubCategory.desc = subCategory["desc"]
+//                                            newSubCategory.iconName = subCategory["iconName"]
+//                                            newSubCategory.colorCode = subCategory["colorCode"]
+//                                            newSubCategory.type = newMainCategory.type
+//                                            newSubCategory.parent = newMainCategory
+//                                        }
+//                                    }
+//                                }
                             }
                         }
                         
