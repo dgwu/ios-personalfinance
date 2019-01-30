@@ -15,6 +15,7 @@ class ReportCategoryDetailsViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var displayedMonth: UILabel!
     @IBOutlet weak var expenseTable: UITableView!
+    @IBOutlet weak var displayedMonthBG: UIImageView!
     
     // Passed Parameters:
     var selectedCategory : String = ""
@@ -38,6 +39,10 @@ class ReportCategoryDetailsViewController: UIViewController {
         expenseTable.dataSource = self
         expenseTable.delegate = self
         
+        displayedMonthBG.layer.cornerRadius = 9
+        displayedMonthBG.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        displayedMonthBG.layer.borderWidth = 1
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "LLLL"
         let nameOfMonth = dateFormatter.string(from: currentlyDisplayedDate)
@@ -45,21 +50,22 @@ class ReportCategoryDetailsViewController: UIViewController {
         let year = dateFormatter.string(from: currentlyDisplayedDate)
         displayedMonth.text = "\(nameOfMonth) \(year)"
         
-        filteredTransactions = filterTransactions(withCategory: selectedCategory)
-        
         print ("Selected Category: ", selectedCategory)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print ("viewWillAppear")
+        filteredTransactions.removeAll()
+        if pageToLoad == .categoryDetails {
+            filteredTransactions = filterTransactions(withCategory: selectedCategory)
+        } else {
+            filteredTransactions = transactions
+        }
         nextButton.isEnabled = backStep == 0 ? false : true
     }
     
     func filterTransactions(withCategory : String) -> [Transaction] {
-        
         var tempTrans = [Transaction]()
         var tempData = Transaction()
-        
         if pageToLoad == .categoryDetails {
             for transaction in transactions {
                 if transaction.category?.desc == selectedCategory {
@@ -86,6 +92,7 @@ class ReportCategoryDetailsViewController: UIViewController {
             loadData(fromDate: date)
             nextButton.isEnabled = backStep == 0 ? false : true
         }
+        
         currentlyDisplayedDate = date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "LLLL"
@@ -110,7 +117,13 @@ class ReportCategoryDetailsViewController: UIViewController {
         // LOAD transactions data
         guard let data = myTransaction?.fetchedObjects as? [Transaction] else {return}
         transactions = data
-        filteredTransactions = filterTransactions(withCategory: selectedCategory)
+        
+        if pageToLoad == .categoryDetails {
+            filteredTransactions = filterTransactions(withCategory: selectedCategory)
+        } else {
+            filteredTransactions = transactions
+        }
+        
         expenseTable.reloadData()
     }
 }
@@ -126,9 +139,8 @@ extension ReportCategoryDetailsViewController : UITableViewDelegate, UITableView
             print ("Number of Row = ", numberOfRow)
             return numberOfRow
         } else {
-            return transactions.count
+            return filteredTransactions.count
         }
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -136,15 +148,15 @@ extension ReportCategoryDetailsViewController : UITableViewDelegate, UITableView
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd"
         cell.dateLabel.text = dateFormatter.string(from: currentlyDisplayedDate)
-        if transactions[indexPath.row].desc != nil {
-            cell.expenseDescLabel.text = transactions[indexPath.row].desc
+        if filteredTransactions[indexPath.row].desc != nil {
+            cell.expenseDescLabel.text = filteredTransactions[indexPath.row].desc
         } else {
             cell.expenseDescLabel.text = "No Description"
         }
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.maximumFractionDigits = decimalSetting ? 2 : 0
-        let expenseValue = formatter.string(from: NSNumber(value: transactions[indexPath.row].amount))
+        let expenseValue = formatter.string(from: NSNumber(value: filteredTransactions[indexPath.row].amount))
         cell.expenseDescValueLabel.text = expenseValue
         return cell
     }
