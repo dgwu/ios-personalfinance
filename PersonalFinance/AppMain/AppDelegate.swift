@@ -70,6 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 newWallet.desc = wallet["desc"]
                                 newWallet.iconName = wallet["iconName"]
                                 newWallet.initialAmount = 0
+                                newWallet.isActive = true
                                 newWallet.createdDate = Date()
                             }
                         }
@@ -147,18 +148,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 newMainCategory.colorCode = category["colorCode"] as? String
                                 newMainCategory.type = Int16(CategoryType.expense.rawValue)
                                 
-                                if let subCategories = category["childs"] as? [Any] {
-                                    for subCategory in subCategories {
-                                        if let subCategory = subCategory as? [String:String] {
-                                            let newSubCategory = Category(context: backgroundContext)
-                                            newSubCategory.desc = subCategory["desc"]
-                                            newSubCategory.iconName = subCategory["iconName"]
-                                            newSubCategory.colorCode = subCategory["colorCode"]
-                                            newSubCategory.type = newMainCategory.type
-                                            newSubCategory.parent = newMainCategory
-                                        }
-                                    }
-                                }
+//                                if let subCategories = category["childs"] as? [Any] {
+//                                    for subCategory in subCategories {
+//                                        if let subCategory = subCategory as? [String:String] {
+//                                            let newSubCategory = Category(context: backgroundContext)
+//                                            newSubCategory.desc = subCategory["desc"]
+//                                            newSubCategory.iconName = subCategory["iconName"]
+//                                            newSubCategory.colorCode = subCategory["colorCode"]
+//                                            newSubCategory.type = newMainCategory.type
+//                                            newSubCategory.parent = newMainCategory
+//                                        }
+//                                    }
+//                                }
                             }
                         }
                         
@@ -184,8 +185,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // simulate expense
             if let expenseCategoryList = financeManager.categoryList(type: .expense) {
                 for category in expenseCategoryList {
-                    financeManager.insertTransaction(date: Date(), amount: Double(exactly: Int.random(in: 1000 ..< 10000))!, type: .expense, category: category, desc: "Preloaded expense", sourceWallet: defaultWallet)
-                    financeManager.insertTransaction(date: Date().previousStartOfMonth(), amount: Double(exactly: Int.random(in: 1000 ..< 10000))!, type: .expense, category: category, desc: "Preloaded expense", sourceWallet: defaultWallet)
+                    financeManager.insertTransaction(date: Date(), amount: Double(exactly: Int.random(in: 1000 ..< 10000))!, type: .expense, category: category, desc: "Preloaded expense 1", sourceWallet: defaultWallet)
+                    financeManager.insertTransaction(date: Date(), amount: Double(exactly: Int.random(in: 1000 ..< 10000))!, type: .expense, category: category, desc: "Preloaded expense 2", sourceWallet: defaultWallet)
+                    financeManager.insertTransaction(date: Date().previousStartOfMonth(), amount: Double(exactly: Int.random(in: 1000 ..< 10000))!, type: .expense, category: category, desc: "Preloaded expense 1", sourceWallet: defaultWallet)
+                    financeManager.insertTransaction(date: Date().previousStartOfMonth(), amount: Double(exactly: Int.random(in: 1000 ..< 10000))!, type: .expense, category: category, desc: "Preloaded expense 2", sourceWallet: defaultWallet)
                 }
             }
             

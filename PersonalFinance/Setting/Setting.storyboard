@@ -392,7 +392,9 @@
                             <outlet property="delegate" destination="8Ei-sj-GTf" id="Mpw-Lt-qw1"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Setting" image="main_tabbar_setting" selectedImage="main_tabbar_setting_active" id="OfK-am-mGD"/>
                     <navigationItem key="navigationItem" title="Settings" id="ICI-7z-4PF"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="decimalState" destination="Z9G-vR-BOm" id="pWZ-R1-fVh"/>
                         <outlet property="faceIdState" destination="ZtS-gt-Cdq" id="xv4-vR-6q1"/>
@@ -468,6 +470,8 @@
         <image name="curr" width="512" height="512"/>
         <image name="faceid" width="512" height="512"/>
         <image name="fingerprint" width="1200" height="1200"/>
+        <image name="main_tabbar_setting" width="27" height="27"/>
+        <image name="main_tabbar_setting_active" width="28" height="27"/>
         <image name="salary" width="512" height="512"/>
     </resources>
 </document>

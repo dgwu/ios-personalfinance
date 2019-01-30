@@ -21,8 +21,58 @@ class FinanceManager {
         return appDelegate.persistentContainer.viewContext
     }()
     
+    public func monthlyRemainingBudget() -> Double {
+        let startOfMonth = Date().startOfMonth()
+        let endOfMonth = Date().endOfMonth().endOfDay
+        
+        let monthlySalary = SetupManager.shared.userMonthlySalary
+        let savingIsPercentage = SetupManager.shared.userMonthlySavingIsPercentage
+        let savingSettingAmount = SetupManager.shared.userMonthlySaving
+        var savingAmount: Double = 0
+        var remainingBudget: Double = 0
+        
+        if savingIsPercentage {
+            savingAmount = monthlySalary * savingSettingAmount / 100
+        } else {
+            savingAmount = savingSettingAmount
+        }
+        remainingBudget = monthlySalary - savingAmount
+        
+        // calculate running transaction
+        var totalExpenseInPeriod: Double = 0
+        var totalIncomeInPeriod: Double = 0
+        
+        if let monthlyTransactions = self.getTransactionResult(fromDate: startOfMonth, toDate: endOfMonth) {
+            for transaction in monthlyTransactions {
+                if transaction.transactionType == Int16(TransactionType.expense.rawValue) {
+                    totalExpenseInPeriod += transaction.amount
+                }
+                if transaction.transactionType == Int16(TransactionType.income.rawValue) {
+                    totalIncomeInPeriod += transaction.amount
+                }
+            }
+        }
+        
+        // kalo saving nya persentase berarti income lebihnya dijadikan persentase sebelum ditambah ke budget
+        var excessIncome: Double = 0
+        if totalIncomeInPeriod > monthlySalary {
+            excessIncome = totalIncomeInPeriod - monthlySalary
+            
+            if savingIsPercentage {
+                remainingBudget += (excessIncome - (excessIncome * savingSettingAmount / 100))
+            } else {
+                remainingBudget += excessIncome
+            }
+        }
+        
+        
+        return remainingBudget
+    }
+    
     public func walletList() -> [Wallet]? {
         let walletFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Wallet")
+        let predicate = NSPredicate(format: "isActive == %@", NSNumber(value: true))
+        walletFetch.predicate = predicate
         
         do {
             let result = try objectContext.fetch(walletFetch) as! [Wallet]
@@ -57,6 +107,7 @@ class FinanceManager {
         newWallet.initialAmount = initialAmount
         newWallet.colorCode = colorCode
         newWallet.iconName = iconName
+        newWallet.isActive = true
         
         do {
             try self.objectContext.save()
@@ -204,6 +255,24 @@ extension FinanceManager {
         
         
         return controller
+    }
+    
+    public func getTransactionResult(fromDate: Date?, toDate: Date?) -> [Transaction]? {
+        let fetchRequest = NSFetchRequest<Transaction>(entityName:"Transaction")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "transactionDate", ascending:false)]
+        
+        if let fromDate = fromDate, let toDate = toDate {
+            fetchRequest.predicate = NSPredicate(format: "transactionDate >= %@ && transactionDate <= %@", argumentArray: [fromDate, toDate])
+        }
+        
+        do {
+            let result = try objectContext.fetch(fetchRequest)
+            return result
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        return nil
     }
     
     /**
