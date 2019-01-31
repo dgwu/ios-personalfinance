@@ -220,7 +220,7 @@
                             <constraint firstItem="b3H-3Z-6Ep" firstAttribute="leading" secondItem="YO5-ZP-Dc2" secondAttribute="leading" constant="20" id="jF8-2O-PjZ"/>
                             <constraint firstItem="TvF-nI-VJI" firstAttribute="trailing" secondItem="b3H-3Z-6Ep" secondAttribute="trailing" id="jo2-MJ-OJf"/>
                             <constraint firstItem="u8f-tW-Wvd" firstAttribute="centerY" secondItem="dnt-F5-4Ca" secondAttribute="centerY" id="kMh-Zz-XsD"/>
-                            <constraint firstItem="YO5-ZP-Dc2" firstAttribute="bottom" secondItem="o67-Pf-XX8" secondAttribute="bottom" constant="50" id="mGE-EL-wDt"/>
+                            <constraint firstItem="YO5-ZP-Dc2" firstAttribute="bottom" secondItem="o67-Pf-XX8" secondAttribute="bottom" id="mGE-EL-wDt"/>
                             <constraint firstItem="aOE-Yo-uJV" firstAttribute="top" secondItem="aYn-Mp-yie" secondAttribute="top" constant="5" id="oBL-aD-pAI"/>
                             <constraint firstItem="3hl-JV-4HA" firstAttribute="height" secondItem="aOE-Yo-uJV" secondAttribute="height" id="pNE-3v-pPB"/>
                             <constraint firstItem="aYn-Mp-yie" firstAttribute="top" secondItem="b3H-3Z-6Ep" secondAttribute="bottom" constant="20" id="rbJ-ph-C9d"/>
@@ -235,7 +235,7 @@
                         <viewLayoutGuide key="safeArea" id="YO5-ZP-Dc2"/>
                     </view>
                     <navigationItem key="navigationItem" title="Report" id="6bm-H0-y4P">
-                        <barButtonItem key="rightBarButtonItem" title="Details" id="9h4-6Q-eNJ">
+                        <barButtonItem key="rightBarButtonItem" title="Transactions" id="9h4-6Q-eNJ">
                             <connections>
                                 <action selector="detailsButtonTapped:" destination="Yym-3y-gWx" id="YeJ-95-y7D"/>
                             </connections>
