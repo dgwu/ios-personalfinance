@@ -23,55 +23,64 @@ class LatestExpensesTVC: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.contentView.addSubview(imageView!)
-        self.imageView!.addSubview(categoryImage)
+        self.contentView.addSubview(viewImage)
+        self.viewImage.addSubview(categoryImage)
         self.contentView.addSubview(trasactionNameLabel)
         self.contentView.addSubview(transactionAmountLabel)
         
         //contraint name of transaction
        
         NSLayoutConstraint.activate([
-            imageView!.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageView!.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageView!.widthAnchor.constraint(equalToConstant: (contentView.frame.size.width / 8) - 15),
-            imageView!.heightAnchor.constraint(equalToConstant: (contentView.frame.size.width / 8) - 15)
-            ])
-      
-      
-        
-        NSLayoutConstraint.activate([
-            categoryImage.topAnchor.constraint(equalTo: imageView!.topAnchor, constant : 5),
-            categoryImage.bottomAnchor.constraint(equalTo: imageView!.bottomAnchor ),
-            categoryImage.leadingAnchor.constraint(equalTo: imageView!.trailingAnchor, constant : 10),
-            categoryImage.widthAnchor.constraint(equalToConstant: (imageView?.frame.width)! - 5),
-            categoryImage.heightAnchor.constraint(equalToConstant: (imageView?.frame.height)! - 5)
+            viewImage.topAnchor.constraint(equalTo: contentView.topAnchor),
+            viewImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            viewImage.widthAnchor.constraint(equalToConstant:(contentView.frame.size.width / 8 ) - 15 ),
+            viewImage.heightAnchor.constraint(equalToConstant:(contentView.frame.size.width / 8 ) - 15 )
             ])
         
         NSLayoutConstraint.activate([
-            trasactionNameLabel.leadingAnchor.constraint(equalTo: categoryImage.trailingAnchor, constant : 20),
+            categoryImage.centerXAnchor.constraint(equalTo: viewImage.centerXAnchor),
+            categoryImage.centerYAnchor.constraint(equalTo: viewImage.centerYAnchor),
+            categoryImage.widthAnchor.constraint(equalToConstant:(contentView.frame.size.width / 8 ) - 25),
+            categoryImage.heightAnchor.constraint(equalToConstant:(contentView.frame.size.width / 8 ) - 25)
+            ])
+        
+        categoryImage.layoutIfNeeded()
+        print("ini framenya = \(categoryImage.frame)")
+        
+        NSLayoutConstraint.activate([
+            trasactionNameLabel.leadingAnchor.constraint(equalTo: viewImage.trailingAnchor, constant : 20),
             trasactionNameLabel.widthAnchor.constraint(equalToConstant: (contentView.frame.width / 2) - 10),
             trasactionNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor)
             ])
-        
+
         NSLayoutConstraint.activate([
-            transactionAmountLabel.leadingAnchor.constraint(equalTo: trasactionNameLabel.trailingAnchor, constant : 30),
             transactionAmountLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            transactionAmountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
+            transactionAmountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            transactionAmountLabel.widthAnchor.constraint(equalToConstant: (contentView.frame.width / 2) - (contentView.frame.width / 8) - 10)
             ])
-  
-      
+
 //        categoryImage.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        print("view image : \(imageView!.frame.width)")
-         print("view image : \(imageView!.frame.height)")
-        print("image width : \(categoryImage.frame)")
-         print("image height : \(categoryImage.frame.height)")
-        print("amount label : \((contentView.frame.width / 2) - (contentView.frame.width / 8) - 10)")
-       print("amount label === \(contentView.frame.width)" )
+            print("ini \((contentView.frame.size.width / 8) - 15)")
+            print("view image : \(viewImage.frame.size.width)")
+            print("view image : \(viewImage.frame.size.height)")
+            print("image width : \(categoryImage.frame)")
+            print("image height : \(categoryImage.frame.height)")
+            print("amount label : \((contentView.frame.width / 2) - (contentView.frame.width / 8) - 10)")
+            print("amount label === \(contentView.frame.width)" )
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    let viewImage : UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 5
+        view.layer.borderWidth = 0.5
+        view.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        return view
+    }()
     
     let trasactionNameLabel : UILabel = {
         let label = UILabel()
@@ -80,7 +89,6 @@ class LatestExpensesTVC: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
         label.text = "MC Donald's"
-//        label.backgroundColor = #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
         return label
     }()
     
@@ -95,28 +103,16 @@ class LatestExpensesTVC: UITableViewCell {
     }()
     
     let categoryImage : UIImageView = {
-        
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.layer.cornerRadius = 5
-        image.layer.borderWidth = 1
-        image.layer.borderColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
         image.image = UIImage(named: "sports-car")
         return image
     }()
     
-    let viewImage : UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 5
-        view.layer.borderWidth = 1
-        view.layer.backgroundColor = #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
-        
-        return view
-    }()
+    
     
     
     

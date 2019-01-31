@@ -20,24 +20,24 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPE-hu-gmM">
-                        <rect key="frame" x="10" y="152" width="150" height="12"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                        <rect key="frame" x="10" y="156" width="150" height="14"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                         <size key="shadowOffset" width="0.0" height="0.0"/>
                     </label>
                     <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AFk-dJ-hJe">
-                        <rect key="frame" x="18" y="5" width="135" height="135"/>
+                        <rect key="frame" x="18" y="11" width="135" height="139"/>
                     </imageView>
                 </subviews>
             </view>
             <color key="backgroundColor" red="0.96522712435214053" green="0.96522712435214053" blue="0.96522712435214053" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
-                <constraint firstItem="AFk-dJ-hJe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="BS0-T3-WK7"/>
+                <constraint firstItem="AFk-dJ-hJe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="11" id="BS0-T3-WK7"/>
                 <constraint firstAttribute="trailing" secondItem="AFk-dJ-hJe" secondAttribute="trailing" constant="17" id="TPJ-pB-QSs"/>
-                <constraint firstItem="CPE-hu-gmM" firstAttribute="top" secondItem="AFk-dJ-hJe" secondAttribute="bottom" constant="12" id="V3R-IH-wUD"/>
+                <constraint firstItem="CPE-hu-gmM" firstAttribute="top" secondItem="AFk-dJ-hJe" secondAttribute="bottom" constant="6" id="V3R-IH-wUD"/>
                 <constraint firstItem="AFk-dJ-hJe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="18" id="Vtd-GZ-qeV"/>
-                <constraint firstAttribute="bottomMargin" secondItem="CPE-hu-gmM" secondAttribute="bottom" constant="6" id="YHC-Eq-xon"/>
+                <constraint firstAttribute="bottomMargin" secondItem="CPE-hu-gmM" secondAttribute="bottom" id="YHC-Eq-xon"/>
                 <constraint firstAttribute="trailing" secondItem="CPE-hu-gmM" secondAttribute="trailing" constant="10" id="unQ-dE-cCf"/>
                 <constraint firstItem="CPE-hu-gmM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="uyH-hw-2fY"/>
             </constraints>

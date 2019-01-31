@@ -16,7 +16,7 @@ class IncomeExpenseViewController: UIViewController {
    
     
     let financeManager = FinanceManager.shared
-    let transactionFecthControler = FinanceManager.shared.getExpenseResultController(fromDate: nil, toDate: nil)
+    let transactionFecthControler = FinanceManager.shared.getExpenseResultController(fromDate: nil, toDate: nil, take: 10)
     var collectionView  : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -51,7 +51,7 @@ class IncomeExpenseViewController: UIViewController {
         transactionFecthControler.delegate = self
         InitialSetup()
         print("height coll :\(collectionView.frame.height)")
-        print(transactionFecthControler.fetchedObjects)
+     
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -147,8 +147,14 @@ class IncomeExpenseViewController: UIViewController {
     func InsertExpenses()   {
         print("insert Expenses")
         let defaultWallet = FinanceManager.shared.defaultWallet()
-        FinanceManager.shared.insertExpense(date: datePicker.date, amount: (amountLabel.text! as NSString).doubleValue , category: selectCategory!, wallet: defaultWallet!, desc: selectCategory!.desc)
-        print("Succes")
+        guard var expenseDesc = nameLabelExpense.text else {return}
+        
+        if expenseDesc.count < 1 {
+            expenseDesc = "-"
+        }
+        
+        FinanceManager.shared.insertExpense(date: datePicker.date, amount: (amountLabel.text! as NSString).doubleValue , category: selectCategory!, wallet: defaultWallet!, desc: expenseDesc)
+        
     }
 
     func PopUpRecordActice() {
@@ -233,7 +239,7 @@ class IncomeExpenseViewController: UIViewController {
         ])
         let budget = financeManager.monthlyRemainingBudget()
     
-        amountBudget.text = "\(currency.userDefaultCurrency)"
+        amountBudget.text = "\(currency.userDefaultCurrency) \(budget)"
         amountBudget.textAlignment = .right
         amountBudget.font = UIFont(name: "Helvetica Neue", size: 14)
         amountBudget.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -325,33 +331,45 @@ extension IncomeExpenseViewController: UICollectionViewDataSource {
         cell.layer.borderWidth = 1
         cell.clipsToBounds = true
         cell.layer.cornerRadius = 15
-        cell.categoryNameLabel.font = UIFont(name: "Helvetica Neue", size: 10)
+        cell.categoryNameLabel.font = UIFont(name: "Helvetica Neue", size: 12)
         cell.categoryNameLabel.text = getCategory![indexPath.row].desc
-        guard let category = getCategory?[indexPath.row].desc else {
+        guard let category = getCategory?[indexPath.row].iconName else {
             print("error")
             return cell
         }
         cell.categoryView.image = UIImage(named: "\(category)")
-        print(getCategory![indexPath.row].desc)
+
         return cell
     }
 }
 
+
+
+
 extension IncomeExpenseViewController : UICollectionViewDelegateFlowLayout {
     
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 70, height: 70)
+        let width = collectionView.frame.height * 0.8 / 3
+        return CGSize(width: width , height: width)
     }
     
     func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,insetForSectionAt section: Int) -> UIEdgeInsets {
-        let sectionLeft = (collectionView.frame.width - 300)/5
-        print(" ini section left = \(sectionLeft)")
-        let section = UIEdgeInsets(top: 5, left: sectionLeft, bottom: 0, right: sectionLeft)
+        let width = collectionView.frame.height * 0.8 / 3
+        let marginRightLeft = ( collectionView.frame.width - ( width * 4 ))/8
+        let marginTopBottom = (collectionView.frame.height -  ( width * 3 )) / 6
+        print("\(width)")
+        print("\(marginRightLeft)")
+        print("\(marginTopBottom)")
+        print("\(collectionView.frame.width)")
+        print("\(collectionView.frame.height)")
+        let section = UIEdgeInsets(top: marginTopBottom, left: marginRightLeft, bottom: marginTopBottom, right: marginRightLeft)
         return section
     }
     
     func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        let sections = (collectionView.frame.width - 280)/4
+        let width = collectionView.frame.height * 0.8 / 3
+        let sections = ( collectionView.frame.width - ( width * 4 ))/4
         
         return sections
     }
@@ -382,9 +400,10 @@ extension IncomeExpenseViewController : UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "latestCell", for: indexPath) as! LatestExpensesTVC
         if let transaction = transactionFecthControler.fetchedObjects?[indexPath.row] {
+           
             cell.trasactionNameLabel.text = transaction.desc
             cell.transactionAmountLabel.text = "\(transaction.amount)"
-            guard let category = transaction.category?.desc else {
+            guard let category = transaction.category?.iconName else {
                 return cell
             }
             cell.categoryImage.image = UIImage(named: "\(category)")
