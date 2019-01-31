@@ -4,91 +4,91 @@
 <array>
 	<dict>
 		<key>desc</key>
-		<string>Category 10</string>
+		<string>Pets</string>
 		<key>colorCode</key>
-		<string>000000</string>
+		<string>#754312</string>
 		<key>iconName</key>
-		<string>category</string>
+		<string>category_icon_pets</string>
 	</dict>
 	<dict>
 		<key>desc</key>
-		<string>Category 9</string>
+		<string>Auto</string>
 		<key>colorCode</key>
-		<string>000000</string>
+		<string>#5B97D6</string>
 		<key>iconName</key>
-		<string>category</string>
+		<string>category_icon_auto</string>
 	</dict>
 	<dict>
 		<key>desc</key>
-		<string>Category 8</string>
+		<string>Education</string>
 		<key>colorCode</key>
-		<string>000000</string>
+		<string>#000000</string>
 		<key>iconName</key>
-		<string>category</string>
+		<string>category_icon_education</string>
 	</dict>
 	<dict>
 		<key>desc</key>
-		<string>Category 7</string>
+		<string>Gifts &amp; Donation</string>
 		<key>colorCode</key>
-		<string>000000</string>
+		<string>#FF9898</string>
 		<key>iconName</key>
-		<string>category</string>
+		<string>category_icon_gift</string>
 	</dict>
 	<dict>
 		<key>desc</key>
-		<string>Category 6</string>
+		<string>Health &amp; Fitness</string>
 		<key>colorCode</key>
-		<string>000000</string>
+		<string>#818181</string>
 		<key>iconName</key>
-		<string>category</string>
+		<string>category_icon_health</string>
 	</dict>
 	<dict>
 		<key>desc</key>
-		<string>Category 5</string>
+		<string>Transportation</string>
 		<key>colorCode</key>
-		<string>000000</string>
+		<string>#2F6299</string>
 		<key>iconName</key>
-		<string>category</string>
+		<string>category_icon_transportation</string>
 	</dict>
 	<dict>
 		<key>desc</key>
-		<string>Category 4</string>
+		<string>Medical</string>
 		<key>colorCode</key>
-		<string>000000</string>
+		<string>#9F0000</string>
 		<key>iconName</key>
-		<string>category</string>
+		<string>category_icon_medical</string>
 	</dict>
 	<dict>
 		<key>desc</key>
-		<string>Category 3</string>
+		<string>Misc</string>
 		<key>colorCode</key>
-		<string>000000</string>
+		<string>#85623F</string>
 		<key>iconName</key>
-		<string>category</string>
+		<string>category_icon_misc</string>
 	</dict>
 	<dict>
 		<key>desc</key>
-		<string>Category 2</string>
+		<string>Entertainment</string>
 		<key>colorCode</key>
-		<string>000000</string>
+		<string>#DB7139</string>
 		<key>iconName</key>
-		<string>category</string>
+		<string>category_icon_entertainment</string>
 	</dict>
 	<dict>
 		<key>desc</key>
-		<string>Category 1</string>
+		<string>Groceries</string>
 		<key>colorCode</key>
-		<string>000000</string>
+		<string>#F0C900</string>
 		<key>iconName</key>
-		<string>category</string>
+		<string>category_icon_groceries</string>
 	</dict>
 	<dict>
 		<key>desc</key>
-		<string>Food &amp; Beverage</string>
+		<string>Eating Out</string>
 		<key>colorCode</key>
-		<string>ffffff</string>
+		<string>#EEAF54</string>
 		<key>iconName</key>
-		<string>category</string>
+		<string>category_icon_eatingout</string>
 		<key>childs</key>
 		<array>
 			<dict>
@@ -113,9 +113,9 @@
 		<key>desc</key>
 		<string>Bills &amp; Utilities</string>
 		<key>colorCode</key>
-		<string>000000</string>
+		<string>#64A977</string>
 		<key>iconName</key>
-		<string>category</string>
+		<string>category_icon_utilities</string>
 		<key>childs</key>
 		<array>
 			<dict>

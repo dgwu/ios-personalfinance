@@ -18,20 +18,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHj-HP-sDd">
-                                <rect key="frame" x="47" y="97" width="282" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="20"/>
-                                <state key="normal" title="Latest Expenses">
-                                    <color key="titleColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XWF-1c-O9W">
-                                <rect key="frame" x="34" y="152" width="312" height="626"/>
+                                <rect key="frame" x="34" y="165" width="312" height="613"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="F8w-xK-DEv">
-                                        <rect key="frame" x="0.0" y="0.0" width="312" height="626"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="312" height="613"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
@@ -81,10 +73,31 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="baH-CQ-Sox">
+                                <rect key="frame" x="30" y="94" width="315" height="29"/>
+                                <segments>
+                                    <segment title="Today"/>
+                                    <segment title="Weekly"/>
+                                    <segment title="Monthly"/>
+                                </segments>
+                                <connections>
+                                    <action selector="swicthPeriod:" destination="FSB-l8-hjT" eventType="valueChanged" id="gHN-zP-JPX"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="baH-CQ-Sox" firstAttribute="centerX" secondItem="vkK-Ri-s26" secondAttribute="centerX" id="0sJ-8H-8AE"/>
+                            <constraint firstItem="baH-CQ-Sox" firstAttribute="leading" secondItem="bkv-cR-8p0" secondAttribute="leading" constant="30" id="5oa-mG-zC7"/>
+                            <constraint firstItem="bkv-cR-8p0" firstAttribute="trailing" secondItem="baH-CQ-Sox" secondAttribute="trailing" constant="30" id="Nw0-an-ks4"/>
+                            <constraint firstItem="baH-CQ-Sox" firstAttribute="top" secondItem="bkv-cR-8p0" secondAttribute="top" constant="50" id="XeR-Ec-Mwv"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="bkv-cR-8p0"/>
                     </view>
+                    <connections>
+                        <outlet property="segmentedUI" destination="baH-CQ-Sox" id="ONN-MP-Q6z"/>
+                        <outlet property="tabelExpenses" destination="F8w-xK-DEv" id="9Dp-kS-6wb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L5x-Oy-LEo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
