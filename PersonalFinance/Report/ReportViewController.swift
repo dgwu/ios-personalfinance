@@ -19,7 +19,7 @@ class ReportViewController: UIViewController {
     var expenses : [String : Float] = ["Makan" : 200000, "Belanja" : 300000, "Nonton" : 150000, "Parkir" : 55000]
     var categories : [String] = ["Makan", "Parkir", "Belanja", "Nonton"]
     
-    var decimalSetting : Bool = false
+    var decimalSetting : Bool = false  
     var selectedCategory : String = ""
     
     override func viewDidLoad() {

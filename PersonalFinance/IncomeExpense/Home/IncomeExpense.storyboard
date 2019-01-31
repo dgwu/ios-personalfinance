@@ -128,14 +128,6 @@
             </objects>
             <point key="canvasLocation" x="197.59999999999999" y="-2269.2118226600987"/>
         </scene>
-        <!--AddRecord-->
-        <scene sceneID="idv-04-d90">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="addrecord" storyboardName="AddRecord" id="oAg-95-7KV" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Lc5-Gn-ijA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1176.8" y="-2535.2216748768474"/>
-        </scene>
         <!--Home-->
         <scene sceneID="fiQ-0d-ui0">
             <objects>

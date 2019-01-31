@@ -9,9 +9,7 @@
 import UIKit
 
 class ReportCategoryDetailsViewController: UIViewController {
-
     @IBOutlet weak var categoryNameLabel: UILabel!
-    
     var selectedCategory : String = ""
     
     override func viewDidLoad() {
