@@ -143,7 +143,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Transactions" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3P-An-pkq">
                                 <rect key="frame" x="69.333333333333329" y="327" width="236.33333333333337" height="36"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOE-Yo-uJV" userLabel="yLabelTop">
@@ -175,6 +175,13 @@
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tFa-mW-1Ww">
                                 <rect key="frame" x="77" y="102" width="264" height="141"/>
                             </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noun_Credit Card_48448" translatesAutoresizingMaskIntoConstraints="NO" id="mpe-Sl-6dV">
+                                <rect key="frame" x="105.66666666666669" y="202" width="164" height="117"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="164" id="fCt-Ti-AGy"/>
+                                    <constraint firstAttribute="height" constant="117" id="qSx-SV-ZJK"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -192,6 +199,7 @@
                             <constraint firstItem="YO5-ZP-Dc2" firstAttribute="trailing" secondItem="b3H-3Z-6Ep" secondAttribute="trailing" constant="20" id="Ihb-W0-mq8"/>
                             <constraint firstItem="tFa-mW-1Ww" firstAttribute="centerX" secondItem="jPc-T3-mf6" secondAttribute="centerX" id="J7Q-qD-3l8"/>
                             <constraint firstItem="YO5-ZP-Dc2" firstAttribute="trailing" secondItem="u8f-tW-Wvd" secondAttribute="trailing" constant="20" id="K3e-oS-OYY"/>
+                            <constraint firstItem="mpe-Sl-6dV" firstAttribute="centerX" secondItem="YO5-ZP-Dc2" secondAttribute="centerX" id="L8h-ce-9Na"/>
                             <constraint firstItem="TvF-nI-VJI" firstAttribute="height" secondItem="b3H-3Z-6Ep" secondAttribute="height" id="LdR-0P-a6I"/>
                             <constraint firstItem="o67-Pf-XX8" firstAttribute="trailing" secondItem="YO5-ZP-Dc2" secondAttribute="trailing" id="Ls5-0d-QRm"/>
                             <constraint firstItem="TvF-nI-VJI" firstAttribute="centerY" secondItem="b3H-3Z-6Ep" secondAttribute="centerY" id="MSX-CH-ash"/>
@@ -222,6 +230,7 @@
                             <constraint firstItem="Z7B-gz-igx" firstAttribute="centerX" secondItem="b3H-3Z-6Ep" secondAttribute="centerX" id="xQC-Ab-fYR"/>
                             <constraint firstItem="jPc-T3-mf6" firstAttribute="trailing" secondItem="aYn-Mp-yie" secondAttribute="trailing" multiplier="0.98" id="yAf-Cx-Z4p"/>
                             <constraint firstItem="o67-Pf-XX8" firstAttribute="top" secondItem="dnt-F5-4Ca" secondAttribute="bottom" constant="1" id="yOj-MF-5le"/>
+                            <constraint firstItem="f3P-An-pkq" firstAttribute="top" secondItem="mpe-Sl-6dV" secondAttribute="bottom" constant="8" id="ym8-Bb-ndb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YO5-ZP-Dc2"/>
                     </view>
@@ -240,6 +249,7 @@
                         <outlet property="graphAxisArea" destination="jPc-T3-mf6" id="H7z-RJ-XI5"/>
                         <outlet property="legendStackView" destination="F8v-I3-gyJ" id="Crd-1x-BAI"/>
                         <outlet property="nextMonthButton" destination="TvF-nI-VJI" id="Xq9-hl-tpA"/>
+                        <outlet property="noTransactionsIcon" destination="mpe-Sl-6dV" id="uqb-8z-g4f"/>
                         <outlet property="noTransactionsLabel" destination="f3P-An-pkq" id="5ZH-pg-kLb"/>
                         <outlet property="prevMonthButton" destination="YW5-HQ-rxi" id="WWB-oA-jb4"/>
                         <outlet property="topExpensesTable" destination="o67-Pf-XX8" id="9wB-92-E5R"/>
@@ -363,7 +373,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="value" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NiR-0f-S3s">
-                                                    <rect key="frame" x="230" y="8" width="75" height="18"/>
+                                                    <rect key="frame" x="230" y="8" width="95" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -459,6 +469,7 @@
         <image name="main_tabbar_report" width="22" height="28"/>
         <image name="main_tabbar_report_active" width="22" height="28"/>
         <image name="nextArrow" width="12" height="22"/>
+        <image name="noun_Credit Card_48448" width="164" height="117"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

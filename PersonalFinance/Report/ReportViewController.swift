@@ -21,6 +21,7 @@ class ReportViewController: UIViewController {
     @IBOutlet weak var topExpensesTable: UITableView!
     @IBOutlet weak var graphAxisArea: UIImageView!
     @IBOutlet weak var noTransactionsLabel: UILabel!
+    @IBOutlet weak var noTransactionsIcon: UIImageView!
     @IBOutlet weak var topExpensesTitleLabel: UILabel!
     @IBOutlet weak var yAxisMiddleLabel: UILabel!
     @IBOutlet weak var yAxisTopLabel: UILabel!
@@ -236,6 +237,7 @@ class ReportViewController: UIViewController {
         
         if transactions.count == 0 {
             noTransactionsLabel.isHidden = false
+            noTransactionsIcon.isHidden = false
             topExpensesTable.isHidden = true
             chartStackView.isHidden = true
             topExpensesTable.isHidden = true
@@ -249,6 +251,7 @@ class ReportViewController: UIViewController {
             
         } else {
             noTransactionsLabel.isHidden = true
+            noTransactionsIcon.isHidden = true
             topExpensesTable.isHidden = false
             chartStackView.isHidden = false
             topExpensesTable.isHidden = false
@@ -312,10 +315,21 @@ class ReportViewController: UIViewController {
                 expenseBarButton.titleLabel?.text = category
                 expenseBarButton.addTarget(self, action: #selector(self.expenseBarButtonTapped(sender:)), for: .touchUpInside)
                 //            print("Bar Position: \(expenseBarButton.frame.minX), \(expenseBarButton.frame.minY)")
+                
+                if #available(iOS 11.0, *) {
+                    expenseBarButton.clipsToBounds = true
+                    expenseBarButton.layer.cornerRadius = 8
+                    expenseBarButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+                }
+                
+                let animationDuration : Double = Double(expenses[category]!) / Double(highestExpenseVal) * 0.8
+                expenseBarButton.frame = CGRect(x: 0.0, y: CGFloat(buttonHeight), width: CGFloat(expenseBarButton.frame.width), height: 0.0)
+                UIView.animate(withDuration: animationDuration) {
+                    expenseBarButton.frame = CGRect(x: 0.0, y: 0.0, width: CGFloat(expenseBarButton.frame.width), height: CGFloat(buttonHeight))
+                }
+                
                 chartStackView.addArrangedSubview(expenseBarButton)
                 //            print ("Constraints: ", expenseBarButton.constraints[0].constant)
-                
-                
                 // SETUP LEGEND UNTUK BAR CHART
                 let newHorizontalStackView = UIStackView()
                 newHorizontalStackView.axis = .horizontal
@@ -325,7 +339,7 @@ class ReportViewController: UIViewController {
                 let colorLegend = UIImageView()
                 colorLegend.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
                 colorLegend.layer.borderWidth = 0
-                colorLegend.layer.cornerRadius = 2
+                colorLegend.layer.cornerRadius = colorLegend.frame.width / 2
                 colorLegend.image = UIImage(named: "emptyImage10px.png")
                 colorLegend.backgroundColor = categoryColors[categories.firstIndex(of: category)!]
                 colorLegend.contentMode = .scaleAspectFit
