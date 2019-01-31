@@ -147,7 +147,13 @@ extension ReportCategoryDetailsViewController : UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "expenseCell") as! ReportCategoryDetailsTableViewCell
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd"
-        cell.dateLabel.text = dateFormatter.string(from: currentlyDisplayedDate)
+        cell.dateLabel.text = dateFormatter.string(from: filteredTransactions[indexPath.row].transactionDate!)
+        cell.dateLabel.layer.borderWidth = 5
+        cell.dateLabel.layer.cornerRadius = cell.dateLabel.frame.width / 2
+        let borderColor = filteredTransactions[indexPath.row].category!.colorCode!
+        print (borderColor)
+        cell.dateLabel.layer.borderColor = UIColor(hexString: borderColor).cgColor
+        
         if filteredTransactions[indexPath.row].desc != nil {
             cell.expenseDescLabel.text = filteredTransactions[indexPath.row].desc
         } else {
