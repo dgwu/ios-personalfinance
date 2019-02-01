@@ -55,7 +55,7 @@ class IncomeExpenseViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        collectionView.reloadData()
+        collectionView.reloadData() 
     }
     func InitialSetup()   {
         self.navigationController?.navigationBar.topItem?.title = "Cash Quest"
@@ -78,6 +78,8 @@ class IncomeExpenseViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        view.layoutIfNeeded()
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -268,6 +270,7 @@ class IncomeExpenseViewController: UIViewController {
             collectionView.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor),
             collectionView.topAnchor.constraint(equalTo: headerCollectionLabel.bottomAnchor)
             ])
+        collectionView.layoutIfNeeded()
          print("Height collectionView frame :\(collectionView.frame)")
         //view container tabel expenses
         viewContainerTabel.translatesAutoresizingMaskIntoConstraints = false
