@@ -85,8 +85,30 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0JS-kT-bId">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming Soon  :)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7U-Sw-PPb">
+                                        <rect key="frame" x="78.000000000000014" y="348" width="219.33333333333337" height="38.333333333333314"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="T7U-Sw-PPb" firstAttribute="centerX" secondItem="0JS-kT-bId" secondAttribute="centerX" id="TmV-Wq-chP"/>
+                                    <constraint firstItem="T7U-Sw-PPb" firstAttribute="centerY" secondItem="0JS-kT-bId" secondAttribute="centerY" id="W2N-QS-tIS"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zv5-3h-9dH" firstAttribute="trailing" secondItem="0JS-kT-bId" secondAttribute="trailing" id="0O6-3i-9i7"/>
+                            <constraint firstItem="zv5-3h-9dH" firstAttribute="bottom" secondItem="0JS-kT-bId" secondAttribute="bottom" id="Ecr-cc-xaj"/>
+                            <constraint firstItem="0JS-kT-bId" firstAttribute="leading" secondItem="zv5-3h-9dH" secondAttribute="leading" id="Ny8-lp-niD"/>
+                            <constraint firstItem="0JS-kT-bId" firstAttribute="top" secondItem="zv5-3h-9dH" secondAttribute="top" id="unb-6i-NGh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="zv5-3h-9dH"/>
                     </view>
                     <connections>
