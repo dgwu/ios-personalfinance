@@ -45,7 +45,6 @@
 		F342487921EC3B10009EABDE /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F342487821EC3B10009EABDE /* AccountViewController.swift */; };
 		F343F34A21EC6D420047F1F2 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F343F34921EC6D420047F1F2 /* Category.storyboard */; };
 		F343F34C21EC6D870047F1F2 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F343F34B21EC6D870047F1F2 /* CategoryViewController.swift */; };
-		F39AA20021DF15B500EAF89D /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F39AA1FF21DF15B500EAF89D /* Register.storyboard */; };
 		F3D823A321F56EAC00EED53F /* Currency.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3D823A221F56EAC00EED53F /* Currency.storyboard */; };
 		F3D823A521F56EBB00EED53F /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D823A421F56EBB00EED53F /* CurrencyViewController.swift */; };
 		F3F21C8A21E44B340035DEB0 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3F21C8921E44B340035DEB0 /* Setting.storyboard */; };
@@ -358,7 +357,6 @@
 				9294028C21EC3788005B5EA3 /* Report.storyboard in Resources */,
 				91D5B92821BFA9A900F0373C /* Main.storyboard in Resources */,
 				6774510921DF1B9600F88BBF /* Register.storyboard in Resources */,
-				F39AA20021DF15B500EAF89D /* Register.storyboard in Resources */,
 				9189BA7921F5838C004F9194 /* Wallet.storyboard in Resources */,
 				F3F21C8A21E44B340035DEB0 /* Setting.storyboard in Resources */,
 				910DBF0F21E5E5CE004C27CF /* DefaultExpenseCategories.plist in Resources */,

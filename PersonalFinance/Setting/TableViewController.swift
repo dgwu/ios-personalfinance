@@ -139,10 +139,13 @@ class TableViewController: UITableViewController
     {
         var rowHeight:CGFloat = 0.0
         
-        if(indexPath.section == 0 && indexPath.row == 0){
-            rowHeight = 123.0
-        }
-        else if(indexPath.section == 3 && indexPath.row == 0){
+        if(indexPath.section == 0 && indexPath.row == 1){
+            // gambar profile
+            rowHeight = 0 // was 123
+        }else if(indexPath.section == 0 && indexPath.row == 0){
+            // login anchor
+            rowHeight = 0
+        }else if(indexPath.section == 2 && indexPath.row == 0){
             if (isFaceIDSupported == false)
             {
                 rowHeight = 0.0
@@ -150,7 +153,7 @@ class TableViewController: UITableViewController
             {
                 rowHeight = 45.0
             }
-        }else if(indexPath.section == 3 && indexPath.row == 1){
+        }else if(indexPath.section == 2 && indexPath.row == 1){
             if (isFaceIDSupported == true)
             {
                 rowHeight = 0.0
@@ -171,10 +174,10 @@ class TableViewController: UITableViewController
         print("selected  section is \(indexPath.section)")
         print("selected row is \(indexPath.row)")
         
-        print("\(tableView.restorationIdentifier)")
+//        print("\(tableView.restorationIdentifier)")
         
         
-        if (indexPath.section == 1 && indexPath.row == 0)
+        if (indexPath.section == 0 && indexPath.row == 2)
         {
             showInputDialog(title: "Monthly Salary",
                             subtitle: "Please enter your salary.",
@@ -188,7 +191,7 @@ class TableViewController: UITableViewController
                 self.initialLoad()
             }
         }
-        if (indexPath.section == 1 && indexPath.row == 1)
+        if (indexPath.section == 0 && indexPath.row == 3)
         {
             showInputDialog(title: "Monthly Saving",
                             subtitle: "Please enter your Saving.",
