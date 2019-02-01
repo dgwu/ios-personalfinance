@@ -147,9 +147,15 @@ extension ReportCategoryDetailsViewController : UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "expenseCell") as! ReportCategoryDetailsTableViewCell
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd"
+        let dateLabelWidth = cell.dateLabel.font.pointSize * 2.5
         cell.dateLabel.text = dateFormatter.string(from: filteredTransactions[indexPath.row].transactionDate!)
-        cell.dateLabel.layer.borderWidth = 5
-        cell.dateLabel.layer.cornerRadius = cell.dateLabel.frame.width / 2
+        cell.dateLabel.layer.borderWidth = dateLabelWidth / 8
+        cell.dateLabel.layer.cornerRadius = dateLabelWidth / 2
+        print("table view cell corner radius: \(dateLabelWidth / 2)")
+        
+        cell.dateLabel.widthAnchor.constraint(equalToConstant: dateLabelWidth).isActive = true
+        
+        
         let borderColor = filteredTransactions[indexPath.row].category!.colorCode!
         print (borderColor)
         cell.dateLabel.layer.borderColor = UIColor(hexString: borderColor).cgColor

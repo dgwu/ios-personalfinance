@@ -415,7 +415,14 @@ extension ReportViewController: UITableViewDataSource, UITableViewDelegate {
         if categories.count != 0 {
             
             cell.rank.text = String(indexPath.row+1)
+            let rankLabelWidth = cell.rank.font.pointSize * 2.5
+            cell.rank.layer.cornerRadius = rankLabelWidth / 2
+            cell.rank.layer.borderWidth = rankLabelWidth / 8
+            let borderColor = categories[indexPath.row].colorCode!
+            cell.rank.layer.borderColor = UIColor(hexString: borderColor).cgColor
             cell.expenseCategory.text = categories[indexPath.row].desc!
+            cell.rank.widthAnchor.constraint(equalToConstant: rankLabelWidth).isActive = true
+            
             
             let formatter = NumberFormatter()
             formatter.numberStyle = .currency
