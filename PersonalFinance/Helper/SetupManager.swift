@@ -84,4 +84,10 @@ class SetupManager {
             UserDefaults.standard.set(userDefaultCurrency ,forKey: "userDefaultCurrency")
         }
     }
+    
+    public var userDefaultCurrencyName = UserDefaults.standard.string(forKey: "userDefaultCurrencyName") ?? "" {
+        didSet {
+            UserDefaults.standard.set(userDefaultCurrency ,forKey: "userDefaultCurrencyName")
+        }
+    }
 }

@@ -18,7 +18,7 @@ enum BiometricType
     case faceId
 }
 
-class TableViewController: UITableViewController
+class SettingTableViewController: UITableViewController
 {
     let setupManager = SetupManager.shared
     @IBOutlet weak var lblSalary: UILabel!
@@ -101,6 +101,7 @@ class TableViewController: UITableViewController
         else if segue.identifier == "currencyId", let destination = segue.destination as? CurrencyViewController
         {
             destination.title = "Currency"
+            destination.delegate = self
             print ("masuk currency")
         }
         else if segue.identifier == "showCategory", let destination = segue.destination as? CategoryViewController
@@ -205,6 +206,12 @@ class TableViewController: UITableViewController
                 self.initialLoad()
             }
         }
+    }
+}
+
+extension SettingTableViewController: CurrencyViewControllerDelegate {
+    func updateCurrency() {
+        self.lblCurrency.text = setupManager.userDefaultCurrency
     }
 }
 
