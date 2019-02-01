@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="htW-Bp-9qJ">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="jd8-TO-7xK">
+            <objects>
+                <tabBarController id="htW-Bp-9qJ" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2aZ-6W-FKC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.35686274509803922" green="0.59215686274509804" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="pIR-jV-gKH" kind="relationship" relationship="viewControllers" id="rGo-5p-svi"/>
+                        <segue destination="1I1-Lq-oDO" kind="relationship" relationship="viewControllers" id="WIV-Ob-SQH"/>
+                        <segue destination="kN2-sA-fT4" kind="relationship" relationship="viewControllers" id="k6h-4g-dmo"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K0c-Ay-dzy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="361" y="122"/>
+        </scene>
+        <!--IncomeExpense-->
+        <scene sceneID="wwq-mx-hPn">
+            <objects>
+                <viewControllerPlaceholder storyboardName="IncomeExpense" id="pIR-jV-gKH" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="main_tabbar_home" selectedImage="main_tabbar_home_active" id="GrI-hS-xhx"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BJL-su-Bmc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1091" y="-106"/>
+        </scene>
+        <!--Report-->
+        <scene sceneID="kIo-J5-04j">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Report" id="1I1-Lq-oDO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="main_tabbar_report" selectedImage="main_tabbar_report_active" id="L5H-Q3-6E4"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="okm-ev-wHC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1074" y="122"/>
+        </scene>
+        <!--Setting-->
+        <scene sceneID="GvQ-1B-nsL">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Setting" id="kN2-sA-fT4" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="main_tabbar_setting" selectedImage="main_tabbar_setting_active" id="ewj-Do-2fC"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sjN-p8-1FX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1090" y="223"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="main_tabbar_home" width="26" height="28"/>
+        <image name="main_tabbar_home_active" width="26" height="28"/>
+        <image name="main_tabbar_report" width="22" height="28"/>
+        <image name="main_tabbar_report_active" width="22" height="28"/>
+        <image name="main_tabbar_setting" width="27" height="27"/>
+        <image name="main_tabbar_setting_active" width="28" height="27"/>
+    </resources>
+</document>

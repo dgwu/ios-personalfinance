@@ -89,6 +89,13 @@ class TableViewController: UITableViewController
         return false
     }
     
+    override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        let footer = view as! UITableViewHeaderFooterView
+        footer.textLabel?.font = UIFont(name: "Futura", size: 12)
+        footer.textLabel?.textColor = UIColor.black
+        footer.textLabel?.textAlignment = .right
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showAccount", let destination = segue.destination as? AccountViewController, let _ = tableView.indexPathForSelectedRow?.row
         {
@@ -107,6 +114,10 @@ class TableViewController: UITableViewController
         {
             destination.title = "Wallet"
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        initialLoad()
     }
     
     
@@ -199,6 +210,9 @@ class TableViewController: UITableViewController
         }
     }
 }
+
+
+
 
 extension UIViewController {
     func showInputDialog(title:String? = nil,
