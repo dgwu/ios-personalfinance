@@ -37,6 +37,7 @@
 		91D5B93B21BFAF4400F0373C /* IncomeExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5B93A21BFAF4400F0373C /* IncomeExpense.swift */; };
 		91D5B93D21BFAF7C00F0373C /* IncomeExpense.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D5B93C21BFAF7C00F0373C /* IncomeExpense.storyboard */; };
 		91DB80B321F07ED500076182 /* CategoryAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DB80B221F07ED500076182 /* CategoryAddViewController.swift */; };
+		91FF50E82203EDFC00ADDECA /* ReportCategoryDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FF50E72203EDFC00ADDECA /* ReportCategoryDetailsTableViewCell.swift */; };
 		9294028B21EC3788005B5EA3 /* ReportCategoryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9294028721EC3788005B5EA3 /* ReportCategoryDetailsViewController.swift */; };
 		9294028C21EC3788005B5EA3 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9294028821EC3788005B5EA3 /* Report.storyboard */; };
 		9294028D21EC3788005B5EA3 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9294028921EC3788005B5EA3 /* ReportViewController.swift */; };
@@ -84,6 +85,7 @@
 		91D5B93A21BFAF4400F0373C /* IncomeExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpense.swift; sourceTree = "<group>"; };
 		91D5B93C21BFAF7C00F0373C /* IncomeExpense.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IncomeExpense.storyboard; sourceTree = "<group>"; };
 		91DB80B221F07ED500076182 /* CategoryAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAddViewController.swift; sourceTree = "<group>"; };
+		91FF50E72203EDFC00ADDECA /* ReportCategoryDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCategoryDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		9294028721EC3788005B5EA3 /* ReportCategoryDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCategoryDetailsViewController.swift; sourceTree = "<group>"; };
 		9294028821EC3788005B5EA3 /* Report.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
 		9294028921EC3788005B5EA3 /* ReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 		9294028621EC3788005B5EA3 /* Report */ = {
 			isa = PBXGroup;
 			children = (
+				91FF50E72203EDFC00ADDECA /* ReportCategoryDetailsTableViewCell.swift */,
 				9294028721EC3788005B5EA3 /* ReportCategoryDetailsViewController.swift */,
 				9294028821EC3788005B5EA3 /* Report.storyboard */,
 				9294028921EC3788005B5EA3 /* ReportViewController.swift */,
@@ -374,6 +377,7 @@
 			files = (
 				67DEF8C321F16966007A7E6A /* CategoryCollectionViewCell.swift in Sources */,
 				9189BA7B21F583D3004F9194 /* WalletTableViewCell.swift in Sources */,
+				91FF50E82203EDFC00ADDECA /* ReportCategoryDetailsTableViewCell.swift in Sources */,
 				910DBF0B21E5E488004C27CF /* FinanceManager.swift in Sources */,
 				F3D823A521F56EBB00EED53F /* CurrencyViewController.swift in Sources */,
 				91D5B93621BFADC600F0373C /* ApiHelper.swift in Sources */,
