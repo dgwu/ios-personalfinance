@@ -49,7 +49,7 @@
 		F3D823A321F56EAC00EED53F /* Currency.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3D823A221F56EAC00EED53F /* Currency.storyboard */; };
 		F3D823A521F56EBB00EED53F /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D823A421F56EBB00EED53F /* CurrencyViewController.swift */; };
 		F3F21C8A21E44B340035DEB0 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3F21C8921E44B340035DEB0 /* Setting.storyboard */; };
-		F3F21C8E21E44E1A0035DEB0 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F21C8D21E44E1A0035DEB0 /* TableViewController.swift */; };
+		F3F21C8E21E44E1A0035DEB0 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F21C8D21E44E1A0035DEB0 /* SettingTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,7 +98,7 @@
 		F3D823A221F56EAC00EED53F /* Currency.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Currency.storyboard; sourceTree = "<group>"; };
 		F3D823A421F56EBB00EED53F /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
 		F3F21C8921E44B340035DEB0 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
-		F3F21C8D21E44E1A0035DEB0 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		F3F21C8D21E44E1A0035DEB0 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,7 +287,7 @@
 				F343F34821EC6D310047F1F2 /* Category */,
 				F342487521EC3318009EABDE /* Account */,
 				F3F21C8921E44B340035DEB0 /* Setting.storyboard */,
-				F3F21C8D21E44E1A0035DEB0 /* TableViewController.swift */,
+				F3F21C8D21E44E1A0035DEB0 /* SettingTableViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -392,7 +392,7 @@
 				91D5B92521BFA9A900F0373C /* ViewController.swift in Sources */,
 				91D5B93B21BFAF4400F0373C /* IncomeExpense.swift in Sources */,
 				9294028B21EC3788005B5EA3 /* ReportCategoryDetailsViewController.swift in Sources */,
-				F3F21C8E21E44E1A0035DEB0 /* TableViewController.swift in Sources */,
+				F3F21C8E21E44E1A0035DEB0 /* SettingTableViewController.swift in Sources */,
 				91606AEB21E2FE1A00182E03 /* CoreDataHelper.swift in Sources */,
 				9294028D21EC3788005B5EA3 /* ReportViewController.swift in Sources */,
 				91D5B93921BFAF2600F0373C /* IncomeExpenseViewController.swift in Sources */,
