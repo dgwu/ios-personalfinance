@@ -18,10 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kCV-TU-Vvi">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLB-Xg-BnG">
                                 <rect key="frame" x="34" y="457" width="307" height="262"/>
                                 <subviews>
@@ -95,6 +91,10 @@
                                     <constraint firstItem="mDR-Z9-TvJ" firstAttribute="leading" secondItem="Z4q-Dd-Ce5" secondAttribute="trailing" constant="20" id="ztU-VS-0XB"/>
                                 </constraints>
                             </view>
+                            <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kCV-TU-Vvi">
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -127,14 +127,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jvx-CM-OhS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="197.59999999999999" y="-2269.2118226600987"/>
-        </scene>
-        <!--AddRecord-->
-        <scene sceneID="idv-04-d90">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="addrecord" storyboardName="AddRecord" id="oAg-95-7KV" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Lc5-Gn-ijA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1176.8" y="-2535.2216748768474"/>
         </scene>
         <!--Home-->
         <scene sceneID="fiQ-0d-ui0">

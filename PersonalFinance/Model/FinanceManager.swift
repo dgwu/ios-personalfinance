@@ -218,7 +218,7 @@ extension FinanceManager {
     /**
      Get expense only in defined time frame
      */
-    public func getExpenseResultController(fromDate: Date?, toDate: Date?) -> NSFetchedResultsController<Transaction> {
+    public func getExpenseResultController(fromDate: Date?, toDate: Date?, take: Int? = nil) -> NSFetchedResultsController<Transaction> {
         let fetchRequest = NSFetchRequest<Transaction>(entityName:"Transaction")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "transactionDate", ascending:false)]
         
@@ -228,6 +228,10 @@ extension FinanceManager {
             predicates.append(NSPredicate(format: "transactionDate >= %@ && transactionDate <= %@", argumentArray: [fromDate, toDate]))
         }
         fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+        
+        if let take = take {
+            fetchRequest.fetchLimit = take
+        }
         
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                     managedObjectContext: self.objectContext,

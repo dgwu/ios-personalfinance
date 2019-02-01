@@ -13,44 +13,41 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="categoryCell" id="gTV-IL-0wX" customClass="CategoryCollectionViewCell" customModule="PersonalFinance" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="124" height="138"/>
+            <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="124" height="138"/>
+                <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPE-hu-gmM">
-                        <rect key="frame" x="16" y="126" width="92" height="12"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="12" id="Rp0-3x-rlc"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <rect key="frame" x="10" y="156" width="150" height="14"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
+                        <size key="shadowOffset" width="0.0" height="0.0"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AFk-dJ-hJe">
-                        <rect key="frame" x="15" y="5" width="94" height="116"/>
+                    <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AFk-dJ-hJe">
+                        <rect key="frame" x="18" y="11" width="135" height="139"/>
                     </imageView>
                 </subviews>
             </view>
+            <color key="backgroundColor" red="0.96522712435214053" green="0.96522712435214053" blue="0.96522712435214053" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
-                <constraint firstItem="CPE-hu-gmM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="8hZ-zO-BQV"/>
-                <constraint firstItem="AFk-dJ-hJe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="BS0-T3-WK7"/>
-                <constraint firstItem="CPE-hu-gmM" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="DSq-oR-qPl"/>
-                <constraint firstItem="AFk-dJ-hJe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="F7J-iU-ThA"/>
-                <constraint firstItem="CPE-hu-gmM" firstAttribute="top" secondItem="AFk-dJ-hJe" secondAttribute="bottom" constant="5" id="V3R-IH-wUD"/>
-                <constraint firstItem="AFk-dJ-hJe" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="WWX-l3-cCB"/>
+                <constraint firstItem="AFk-dJ-hJe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="11" id="BS0-T3-WK7"/>
+                <constraint firstAttribute="trailing" secondItem="AFk-dJ-hJe" secondAttribute="trailing" constant="17" id="TPJ-pB-QSs"/>
+                <constraint firstItem="CPE-hu-gmM" firstAttribute="top" secondItem="AFk-dJ-hJe" secondAttribute="bottom" constant="6" id="V3R-IH-wUD"/>
+                <constraint firstItem="AFk-dJ-hJe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="18" id="Vtd-GZ-qeV"/>
                 <constraint firstAttribute="bottomMargin" secondItem="CPE-hu-gmM" secondAttribute="bottom" id="YHC-Eq-xon"/>
-                <constraint firstItem="CPE-hu-gmM" firstAttribute="trailing" secondItem="gTV-IL-0wX" secondAttribute="trailingMargin" id="eSU-Hj-JlL"/>
-                <constraint firstAttribute="trailing" secondItem="AFk-dJ-hJe" secondAttribute="trailing" constant="15" id="q4q-db-4CI"/>
+                <constraint firstAttribute="trailing" secondItem="CPE-hu-gmM" secondAttribute="trailing" constant="10" id="unQ-dE-cCf"/>
+                <constraint firstItem="CPE-hu-gmM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="uyH-hw-2fY"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="134" height="137"/>
+            <size key="customSize" width="180" height="169"/>
             <connections>
                 <outlet property="categoryNameLabel" destination="CPE-hu-gmM" id="FXi-pL-rjD"/>
                 <outlet property="categoryView" destination="AFk-dJ-hJe" id="K7T-FU-UAb"/>
             </connections>
-            <point key="canvasLocation" x="-51.200000000000003" y="84.557721139430285"/>
+            <point key="canvasLocation" x="-14.4" y="98.950524737631198"/>
         </collectionViewCell>
     </objects>
 </document>
