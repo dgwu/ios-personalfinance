@@ -26,6 +26,7 @@
 		9189BA7B21F583D3004F9194 /* WalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9189BA7A21F583D3004F9194 /* WalletTableViewCell.swift */; };
 		9189BA7D21F583E5004F9194 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9189BA7C21F583E5004F9194 /* WalletViewController.swift */; };
 		9189BA7F21F5B3B4004F9194 /* WalletDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9189BA7E21F5B3B4004F9194 /* WalletDetailViewController.swift */; };
+		9197BA6D2205F96100CB0B3F /* BiometricHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9197BA6C2205F96100CB0B3F /* BiometricHelper.swift */; };
 		91B41B6121FFFF8900F842A6 /* UIColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B41B6021FFFF8900F842A6 /* UIColorHelper.swift */; };
 		91D5B92321BFA9A900F0373C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5B92221BFA9A900F0373C /* AppDelegate.swift */; };
 		91D5B92521BFA9A900F0373C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D5B92421BFA9A900F0373C /* ViewController.swift */; };
@@ -38,6 +39,9 @@
 		91D5B93D21BFAF7C00F0373C /* IncomeExpense.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D5B93C21BFAF7C00F0373C /* IncomeExpense.storyboard */; };
 		91DB80B321F07ED500076182 /* CategoryAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DB80B221F07ED500076182 /* CategoryAddViewController.swift */; };
 		91FF50E82203EDFC00ADDECA /* ReportCategoryDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FF50E72203EDFC00ADDECA /* ReportCategoryDetailsTableViewCell.swift */; };
+		91FF50EB220405D800ADDECA /* SecurityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FF50EA220405D800ADDECA /* SecurityViewController.swift */; };
+		91FF50ED2204060000ADDECA /* Security.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91FF50EC2204060000ADDECA /* Security.storyboard */; };
+		91FF50EF2204086700ADDECA /* AlertExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FF50EE2204086700ADDECA /* AlertExt.swift */; };
 		9294028B21EC3788005B5EA3 /* ReportCategoryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9294028721EC3788005B5EA3 /* ReportCategoryDetailsViewController.swift */; };
 		9294028C21EC3788005B5EA3 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9294028821EC3788005B5EA3 /* Report.storyboard */; };
 		9294028D21EC3788005B5EA3 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9294028921EC3788005B5EA3 /* ReportViewController.swift */; };
@@ -72,6 +76,7 @@
 		9189BA7A21F583D3004F9194 /* WalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTableViewCell.swift; sourceTree = "<group>"; };
 		9189BA7C21F583E5004F9194 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		9189BA7E21F5B3B4004F9194 /* WalletDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDetailViewController.swift; sourceTree = "<group>"; };
+		9197BA6C2205F96100CB0B3F /* BiometricHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricHelper.swift; sourceTree = "<group>"; };
 		91B41B6021FFFF8900F842A6 /* UIColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHelper.swift; sourceTree = "<group>"; };
 		91D5B91F21BFA9A900F0373C /* PersonalFinance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalFinance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D5B92221BFA9A900F0373C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +91,9 @@
 		91D5B93C21BFAF7C00F0373C /* IncomeExpense.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IncomeExpense.storyboard; sourceTree = "<group>"; };
 		91DB80B221F07ED500076182 /* CategoryAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAddViewController.swift; sourceTree = "<group>"; };
 		91FF50E72203EDFC00ADDECA /* ReportCategoryDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCategoryDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		91FF50EA220405D800ADDECA /* SecurityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityViewController.swift; sourceTree = "<group>"; };
+		91FF50EC2204060000ADDECA /* Security.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Security.storyboard; sourceTree = "<group>"; };
+		91FF50EE2204086700ADDECA /* AlertExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertExt.swift; sourceTree = "<group>"; };
 		9294028721EC3788005B5EA3 /* ReportCategoryDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCategoryDetailsViewController.swift; sourceTree = "<group>"; };
 		9294028821EC3788005B5EA3 /* Report.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
 		9294028921EC3788005B5EA3 /* ReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +226,8 @@
 				910DBF0C21E5E4A5004C27CF /* DateHelper.swift */,
 				910DBF1421E5E93C004C27CF /* SetupManager.swift */,
 				91B41B6021FFFF8900F842A6 /* UIColorHelper.swift */,
+				91FF50EE2204086700ADDECA /* AlertExt.swift */,
+				9197BA6C2205F96100CB0B3F /* BiometricHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -228,6 +238,15 @@
 				67DEF8C721F4C116007A7E6A /* Home */,
 			);
 			path = IncomeExpense;
+			sourceTree = "<group>";
+		};
+		91FF50E9220405B800ADDECA /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				91FF50EA220405D800ADDECA /* SecurityViewController.swift */,
+				91FF50EC2204060000ADDECA /* Security.storyboard */,
+			);
+			path = Security;
 			sourceTree = "<group>";
 		};
 		9294028621EC3788005B5EA3 /* Report */ = {
@@ -282,6 +301,7 @@
 		F3F21C8821E44B170035DEB0 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				91FF50E9220405B800ADDECA /* Security */,
 				F3D823A121F56E9900EED53F /* Currency */,
 				9189BA7721F5836F004F9194 /* Wallet */,
 				F343F34821EC6D310047F1F2 /* Category */,
@@ -352,6 +372,7 @@
 			files = (
 				910DBF1121E5E5FB004C27CF /* DefaultIncomeCategories.plist in Resources */,
 				91D5B92D21BFA9AA00F0373C /* LaunchScreen.storyboard in Resources */,
+				91FF50ED2204060000ADDECA /* Security.storyboard in Resources */,
 				F342487721EC3370009EABDE /* Account.storyboard in Resources */,
 				91D5B92A21BFA9AA00F0373C /* Assets.xcassets in Resources */,
 				F3D823A321F56EAC00EED53F /* Currency.storyboard in Resources */,
@@ -381,6 +402,7 @@
 				910DBF0B21E5E488004C27CF /* FinanceManager.swift in Sources */,
 				F3D823A521F56EBB00EED53F /* CurrencyViewController.swift in Sources */,
 				91D5B93621BFADC600F0373C /* ApiHelper.swift in Sources */,
+				91FF50EF2204086700ADDECA /* AlertExt.swift in Sources */,
 				9189BA7F21F5B3B4004F9194 /* WalletDetailViewController.swift in Sources */,
 				67DEF8C621F3874D007A7E6A /* LatestExpensesTVC.swift in Sources */,
 				F342487921EC3B10009EABDE /* AccountViewController.swift in Sources */,
@@ -391,12 +413,14 @@
 				9189BA7D21F583E5004F9194 /* WalletViewController.swift in Sources */,
 				91D5B92521BFA9A900F0373C /* ViewController.swift in Sources */,
 				91D5B93B21BFAF4400F0373C /* IncomeExpense.swift in Sources */,
+				9197BA6D2205F96100CB0B3F /* BiometricHelper.swift in Sources */,
 				9294028B21EC3788005B5EA3 /* ReportCategoryDetailsViewController.swift in Sources */,
 				F3F21C8E21E44E1A0035DEB0 /* SettingTableViewController.swift in Sources */,
 				91606AEB21E2FE1A00182E03 /* CoreDataHelper.swift in Sources */,
 				9294028D21EC3788005B5EA3 /* ReportViewController.swift in Sources */,
 				91D5B93921BFAF2600F0373C /* IncomeExpenseViewController.swift in Sources */,
 				910DBF0721E5E459004C27CF /* CategoryType.swift in Sources */,
+				91FF50EB220405D800ADDECA /* SecurityViewController.swift in Sources */,
 				91D5B92321BFA9A900F0373C /* AppDelegate.swift in Sources */,
 				9189BA7421F566E9004F9194 /* CategoryTableViewCell.swift in Sources */,
 				91DB80B321F07ED500076182 /* CategoryAddViewController.swift in Sources */,
@@ -549,7 +573,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 55CQAZ789D;
+				DEVELOPMENT_TEAM = 7DQGP7DU26;
 				INFOPLIST_FILE = PersonalFinance/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -567,7 +591,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 55CQAZ789D;
+				DEVELOPMENT_TEAM = 7DQGP7DU26;
 				INFOPLIST_FILE = PersonalFinance/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

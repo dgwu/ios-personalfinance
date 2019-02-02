@@ -79,6 +79,12 @@ class SetupManager {
         }
     }
     
+    public var isNeedToAttemptSecurityCheck = UserDefaults.standard.bool(forKey: "isNeedToAttemptSecurityCheck") {
+        didSet {
+            UserDefaults.standard.set(isNeedToAttemptSecurityCheck, forKey: "isNeedToAttemptSecurityCheck")
+        }
+    }
+    
     public var userDefaultCurrency = UserDefaults.standard.string(forKey: "userDefaultCurrency") ?? "" {
         didSet {
             UserDefaults.standard.set(userDefaultCurrency ,forKey: "userDefaultCurrency")

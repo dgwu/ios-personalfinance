@@ -10,14 +10,6 @@ import Foundation
 import UIKit
 import LocalAuthentication
 
-
-enum BiometricType
-{
-    case none
-    case touchId
-    case faceId
-}
-
 class SettingTableViewController: UITableViewController
 {
     let setupManager = SetupManager.shared
@@ -80,11 +72,8 @@ class SettingTableViewController: UITableViewController
     
     // buat check support face Id atau gak
     var isFaceIDSupported: Bool {
-        if #available(iOS 11.0, *) {
-            let localAuthenticationContext = LAContext()
-            if localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
-                return localAuthenticationContext.biometryType == .faceID
-            }
+        if BiometricHelper.biometricType() == .face {
+            return true
         }
         return false
     }
@@ -147,20 +136,20 @@ class SettingTableViewController: UITableViewController
             // login anchor
             rowHeight = 45
         }else if(indexPath.section == 2 && indexPath.row == 0){
-            if (isFaceIDSupported == false)
-            {
-                rowHeight = 0.0
-            }else
+            if (BiometricHelper.biometricType() == .face)
             {
                 rowHeight = 45.0
+            }else
+            {
+                rowHeight = 0.0
             }
         }else if(indexPath.section == 2 && indexPath.row == 1){
-            if (isFaceIDSupported == true)
-            {
-                rowHeight = 0.0
-            }else
+            if (BiometricHelper.biometricType() == .touch)
             {
                 rowHeight = 45.0
+            }else
+            {
+                rowHeight = 0.0
             }
         }
         else{
@@ -174,9 +163,6 @@ class SettingTableViewController: UITableViewController
     {
         print("selected  section is \(indexPath.section)")
         print("selected row is \(indexPath.row)")
-        
-//        print("\(tableView.restorationIdentifier)")
-        
         
         if (indexPath.section == 0 && indexPath.row == 2)
         {

@@ -8,19 +8,28 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UITabBarController {
+    let setupManager = SetupManager.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-        
-        
-        
-        
     }
-
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // pop up security check
+        if setupManager.isUserUsingFingerLock || setupManager.isUserUsingFaceLock {
+            
+            print("use security check")
+            if setupManager.isNeedToAttemptSecurityCheck {
+                let securityStoryboard = UIStoryboard(name: "Security", bundle: nil)
+                let securityController = securityStoryboard.instantiateInitialViewController() as! SecurityViewController
+                
+                self.present(securityController, animated: false, completion: nil)
+            }
+        } else {
+            print("did not use security check")
+        }
+    }
 }
 
