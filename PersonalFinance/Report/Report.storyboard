@@ -368,6 +368,19 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noun_Credit Card_48448" translatesAutoresizingMaskIntoConstraints="NO" id="wet-ia-3Jd">
+                                <rect key="frame" x="105.66666666666669" y="202" width="164" height="117"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="117" id="0cU-aT-y9b"/>
+                                    <constraint firstAttribute="width" constant="164" id="pIC-7a-KQW"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Transactions" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8AV-Z0-IgE">
+                                <rect key="frame" x="69.333333333333329" y="327" width="236.33333333333337" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -377,13 +390,17 @@
                             <constraint firstItem="mtk-1n-KP4" firstAttribute="centerY" secondItem="2dB-sQ-LXF" secondAttribute="centerY" id="CaS-a7-lAi"/>
                             <constraint firstItem="5MK-uS-PrW" firstAttribute="bottom" secondItem="swe-hI-RCf" secondAttribute="bottom" id="Fl2-Nf-bcN"/>
                             <constraint firstItem="2dB-sQ-LXF" firstAttribute="top" secondItem="swe-hI-RCf" secondAttribute="top" constant="15" id="I6A-Gc-Xyx"/>
+                            <constraint firstItem="wet-ia-3Jd" firstAttribute="centerX" secondItem="swe-hI-RCf" secondAttribute="centerX" id="Jrc-sE-eU3"/>
                             <constraint firstItem="5MK-uS-PrW" firstAttribute="leading" secondItem="swe-hI-RCf" secondAttribute="leading" id="KvK-66-of5"/>
                             <constraint firstItem="bJG-7U-PId" firstAttribute="trailing" secondItem="2dB-sQ-LXF" secondAttribute="trailing" id="Oap-wK-opL"/>
                             <constraint firstItem="I6z-77-814" firstAttribute="centerX" secondItem="2dB-sQ-LXF" secondAttribute="centerX" id="Skq-a0-247"/>
                             <constraint firstItem="swe-hI-RCf" firstAttribute="trailing" secondItem="5MK-uS-PrW" secondAttribute="trailing" id="VnP-HU-cHs"/>
                             <constraint firstItem="5MK-uS-PrW" firstAttribute="top" secondItem="2dB-sQ-LXF" secondAttribute="bottom" constant="20" id="baS-Dw-cim"/>
+                            <constraint firstItem="8AV-Z0-IgE" firstAttribute="top" secondItem="wet-ia-3Jd" secondAttribute="bottom" constant="8" id="c7G-XH-csc"/>
                             <constraint firstItem="mtk-1n-KP4" firstAttribute="leading" secondItem="2dB-sQ-LXF" secondAttribute="leading" id="dTa-aB-C2D"/>
+                            <constraint firstItem="8AV-Z0-IgE" firstAttribute="centerX" secondItem="swe-hI-RCf" secondAttribute="centerX" id="ef7-2Z-BI8"/>
                             <constraint firstItem="bJG-7U-PId" firstAttribute="height" secondItem="2dB-sQ-LXF" secondAttribute="height" id="fyn-9x-qC0"/>
+                            <constraint firstItem="8AV-Z0-IgE" firstAttribute="centerY" secondItem="swe-hI-RCf" secondAttribute="centerY" id="kEM-cH-DbV"/>
                             <constraint firstItem="I6z-77-814" firstAttribute="centerY" secondItem="2dB-sQ-LXF" secondAttribute="centerY" id="wgL-uR-6vW"/>
                             <constraint firstItem="mtk-1n-KP4" firstAttribute="height" secondItem="2dB-sQ-LXF" secondAttribute="height" id="wlI-fM-uiC"/>
                         </constraints>
@@ -395,6 +412,8 @@
                         <outlet property="displayedMonthBG" destination="2dB-sQ-LXF" id="Abl-vk-oLD"/>
                         <outlet property="expenseTable" destination="5MK-uS-PrW" id="5eg-42-uaD"/>
                         <outlet property="nextButton" destination="bJG-7U-PId" id="3Td-XT-tKT"/>
+                        <outlet property="noTransactionIcon" destination="wet-ia-3Jd" id="TEp-vT-A7t"/>
+                        <outlet property="noTransactionLabel" destination="8AV-Z0-IgE" id="XmH-qJ-1fm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ywI-np-jze" userLabel="First Responder" sceneMemberID="firstResponder"/>
