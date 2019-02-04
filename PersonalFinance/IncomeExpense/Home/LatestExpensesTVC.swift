@@ -32,7 +32,7 @@ class LatestExpensesTVC: UITableViewCell {
        
         NSLayoutConstraint.activate([
             viewImage.topAnchor.constraint(equalTo: contentView.topAnchor),
-            viewImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            viewImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant : 10),
             viewImage.widthAnchor.constraint(equalToConstant:(contentView.frame.size.width / 8 ) - 15 ),
             viewImage.heightAnchor.constraint(equalToConstant:(contentView.frame.size.width / 8 ) - 15 )
             ])
