@@ -180,8 +180,20 @@ class ReportViewController: UIViewController {
         
         expenses = createDictionaryCategoryValue() // convert fetched data into [String : Double]
         let tempExpenses = expenses.sorted(by: { $0.value > $1.value } )
+        
         print("EXPENSES: ", expenses)
-        print ("SORTED TEMP EXPENSES: ", tempExpenses)
+        print ("SORTED TEMP EXPENSES: ", tempExpenses[0].key )
+        
+        var tempCat : [Category] = []
+        for temp in tempExpenses {
+            for cat in categories {
+                if temp.key == cat.desc {
+                    tempCat.append(cat)
+                }
+            }
+        }
+        
+        categories = tempCat
     }
     
     func createDictionaryCategoryValue () -> [String : Double] { // untuk total amount masing2 category
