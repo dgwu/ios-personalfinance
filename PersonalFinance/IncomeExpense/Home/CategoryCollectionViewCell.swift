@@ -13,6 +13,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var categoryView: UIImageView!
     @IBOutlet weak var categoryNameLabel: UILabel!
     
+    @IBOutlet weak var containerImage: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

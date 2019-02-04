@@ -50,11 +50,11 @@ class LatestExpensesTVC: UITableViewCell {
         NSLayoutConstraint.activate([
             trasactionNameLabel.leadingAnchor.constraint(equalTo: viewImage.trailingAnchor, constant : 20),
             trasactionNameLabel.widthAnchor.constraint(equalToConstant: (contentView.frame.width / 2) - 10),
-            trasactionNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor)
+            trasactionNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor,constant : 5)
             ])
 
         NSLayoutConstraint.activate([
-            transactionAmountLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            transactionAmountLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant : 5),
             transactionAmountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             transactionAmountLabel.widthAnchor.constraint(equalToConstant: (contentView.frame.width / 2) - (contentView.frame.width / 8) - 10)
             ])
@@ -76,15 +76,15 @@ class LatestExpensesTVC: UITableViewCell {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true
-        view.layer.cornerRadius = 5
-        view.layer.borderWidth = 0.5
-        view.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+//        view.layer.cornerRadius = 5
+//        view.layer.borderWidth = 0.5
+//        view.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         return view
     }()
     
     let trasactionNameLabel : UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Futura", size: 15)
+        label.font = UIFont(name: "SF Pro Text", size: 14)
         label.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
@@ -94,7 +94,7 @@ class LatestExpensesTVC: UITableViewCell {
     
     let transactionAmountLabel : UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Futura", size: 15)
+        label.font = UIFont(name: "SF Pro Text", size: 14)
         label.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .right
