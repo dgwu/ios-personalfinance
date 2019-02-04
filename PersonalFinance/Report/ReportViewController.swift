@@ -19,15 +19,10 @@ class ReportViewController: UIViewController {
     @IBOutlet weak var nextMonthButton: UIButton!
     @IBOutlet weak var prevMonthButton: UIButton!
     @IBOutlet weak var topExpensesTable: UITableView!
-    @IBOutlet weak var graphAxisArea: UIImageView!
     @IBOutlet weak var noTransactionsLabel: UILabel!
     @IBOutlet weak var noTransactionsIcon: UIImageView!
     @IBOutlet weak var topExpensesTitleLabel: UILabel!
-    @IBOutlet weak var yAxisMiddleLabel: UILabel!
-    @IBOutlet weak var yAxisTopLabel: UILabel!
-    @IBOutlet weak var graphArea: UIImageView!
     @IBOutlet weak var chartStackView: UIStackView!
-    @IBOutlet weak var legendStackView: UIStackView!
     @IBOutlet weak var displayedMonthBG: UIImageView!
     @IBOutlet weak var totalMonthlyAmount: UILabel!
     @IBOutlet weak var totalMonthTitle: UILabel!
@@ -40,18 +35,16 @@ class ReportViewController: UIViewController {
     var categories : [Category] = []
     var totalAmountThisMonth : Float = 0.0
     var currentlyDisplayedDate = Date()
-    var decimalSetting : Bool = true
     var selectedCategory : String = ""
     let myFinanceManager = FinanceManager.shared
     var transactions = [Transaction]()
     var backStep = 0
-    var stackViewSpacing = 10
+    var stackViewSpacing : CGFloat = 8
     let maxStackViewSpacing = 20
-    var barWidth = 10
-    let maxBarWidth = 40
+    var barHeight = 1
     var stackViewWidth = 0
-    
-    let barChartMultiplier : Float = 0.95 // faktor buat dikaliin ke tinggi bar chart-nya biar gak mentok ke atas
+    let settingManager = SetupManager.shared
+    let barChartMultiplier : Float = 0.5 // faktor buat dikaliin ke tinggi bar chart-nya biar gak mentok ke atas
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,23 +53,14 @@ class ReportViewController: UIViewController {
         displayedMonthBG.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         displayedMonthBG.layer.borderWidth = 1
         
-        graphArea.layer.cornerRadius = 9
-        graphArea.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-        graphArea.layer.borderWidth = 1
-        
 //        graphArea.layer.shadowRadius = 2
 //        graphArea.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
 //        graphArea.layer.shadowOffset = CGSize(width: 2, height: 2)
 //        graphArea.layer.shadowOpacity = 0.5
         
         chartStackView.axis = .horizontal
-        chartStackView.alignment = .bottom
-        chartStackView.distribution = .fillEqually
-        
-        legendStackView.axis = .horizontal
-        legendStackView.alignment = .leading
-        legendStackView.distribution = .fillEqually
-        legendStackView.spacing = CGFloat(30)
+        chartStackView.alignment = .leading
+        chartStackView.distribution = .fill
         
         for button in arrowButtonCollection {
             button.layer.cornerRadius = button.frame.width / 10
@@ -140,13 +124,6 @@ class ReportViewController: UIViewController {
         }
     } // end of prepare(for segue: UIStoryboardSegue, sender: Any?)
     
-    @objc func expenseBarButtonTapped (sender: UIButton) {
-//        self.selectedCategory = (sender.titleLabel?.text)!
-//        self.pageToLoad = .categoryDetails
-//        self.performSegue(withIdentifier: "reportDetailSegue", sender: nil)
-//        print ("Selected Category (Button) = ", self.selectedCategory)
-    }
-    
     @IBAction func detailsButtonTapped(_ sender: Any) {
         self.selectedCategory = "Transactions List"
         self.pageToLoad = .reportDetails
@@ -200,6 +177,9 @@ class ReportViewController: UIViewController {
         transactions = data
         
         expenses = createDictionaryCategoryValue() // convert fetched data into [String : Double]
+        let tempExpenses = expenses.sorted(by: { $0.value > $1.value } )
+        print("EXPENSES: ", expenses)
+        print ("SORTED TEMP EXPENSES: ", tempExpenses)
     }
     
     func createDictionaryCategoryValue () -> [String : Double] { // untuk total amount masing2 category
@@ -214,8 +194,6 @@ class ReportViewController: UIViewController {
                 tempDict[(transaction.category?.desc)!]! += transaction.amount
             }
         }
-        
-        
         return tempDict
     }
     
@@ -229,6 +207,7 @@ class ReportViewController: UIViewController {
             for subView in chartStackView.arrangedSubviews {
                 subView.removeFromSuperview()
             }
+            
         }
         
         if transactions.count == 0 {
@@ -239,11 +218,6 @@ class ReportViewController: UIViewController {
             topExpensesTable.isHidden = true
             topExpensesTitleLabel.isHidden = true
             totalMonthlyAmount.isHidden = true
-            graphArea.isHidden = true
-            yAxisTopLabel.isHidden = true
-            yAxisMiddleLabel.isHidden = true
-            graphAxisArea.isHidden = true
-            legendStackView.isHidden = true
             
         } else {
             noTransactionsLabel.isHidden = true
@@ -253,161 +227,78 @@ class ReportViewController: UIViewController {
             topExpensesTable.isHidden = false
             topExpensesTitleLabel.isHidden = false
             totalMonthlyAmount.isHidden = false
-            graphArea.isHidden = false
-            yAxisTopLabel.isHidden = false
-            yAxisMiddleLabel.isHidden = false
-            graphAxisArea.isHidden = false
-            legendStackView.isHidden = false
         }
         
-        for subView in legendStackView.arrangedSubviews {
-            subView.removeFromSuperview()
-//            legendStackView.removeArrangedSubview(subView)
-        }
-        
-        if categories.count != 0 {//            let graphWidth = graphAxisArea.frame.width
-            stackViewWidth = barWidth * categories.count + ((categories.count - 1) * stackViewSpacing)
+        if categories.count != 0 {
+            stackViewWidth = barHeight * categories.count + ((categories.count - 1) * Int(stackViewSpacing))
             chartStackView.spacing = CGFloat(stackViewSpacing)
-            chartStackView.distribution = .fillEqually
-//            let chartStackViewWidthConstraint = NSLayoutConstraint(item: chartStackView, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: graphWidth * 0.95)
-//            chartStackView.addConstraint(chartStackViewWidthConstraint)
             view.addSubview(chartStackView)
-            view.addSubview(graphAxisArea) // ini biar posisi garis chart nya ada di atas bar chart nya
-            
-            let legendVerticalStackViewLeft = UIStackView()
-            legendVerticalStackViewLeft.axis = .vertical
-            legendVerticalStackViewLeft.alignment = .leading
-            legendVerticalStackViewLeft.frame = CGRect(x: 0, y: 0, width: graphAxisArea.frame.width / 2, height: 1)
-            legendVerticalStackViewLeft.spacing = CGFloat(2)
-            
-            let legendVerticalStackViewRight = UIStackView()
-            legendVerticalStackViewRight.axis = .vertical
-            legendVerticalStackViewRight.alignment = .leading
-            legendVerticalStackViewRight.frame = legendVerticalStackViewLeft.frame
-            legendVerticalStackViewRight.spacing = legendVerticalStackViewLeft.spacing
-            
-            legendStackView.addArrangedSubview(legendVerticalStackViewLeft)
-            legendStackView.addArrangedSubview(legendVerticalStackViewRight)
             
             let highestExpenseVal = highestExpenseValue()
             
-            chartStackView.frame = CGRect(x: graphAxisArea.frame.midX, y: graphAxisArea.frame.minY, width: CGFloat(stackViewWidth), height: (graphAxisArea.frame.height * CGFloat(barChartMultiplier)))
-            chartStackView.center = CGPoint(x: graphAxisArea.frame.midX, y: graphAxisArea.frame.midY + ((graphAxisArea.frame.height - chartStackView.frame.height) / 2))
+            let categoryChartStackView = UIStackView()
+            categoryChartStackView.axis = .vertical
+            categoryChartStackView.alignment = .trailing
+            categoryChartStackView.distribution = .fillProportionally
+            categoryChartStackView.spacing = stackViewSpacing * 0.75
             
-//            let chartStackViewBottomConstraint = NSLayoutConstraint(item: chartStackView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: graphArea, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
-//            chartStackView.addConstraint(chartStackViewBottomConstraint)
+            let barChartStackView = UIStackView()
+            barChartStackView.axis = .vertical
+            barChartStackView.alignment = .leading
+            barChartStackView.distribution = .fillEqually
+            barChartStackView.spacing = stackViewSpacing
+            
+            categoryChartStackView.frame = CGRect (x: 0, y: 0, width: 100, height: chartStackView.frame.height)
+            barChartStackView.frame = CGRect (x: 0, y: 0, width: barChartStackView.frame.width, height: chartStackView.frame.height)
+            print ("CATEGORY CHART STACK VIEW HEIGHT: ", categoryChartStackView.frame.height)
+            print ("BAR CHART STACK VIEW HEIGHT: ", barChartStackView.frame.height)
+            chartStackView.addArrangedSubview(categoryChartStackView)
+            chartStackView.addArrangedSubview(barChartStackView)
+            
             
             for category in categories {
-                let buttonHeight = Float(expenses[category.desc!]!) / Float(highestExpenseVal) * (Float(graphAxisArea.bounds.height) * barChartMultiplier)
-                //            print ("Button Height", buttonHeight)
-                let expenseBarButton = UIButton(frame: CGRect(x: 0, y: 0, width: barWidth, height: Int(buttonHeight)))
-//                let colorAlpha = 0.4 + (expenses[category]! / highestExpenseVal * 0.6)
-                expenseBarButton.backgroundColor = UIColor.init(hexString: category.colorCode!) //UIColor(displayP3Red: 0.3, green: 0.1, blue: 0.5, alpha: CGFloat(colorAlpha))
-                expenseBarButton.translatesAutoresizingMaskIntoConstraints = false;
-                let expenseBarHeightConstraint = NSLayoutConstraint(item: expenseBarButton, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(buttonHeight))
+                let barWidth = Float(expenses[category.desc!]!) / Float(highestExpenseVal) * (Float(chartStackView.bounds.width) * barChartMultiplier)
+                let expenseBar = UIImageView(frame: CGRect(x: 0, y: 0, width: Int(barWidth), height: barHeight))
+                expenseBar.image = #imageLiteral(resourceName: "emptyImage10px") // harus diisi image, kalo engga, gak nongol bar nya
+                expenseBar.backgroundColor = UIColor.init(hexString: category.colorCode!)
+                expenseBar.translatesAutoresizingMaskIntoConstraints = false;
+                let expenseBarHeightConstraint = NSLayoutConstraint(item: expenseBar, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(barWidth))
                 expenseBarHeightConstraint.isActive = true
-                expenseBarButton.addConstraint(expenseBarHeightConstraint)
-                expenseBarButton.titleLabel?.text = category.desc
-                expenseBarButton.addTarget(self, action: #selector(self.expenseBarButtonTapped(sender:)), for: .touchUpInside)
-                //            print("Bar Position: \(expenseBarButton.frame.minX), \(expenseBarButton.frame.minY)")
-                // ini buat bikin round corner di bagian atas bar-nya doank
-                if #available(iOS 11.0, *) {
-                    expenseBarButton.clipsToBounds = true
-                    expenseBarButton.layer.cornerRadius = 8
-                    expenseBarButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-                }
+                expenseBar.addConstraint(expenseBarHeightConstraint)
+                expenseBar.clipsToBounds = true
+                expenseBar.layer.cornerRadius = 4
                 
                 // animasi bar chart naik
                 let animationDuration : Double = Double(expenses[category.desc!]!) / Double(highestExpenseVal) * 0.8
-                expenseBarButton.frame = CGRect(x: 0.0, y: CGFloat(buttonHeight), width: CGFloat(barWidth), height: 0.0)
-                UIView.animate(withDuration: animationDuration) {
-                    expenseBarButton.frame = CGRect(x: 0.0, y: 0.0, width: CGFloat(self.barWidth), height: CGFloat(buttonHeight))
-                }
+                expenseBar.frame = CGRect(x: 0.0, y: 0.0, width: 0.0, height: CGFloat(barHeight))
+                UIView.animate(withDuration: animationDuration, delay: 0.0, options: .curveEaseOut, animations: {
+                    expenseBar.frame = CGRect(x: 0.0, y: 0.0, width: CGFloat(barWidth), height: CGFloat(self.barHeight))
+                }, completion: { (Bool) in
+                    
+                })
                 
-                chartStackView.addArrangedSubview(expenseBarButton)
+                let categoryLabel = UILabel()
+                categoryLabel.font = categoryLabel.font.withSize(10)
+//                categoryLabel.frame = CGRect(x: 0, y: 0, width: categoryLabel.frame.width, height: expenseBar.frame.height)
+                categoryLabel.text = category.desc!
                 
-                // SETUP LEGEND UNTUK BAR CHART
-                let newHorizontalStackView = UIStackView()
-                newHorizontalStackView.axis = .horizontal
-                newHorizontalStackView.alignment = .center
-                newHorizontalStackView.spacing = 5
-                
-                let colorLegend = UIImageView()
-                colorLegend.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
-                colorLegend.layer.borderWidth = 0
-                colorLegend.layer.cornerRadius = colorLegend.frame.width / 2
-                colorLegend.image = UIImage(named: "emptyImage10px.png")
-                colorLegend.backgroundColor = UIColor(hexString: category.colorCode!)
-                colorLegend.contentMode = .scaleAspectFit
-                view.addSubview(colorLegend)
-                
-                let legendLabel = UILabel()
-                legendLabel.text = category.desc!
-                legendLabel.font = legendLabel.font.withSize(10)
-                
-                newHorizontalStackView.addArrangedSubview(colorLegend)
-                newHorizontalStackView.addArrangedSubview(legendLabel)
+                categoryChartStackView.addArrangedSubview(categoryLabel)
+                barChartStackView.addArrangedSubview(expenseBar)
                 
                 totalAmountThisMonth += Float(expenses[category.desc!]!)
-                
-                if categories.firstIndex(of: category)! % 2 == 0 {
-                    legendVerticalStackViewLeft.addArrangedSubview(newHorizontalStackView)
-                } else {
-                    legendVerticalStackViewRight.addArrangedSubview(newHorizontalStackView)
-                }
             }
             
-            yAxisTopLabel.text = formatYAxisLabel(number: highestExpenseVal)
-            yAxisMiddleLabel.text = formatYAxisLabel(number: highestExpenseVal / 2)
-            
+//            print ("BAR STACK VIEW: ", barChartStackView.arrangedSubviews  )
+            let locale = Locale.current
             let formatter = NumberFormatter()
-            formatter.numberStyle = .currency
-            formatter.maximumFractionDigits = decimalSetting ? 2 : 0
-            totalMonthlyAmount.text = formatter.string(from: NSNumber(value: totalAmountThisMonth))
+            formatter.numberStyle = .decimal
+            formatter.minimumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
+            formatter.maximumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
+            totalMonthlyAmount.text = "\(locale.currencySymbol!) \(formatter.string(from: NSNumber(value: totalAmountThisMonth)) ?? "$")"
             totalMonthlyAmount.textColor = totalMonthTitle.textColor
             totalMonthTitle.text = "   Total \(displayedMonth.text!)"
             
-            print ("STACKVIEW WIDTH = ", chartStackView.frame.width)
-            let spaceForSpacing = (chartStackView.arrangedSubviews.count - 1) * Int(chartStackView.spacing)
-            print ("Space for spacing: ", spaceForSpacing )
-            barWidth = (Int(chartStackView.frame.width) - spaceForSpacing) / chartStackView.arrangedSubviews.count
-            print ("Arranged subcviews.count: ", chartStackView.arrangedSubviews.count)
-            print ("Bar Width: ", barWidth)
-            for view in chartStackView.arrangedSubviews {
-                view.layer.cornerRadius = CGFloat(barWidth / 2)
-            }
         }
-    }
-    
-    func formatYAxisLabel (number : Double) -> String {
-        var formattedNumber : String = ""
-        var power : Double = 0
-        var postfix : String = ""
-        let myNumberFormatter = NumberFormatter()
-        myNumberFormatter.minimumFractionDigits = 1
-        myNumberFormatter.maximumFractionDigits = 1
-        myNumberFormatter.minimumIntegerDigits = 1
-        
-        if String(Int(number)).count > 12 {
-            power = 12
-            postfix = "T"
-        } else if String(Int(number)).count > 9 {
-            power = 9
-            postfix = "B"
-        } else if String(Int(number)).count > 6 {
-            power = 6
-            postfix = "M"
-        } else if String(Int(number)).count > 3 {
-            power = 3
-            postfix = "K"
-        } else {
-            power = 0
-            postfix = ""
-        }
-        
-        let newNumber = number / pow(10, power)
-        formattedNumber = "\(myNumberFormatter.string(for: newNumber)!)\(postfix)"
-        return formattedNumber
     }
 }
 
@@ -423,19 +314,19 @@ extension ReportViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "topExpenseCell") as! ReportTableViewCell
         
         if categories.count != 0 {
-            cell.rank.text = String(indexPath.row+1)
-            let rankLabelWidth = cell.rank.font.pointSize * 2.5
-            cell.rank.layer.cornerRadius = rankLabelWidth / 2
-            cell.rank.layer.borderWidth = rankLabelWidth / 8
-            let borderColor = categories[indexPath.row].colorCode!
-            cell.rank.layer.borderColor = UIColor(hexString: borderColor).cgColor
+            cell.categorySymbolImageView.image = #imageLiteral(resourceName: "emptyImage10px")
+            cell.categorySymbolImageView.layer.cornerRadius = cell.categorySymbolImageView.frame.width / 2
+            cell.categorySymbolImageView.layer.borderWidth = 0
+            let bgColor = categories[indexPath.row].colorCode!
+            cell.categorySymbolImageView.layer.backgroundColor = UIColor(hexString: bgColor).cgColor
             cell.expenseCategory.text = categories[indexPath.row].desc!
-            cell.rank.widthAnchor.constraint(equalToConstant: rankLabelWidth).isActive = true
             
+            let locale = Locale.current
             let formatter = NumberFormatter()
-            formatter.numberStyle = .currency
-            formatter.maximumFractionDigits = decimalSetting ? 2 : 0
-            let expenseValue = formatter.string(from: NSNumber(value: expenses[categories[indexPath.row].desc!]!))
+            formatter.numberStyle = .decimal
+            formatter.minimumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
+            formatter.maximumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
+            let expenseValue = locale.currencySymbol! + " " + formatter.string(from: NSNumber(value: expenses[categories[indexPath.row].desc!]!))!
             cell.expenseCategoryValue.text = expenseValue
             cell.accessoryType = .disclosureIndicator
             cell.selectionStyle = .none

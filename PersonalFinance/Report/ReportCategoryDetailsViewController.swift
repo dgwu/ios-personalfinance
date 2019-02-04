@@ -28,11 +28,10 @@ class ReportCategoryDetailsViewController: UIViewController {
     
     // End of passed parameters
     
-    var decimalSetting = true
     var filteredTransactions = [Transaction]()
     var prevIndex = 0
     
-    
+    let settingManager = SetupManager.shared
     let myFinanceManager = FinanceManager.shared
     
     override func viewDidLoad() {
@@ -64,6 +63,7 @@ class ReportCategoryDetailsViewController: UIViewController {
         }
         nextButton.isEnabled = backStep == 0 ? false : true
         checkTransactions()
+        expenseTable.reloadData()
     }
     
     func checkTransactions() {
@@ -178,10 +178,12 @@ extension ReportCategoryDetailsViewController : UITableViewDelegate, UITableView
         } else {
             cell.expenseDescLabel.text = "No Description"
         }
+        let locale = Locale.current
         let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.maximumFractionDigits = decimalSetting ? 2 : 0
-        let expenseValue = formatter.string(from: NSNumber(value: filteredTransactions[indexPath.row].amount))
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
+        formatter.maximumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
+        let expenseValue = locale.currencySymbol! + " " + formatter.string(from: NSNumber(value: filteredTransactions[indexPath.row].amount))!
         cell.expenseDescValueLabel.text = expenseValue
         return cell
     }
