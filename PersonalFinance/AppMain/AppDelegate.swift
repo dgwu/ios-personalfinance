@@ -17,10 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        preloadWallets()
-        preloadIncomeCategory()
-        preloadExpenseCategory()
+//        preloadWallets()
+//        preloadIncomeCategory()
+//        preloadExpenseCategory()
+//        preloadExpenseCategory2()
 //        preloadSimulationData()
+        
+        return true
+    }
+    
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        preloadWallets()
+        preloadExpenseCategory()
         
         return true
     }
@@ -37,10 +45,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        let setupManager = SetupManager.shared
+        if setupManager.isUserUsingFaceLock || setupManager.isUserUsingFingerLock {
+            setupManager.isNeedToAttemptSecurityCheck = true
+        }
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        let setupManager = SetupManager.shared
+        if setupManager.isUserUsingFaceLock || setupManager.isUserUsingFingerLock {
+            setupManager.isNeedToAttemptSecurityCheck = true
+        }
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -49,6 +65,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        let setupManager = SetupManager.shared
+        if setupManager.isUserUsingFaceLock || setupManager.isUserUsingFingerLock {
+            setupManager.isNeedToAttemptSecurityCheck = true
+        }
     }
     
     // MARK: - Preload Data
@@ -151,6 +171,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 newMainCategory.iconName = category["iconName"] as? String
                                 newMainCategory.colorCode = category["colorCode"] as? String
                                 newMainCategory.type = Int16(CategoryType.expense.rawValue)
+                                newMainCategory.orderNumber = category["orderNumber"] as? Int16 ?? 0
                                 
 //                                if let subCategories = category["childs"] as? [Any] {
 //                                    for subCategory in subCategories {
@@ -172,7 +193,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         setupManager.isExpenseCategoriesPreloaded = true
                     }
                     print("Successfully preloaded expense category")
-                    self.preloadSimulationData()
+//                    self.preloadSimulationData()
                 } catch {
                     print(error.localizedDescription)
                 }

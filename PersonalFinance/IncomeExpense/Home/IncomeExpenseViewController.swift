@@ -19,14 +19,14 @@ class IncomeExpenseViewController: UIViewController {
     let transactionFecthControler = FinanceManager.shared.getExpenseResultController(fromDate: nil, toDate: nil, take: 10)
     var collectionView  : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .vertical
         var cv = UICollectionView(frame: CGRect(x: 0, y: 0, width: 80, height: 80), collectionViewLayout: layout)
         
         return cv
     }()
     
     let tableLatestExpenses : UITableView = UITableView()
-    var getCategory = FinanceManager.shared.categoryList(type: .expense)
+    var getCategory: [Category]?
     var selectCategory : Category?
     let currency = SetupManager.shared
     lazy var PresentationDelegate = PresentationManager()
@@ -43,13 +43,17 @@ class IncomeExpenseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if !SetupManager.shared.isExpenseCategoriesPreloaded {
+            // add delay to make sure preloaded category are loaded in view
+            sleep(1)
+        }
+        getCategory = FinanceManager.shared.categoryList(type: .expense)
+        transactionFecthControler.delegate = self
         do {
             try transactionFecthControler.performFetch()
         } catch  {
             print( "error : \(error.localizedDescription)")
         }
-        transactionFecthControler.delegate = self
         InitialSetup()
         print("height coll :\(collectionView.frame.height)")
      
@@ -274,14 +278,14 @@ extension IncomeExpenseViewController : UICollectionViewDelegateFlowLayout {
 //    }
     
     func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        let width = ( collectionView.frame.width - (collectionView.frame.width * 0.8) )/4
-            print("jarak antar section = \(width)")
         
-        return width
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        let width = ( collectionView.frame.width - (collectionView.frame.width * 0.8) )/4
+        
+        return width
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -307,7 +311,6 @@ extension IncomeExpenseViewController: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableLatestExpenses.reloadData()
         self.getCategory = FinanceManager.shared.categoryList(type: .expense)
-        self.collectionView.reloadData()
     }
 }
 

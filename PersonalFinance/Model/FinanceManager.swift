@@ -121,7 +121,7 @@ class FinanceManager {
         // filter parent category only
         let predicate = NSPredicate(format: "(parent == nil || parent.@count = 0) && type=%d", type.rawValue)
         categoryFetch.predicate = predicate
-        
+        categoryFetch.sortDescriptors = [NSSortDescriptor(key: "orderNumber", ascending:true)]
         do {
             let result = try objectContext.fetch(categoryFetch) as! [Category]
             return result
