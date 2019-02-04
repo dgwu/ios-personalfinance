@@ -66,6 +66,7 @@ class IncomeExpenseViewController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
+        
         self.tableLatestExpenses.delegate = self
         self.tableLatestExpenses.dataSource = self
         
@@ -156,18 +157,18 @@ class IncomeExpenseViewController: UIViewController {
         warninglLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
 
         
-        //collectin view
+        //collection view
         collectionView.translatesAutoresizingMaskIntoConstraints = false
        
         collectionView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         NSLayoutConstraint.activate([
-            collectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4),
+            collectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.35),
             collectionView.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor),
             collectionView.topAnchor.constraint(equalTo: headerCollectionLabel.bottomAnchor)
             ])
         collectionView.layoutIfNeeded()
-         print("Height collectionView frame :\(collectionView.frame)")
+        print("Height collectionView frame :\(collectionView.frame)")
         
         //view container tabel expenses
         viewContainerTabel.translatesAutoresizingMaskIntoConstraints = false
@@ -247,21 +248,19 @@ extension IncomeExpenseViewController: UICollectionViewDataSource {
 }
 
 
-
-
 extension IncomeExpenseViewController : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width * 0.8 / 4
-        let height =  width + 20
+        let height = collectionView.frame.height / 3
         
         return CGSize(width: width , height: height)
     }
     
-    func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,insetForSectionAt section: Int) -> UIEdgeInsets {
-        let width = collectionView.frame.width * 0.8 / 4
-        let height = width + 20
-        let marginRightLeft = ( collectionView.frame.width - collectionView.frame.width * 0.8  )/8
+//    func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,insetForSectionAt section: Int) -> UIEdgeInsets {
+//        let width = collectionView.frame.width * 0.8 / 4
+//        let height = width + 20
+//        let marginRightLeft = ( collectionView.frame.width - collectionView.frame.width * 0.8  )/8
 //        let marginTopBottom = (collectionView.frame.height -  ( height * 3 )) / 6
 //        print("1 = \(width)")
 //        print("2 = \(marginRightLeft)")
@@ -270,15 +269,19 @@ extension IncomeExpenseViewController : UICollectionViewDelegateFlowLayout {
 //        print("6 = \(collectionView.frame.height)")
 //        print("7 = \(height)")
 //        print("\(collectionView.frame.height)")
-        let section = UIEdgeInsets(top: 0, left: marginRightLeft, bottom: 0, right: marginRightLeft)
-        return section
-    }
+//        let section = UIEdgeInsets(top: 0, left: marginRightLeft, bottom: 0, right: marginRightLeft)
+//        return UIEdgeInsets.zero
+//    }
     
     func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         let width = ( collectionView.frame.width - (collectionView.frame.width * 0.8) )/4
             print("jarak antar section = \(width)")
         
         return width
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
