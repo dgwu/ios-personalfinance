@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		674F56822207E7FC0033D948 /* CardViewRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674F56812207E7FC0033D948 /* CardViewRecordVC.swift */; };
+		674F56842207F2610033D948 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674F56832207F2610033D948 /* PresentationController.swift */; };
+		674F56862207F3420033D948 /* PresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674F56852207F3420033D948 /* PresentationManager.swift */; };
 		6774510921DF1B9600F88BBF /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6774510821DF1B8C00F88BBF /* Register.storyboard */; };
 		679EBE442203F96E009EA2D0 /* SF-Pro-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 679EBE382203F96D009EA2D0 /* SF-Pro-Text-Heavy.otf */; };
 		679EBE452203F96E009EA2D0 /* SF-Pro-Text-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 679EBE392203F96D009EA2D0 /* SF-Pro-Text-MediumItalic.otf */; };
@@ -71,6 +73,8 @@
 
 /* Begin PBXFileReference section */
 		674F56812207E7FC0033D948 /* CardViewRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewRecordVC.swift; sourceTree = "<group>"; };
+		674F56832207F2610033D948 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		674F56852207F3420033D948 /* PresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationManager.swift; sourceTree = "<group>"; };
 		6774510821DF1B8C00F88BBF /* Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		679EBE382203F96D009EA2D0 /* SF-Pro-Text-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Heavy.otf"; sourceTree = "<group>"; };
 		679EBE392203F96D009EA2D0 /* SF-Pro-Text-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-MediumItalic.otf"; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 			isa = PBXGroup;
 			children = (
 				674F56812207E7FC0033D948 /* CardViewRecordVC.swift */,
+				674F56832207F2610033D948 /* PresentationController.swift */,
+				674F56852207F3420033D948 /* PresentationManager.swift */,
 			);
 			path = cardViewRecord;
 			sourceTree = "<group>";
@@ -495,6 +501,8 @@
 				674F56822207E7FC0033D948 /* CardViewRecordVC.swift in Sources */,
 				910DBF0D21E5E4A5004C27CF /* DateHelper.swift in Sources */,
 				91606AF221E30A2300182E03 /* PersonalFinance.xcdatamodeld in Sources */,
+				674F56842207F2610033D948 /* PresentationController.swift in Sources */,
+				674F56862207F3420033D948 /* PresentationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -641,7 +649,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7DQGP7DU26;
+				DEVELOPMENT_TEAM = 55CQAZ789D;
 				INFOPLIST_FILE = PersonalFinance/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -659,7 +667,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7DQGP7DU26;
+				DEVELOPMENT_TEAM = 55CQAZ789D;
 				INFOPLIST_FILE = PersonalFinance/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
