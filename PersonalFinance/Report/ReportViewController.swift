@@ -78,7 +78,6 @@ class ReportViewController: UIViewController {
         let year = dateFormatter.string(from: Date())
         displayedMonth.text = "\(nameOfMonth) \(year)"
         nextMonthButton.isEnabled = false
-        loadData(fromDate: Date())
         
         /*
          // Buat kalo pindah ke bulan laen
@@ -97,6 +96,7 @@ class ReportViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         var date = Date()
         categories.removeAll()
+        totalAmountThisMonth = 0.0
         date = Calendar.current.date(byAdding: .month, value: -(backStep), to: Date().startOfMonth().endOfDay )!
         loadData(fromDate: date)
         setupBarChart()
@@ -139,11 +139,13 @@ class ReportViewController: UIViewController {
         if sender.tag == 0 { // Back
             backStep += 1
             date = Calendar.current.date(byAdding: .month, value: -(backStep), to: Date().startOfMonth().endOfDay )!
+            totalAmountThisMonth = 0.0
             loadData(fromDate: date)
             nextMonthButton.isEnabled = true
         } else { // Next
             backStep -= 1
             date = Calendar.current.date(byAdding: .month, value: -(backStep), to: Date().startOfMonth().endOfDay )!
+            totalAmountThisMonth = 0.0
             loadData(fromDate: date)
             nextMonthButton.isEnabled = backStep == 0 ? false : true
         }
