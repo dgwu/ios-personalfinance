@@ -40,6 +40,8 @@ class IncomeExpenseViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var bottomContraint: NSLayoutConstraint!
     
+    var budgetAmountLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +64,7 @@ class IncomeExpenseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         collectionView.reloadData()
         tableLatestExpenses.reloadData()
+        self.budgetAmountLabel.text = GeneralHelper.displayAmount(amount: financeManager.monthlyRemainingBudget())
     }
     func InitialSetup()   {
         self.navigationController?.navigationBar.topItem?.title = "Cash Quest"
@@ -89,7 +92,7 @@ class IncomeExpenseViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         //createComponen
         let viewBudget      : UIView    = UIView()
-        let amountBudget    : UILabel   = UILabel()
+        budgetAmountLabel = UILabel()
         let budgetLabel     : UILabel   = UILabel()
         let warninglLabel   : UILabel   = UILabel()
         let headerCollectionLabel : UILabel = UILabel()
@@ -98,7 +101,7 @@ class IncomeExpenseViewController: UIViewController {
        
         //add componen to view
         view.addSubview(viewBudget)
-        viewBudget.addSubview(amountBudget)
+        viewBudget.addSubview(budgetAmountLabel)
         viewBudget.addSubview(budgetLabel)
         viewBudget.addSubview(warninglLabel)
         view.addSubview(collectionView)
@@ -134,18 +137,18 @@ class IncomeExpenseViewController: UIViewController {
         budgetLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
         //amount Label
-        amountBudget.translatesAutoresizingMaskIntoConstraints = false
+        budgetAmountLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            amountBudget.trailingAnchor.constraint(equalTo: viewBudget.trailingAnchor, constant: -10),
-            amountBudget.leadingAnchor.constraint(equalTo: budgetLabel.trailingAnchor, constant: 10),
-            amountBudget.topAnchor.constraint(equalTo: viewBudget.topAnchor, constant : 10),
+            budgetAmountLabel.trailingAnchor.constraint(equalTo: viewBudget.trailingAnchor, constant: -10),
+            budgetAmountLabel.leadingAnchor.constraint(equalTo: budgetLabel.trailingAnchor, constant: 10),
+            budgetAmountLabel.topAnchor.constraint(equalTo: viewBudget.topAnchor, constant : 10),
         ])
         let budget = financeManager.monthlyRemainingBudget()
     
-        amountBudget.text = "\(currency.userDefaultCurrency) \(budget)"
-        amountBudget.textAlignment = .right
-        amountBudget.font = UIFont(name: "SF Pro Text", size: 16)
-        amountBudget.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        budgetAmountLabel.text = GeneralHelper.displayAmount(amount: budget)
+        budgetAmountLabel.textAlignment = .right
+        budgetAmountLabel.font = UIFont(name: "SF Pro Text", size: 16)
+        budgetAmountLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
         //warning Label
         warninglLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -330,7 +333,7 @@ extension IncomeExpenseViewController : UITableViewDelegate, UITableViewDataSour
         if let transaction = transactionFecthControler.fetchedObjects?[indexPath.row] {
            
             cell.trasactionNameLabel.text = transaction.desc
-            cell.transactionAmountLabel.text = "\(transaction.amount)"
+            cell.transactionAmountLabel.text = GeneralHelper.displayAmount(amount: transaction.amount)
             guard let category = transaction.category?.iconName else {
                 return cell
             }

@@ -36,6 +36,7 @@
 		910DBF1521E5E93C004C27CF /* SetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910DBF1421E5E93C004C27CF /* SetupManager.swift */; };
 		91606AEB21E2FE1A00182E03 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91606AEA21E2FE1A00182E03 /* CoreDataHelper.swift */; };
 		91606AF221E30A2300182E03 /* PersonalFinance.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91606AF021E30A2300182E03 /* PersonalFinance.xcdatamodeld */; };
+		9168811B2208B06700CA9B79 /* GeneralHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9168811A2208B06700CA9B79 /* GeneralHelper.swift */; };
 		9189BA7421F566E9004F9194 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9189BA7321F566E9004F9194 /* CategoryTableViewCell.swift */; };
 		9189BA7921F5838C004F9194 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9189BA7821F5838C004F9194 /* Wallet.storyboard */; };
 		9189BA7B21F583D3004F9194 /* WalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9189BA7A21F583D3004F9194 /* WalletTableViewCell.swift */; };
@@ -101,6 +102,7 @@
 		910DBF1421E5E93C004C27CF /* SetupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupManager.swift; sourceTree = "<group>"; };
 		91606AEA21E2FE1A00182E03 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		91606AF121E30A2300182E03 /* PersonalFinance.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalFinance.xcdatamodel; sourceTree = "<group>"; };
+		9168811A2208B06700CA9B79 /* GeneralHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralHelper.swift; sourceTree = "<group>"; };
 		9189BA7321F566E9004F9194 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		9189BA7821F5838C004F9194 /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		9189BA7A21F583D3004F9194 /* WalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTableViewCell.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				91B41B6021FFFF8900F842A6 /* UIColorHelper.swift */,
 				91FF50EE2204086700ADDECA /* AlertExt.swift */,
 				9197BA6C2205F96100CB0B3F /* BiometricHelper.swift */,
+				9168811A2208B06700CA9B79 /* GeneralHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				67DEF8C321F16966007A7E6A /* CategoryCollectionViewCell.swift in Sources */,
 				9189BA7B21F583D3004F9194 /* WalletTableViewCell.swift in Sources */,
 				91FF50E82203EDFC00ADDECA /* ReportCategoryDetailsTableViewCell.swift in Sources */,
+				9168811B2208B06700CA9B79 /* GeneralHelper.swift in Sources */,
 				910DBF0B21E5E488004C27CF /* FinanceManager.swift in Sources */,
 				F3D823A521F56EBB00EED53F /* CurrencyViewController.swift in Sources */,
 				91D5B93621BFADC600F0373C /* ApiHelper.swift in Sources */,
