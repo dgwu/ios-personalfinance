@@ -47,7 +47,7 @@ class ReportViewController: UIViewController {
     var backStep = 0
     var stackViewSpacing = 10
     let maxStackViewSpacing = 20
-    var barWidth = 1
+    var barWidth = 10
     let maxBarWidth = 40
     var stackViewWidth = 0
     
@@ -71,12 +71,13 @@ class ReportViewController: UIViewController {
         
         chartStackView.axis = .horizontal
         chartStackView.alignment = .bottom
-        chartStackView.distribution = .equalCentering
+        chartStackView.distribution = .fillEqually
         
         legendStackView.axis = .horizontal
         legendStackView.alignment = .leading
         legendStackView.distribution = .fillEqually
         legendStackView.spacing = CGFloat(30)
+        
         for button in arrowButtonCollection {
             button.layer.cornerRadius = button.frame.width / 10
 //            button.layer.borderWidth = 1
@@ -92,12 +93,8 @@ class ReportViewController: UIViewController {
         dateFormatter.dateFormat = "YYYY"
         let year = dateFormatter.string(from: Date())
         displayedMonth.text = "\(nameOfMonth) \(year)"
-        
         nextMonthButton.isEnabled = false
-        
         loadData(fromDate: Date())
-        
-        setupBarChart()
         
         /*
          // Buat kalo pindah ke bulan laen
@@ -114,6 +111,12 @@ class ReportViewController: UIViewController {
     } // End of viewDidLoad()
     
     override func viewWillAppear(_ animated: Bool) {
+        var date = Date()
+        categories.removeAll()
+        date = Calendar.current.date(byAdding: .month, value: -(backStep), to: Date().startOfMonth().endOfDay )!
+        loadData(fromDate: date)
+        setupBarChart()
+        topExpensesTable.reloadData()
         print ("Report - viewWillAppear - CATEGORIES COUNT: ", categories.count)
     }
     
@@ -177,8 +180,7 @@ class ReportViewController: UIViewController {
         displayedMonth.text = "\(nameOfMonth) \(year)"
         
         setupBarChart()
-        
-        
+        topExpensesTable.reloadData()
     }
     
     func loadData (fromDate date: Date) {
@@ -226,7 +228,6 @@ class ReportViewController: UIViewController {
 //            print("Clearing chartStackView")
             for subView in chartStackView.arrangedSubviews {
                 subView.removeFromSuperview()
-                chartStackView.removeArrangedSubview(subView)
             }
         }
         
@@ -261,7 +262,7 @@ class ReportViewController: UIViewController {
         
         for subView in legendStackView.arrangedSubviews {
             subView.removeFromSuperview()
-            legendStackView.removeArrangedSubview(subView)
+//            legendStackView.removeArrangedSubview(subView)
         }
         
         if categories.count != 0 {//            let graphWidth = graphAxisArea.frame.width
@@ -276,7 +277,7 @@ class ReportViewController: UIViewController {
             let legendVerticalStackViewLeft = UIStackView()
             legendVerticalStackViewLeft.axis = .vertical
             legendVerticalStackViewLeft.alignment = .leading
-            legendVerticalStackViewLeft.frame = CGRect(x: 0, y: 0, width: chartStackView.frame.width / 2, height: 1)
+            legendVerticalStackViewLeft.frame = CGRect(x: 0, y: 0, width: graphAxisArea.frame.width / 2, height: 1)
             legendVerticalStackViewLeft.spacing = CGFloat(2)
             
             let legendVerticalStackViewRight = UIStackView()
@@ -296,7 +297,6 @@ class ReportViewController: UIViewController {
 //            let chartStackViewBottomConstraint = NSLayoutConstraint(item: chartStackView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: graphArea, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
 //            chartStackView.addConstraint(chartStackViewBottomConstraint)
             
-            
             for category in categories {
                 let buttonHeight = Float(expenses[category.desc!]!) / Float(highestExpenseVal) * (Float(graphAxisArea.bounds.height) * barChartMultiplier)
                 //            print ("Button Height", buttonHeight)
@@ -310,7 +310,6 @@ class ReportViewController: UIViewController {
                 expenseBarButton.titleLabel?.text = category.desc
                 expenseBarButton.addTarget(self, action: #selector(self.expenseBarButtonTapped(sender:)), for: .touchUpInside)
                 //            print("Bar Position: \(expenseBarButton.frame.minX), \(expenseBarButton.frame.minY)")
-                
                 // ini buat bikin round corner di bagian atas bar-nya doank
                 if #available(iOS 11.0, *) {
                     expenseBarButton.clipsToBounds = true
@@ -320,9 +319,9 @@ class ReportViewController: UIViewController {
                 
                 // animasi bar chart naik
                 let animationDuration : Double = Double(expenses[category.desc!]!) / Double(highestExpenseVal) * 0.8
-                expenseBarButton.frame = CGRect(x: 0.0, y: CGFloat(buttonHeight), width: CGFloat(expenseBarButton.frame.width), height: 0.0)
+                expenseBarButton.frame = CGRect(x: 0.0, y: CGFloat(buttonHeight), width: CGFloat(barWidth), height: 0.0)
                 UIView.animate(withDuration: animationDuration) {
-                    expenseBarButton.frame = CGRect(x: 0.0, y: 0.0, width: CGFloat(expenseBarButton.frame.width), height: CGFloat(buttonHeight))
+                    expenseBarButton.frame = CGRect(x: 0.0, y: 0.0, width: CGFloat(self.barWidth), height: CGFloat(buttonHeight))
                 }
                 
                 chartStackView.addArrangedSubview(expenseBarButton)
@@ -368,6 +367,15 @@ class ReportViewController: UIViewController {
             totalMonthlyAmount.textColor = totalMonthTitle.textColor
             totalMonthTitle.text = "   Total \(displayedMonth.text!)"
             
+            print ("STACKVIEW WIDTH = ", chartStackView.frame.width)
+            let spaceForSpacing = (chartStackView.arrangedSubviews.count - 1) * Int(chartStackView.spacing)
+            print ("Space for spacing: ", spaceForSpacing )
+            barWidth = (Int(chartStackView.frame.width) - spaceForSpacing) / chartStackView.arrangedSubviews.count
+            print ("Arranged subcviews.count: ", chartStackView.arrangedSubviews.count)
+            print ("Bar Width: ", barWidth)
+            for view in chartStackView.arrangedSubviews {
+                view.layer.cornerRadius = CGFloat(barWidth / 2)
+            }
         }
     }
     
@@ -406,16 +414,23 @@ class ReportViewController: UIViewController {
 extension ReportViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print ("Categories count: ", categories.count)
+        print ("CATEGORIES COUNT: ", categories.count)
         return categories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print ("POPULATING CELL")
         let cell = tableView.dequeueReusableCell(withIdentifier: "topExpenseCell") as! ReportTableViewCell
+        
         if categories.count != 0 {
-            
             cell.rank.text = String(indexPath.row+1)
+            let rankLabelWidth = cell.rank.font.pointSize * 2.5
+            cell.rank.layer.cornerRadius = rankLabelWidth / 2
+            cell.rank.layer.borderWidth = rankLabelWidth / 8
+            let borderColor = categories[indexPath.row].colorCode!
+            cell.rank.layer.borderColor = UIColor(hexString: borderColor).cgColor
             cell.expenseCategory.text = categories[indexPath.row].desc!
+            cell.rank.widthAnchor.constraint(equalToConstant: rankLabelWidth).isActive = true
             
             let formatter = NumberFormatter()
             formatter.numberStyle = .currency
