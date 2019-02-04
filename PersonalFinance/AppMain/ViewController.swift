@@ -17,6 +17,8 @@ class ViewController: UITabBarController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        //Check Onboarding
+        
         // pop up security check
         if setupManager.isUserUsingFingerLock || setupManager.isUserUsingFaceLock {
             

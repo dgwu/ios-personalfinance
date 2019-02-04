@@ -104,6 +104,21 @@ class SettingTableViewController: UITableViewController
     }
     
     
+    override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+       guard let footer = view as? UITableViewHeaderFooterView else { return }
+        footer.textLabel?.font = UIFont.boldSystemFont(ofSize: 10)
+        footer.textLabel?.textAlignment = .right
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let header = view as? UITableViewHeaderFooterView else {
+            return
+        }
+        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 25)
+//        header.textLabel?.font = ÷
+    }
+    
+    
     //defaults.setObject("Coding Explorer", forKey: "userNameKey")
     func initialLoad()
     {
@@ -118,23 +133,38 @@ class SettingTableViewController: UITableViewController
         faceIdState.isOn = setupManager.isUserUsingFaceLock
         fingerPrintState.isOn = setupManager.isUserUsingFingerLock
         
+        
+        
+        
     }
     
     override func viewDidLoad()
     {
         initialLoad()
         super.viewDidLoad()
+        self.title = "Settings"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
+    
+ 
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         var rowHeight:CGFloat = 0.0
-        
-        if(indexPath.section == 0 && indexPath.row == 1){
-            // gambar profile
-            rowHeight = 123 // was 123
-        }else if(indexPath.section == 0 && indexPath.row == 0){
-            // login anchor
-            rowHeight = 45
+        if(indexPath.section == 0 && indexPath.row == 0)
+        {// hide profile Detail
+            rowHeight = 0
+        }
+        else if(indexPath.section == 0 && indexPath.row == 1){
+            // Hide gambar profile
+            //rowHeight = 123 // was 123
+            rowHeight = 0
+        }else if(indexPath.section == 1 && indexPath.row == 0)
+         {// buat hide notification
+                rowHeight = 0.0
+        }else if(indexPath.section == 1 && indexPath.row == 2)
+        {// buat hide currency
+            rowHeight = 0.0
         }else if(indexPath.section == 2 && indexPath.row == 0){
             if (BiometricHelper.biometricType() == .face)
             {
@@ -143,7 +173,8 @@ class SettingTableViewController: UITableViewController
             {
                 rowHeight = 0.0
             }
-        }else if(indexPath.section == 2 && indexPath.row == 1){
+        }
+        else if(indexPath.section == 2 && indexPath.row == 1){
             if (BiometricHelper.biometricType() == .touch)
             {
                 rowHeight = 45.0
