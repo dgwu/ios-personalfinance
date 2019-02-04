@@ -116,16 +116,14 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="REY-6E-nDb" firstAttribute="leading" secondItem="Sg8-C1-sdr" secondAttribute="leading" constant="20" id="3cv-jh-aod"/>
                                                 <constraint firstItem="LMj-Ce-Haz" firstAttribute="centerY" secondItem="Sg8-C1-sdr" secondAttribute="centerY" id="Mqs-bj-Rlc"/>
                                                 <constraint firstAttribute="trailing" secondItem="LMj-Ce-Haz" secondAttribute="trailing" constant="5" id="QUp-9z-EFW"/>
+                                                <constraint firstItem="REY-6E-nDb" firstAttribute="centerY" secondItem="Sg8-C1-sdr" secondAttribute="centerY" id="ZPS-6A-seC"/>
                                                 <constraint firstItem="CVE-Ph-Bvl" firstAttribute="centerY" secondItem="Sg8-C1-sdr" secondAttribute="centerY" id="bpP-HY-8C8"/>
                                                 <constraint firstItem="CVE-Ph-Bvl" firstAttribute="leading" secondItem="REY-6E-nDb" secondAttribute="trailing" constant="20" id="xj5-nz-qDC"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <constraints>
-                                            <constraint firstItem="REY-6E-nDb" firstAttribute="leading" secondItem="xll-oG-AHY" secondAttribute="leading" constant="20" id="lFX-63-YGm"/>
-                                            <constraint firstItem="REY-6E-nDb" firstAttribute="centerY" secondItem="xll-oG-AHY" secondAttribute="centerY" id="vtI-EG-GCJ"/>
-                                        </constraints>
                                         <connections>
                                             <outlet property="categorySymbolImageView" destination="REY-6E-nDb" id="Xdz-IY-pBE"/>
                                             <outlet property="expenseCategory" destination="CVE-Ph-Bvl" id="fgB-dG-vd1"/>
