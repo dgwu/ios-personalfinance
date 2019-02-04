@@ -164,13 +164,11 @@ extension ReportCategoryDetailsViewController : UITableViewDelegate, UITableView
         cell.dateLabel.text = dateFormatter.string(from: filteredTransactions[indexPath.row].transactionDate!)
         cell.dateLabel.layer.borderWidth = dateLabelWidth / 8
         cell.dateLabel.layer.cornerRadius = dateLabelWidth / 2
-        print("table view cell corner radius: \(dateLabelWidth / 2)")
         
         cell.dateLabel.widthAnchor.constraint(equalToConstant: dateLabelWidth).isActive = true
         
         
         let borderColor = filteredTransactions[indexPath.row].category!.colorCode!
-        print (borderColor)
         cell.dateLabel.layer.borderColor = UIColor(hexString: borderColor).cgColor
         
         if filteredTransactions[indexPath.row].desc != nil {
