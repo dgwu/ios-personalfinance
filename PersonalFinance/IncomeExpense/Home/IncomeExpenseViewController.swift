@@ -26,7 +26,7 @@ class IncomeExpenseViewController: UIViewController {
     }()
     
     let tableLatestExpenses : UITableView = UITableView()
-    let getCategory = FinanceManager.shared.categoryList(type: .expense)
+    var getCategory = FinanceManager.shared.categoryList(type: .expense)
     var selectCategory : Category?
     let currency = SetupManager.shared
     
@@ -38,8 +38,9 @@ class IncomeExpenseViewController: UIViewController {
     @IBOutlet weak var amountLabel: UITextField!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
- 
     @IBOutlet weak var bottomContraint: NSLayoutConstraint!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,7 +56,9 @@ class IncomeExpenseViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        collectionView.reloadData() 
+        collectionView.reloadData()
+        tableLatestExpenses.reloadData()
+        InitialSetup()
     }
     func InitialSetup()   {
         self.navigationController?.navigationBar.topItem?.title = "Cash Quest"
@@ -76,10 +79,12 @@ class IncomeExpenseViewController: UIViewController {
         view.bringSubviewToFront(containerViewPopUp)
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        self.amountLabel.keyboardType = .numberPad
+       
         
-        view.layoutIfNeeded()
+         view.layoutIfNeeded()
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -89,33 +94,33 @@ class IncomeExpenseViewController: UIViewController {
             }
         }
     }
-    
+
     @objc func keyboardWillHide(notification: NSNotification) {
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
         }
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.becomeFirstResponder()
         self.view.endEditing(true)
     }
-    
+
     @IBAction func saveRecord(_ sender: Any) {
        PopUpRecordDisActice()
         InsertExpenses()
         nameLabelExpense.text = ""
         dateLabel.text = ""
         amountLabel.text = ""
-        
+
         self.view.endEditing(true)
     }
-    
+
     @IBAction func cancelRecord(_ sender: Any) {
         PopUpRecordDisActice()
         nameLabelExpense.text = ""
@@ -123,22 +128,22 @@ class IncomeExpenseViewController: UIViewController {
         amountLabel.text = ""
         self.view.endEditing(true)
     }
-    
+
     let datePicker = UIDatePicker()
     func GetDate()  {
         datePicker.datePickerMode = UIDatePicker.Mode.date
         datePicker.addTarget(self, action: #selector(self.DatePickerValue(sender:)), for: .valueChanged)
-        
+
         if datePicker == datePicker {
             self.dateLabel.inputView = datePicker
             self.dateLabel.text = "Today"
         }else{
             self.dateLabel.inputView = datePicker
-            
+
         }
         self.view.endEditing(true)
     }
-    
+
     @objc func DatePickerValue(sender : UIDatePicker)   {
         let formatter = DateFormatter()
         formatter.dateStyle = DateFormatter.Style.long
@@ -165,13 +170,16 @@ class IncomeExpenseViewController: UIViewController {
             self.containerViewPopUp.alpha = 1
         }, completion: nil)
     }
-    
+
     func PopUpRecordDisActice() {
         UIView.animate(withDuration: 0.5, animations: {
             self.viewCustumPopUp.alpha = 0
             self.containerViewPopUp.alpha = 0
         }, completion: nil)
     }
+
+   
+
 
     func UICostum()  {
         //navigation bar
@@ -201,7 +209,7 @@ class IncomeExpenseViewController: UIViewController {
         viewContainerTabel.addSubview(headerTableExpenses)
         viewContainerTabel.addSubview(tableLatestExpenses)
  
-        //popup custom
+//        //popup custom
         containerViewPopUp.clipsToBounds = true
         containerViewPopUp.layer.cornerRadius = 10
         saveButton.layer.cornerRadius = 5
@@ -213,7 +221,7 @@ class IncomeExpenseViewController: UIViewController {
             viewBudget.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant: 10),
             viewBudget.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             viewBudget.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            viewBudget.heightAnchor.constraint(equalToConstant: view.frame.height/5)
+            viewBudget.heightAnchor.constraint(equalToConstant: view.frame.height/8)
             ])
         viewBudget.backgroundColor = #colorLiteral(red: 0.2941176471, green: 0.7176470588, blue: 0.4666666667, alpha: 1)
         viewBudget.clipsToBounds = true
@@ -229,7 +237,7 @@ class IncomeExpenseViewController: UIViewController {
             ])
         budgetLabel.text = "Budget Remaining"
         budgetLabel.textAlignment = .left
-        budgetLabel.font = UIFont(name: "Helvetica Neue", size: 14)
+        budgetLabel.font = UIFont(name: "SF Pro Text", size: 16)
         budgetLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
         //amount Label
@@ -243,7 +251,7 @@ class IncomeExpenseViewController: UIViewController {
     
         amountBudget.text = "\(currency.userDefaultCurrency) \(budget)"
         amountBudget.textAlignment = .right
-        amountBudget.font = UIFont(name: "Helvetica Neue", size: 14)
+        amountBudget.font = UIFont(name: "SF Pro Text", size: 16)
         amountBudget.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
         //warning Label
@@ -251,12 +259,12 @@ class IncomeExpenseViewController: UIViewController {
         NSLayoutConstraint.activate([
             warninglLabel.leadingAnchor.constraint(equalTo: viewBudget.leadingAnchor),
             warninglLabel.trailingAnchor.constraint(equalTo: viewBudget.trailingAnchor),
-            warninglLabel.centerXAnchor.constraint(equalTo: viewBudget.centerXAnchor),
-            warninglLabel.centerYAnchor.constraint(equalTo: viewBudget.centerYAnchor)
+            warninglLabel.bottomAnchor.constraint(equalTo: viewBudget.bottomAnchor, constant : -20),
+            warninglLabel.centerXAnchor.constraint(equalTo: viewBudget.centerXAnchor)
         ])
         warninglLabel.text           = "Doing Great!"
         warninglLabel.textAlignment = .center
-        warninglLabel.font = UIFont(name: "Helvetica Neue", size: 40)
+        warninglLabel.font = UIFont(name: "SF Pro Text", size: 35)
         warninglLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
 
         
@@ -265,7 +273,7 @@ class IncomeExpenseViewController: UIViewController {
        
         collectionView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         NSLayoutConstraint.activate([
-            collectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
+            collectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4),
             collectionView.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor),
             collectionView.topAnchor.constraint(equalTo: headerCollectionLabel.bottomAnchor)
@@ -290,7 +298,7 @@ class IncomeExpenseViewController: UIViewController {
             headerCollectionLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             headerCollectionLabel.topAnchor.constraint(equalTo: viewBudget.bottomAnchor, constant : 20 ),
             ])
-        headerCollectionLabel.font = UIFont(name: "Helvetica Neue", size: 15)
+        headerCollectionLabel.font = UIFont(name: "SF Pro Text", size: 15)
         headerCollectionLabel.text = "Add Record"
         headerCollectionLabel.textAlignment = .left
     
@@ -301,7 +309,7 @@ class IncomeExpenseViewController: UIViewController {
             headerTableExpenses.trailingAnchor.constraint(equalTo: viewContainerTabel.safeAreaLayoutGuide.trailingAnchor),
             headerTableExpenses.topAnchor.constraint(equalTo: viewContainerTabel.topAnchor, constant : 10 ),
             ])
-        headerTableExpenses.font = UIFont(name: "Helvetica Neue", size: 15)
+        headerTableExpenses.font = UIFont(name: "SF Pro Text", size: 15)
         headerTableExpenses.textAlignment = .left
         headerTableExpenses.text = "Latest Expenses"
         
@@ -315,7 +323,7 @@ class IncomeExpenseViewController: UIViewController {
             tableLatestExpenses.widthAnchor.constraint(equalTo: viewContainerTabel.widthAnchor)
             ])
         
-        tableLatestExpenses.separatorStyle = .none
+//        tableLatestExpenses.separatorStyle = .none
         
     }
 }
@@ -330,11 +338,11 @@ extension IncomeExpenseViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
          
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as! CategoryCollectionViewCell
-        cell.layer.borderColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
-        cell.layer.borderWidth = 1
-        cell.clipsToBounds = true
-        cell.layer.cornerRadius = 15
-        cell.categoryNameLabel.font = UIFont(name: "Helvetica Neue", size: 12)
+//        cell.containerImage.layer.borderColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
+        cell.containerImage.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        cell.containerImage.layer.borderWidth = 1
+        cell.containerImage.clipsToBounds = true
+        cell.containerImage.layer.cornerRadius = 10
         cell.categoryNameLabel.text = getCategory![indexPath.row].desc
         guard let category = getCategory?[indexPath.row].iconName else {
             print("error")
@@ -353,20 +361,25 @@ extension IncomeExpenseViewController : UICollectionViewDelegateFlowLayout {
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.height * 0.8 / 3
-        return CGSize(width: width , height: width)
+        let width = collectionView.frame.width * 0.8 / 4
+        let height =  width + 20
+        
+        return CGSize(width: width , height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,insetForSectionAt section: Int) -> UIEdgeInsets {
-        let width = collectionView.frame.height * 0.8 / 3
+        let width = collectionView.frame.width * 0.8 / 4
+        let height = width + 20
         let marginRightLeft = ( collectionView.frame.width - ( width * 4 ))/8
-        let marginTopBottom = (collectionView.frame.height -  ( width * 3 )) / 6
-        print("\(width)")
-        print("\(marginRightLeft)")
-        print("\(marginTopBottom)")
-        print("\(collectionView.frame.width)")
+        let marginTopBottom = (collectionView.frame.height -  ( height * 3 )) / 6
+        print("1 = \(width)")
+        print("2 = \(marginRightLeft)")
+        print("3 = \(marginTopBottom)")
+        print("4 = \(collectionView.frame.width)")
+        print("6 = \(collectionView.frame.height)")
+        print("7 = \(height)")
         print("\(collectionView.frame.height)")
-        let section = UIEdgeInsets(top: marginTopBottom, left: marginRightLeft, bottom: marginTopBottom, right: marginRightLeft)
+        let section = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         return section
     }
     
@@ -374,7 +387,7 @@ extension IncomeExpenseViewController : UICollectionViewDelegateFlowLayout {
         let width = collectionView.frame.height * 0.8 / 3
         let sections = ( collectionView.frame.width - ( width * 4 ))/4
         
-        return sections
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -386,6 +399,8 @@ extension IncomeExpenseViewController : UICollectionViewDelegateFlowLayout {
 extension IncomeExpenseViewController: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableLatestExpenses.reloadData()
+        self.getCategory = FinanceManager.shared.categoryList(type: .expense)
+        self.collectionView.reloadData()
     }
 }
 
@@ -411,6 +426,7 @@ extension IncomeExpenseViewController : UITableViewDelegate, UITableViewDataSour
             }
             cell.categoryImage.image = UIImage(named: "\(category)")
         }
+        cell.isUserInteractionEnabled = false
         print()
         return cell
     }
