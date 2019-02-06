@@ -34,6 +34,8 @@
 		910DBF1121E5E5FB004C27CF /* DefaultIncomeCategories.plist in Resources */ = {isa = PBXBuildFile; fileRef = 910DBF1021E5E5FB004C27CF /* DefaultIncomeCategories.plist */; };
 		910DBF1321E5E626004C27CF /* DefaultWallets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 910DBF1221E5E626004C27CF /* DefaultWallets.plist */; };
 		910DBF1521E5E93C004C27CF /* SetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910DBF1421E5E93C004C27CF /* SetupManager.swift */; };
+		911667B9220ACF4300982D77 /* FinanceManager+Transactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911667B8220ACF4300982D77 /* FinanceManager+Transactions.swift */; };
+		911667BB220AD1C700982D77 /* FinanceManager+Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911667BA220AD1C700982D77 /* FinanceManager+Budget.swift */; };
 		91606AEB21E2FE1A00182E03 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91606AEA21E2FE1A00182E03 /* CoreDataHelper.swift */; };
 		91606AF221E30A2300182E03 /* PersonalFinance.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91606AF021E30A2300182E03 /* PersonalFinance.xcdatamodeld */; };
 		9168811B2208B06700CA9B79 /* GeneralHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9168811A2208B06700CA9B79 /* GeneralHelper.swift */; };
@@ -100,6 +102,8 @@
 		910DBF1021E5E5FB004C27CF /* DefaultIncomeCategories.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultIncomeCategories.plist; sourceTree = "<group>"; };
 		910DBF1221E5E626004C27CF /* DefaultWallets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultWallets.plist; sourceTree = "<group>"; };
 		910DBF1421E5E93C004C27CF /* SetupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupManager.swift; sourceTree = "<group>"; };
+		911667B8220ACF4300982D77 /* FinanceManager+Transactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinanceManager+Transactions.swift"; sourceTree = "<group>"; };
+		911667BA220AD1C700982D77 /* FinanceManager+Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinanceManager+Budget.swift"; sourceTree = "<group>"; };
 		91606AEA21E2FE1A00182E03 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		91606AF121E30A2300182E03 /* PersonalFinance.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalFinance.xcdatamodel; sourceTree = "<group>"; };
 		9168811A2208B06700CA9B79 /* GeneralHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralHelper.swift; sourceTree = "<group>"; };
@@ -209,6 +213,8 @@
 				910DBF0621E5E459004C27CF /* CategoryType.swift */,
 				910DBF0821E5E478004C27CF /* TransactionType.swift */,
 				910DBF0A21E5E488004C27CF /* FinanceManager.swift */,
+				911667B8220ACF4300982D77 /* FinanceManager+Transactions.swift */,
+				911667BA220AD1C700982D77 /* FinanceManager+Budget.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -489,10 +495,12 @@
 				9294028E21EC3788005B5EA3 /* ReportTableViewCell.swift in Sources */,
 				9189BA7D21F583E5004F9194 /* WalletViewController.swift in Sources */,
 				91D5B92521BFA9A900F0373C /* ViewController.swift in Sources */,
+				911667B9220ACF4300982D77 /* FinanceManager+Transactions.swift in Sources */,
 				91D5B93B21BFAF4400F0373C /* IncomeExpense.swift in Sources */,
 				9197BA6D2205F96100CB0B3F /* BiometricHelper.swift in Sources */,
 				9294028B21EC3788005B5EA3 /* ReportCategoryDetailsViewController.swift in Sources */,
 				F3F21C8E21E44E1A0035DEB0 /* SettingTableViewController.swift in Sources */,
+				911667BB220AD1C700982D77 /* FinanceManager+Budget.swift in Sources */,
 				91606AEB21E2FE1A00182E03 /* CoreDataHelper.swift in Sources */,
 				9294028D21EC3788005B5EA3 /* ReportViewController.swift in Sources */,
 				91D5B93921BFAF2600F0373C /* IncomeExpenseViewController.swift in Sources */,
