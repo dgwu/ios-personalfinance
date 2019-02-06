@@ -29,4 +29,12 @@ extension Date {
     func nextStartOfMonth() -> Date {
         return Calendar.current.date(byAdding: DateComponents(month: 1), to: self.startOfMonth())!
     }
+    
+    func getDaysInMonth() -> Int{
+        return Calendar.current.range(of: .day, in: .month, for: self)?.count ?? 0
+    }
+    
+    func getCurrentDayNumber() -> Int {
+        return Calendar.current.component(.day, from: self)
+    }
 }
