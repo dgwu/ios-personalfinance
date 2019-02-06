@@ -313,6 +313,7 @@ extension IncomeExpenseViewController: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableLatestExpenses.reloadData()
         self.getCategory = FinanceManager.shared.categoryList(type: .expense)
+        self.budgetAmountLabel.text = GeneralHelper.displayAmount(amount: financeManager.monthlyRemainingBudget())
     }
 }
 

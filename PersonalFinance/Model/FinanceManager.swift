@@ -66,7 +66,7 @@ class FinanceManager {
         }
         
         
-        return remainingBudget
+        return remainingBudget - totalExpenseInPeriod
     }
     
     public func walletList() -> [Wallet]? {

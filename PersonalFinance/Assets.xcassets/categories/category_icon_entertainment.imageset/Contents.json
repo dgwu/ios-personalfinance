@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "category_icon_entertainment.png",
+      "filename" : "category_icon_ententertainment@1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "category_icon_ententertainment@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "category_icon_ententertainment@3x.png",
       "scale" : "3x"
     }
   ],
