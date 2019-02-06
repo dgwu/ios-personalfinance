@@ -24,6 +24,7 @@ class IncomeExpenseViewController: UIViewController {
         
         return cv
     }()
+    let slider : UISlider = UISlider()
     
     let tableLatestExpenses : UITableView = UITableView()
     var getCategory: [Category]?
@@ -91,25 +92,41 @@ class IncomeExpenseViewController: UIViewController {
         UINavigationBar.appearance().isTranslucent = false
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         //createComponen
+        
+        
         let viewBudget      : UIView    = UIView()
+        let viewBudgetSection : UIView = UIView()
         budgetAmountLabel = UILabel()
         let budgetLabel     : UILabel   = UILabel()
-        let warninglLabel   : UILabel   = UILabel()
         let headerCollectionLabel : UILabel = UILabel()
         let viewContainerTabel : UIView = UIView()
         let headerTableExpenses : UILabel = UILabel()
-       
+        
+        let worseLable : UILabel = UILabel()
+        let okLabel : UILabel = UILabel()
+        let greatLable : UILabel = UILabel()
+        let worseAmountLable : UILabel = UILabel()
+        let okAmountLable : UILabel = UILabel()
+        let greatAmountLable : UILabel = UILabel()
+        
         //add componen to view
         view.addSubview(viewBudget)
-        viewBudget.addSubview(budgetAmountLabel)
-        viewBudget.addSubview(budgetLabel)
-        viewBudget.addSubview(warninglLabel)
+        viewBudget.addSubview(viewBudgetSection)
+        viewBudgetSection.addSubview(budgetLabel)
+        viewBudgetSection.addSubview(budgetAmountLabel)
+        viewBudget.addSubview(slider)
         view.addSubview(collectionView)
         view.addSubview(headerCollectionLabel)
         view.addSubview(viewContainerTabel)
         viewContainerTabel.addSubview(headerTableExpenses)
         viewContainerTabel.addSubview(tableLatestExpenses)
- 
+        
+        viewBudget.addSubview(worseLable)
+        viewBudget.addSubview(okLabel)
+        viewBudget.addSubview(greatLable)
+        viewBudget.addSubview(worseAmountLable)
+        viewBudget.addSubview(okAmountLable)
+        viewBudget.addSubview(greatAmountLable)
         
         //view budget
         viewBudget.translatesAutoresizingMaskIntoConstraints = false
@@ -123,13 +140,24 @@ class IncomeExpenseViewController: UIViewController {
         viewBudget.clipsToBounds = true
         viewBudget.layer.cornerRadius  = 5
         
+        //View budget section
+        viewBudgetSection.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            viewBudgetSection.topAnchor.constraint(equalTo: viewBudget.topAnchor),
+            viewBudgetSection.leadingAnchor.constraint(equalTo: viewBudget.leadingAnchor),
+            viewBudgetSection.trailingAnchor.constraint(equalTo: viewBudget.trailingAnchor),
+            viewBudgetSection.heightAnchor.constraint(equalToConstant: (view.frame.height/8)/3)
+            ])
+        viewBudgetSection.clipsToBounds = true
+        viewBudgetSection.backgroundColor = #colorLiteral(red: 0.258031249, green: 0.623462081, blue: 0.4137890041, alpha: 1)
+        print("Height view section :\(viewBudgetSection.frame.size.height)")
+        
         //budget Label
         budgetLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            budgetLabel.leftAnchor.constraint(equalTo: viewBudget.leftAnchor, constant : 10),
-            budgetLabel.topAnchor.constraint(equalTo: viewBudget.topAnchor, constant: 10),
-//            budgetLabel.rightAnchor.constraint(equalTo: amountBudget.leftAnchor, constant: 10),
-            budgetLabel.heightAnchor.constraint(equalTo: budgetLabel.heightAnchor)
+            budgetLabel.leftAnchor.constraint(equalTo: viewBudgetSection.leftAnchor, constant : 10),
+            budgetLabel.topAnchor.constraint(equalTo: viewBudgetSection.topAnchor),
+            budgetLabel.bottomAnchor.constraint(equalTo: viewBudgetSection.bottomAnchor)
             ])
         budgetLabel.text = "Budget Remaining"
         budgetLabel.textAlignment = .left
@@ -139,34 +167,92 @@ class IncomeExpenseViewController: UIViewController {
         //amount Label
         budgetAmountLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            budgetAmountLabel.trailingAnchor.constraint(equalTo: viewBudget.trailingAnchor, constant: -10),
+            budgetAmountLabel.trailingAnchor.constraint(equalTo: viewBudgetSection.trailingAnchor, constant: -10),
             budgetAmountLabel.leadingAnchor.constraint(equalTo: budgetLabel.trailingAnchor, constant: 10),
-            budgetAmountLabel.topAnchor.constraint(equalTo: viewBudget.topAnchor, constant : 10),
+            budgetAmountLabel.topAnchor.constraint(equalTo: viewBudgetSection.topAnchor),
+            budgetAmountLabel.bottomAnchor.constraint(equalTo: viewBudgetSection.bottomAnchor)
         ])
         let budget = financeManager.monthlyRemainingBudget()
-    
         budgetAmountLabel.text = GeneralHelper.displayAmount(amount: budget)
         budgetAmountLabel.textAlignment = .right
         budgetAmountLabel.font = UIFont(name: "SF Pro Text", size: 16)
         budgetAmountLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
-        //warning Label
-        warninglLabel.translatesAutoresizingMaskIntoConstraints = false
+        //slider budger
+        slider.translatesAutoresizingMaskIntoConstraints =  false
         NSLayoutConstraint.activate([
-            warninglLabel.leadingAnchor.constraint(equalTo: viewBudget.leadingAnchor),
-            warninglLabel.trailingAnchor.constraint(equalTo: viewBudget.trailingAnchor),
-            warninglLabel.bottomAnchor.constraint(equalTo: viewBudget.bottomAnchor, constant : -20),
-            warninglLabel.centerXAnchor.constraint(equalTo: viewBudget.centerXAnchor)
-        ])
-        warninglLabel.text           = "Doing Great!"
-        warninglLabel.textAlignment = .center
-        warninglLabel.font = UIFont(name: "SF Pro Text", size: 35)
-        warninglLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-
+            slider.topAnchor.constraint(equalTo: viewBudgetSection.bottomAnchor, constant: 30),
+            slider.leadingAnchor.constraint(equalTo: viewBudget.leadingAnchor, constant: 20),
+            slider.trailingAnchor.constraint(equalTo: viewBudget.trailingAnchor, constant: -20),
+            slider.bottomAnchor.constraint(equalTo: viewBudget.bottomAnchor, constant: -30)
+            ])
+            slider.tintColor = UIColor.gray
+            slider.value = slider.maximumValue
+            slider.thumbTintColor = UIColor.gray
+            print("\(slider.frame.height)")
+        //label slider
+        okLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            okLabel.topAnchor.constraint(equalTo: viewBudgetSection.bottomAnchor, constant: 5),
+            okLabel.centerXAnchor.constraint(equalTo: viewBudget.centerXAnchor)
+            ])
+        okLabel.text = "OK"
+        okLabel.textAlignment = .center
+        okLabel.font = UIFont(name: "SF Pro Text", size: 12)
+        okLabel.textColor = UIColor.white
+        
+        greatLable.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            greatLable.topAnchor.constraint(equalTo: viewBudgetSection.bottomAnchor, constant: 5),
+            greatLable.trailingAnchor.constraint(equalTo: viewBudget.trailingAnchor, constant : -20)
+            ])
+        greatLable.text = "GREAT"
+        greatLable.textAlignment = .right
+        greatLable.font = UIFont(name: "SF Pro Text", size: 12)
+        greatLable.textColor = UIColor.white
+        
+        worseLable.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            worseLable.topAnchor.constraint(equalTo: viewBudgetSection.bottomAnchor, constant: 5),
+            worseLable.leadingAnchor.constraint(equalTo: viewBudget.leadingAnchor, constant : 20)
+            ])
+        worseLable.text = "WORSE"
+        worseLable.textAlignment = .left
+        worseLable.font = UIFont(name: "SF Pro Text", size: 12)
+        worseLable.textColor = UIColor.white
+        
+        okAmountLable.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            okAmountLable.bottomAnchor.constraint(equalTo: viewBudget.bottomAnchor, constant: -5),
+            okAmountLable.centerXAnchor.constraint(equalTo: viewBudget.centerXAnchor)
+            ])
+        okAmountLable.text = "500K"
+        okAmountLable.textAlignment = .center
+        okAmountLable.font = UIFont(name: "SF Pro Text", size: 12)
+        okAmountLable.textColor = UIColor.white
+        
+        greatAmountLable.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            greatAmountLable.bottomAnchor.constraint(equalTo: viewBudget.bottomAnchor, constant: -5),
+            greatAmountLable.trailingAnchor.constraint(equalTo: viewBudget.trailingAnchor, constant: -20)
+            ])
+        greatAmountLable.text = "1000K"
+        greatAmountLable.textAlignment = .right
+        greatAmountLable.font = UIFont(name: "SF Pro Text", size: 12)
+        greatAmountLable.textColor = UIColor.white
+        
+        worseAmountLable.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            worseAmountLable.bottomAnchor.constraint(equalTo: viewBudget.bottomAnchor, constant: -5),
+            worseAmountLable.leadingAnchor.constraint(equalTo: viewBudget.leadingAnchor, constant: 20)
+            ])
+        worseAmountLable.text = "25K"
+        worseAmountLable.textAlignment = .left
+        worseAmountLable.font = UIFont(name: "SF Pro Text", size: 12)
+        worseAmountLable.textColor = UIColor.white
         
         //collection view
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-       
         collectionView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         NSLayoutConstraint.activate([
             collectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.35),
@@ -223,8 +309,7 @@ class IncomeExpenseViewController: UIViewController {
             tableLatestExpenses.bottomAnchor.constraint(equalTo: viewContainerTabel.bottomAnchor),
             tableLatestExpenses.widthAnchor.constraint(equalTo: viewContainerTabel.widthAnchor)
             ])
-        
-        
+ 
         
     }
 }
@@ -264,21 +349,6 @@ extension IncomeExpenseViewController : UICollectionViewDelegateFlowLayout {
         return CGSize(width: width , height: height)
     }
     
-//    func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,insetForSectionAt section: Int) -> UIEdgeInsets {
-//        let width = collectionView.frame.width * 0.8 / 4
-//        let height = width + 20
-//        let marginRightLeft = ( collectionView.frame.width - collectionView.frame.width * 0.8  )/8
-//        let marginTopBottom = (collectionView.frame.height -  ( height * 3 )) / 6
-//        print("1 = \(width)")
-//        print("2 = \(marginRightLeft)")
-//        print("3 = \(marginTopBottom)")
-//        print("4 = \(collectionView.frame.width)")
-//        print("6 = \(collectionView.frame.height)")
-//        print("7 = \(height)")
-//        print("\(collectionView.frame.height)")
-//        let section = UIEdgeInsets(top: 0, left: marginRightLeft, bottom: 0, right: marginRightLeft)
-//        return UIEdgeInsets.zero
-//    }
     
     func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         

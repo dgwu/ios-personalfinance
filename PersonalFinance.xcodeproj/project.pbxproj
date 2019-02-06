@@ -193,8 +193,8 @@
 			isa = PBXGroup;
 			children = (
 				674F56802207E7CB0033D948 /* cardViewRecord */,
-				91D5B93821BFAF2600F0373C /* IncomeExpenseViewController.swift */,
 				91D5B93A21BFAF4400F0373C /* IncomeExpense.swift */,
+				91D5B93821BFAF2600F0373C /* IncomeExpenseViewController.swift */,
 				91D5B93C21BFAF7C00F0373C /* IncomeExpense.storyboard */,
 				67DEF8C121F16966007A7E6A /* CategoryCollectionViewCell.swift */,
 				67DEF8C221F16966007A7E6A /* CategoryCollectionViewCell.xib */,
