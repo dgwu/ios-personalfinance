@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Qe-aV-cdt">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="k5R-NW-PAq">
+            <objects>
+                <viewController storyboardIdentifier="StepOne" id="mJ4-WB-1ao" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Efm-al-DbW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmX-Xe-wXO">
+                                <rect key="frame" x="29" y="300" width="293" height="42"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="35"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CashQuest aims to make your financial journey easier." lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="18" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mzg-fr-mgR">
+                                <rect key="frame" x="29" y="338" width="343" height="125.33333333333331"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="35"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="KpW-jo-PAb">
+                                <rect key="frame" x="71" y="90" width="312" height="202"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="KpW-jo-PAb" secondAttribute="height" multiplier="156:101" id="IbF-Em-gVo"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.27270543575286865" green="0.50133627653121948" blue="0.7686571478843689" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.060791000720000002" green="0.47766065600000002" blue="0.76866102219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="KpW-jo-PAb" firstAttribute="top" secondItem="wzI-iu-QlW" secondAttribute="top" constant="46" id="0Tu-r4-iay"/>
+                            <constraint firstAttribute="trailing" secondItem="KpW-jo-PAb" secondAttribute="trailing" constant="-8" id="OSI-49-nWU"/>
+                            <constraint firstItem="Mzg-fr-mgR" firstAttribute="leading" secondItem="wzI-iu-QlW" secondAttribute="leading" constant="29" id="QAT-7R-YZC"/>
+                            <constraint firstItem="wzI-iu-QlW" firstAttribute="trailing" secondItem="Mzg-fr-mgR" secondAttribute="trailing" constant="3" id="TwR-5d-l0T"/>
+                            <constraint firstItem="wzI-iu-QlW" firstAttribute="trailing" secondItem="wmX-Xe-wXO" secondAttribute="trailing" constant="53" id="VOi-RS-Sg1"/>
+                            <constraint firstItem="KpW-jo-PAb" firstAttribute="leading" secondItem="wzI-iu-QlW" secondAttribute="leading" constant="71" id="nWr-0k-Lx8"/>
+                            <constraint firstItem="wmX-Xe-wXO" firstAttribute="top" secondItem="KpW-jo-PAb" secondAttribute="bottom" constant="8" id="oZT-I6-NK2"/>
+                            <constraint firstItem="Mzg-fr-mgR" firstAttribute="top" secondItem="KpW-jo-PAb" secondAttribute="bottom" constant="46" id="wHu-8X-xf7"/>
+                            <constraint firstItem="wmX-Xe-wXO" firstAttribute="leading" secondItem="wzI-iu-QlW" secondAttribute="leading" constant="29" id="wm9-6p-iF4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wzI-iu-QlW"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3aR-jh-EKD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1207.2" y="711.57635467980299"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="eiQ-hb-HYK">
+            <objects>
+                <viewController storyboardIdentifier="StepTwo" id="dAS-dJ-IVh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="StepTwo" id="GzQ-UI-Zjg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Effortlessly record your transactions and understand your spending habits!" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="18" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2aA-sO-eDZ">
+                                <rect key="frame" x="29" y="296" width="317" height="192"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="35"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Chart-1" translatesAutoresizingMaskIntoConstraints="NO" id="fP4-2R-tak">
+                                <rect key="frame" x="29" y="81" width="330" height="184"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.27270543580000001" green="0.50133627650000001" blue="0.76865714789999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <viewLayoutGuide key="safeArea" id="gPz-GG-C7s"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WX1-bS-ckI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-468" y="711.57635467980299"/>
+        </scene>
+        <!--Validate Onboarding View Controller-->
+        <scene sceneID="eAh-ay-c95">
+            <objects>
+                <viewController storyboardIdentifier="StepThree" id="fTY-OB-SdK" customClass="ValidateOnboardingViewController" customModule="PersonalFinance" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YVh-Rb-rZn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nfu-2y-6Zb">
+                                <rect key="frame" x="12" y="114" width="347" height="99"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Monthly Income" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uld-Eo-6P1">
+                                        <rect key="frame" x="8" y="10" width="333" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="go"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Monthly Saving" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5sm-3m-b6H">
+                                        <rect key="frame" x="8" y="60" width="333" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="go"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c26-dd-Gk0">
+                                        <rect key="frame" x="4" y="50" width="335" height="2"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Get started by inputting your monthly income and budget." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OmG-kO-ntw">
+                                <rect key="frame" x="21" y="352" width="328" height="146"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="35"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUe-eN-RHB">
+                                <rect key="frame" x="113" y="286" width="148" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.25910375320000001" green="0.80081459180000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Get Start &gt;&gt;">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnStart:" destination="fTY-OB-SdK" eventType="touchUpInside" id="Js5-vt-Kqk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.27270543580000001" green="0.50133627650000001" blue="0.76865714789999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <viewLayoutGuide key="safeArea" id="saa-ve-R8s"/>
+                    </view>
+                    <connections>
+                        <outlet property="btnOutlet" destination="hUe-eN-RHB" id="QyV-8T-q38"/>
+                        <outlet property="txtIncome" destination="Uld-Eo-6P1" id="Kkq-6X-mIx"/>
+                        <outlet property="txtSaving" destination="5sm-3m-b6H" id="9Io-uu-lLS"/>
+                        <outlet property="viewSaving" destination="Nfu-2y-6Zb" id="KHB-gF-qaK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mwQ-79-kAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="223.19999999999999" y="713.79310344827593"/>
+        </scene>
+        <!--OnBoarding-->
+        <scene sceneID="ns2-xm-vss">
+            <objects>
+                <pageViewController storyboardIdentifier="OnBoarding" autoresizesArchivedViewToFullSize="NO" title="OnBoarding" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="none" id="9Qe-aV-cdt" customClass="OnBoardingViewController" customModule="PersonalFinance" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tvz-AS-EVM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-468" y="-13"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Chart-1" width="290" height="162"/>
+        <image name="Logo" width="394" height="202"/>
+    </resources>
+</document>
