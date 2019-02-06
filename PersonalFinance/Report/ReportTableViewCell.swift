@@ -9,9 +9,10 @@
 import UIKit
 
 class ReportTableViewCell: UITableViewCell {
-    @IBOutlet weak var rank: UILabel!
+    
     @IBOutlet weak var expenseCategory: UILabel!
     @IBOutlet weak var expenseCategoryValue: UILabel!
+    @IBOutlet weak var categorySymbolImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

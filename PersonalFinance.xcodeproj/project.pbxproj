@@ -7,7 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		674F56822207E7FC0033D948 /* CardViewRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674F56812207E7FC0033D948 /* CardViewRecordVC.swift */; };
+		674F56842207F2610033D948 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674F56832207F2610033D948 /* PresentationController.swift */; };
+		674F56862207F3420033D948 /* PresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674F56852207F3420033D948 /* PresentationManager.swift */; };
 		6774510921DF1B9600F88BBF /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6774510821DF1B8C00F88BBF /* Register.storyboard */; };
+		679EBE442203F96E009EA2D0 /* SF-Pro-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 679EBE382203F96D009EA2D0 /* SF-Pro-Text-Heavy.otf */; };
+		679EBE452203F96E009EA2D0 /* SF-Pro-Text-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 679EBE392203F96D009EA2D0 /* SF-Pro-Text-MediumItalic.otf */; };
+		679EBE462203F96E009EA2D0 /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 679EBE3A2203F96D009EA2D0 /* SF-Pro-Text-Light.otf */; };
+		679EBE472203F96E009EA2D0 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 679EBE3B2203F96D009EA2D0 /* SF-Pro-Text-Regular.otf */; };
+		679EBE482203F96E009EA2D0 /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 679EBE3C2203F96D009EA2D0 /* SF-Pro-Text-Bold.otf */; };
+		679EBE492203F96E009EA2D0 /* SF-Pro-Text-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 679EBE3D2203F96D009EA2D0 /* SF-Pro-Text-BoldItalic.otf */; };
+		679EBE4A2203F96E009EA2D0 /* SF-Pro-Text-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 679EBE3E2203F96D009EA2D0 /* SF-Pro-Text-RegularItalic.otf */; };
+		679EBE4B2203F96E009EA2D0 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 679EBE3F2203F96D009EA2D0 /* SF-Pro-Text-Semibold.otf */; };
+		679EBE4C2203F96E009EA2D0 /* SF-Pro-Text-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 679EBE402203F96D009EA2D0 /* SF-Pro-Text-HeavyItalic.otf */; };
+		679EBE4D2203F96E009EA2D0 /* SF-Pro-Text-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 679EBE412203F96D009EA2D0 /* SF-Pro-Text-LightItalic.otf */; };
+		679EBE4E2203F96E009EA2D0 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 679EBE422203F96D009EA2D0 /* SF-Pro-Text-Medium.otf */; };
+		679EBE4F2203F96E009EA2D0 /* SF-Pro-Text-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 679EBE432203F96D009EA2D0 /* SF-Pro-Text-SemiboldItalic.otf */; };
 		67DEF8C321F16966007A7E6A /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DEF8C121F16966007A7E6A /* CategoryCollectionViewCell.swift */; };
 		67DEF8C421F16966007A7E6A /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67DEF8C221F16966007A7E6A /* CategoryCollectionViewCell.xib */; };
 		67DEF8C621F3874D007A7E6A /* LatestExpensesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DEF8C521F3874D007A7E6A /* LatestExpensesTVC.swift */; };
@@ -21,6 +36,7 @@
 		910DBF1521E5E93C004C27CF /* SetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910DBF1421E5E93C004C27CF /* SetupManager.swift */; };
 		91606AEB21E2FE1A00182E03 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91606AEA21E2FE1A00182E03 /* CoreDataHelper.swift */; };
 		91606AF221E30A2300182E03 /* PersonalFinance.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91606AF021E30A2300182E03 /* PersonalFinance.xcdatamodeld */; };
+		9168811B2208B06700CA9B79 /* GeneralHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9168811A2208B06700CA9B79 /* GeneralHelper.swift */; };
 		9189BA7421F566E9004F9194 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9189BA7321F566E9004F9194 /* CategoryTableViewCell.swift */; };
 		9189BA7921F5838C004F9194 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9189BA7821F5838C004F9194 /* Wallet.storyboard */; };
 		9189BA7B21F583D3004F9194 /* WalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9189BA7A21F583D3004F9194 /* WalletTableViewCell.swift */; };
@@ -57,7 +73,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		674F56812207E7FC0033D948 /* CardViewRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewRecordVC.swift; sourceTree = "<group>"; };
+		674F56832207F2610033D948 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		674F56852207F3420033D948 /* PresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationManager.swift; sourceTree = "<group>"; };
 		6774510821DF1B8C00F88BBF /* Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
+		679EBE382203F96D009EA2D0 /* SF-Pro-Text-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Heavy.otf"; sourceTree = "<group>"; };
+		679EBE392203F96D009EA2D0 /* SF-Pro-Text-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-MediumItalic.otf"; sourceTree = "<group>"; };
+		679EBE3A2203F96D009EA2D0 /* SF-Pro-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Light.otf"; sourceTree = "<group>"; };
+		679EBE3B2203F96D009EA2D0 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
+		679EBE3C2203F96D009EA2D0 /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
+		679EBE3D2203F96D009EA2D0 /* SF-Pro-Text-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-BoldItalic.otf"; sourceTree = "<group>"; };
+		679EBE3E2203F96D009EA2D0 /* SF-Pro-Text-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-RegularItalic.otf"; sourceTree = "<group>"; };
+		679EBE3F2203F96D009EA2D0 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
+		679EBE402203F96D009EA2D0 /* SF-Pro-Text-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-HeavyItalic.otf"; sourceTree = "<group>"; };
+		679EBE412203F96D009EA2D0 /* SF-Pro-Text-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-LightItalic.otf"; sourceTree = "<group>"; };
+		679EBE422203F96D009EA2D0 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
+		679EBE432203F96D009EA2D0 /* SF-Pro-Text-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-SemiboldItalic.otf"; sourceTree = "<group>"; };
 		67DEF8C121F16966007A7E6A /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		67DEF8C221F16966007A7E6A /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		67DEF8C521F3874D007A7E6A /* LatestExpensesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestExpensesTVC.swift; sourceTree = "<group>"; };
@@ -71,6 +102,7 @@
 		910DBF1421E5E93C004C27CF /* SetupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupManager.swift; sourceTree = "<group>"; };
 		91606AEA21E2FE1A00182E03 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		91606AF121E30A2300182E03 /* PersonalFinance.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalFinance.xcdatamodel; sourceTree = "<group>"; };
+		9168811A2208B06700CA9B79 /* GeneralHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralHelper.swift; sourceTree = "<group>"; };
 		9189BA7321F566E9004F9194 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		9189BA7821F5838C004F9194 /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		9189BA7A21F583D3004F9194 /* WalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTableViewCell.swift; sourceTree = "<group>"; };
@@ -120,6 +152,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		674F56802207E7CB0033D948 /* cardViewRecord */ = {
+			isa = PBXGroup;
+			children = (
+				674F56812207E7FC0033D948 /* CardViewRecordVC.swift */,
+				674F56832207F2610033D948 /* PresentationController.swift */,
+				674F56852207F3420033D948 /* PresentationManager.swift */,
+			);
+			path = cardViewRecord;
+			sourceTree = "<group>";
+		};
 		6774510721DF1B8C00F88BBF /* Register */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,9 +170,29 @@
 			path = Register;
 			sourceTree = "<group>";
 		};
+		679EBE372203F96D009EA2D0 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				679EBE382203F96D009EA2D0 /* SF-Pro-Text-Heavy.otf */,
+				679EBE392203F96D009EA2D0 /* SF-Pro-Text-MediumItalic.otf */,
+				679EBE3A2203F96D009EA2D0 /* SF-Pro-Text-Light.otf */,
+				679EBE3B2203F96D009EA2D0 /* SF-Pro-Text-Regular.otf */,
+				679EBE3C2203F96D009EA2D0 /* SF-Pro-Text-Bold.otf */,
+				679EBE3D2203F96D009EA2D0 /* SF-Pro-Text-BoldItalic.otf */,
+				679EBE3E2203F96D009EA2D0 /* SF-Pro-Text-RegularItalic.otf */,
+				679EBE3F2203F96D009EA2D0 /* SF-Pro-Text-Semibold.otf */,
+				679EBE402203F96D009EA2D0 /* SF-Pro-Text-HeavyItalic.otf */,
+				679EBE412203F96D009EA2D0 /* SF-Pro-Text-LightItalic.otf */,
+				679EBE422203F96D009EA2D0 /* SF-Pro-Text-Medium.otf */,
+				679EBE432203F96D009EA2D0 /* SF-Pro-Text-SemiboldItalic.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		67DEF8C721F4C116007A7E6A /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				674F56802207E7CB0033D948 /* cardViewRecord */,
 				91D5B93821BFAF2600F0373C /* IncomeExpenseViewController.swift */,
 				91D5B93A21BFAF4400F0373C /* IncomeExpense.swift */,
 				91D5B93C21BFAF7C00F0373C /* IncomeExpense.storyboard */,
@@ -203,6 +265,7 @@
 		91D5B92121BFA9A900F0373C /* PersonalFinance */ = {
 			isa = PBXGroup;
 			children = (
+				679EBE372203F96D009EA2D0 /* Font */,
 				6774510721DF1B8C00F88BBF /* Register */,
 				9294028621EC3788005B5EA3 /* Report */,
 				F3F21C8821E44B170035DEB0 /* Setting */,
@@ -228,6 +291,7 @@
 				91B41B6021FFFF8900F842A6 /* UIColorHelper.swift */,
 				91FF50EE2204086700ADDECA /* AlertExt.swift */,
 				9197BA6C2205F96100CB0B3F /* BiometricHelper.swift */,
+				9168811A2208B06700CA9B79 /* GeneralHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -370,22 +434,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				679EBE4E2203F96E009EA2D0 /* SF-Pro-Text-Medium.otf in Resources */,
 				910DBF1121E5E5FB004C27CF /* DefaultIncomeCategories.plist in Resources */,
+				679EBE492203F96E009EA2D0 /* SF-Pro-Text-BoldItalic.otf in Resources */,
 				91D5B92D21BFA9AA00F0373C /* LaunchScreen.storyboard in Resources */,
 				91FF50ED2204060000ADDECA /* Security.storyboard in Resources */,
 				F342487721EC3370009EABDE /* Account.storyboard in Resources */,
 				91D5B92A21BFA9AA00F0373C /* Assets.xcassets in Resources */,
 				F3D823A321F56EAC00EED53F /* Currency.storyboard in Resources */,
 				F343F34A21EC6D420047F1F2 /* Category.storyboard in Resources */,
+				679EBE482203F96E009EA2D0 /* SF-Pro-Text-Bold.otf in Resources */,
 				91D5B93D21BFAF7C00F0373C /* IncomeExpense.storyboard in Resources */,
+				679EBE472203F96E009EA2D0 /* SF-Pro-Text-Regular.otf in Resources */,
+				679EBE4A2203F96E009EA2D0 /* SF-Pro-Text-RegularItalic.otf in Resources */,
+				679EBE4C2203F96E009EA2D0 /* SF-Pro-Text-HeavyItalic.otf in Resources */,
 				9294028C21EC3788005B5EA3 /* Report.storyboard in Resources */,
 				91D5B92821BFA9A900F0373C /* Main.storyboard in Resources */,
 				6774510921DF1B9600F88BBF /* Register.storyboard in Resources */,
+				679EBE4D2203F96E009EA2D0 /* SF-Pro-Text-LightItalic.otf in Resources */,
 				9189BA7921F5838C004F9194 /* Wallet.storyboard in Resources */,
 				F3F21C8A21E44B340035DEB0 /* Setting.storyboard in Resources */,
+				679EBE4F2203F96E009EA2D0 /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
 				910DBF0F21E5E5CE004C27CF /* DefaultExpenseCategories.plist in Resources */,
+				679EBE452203F96E009EA2D0 /* SF-Pro-Text-MediumItalic.otf in Resources */,
+				679EBE462203F96E009EA2D0 /* SF-Pro-Text-Light.otf in Resources */,
 				67DEF8C421F16966007A7E6A /* CategoryCollectionViewCell.xib in Resources */,
 				910DBF1321E5E626004C27CF /* DefaultWallets.plist in Resources */,
+				679EBE442203F96E009EA2D0 /* SF-Pro-Text-Heavy.otf in Resources */,
+				679EBE4B2203F96E009EA2D0 /* SF-Pro-Text-Semibold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +475,7 @@
 				67DEF8C321F16966007A7E6A /* CategoryCollectionViewCell.swift in Sources */,
 				9189BA7B21F583D3004F9194 /* WalletTableViewCell.swift in Sources */,
 				91FF50E82203EDFC00ADDECA /* ReportCategoryDetailsTableViewCell.swift in Sources */,
+				9168811B2208B06700CA9B79 /* GeneralHelper.swift in Sources */,
 				910DBF0B21E5E488004C27CF /* FinanceManager.swift in Sources */,
 				F3D823A521F56EBB00EED53F /* CurrencyViewController.swift in Sources */,
 				91D5B93621BFADC600F0373C /* ApiHelper.swift in Sources */,
@@ -425,8 +502,11 @@
 				9189BA7421F566E9004F9194 /* CategoryTableViewCell.swift in Sources */,
 				91DB80B321F07ED500076182 /* CategoryAddViewController.swift in Sources */,
 				910DBF1521E5E93C004C27CF /* SetupManager.swift in Sources */,
+				674F56822207E7FC0033D948 /* CardViewRecordVC.swift in Sources */,
 				910DBF0D21E5E4A5004C27CF /* DateHelper.swift in Sources */,
 				91606AF221E30A2300182E03 /* PersonalFinance.xcdatamodeld in Sources */,
+				674F56842207F2610033D948 /* PresentationController.swift in Sources */,
+				674F56862207F3420033D948 /* PresentationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,7 +662,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.danielgunawan.PersonalFinance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -600,7 +680,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.danielgunawan.PersonalFinance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

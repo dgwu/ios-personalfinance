@@ -16,6 +16,8 @@ class ReportCategoryDetailsViewController: UIViewController {
     @IBOutlet weak var displayedMonth: UILabel!
     @IBOutlet weak var expenseTable: UITableView!
     @IBOutlet weak var displayedMonthBG: UIImageView!
+    @IBOutlet weak var noTransactionIcon: UIImageView!
+    @IBOutlet weak var noTransactionLabel: UILabel!
     
     // Passed Parameters:
     var selectedCategory : String = ""
@@ -26,11 +28,10 @@ class ReportCategoryDetailsViewController: UIViewController {
     
     // End of passed parameters
     
-    var decimalSetting = true
     var filteredTransactions = [Transaction]()
     var prevIndex = 0
     
-    
+    let settingManager = SetupManager.shared
     let myFinanceManager = FinanceManager.shared
     
     override func viewDidLoad() {
@@ -61,6 +62,18 @@ class ReportCategoryDetailsViewController: UIViewController {
             filteredTransactions = transactions
         }
         nextButton.isEnabled = backStep == 0 ? false : true
+        checkTransactions()
+        expenseTable.reloadData()
+    }
+    
+    func checkTransactions() {
+        if filteredTransactions.count == 0 {
+            noTransactionIcon.isHidden = false
+            noTransactionLabel.isHidden = false
+        } else {
+            noTransactionIcon.isHidden = true
+            noTransactionLabel.isHidden = true
+        }
     }
     
     func filterTransactions(withCategory : String) -> [Transaction] {
@@ -123,7 +136,7 @@ class ReportCategoryDetailsViewController: UIViewController {
         } else {
             filteredTransactions = transactions
         }
-        
+        checkTransactions()
         expenseTable.reloadData()
     }
 }
@@ -147,11 +160,15 @@ extension ReportCategoryDetailsViewController : UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "expenseCell") as! ReportCategoryDetailsTableViewCell
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd"
+        let dateLabelWidth = cell.dateLabel.font.pointSize * 2.5
         cell.dateLabel.text = dateFormatter.string(from: filteredTransactions[indexPath.row].transactionDate!)
-        cell.dateLabel.layer.borderWidth = 5
-        cell.dateLabel.layer.cornerRadius = cell.dateLabel.frame.width / 2
+        cell.dateLabel.layer.borderWidth = dateLabelWidth / 8
+        cell.dateLabel.layer.cornerRadius = dateLabelWidth / 2
+        
+        cell.dateLabel.widthAnchor.constraint(equalToConstant: dateLabelWidth).isActive = true
+        
+        
         let borderColor = filteredTransactions[indexPath.row].category!.colorCode!
-        print (borderColor)
         cell.dateLabel.layer.borderColor = UIColor(hexString: borderColor).cgColor
         
         if filteredTransactions[indexPath.row].desc != nil {
@@ -159,10 +176,12 @@ extension ReportCategoryDetailsViewController : UITableViewDelegate, UITableView
         } else {
             cell.expenseDescLabel.text = "No Description"
         }
+        let locale = Locale.current
         let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.maximumFractionDigits = decimalSetting ? 2 : 0
-        let expenseValue = formatter.string(from: NSNumber(value: filteredTransactions[indexPath.row].amount))
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
+        formatter.maximumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
+        let expenseValue = locale.currencySymbol! + " " + formatter.string(from: NSNumber(value: filteredTransactions[indexPath.row].amount))!
         cell.expenseDescValueLabel.text = expenseValue
         return cell
     }

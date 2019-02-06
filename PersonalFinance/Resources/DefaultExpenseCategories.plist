@@ -9,6 +9,8 @@
 		<string>#754312</string>
 		<key>iconName</key>
 		<string>category_icon_pets</string>
+		<key>orderNumber</key>
+		<integer>10</integer>
 	</dict>
 	<dict>
 		<key>desc</key>
@@ -17,6 +19,8 @@
 		<string>#5B97D6</string>
 		<key>iconName</key>
 		<string>category_icon_auto</string>
+		<key>orderNumber</key>
+		<integer>9</integer>
 	</dict>
 	<dict>
 		<key>desc</key>
@@ -25,6 +29,8 @@
 		<string>#000000</string>
 		<key>iconName</key>
 		<string>category_icon_education</string>
+		<key>orderNumber</key>
+		<integer>6</integer>
 	</dict>
 	<dict>
 		<key>desc</key>
@@ -33,6 +39,8 @@
 		<string>#FF9898</string>
 		<key>iconName</key>
 		<string>category_icon_gift</string>
+		<key>orderNumber</key>
+		<integer>8</integer>
 	</dict>
 	<dict>
 		<key>desc</key>
@@ -41,6 +49,8 @@
 		<string>#818181</string>
 		<key>iconName</key>
 		<string>category_icon_health</string>
+		<key>orderNumber</key>
+		<integer>7</integer>
 	</dict>
 	<dict>
 		<key>desc</key>
@@ -49,6 +59,8 @@
 		<string>#2F6299</string>
 		<key>iconName</key>
 		<string>category_icon_transportation</string>
+		<key>orderNumber</key>
+		<integer>2</integer>
 	</dict>
 	<dict>
 		<key>desc</key>
@@ -57,6 +69,8 @@
 		<string>#9F0000</string>
 		<key>iconName</key>
 		<string>category_icon_medical</string>
+		<key>orderNumber</key>
+		<integer>5</integer>
 	</dict>
 	<dict>
 		<key>desc</key>
@@ -65,6 +79,8 @@
 		<string>#85623F</string>
 		<key>iconName</key>
 		<string>category_icon_misc</string>
+		<key>orderNumber</key>
+		<integer>11</integer>
 	</dict>
 	<dict>
 		<key>desc</key>
@@ -73,6 +89,8 @@
 		<string>#DB7139</string>
 		<key>iconName</key>
 		<string>category_icon_entertainment</string>
+		<key>orderNumber</key>
+		<integer>4</integer>
 	</dict>
 	<dict>
 		<key>desc</key>
@@ -81,6 +99,8 @@
 		<string>#F0C900</string>
 		<key>iconName</key>
 		<string>category_icon_groceries</string>
+		<key>orderNumber</key>
+		<integer>1</integer>
 	</dict>
 	<dict>
 		<key>desc</key>
@@ -89,25 +109,8 @@
 		<string>#EEAF54</string>
 		<key>iconName</key>
 		<string>category_icon_eatingout</string>
-		<key>childs</key>
-		<array>
-			<dict>
-				<key>desc</key>
-				<string>Cafe</string>
-				<key>colorCode</key>
-				<string>ffffff</string>
-				<key>iconName</key>
-				<string>food</string>
-			</dict>
-			<dict>
-				<key>desc</key>
-				<string>Restaurant</string>
-				<key>colorCode</key>
-				<string>ffffff</string>
-				<key>iconName</key>
-				<string>food</string>
-			</dict>
-		</array>
+		<key>orderNumber</key>
+		<integer>0</integer>
 	</dict>
 	<dict>
 		<key>desc</key>
@@ -116,25 +119,8 @@
 		<string>#64A977</string>
 		<key>iconName</key>
 		<string>category_icon_utilities</string>
-		<key>childs</key>
-		<array>
-			<dict>
-				<key>desc</key>
-				<string>Phone</string>
-				<key>colorCode</key>
-				<string>000000</string>
-				<key>iconName</key>
-				<string>bill</string>
-			</dict>
-			<dict>
-				<key>desc</key>
-				<string>Water</string>
-				<key>colorCode</key>
-				<string>000000</string>
-				<key>iconName</key>
-				<string>bill</string>
-			</dict>
-		</array>
+		<key>orderNumber</key>
+		<integer>3</integer>
 	</dict>
 </array>
 </plist>
