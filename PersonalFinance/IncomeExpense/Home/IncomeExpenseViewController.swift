@@ -304,7 +304,6 @@ extension IncomeExpenseViewController : UICollectionViewDelegateFlowLayout {
         selectCategory = getCategory![indexPath.row]
         let cell = CardViewRecordVC()
         cell.categorySelected = selectCategory
-        print(cell.categorySelected?.desc )
         performSegue(withIdentifier: "goToCardViewRecord", sender: self)
         
     }
