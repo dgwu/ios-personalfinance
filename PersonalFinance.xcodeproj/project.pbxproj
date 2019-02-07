@@ -68,6 +68,9 @@
 		F342487921EC3B10009EABDE /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F342487821EC3B10009EABDE /* AccountViewController.swift */; };
 		F343F34A21EC6D420047F1F2 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F343F34921EC6D420047F1F2 /* Category.storyboard */; };
 		F343F34C21EC6D870047F1F2 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F343F34B21EC6D870047F1F2 /* CategoryViewController.swift */; };
+		F348A77E220A9B2A00968197 /* OnBoarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F348A77D220A9B2A00968197 /* OnBoarding.storyboard */; };
+		F348A788220AA68A00968197 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F348A787220AA68A00968197 /* OnBoardingViewController.swift */; };
+		F348A78A220ACF8800968197 /* ValidateOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F348A789220ACF8800968197 /* ValidateOnboardingViewController.swift */; };
 		F3D823A321F56EAC00EED53F /* Currency.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3D823A221F56EAC00EED53F /* Currency.storyboard */; };
 		F3D823A521F56EBB00EED53F /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D823A421F56EBB00EED53F /* CurrencyViewController.swift */; };
 		F3F21C8A21E44B340035DEB0 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3F21C8921E44B340035DEB0 /* Setting.storyboard */; };
@@ -138,6 +141,9 @@
 		F342487821EC3B10009EABDE /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		F343F34921EC6D420047F1F2 /* Category.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
 		F343F34B21EC6D870047F1F2 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		F348A77D220A9B2A00968197 /* OnBoarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnBoarding.storyboard; sourceTree = "<group>"; };
+		F348A787220AA68A00968197 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
+		F348A789220ACF8800968197 /* ValidateOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateOnboardingViewController.swift; sourceTree = "<group>"; };
 		F39AA1FF21DF15B500EAF89D /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		F3D823A221F56EAC00EED53F /* Currency.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Currency.storyboard; sourceTree = "<group>"; };
 		F3D823A421F56EBB00EED53F /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
@@ -271,6 +277,7 @@
 		91D5B92121BFA9A900F0373C /* PersonalFinance */ = {
 			isa = PBXGroup;
 			children = (
+				F348A77C220A9B1000968197 /* OnBoarding */,
 				679EBE372203F96D009EA2D0 /* Font */,
 				6774510721DF1B8C00F88BBF /* Register */,
 				9294028621EC3788005B5EA3 /* Report */,
@@ -349,6 +356,16 @@
 				9189BA7321F566E9004F9194 /* CategoryTableViewCell.swift */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		F348A77C220A9B1000968197 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				F348A77D220A9B2A00968197 /* OnBoarding.storyboard */,
+				F348A787220AA68A00968197 /* OnBoardingViewController.swift */,
+				F348A789220ACF8800968197 /* ValidateOnboardingViewController.swift */,
+			);
+			path = OnBoarding;
 			sourceTree = "<group>";
 		};
 		F39AA1FE21DF0FA300EAF89D /* Register */ = {
@@ -464,6 +481,7 @@
 				910DBF0F21E5E5CE004C27CF /* DefaultExpenseCategories.plist in Resources */,
 				679EBE452203F96E009EA2D0 /* SF-Pro-Text-MediumItalic.otf in Resources */,
 				679EBE462203F96E009EA2D0 /* SF-Pro-Text-Light.otf in Resources */,
+				F348A77E220A9B2A00968197 /* OnBoarding.storyboard in Resources */,
 				67DEF8C421F16966007A7E6A /* CategoryCollectionViewCell.xib in Resources */,
 				910DBF1321E5E626004C27CF /* DefaultWallets.plist in Resources */,
 				679EBE442203F96E009EA2D0 /* SF-Pro-Text-Heavy.otf in Resources */,
@@ -488,11 +506,13 @@
 				91FF50EF2204086700ADDECA /* AlertExt.swift in Sources */,
 				9189BA7F21F5B3B4004F9194 /* WalletDetailViewController.swift in Sources */,
 				67DEF8C621F3874D007A7E6A /* LatestExpensesTVC.swift in Sources */,
+				F348A78A220ACF8800968197 /* ValidateOnboardingViewController.swift in Sources */,
 				F342487921EC3B10009EABDE /* AccountViewController.swift in Sources */,
 				91B41B6121FFFF8900F842A6 /* UIColorHelper.swift in Sources */,
 				F343F34C21EC6D870047F1F2 /* CategoryViewController.swift in Sources */,
 				910DBF0921E5E478004C27CF /* TransactionType.swift in Sources */,
 				9294028E21EC3788005B5EA3 /* ReportTableViewCell.swift in Sources */,
+				F348A788220AA68A00968197 /* OnBoardingViewController.swift in Sources */,
 				9189BA7D21F583E5004F9194 /* WalletViewController.swift in Sources */,
 				91D5B92521BFA9A900F0373C /* ViewController.swift in Sources */,
 				911667B9220ACF4300982D77 /* FinanceManager+Transactions.swift in Sources */,
