@@ -25,12 +25,15 @@ class IncomeExpenseViewController: UIViewController {
         return cv
     }()
     let slider : UISlider = UISlider()
-    
     let tableLatestExpenses : UITableView = UITableView()
     var getCategory: [Category]?
     var selectCategory : Category?
+    var selectTransaction : Transaction?
     let currency = SetupManager.shared
     lazy var PresentationDelegate = PresentationManager()
+    var budgetAmountLabel: UILabel!
+    
+    var status : Int = 0
     @IBOutlet weak var viewCustumPopUp: UIView!
     @IBOutlet weak var headerPopUp: UILabel!
     @IBOutlet weak var containerViewPopUp: UIView!
@@ -41,7 +44,7 @@ class IncomeExpenseViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var bottomContraint: NSLayoutConstraint!
     
-    var budgetAmountLabel: UILabel!
+    
     
     
     override func viewDidLoad() {
@@ -63,6 +66,7 @@ class IncomeExpenseViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        status = 0
         collectionView.reloadData()
         tableLatestExpenses.reloadData()
         self.budgetAmountLabel.text = GeneralHelper.displayAmount(amount: financeManager.monthlyRemainingBudget())
@@ -292,25 +296,27 @@ class IncomeExpenseViewController: UIViewController {
         //headerTabelExpense
         headerTableExpenses.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            headerTableExpenses.leadingAnchor.constraint(equalTo: viewContainerTabel.safeAreaLayoutGuide.leadingAnchor, constant : 15),
+            headerTableExpenses.leadingAnchor.constraint(equalTo: viewContainerTabel.safeAreaLayoutGuide.leadingAnchor),
             headerTableExpenses.trailingAnchor.constraint(equalTo: viewContainerTabel.safeAreaLayoutGuide.trailingAnchor),
-            headerTableExpenses.topAnchor.constraint(equalTo: viewContainerTabel.topAnchor, constant : 10 ),
+            headerTableExpenses.topAnchor.constraint(equalTo: viewContainerTabel.topAnchor ),
+            headerTableExpenses.heightAnchor.constraint(equalToConstant: (view.frame.height/8)/3)
             ])
+   
         headerTableExpenses.font = UIFont(name: "SF Pro Text", size: 15)
         headerTableExpenses.textAlignment = .left
-        headerTableExpenses.text = "Latest Expenses"
+        headerTableExpenses.text = "    Latest Expenses"
+        headerTableExpenses.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        headerTableExpenses.layoutIfNeeded()
         
         //tabel latest expenses
         tableLatestExpenses.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tableLatestExpenses.topAnchor.constraint(equalTo: headerTableExpenses.bottomAnchor, constant: 10),
+            tableLatestExpenses.topAnchor.constraint(equalTo: headerTableExpenses.bottomAnchor),
             tableLatestExpenses.leadingAnchor.constraint(equalTo: viewContainerTabel.leadingAnchor),
             tableLatestExpenses.trailingAnchor.constraint(equalTo: viewContainerTabel.trailingAnchor),
             tableLatestExpenses.bottomAnchor.constraint(equalTo: viewContainerTabel.bottomAnchor),
             tableLatestExpenses.widthAnchor.constraint(equalTo: viewContainerTabel.widthAnchor)
             ])
- 
-        
     }
 }
 
@@ -364,18 +370,24 @@ extension IncomeExpenseViewController : UICollectionViewDelegateFlowLayout {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier ==  "goToCardViewRecord" {
             let cell = segue.destination as! CardViewRecordVC
-            cell.categorySelected = selectCategory
             cell.transitioningDelegate = PresentationDelegate
             cell.modalPresentationStyle = .custom
+            if status == 0 {
+                print("Status 0")
+                 cell.categorySelected = selectCategory
+                 cell.statusTemp = status
+            }else{
+                cell.categorySelected = selectCategory
+                cell.transactionSelected = selectTransaction
+                cell.statusTemp = status
+                print("status = 1")
+            }
         }
-        
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        status = 0
         selectCategory = getCategory![indexPath.row]
-        let cell = CardViewRecordVC()
-        cell.categorySelected = selectCategory
         performSegue(withIdentifier: "goToCardViewRecord", sender: self)
-        
     }
 }
 
@@ -391,11 +403,19 @@ extension IncomeExpenseViewController : UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("fetchedObject")
+//        print(transactionFecthControler.fetchedObjects?.count)
         return transactionFecthControler.fetchedObjects?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Asd")
+        status = 1
+        let index = indexPath.row
+        print("---- \(index)")
+        selectTransaction = transactionFecthControler.fetchedObjects?[index]
+        selectCategory = selectTransaction?.category
+        performSegue(withIdentifier: "goToCardViewRecord", sender: self)
+       
+        print(selectTransaction)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -408,8 +428,11 @@ extension IncomeExpenseViewController : UITableViewDelegate, UITableViewDataSour
                 return cell
             }
             cell.categoryImage.image = UIImage(named: "\(category)")
+            
+            
         }
-        cell.isUserInteractionEnabled = false
+        cell.isUserInteractionEnabled = true
+
         print()
         return cell
     }
@@ -418,6 +441,7 @@ extension IncomeExpenseViewController : UITableViewDelegate, UITableViewDataSour
         return 30
     }
     
+   
     
     
 }
