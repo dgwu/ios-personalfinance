@@ -22,20 +22,16 @@ class ValidateOnboardingViewController: UIViewController {
     
     @IBAction func btnStart(_ sender: Any)
     {
-        let saving: Double? = Double(txtSaving.text!)
-        let income: Double? = Double(txtIncome.text!)
-        if(saving! >= 0 && income! >= 0)
-        {
-            
+        if let saving = Double(txtSaving.text!), let income = Double(txtIncome.text!) {
             print("Masuk")
-            setupManager.userMonthlySaving = saving!
-            setupManager.userMonthlySalary = income!
-            
-           
-        }else
-        {
-            print("alert input")
+            setupManager.userMonthlySalary = income
+            setupManager.userMonthlySaving = saving
+//            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
+        }else {
+            print("Not a valid number")
         }
+        
         
     }
     

@@ -30,7 +30,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="KpW-jo-PAb">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboardinglogo" translatesAutoresizingMaskIntoConstraints="NO" id="KpW-jo-PAb">
                                 <rect key="frame" x="71" y="90" width="312" height="202"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="KpW-jo-PAb" secondAttribute="height" multiplier="156:101" id="IbF-Em-gVo"/>
@@ -72,7 +72,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Chart-1" translatesAutoresizingMaskIntoConstraints="NO" id="fP4-2R-tak">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Chart-2" translatesAutoresizingMaskIntoConstraints="NO" id="fP4-2R-tak">
                                 <rect key="frame" x="29" y="81" width="330" height="184"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -163,7 +163,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Chart-1" width="290" height="162"/>
-        <image name="Logo" width="394" height="202"/>
+        <image name="Chart-2" width="297" height="172"/>
+        <image name="Onboardinglogo" width="356" height="202"/>
     </resources>
 </document>

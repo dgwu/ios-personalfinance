@@ -24,8 +24,10 @@ class SettingTableViewController: UITableViewController
     @IBOutlet weak var fingerPrintState: UISwitch!
     
     
+   
     //for Decimal
     @IBOutlet weak var decimalState: UISwitch!
+   
     @IBAction func actDecimal(_ sender: Any)
     {
         if (decimalState.isOn == true)
@@ -35,6 +37,7 @@ class SettingTableViewController: UITableViewController
         {
             setupManager.isUserUsingDecimal = false
         }
+        initialLoad()
     }
     
     @IBAction func actNotifState(_ sender: Any)
@@ -122,10 +125,14 @@ class SettingTableViewController: UITableViewController
     //defaults.setObject("Coding Explorer", forKey: "userNameKey")
     func initialLoad()
     {
-        print(isFaceIDSupported)
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
+        formatter.maximumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
         
-        lblSalary.text = "\(NumberFormatter.localizedString(from: NSNumber(value: setupManager.userMonthlySalary), 	number: .decimal))"
-        lblSaving.text = "\(NumberFormatter.localizedString(from: NSNumber(value: setupManager.userMonthlySaving), number: .decimal))"
+        lblSalary.text = "\(formatter.string(from: NSNumber(value: setupManager.userMonthlySalary)) ?? "$")"
+        lblSaving.text = "\(formatter.string(from: NSNumber(value: setupManager.userMonthlySaving)) ?? "$")"
+
         lblCurrency.text = setupManager.userDefaultCurrency
         
         notifState.isOn = setupManager.isUserAllowNotification
@@ -165,6 +172,9 @@ class SettingTableViewController: UITableViewController
         }else if(indexPath.section == 1 && indexPath.row == 2)
         {// buat hide currency
             rowHeight = 0.0
+        }else if(indexPath.section == 3 && indexPath.row == 0)
+        {// buat hide currency
+            rowHeight = 0.0
         }else if(indexPath.section == 2 && indexPath.row == 0){
             if (BiometricHelper.biometricType() == .face)
             {
@@ -192,9 +202,6 @@ class SettingTableViewController: UITableViewController
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        print("selected  section is \(indexPath.section)")
-        print("selected row is \(indexPath.row)")
-        
         if (indexPath.section == 0 && indexPath.row == 2)
         {
             showInputDialog(title: "Monthly Salary",
@@ -202,10 +209,10 @@ class SettingTableViewController: UITableViewController
                             actionTitle: "Save",
                             cancelTitle: "Cancel",
                             inputPlaceholder: "\(NumberFormatter.localizedString(from: NSNumber(value: setupManager.userMonthlySalary), number: .decimal))",
-                            inputKeyboardType: .numberPad)
+                            inputKeyboardType: .decimalPad)
             { (input:String?) in
                 print("The new number is \(input ?? "")")
-               self.setupManager.userMonthlySalary = Double(input!) ?? 0
+                self.setupManager.userMonthlySalary = Double(input!) ?? 0
                 self.initialLoad()
             }
         }
@@ -216,7 +223,7 @@ class SettingTableViewController: UITableViewController
                             actionTitle: "Save",
                             cancelTitle: "Cancel",
                             inputPlaceholder: "\(NumberFormatter.localizedString(from: NSNumber(value: setupManager.userMonthlySaving), number: .decimal))",
-                            inputKeyboardType: .numberPad)
+                            inputKeyboardType: .decimalPad)
             { (input:String?) in
                 print("The new number is \(input ?? "")")
                 self.setupManager.userMonthlySaving = Double(input!) ?? 0
@@ -258,6 +265,4 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 }
-
-
 
