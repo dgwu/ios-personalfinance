@@ -69,6 +69,6 @@ extension FinanceManager {
         let okMeter: Double = dailyBudget * currentDayNumber
         let worstMeter: Double = dailyBudget * currentDayNumber + (2 * dailyBudget)
         
-        return (greatMeter, okMeter, worstMeter)
+        return (monthlyBudget - greatMeter, monthlyBudget - okMeter, monthlyBudget - worstMeter)
     }
 }
