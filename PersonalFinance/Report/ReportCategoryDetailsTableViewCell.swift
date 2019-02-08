@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import CoreData
 
 class ReportCategoryDetailsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var expenseDescLabel: UILabel!
     @IBOutlet weak var expenseDescValueLabel: UILabel!
+    
+    var entryID : NSManagedObjectID?
     
     override func awakeFromNib() {
         super.awakeFromNib()
