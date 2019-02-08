@@ -154,13 +154,13 @@
                             <constraint firstItem="dnt-F5-4Ca" firstAttribute="top" secondItem="tFa-mW-1Ww" secondAttribute="bottom" constant="15" id="IfE-LD-gvn"/>
                             <constraint firstItem="YO5-ZP-Dc2" firstAttribute="trailing" secondItem="b3H-3Z-6Ep" secondAttribute="trailing" constant="15" id="Ihb-W0-mq8"/>
                             <constraint firstItem="YO5-ZP-Dc2" firstAttribute="trailing" secondItem="u8f-tW-Wvd" secondAttribute="trailing" constant="20" id="K3e-oS-OYY"/>
+                            <constraint firstItem="tFa-mW-1Ww" firstAttribute="top" secondItem="b3H-3Z-6Ep" secondAttribute="bottom" constant="8" id="KvK-cJ-nqg"/>
                             <constraint firstItem="mpe-Sl-6dV" firstAttribute="centerX" secondItem="YO5-ZP-Dc2" secondAttribute="centerX" id="L8h-ce-9Na"/>
                             <constraint firstItem="TvF-nI-VJI" firstAttribute="height" secondItem="b3H-3Z-6Ep" secondAttribute="height" id="LdR-0P-a6I"/>
                             <constraint firstItem="o67-Pf-XX8" firstAttribute="trailing" secondItem="YO5-ZP-Dc2" secondAttribute="trailing" id="Ls5-0d-QRm"/>
                             <constraint firstItem="TvF-nI-VJI" firstAttribute="centerY" secondItem="b3H-3Z-6Ep" secondAttribute="centerY" id="MSX-CH-ash"/>
                             <constraint firstItem="u8f-tW-Wvd" firstAttribute="height" secondItem="dnt-F5-4Ca" secondAttribute="height" id="O9T-QD-kMQ"/>
                             <constraint firstItem="b3H-3Z-6Ep" firstAttribute="top" secondItem="YO5-ZP-Dc2" secondAttribute="top" constant="15" id="OdM-ns-YMg"/>
-                            <constraint firstItem="tFa-mW-1Ww" firstAttribute="top" secondItem="b3H-3Z-6Ep" secondAttribute="bottom" constant="15" id="Pa4-fI-OnC"/>
                             <constraint firstItem="YW5-HQ-rxi" firstAttribute="leading" secondItem="b3H-3Z-6Ep" secondAttribute="leading" id="UVG-e3-bkX"/>
                             <constraint firstItem="tFa-mW-1Ww" firstAttribute="leading" secondItem="YO5-ZP-Dc2" secondAttribute="leading" constant="16" id="WTq-2S-WPZ"/>
                             <constraint firstItem="f3P-An-pkq" firstAttribute="centerY" secondItem="YO5-ZP-Dc2" secondAttribute="centerY" id="ZTm-xE-drg"/>
@@ -376,8 +376,8 @@
         <!--editTransaction-->
         <scene sceneID="J9H-Wp-Yhn">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1aW-7L-8lC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardName="IncomeExpense" referencedIdentifier="editTransaction" id="vYS-Pc-soh" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1aW-7L-8lC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-840" y="-3743"/>
         </scene>

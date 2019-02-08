@@ -279,6 +279,9 @@ class ReportViewController: UIViewController {
                     barWidth = CGFloat(Float(expenses[category.desc!]!) / Float(highestExpenseVal) * (Float(chartStackView.bounds.width) * barChartMultiplier))
                 }
                 
+                let categoryChartStackViewWidthConstraint = NSLayoutConstraint(item: categoryChartStackView, attribute: .width, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
+                categoryChartStackView.addConstraint(categoryChartStackViewWidthConstraint)
+                
                 categoryChartStackView.layoutIfNeeded()
                 barHeight = (categoryLabel.frame.height)
                 
