@@ -54,7 +54,7 @@
                             <stackView opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" distribution="equalSpacing" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="tFa-mW-1Ww">
                                 <rect key="frame" x="16" y="73" width="343" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="240" id="btR-AZ-0KF"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="btR-AZ-0KF"/>
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="  Total this month" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnt-F5-4Ca" userLabel="Total Month Title">
@@ -89,7 +89,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="expenseCategory" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVE-Ph-Bvl">
-                                                    <rect key="frame" x="60" y="12" width="160" height="20"/>
+                                                    <rect key="frame" x="50" y="12" width="160" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="5zy-AK-RLH"/>
                                                         <constraint firstAttribute="width" constant="160" id="JqC-QU-3JO"/>
@@ -108,10 +108,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyImage10px" translatesAutoresizingMaskIntoConstraints="NO" id="REY-6E-nDb" userLabel="Category Symbol">
-                                                    <rect key="frame" x="20" y="12" width="20" height="20"/>
+                                                    <rect key="frame" x="20" y="14.333333333333336" width="15" height="15"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="20" id="a2E-Fk-FKk"/>
-                                                        <constraint firstAttribute="height" constant="20" id="nFh-2n-qxG"/>
+                                                        <constraint firstAttribute="width" constant="15" id="a2E-Fk-FKk"/>
+                                                        <constraint firstAttribute="height" constant="15" id="nFh-2n-qxG"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
@@ -121,7 +121,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="LMj-Ce-Haz" secondAttribute="trailing" constant="5" id="QUp-9z-EFW"/>
                                                 <constraint firstItem="REY-6E-nDb" firstAttribute="centerY" secondItem="Sg8-C1-sdr" secondAttribute="centerY" id="ZPS-6A-seC"/>
                                                 <constraint firstItem="CVE-Ph-Bvl" firstAttribute="centerY" secondItem="Sg8-C1-sdr" secondAttribute="centerY" id="bpP-HY-8C8"/>
-                                                <constraint firstItem="CVE-Ph-Bvl" firstAttribute="leading" secondItem="REY-6E-nDb" secondAttribute="trailing" constant="20" id="xj5-nz-qDC"/>
+                                                <constraint firstItem="CVE-Ph-Bvl" firstAttribute="leading" secondItem="REY-6E-nDb" secondAttribute="trailing" constant="15" id="xj5-nz-qDC"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -194,6 +194,7 @@
                         <outlet property="noTransactionsIcon" destination="mpe-Sl-6dV" id="uqb-8z-g4f"/>
                         <outlet property="noTransactionsLabel" destination="f3P-An-pkq" id="5ZH-pg-kLb"/>
                         <outlet property="prevMonthButton" destination="YW5-HQ-rxi" id="WWB-oA-jb4"/>
+                        <outlet property="tableToChartDistanceConstraint" destination="IfE-LD-gvn" id="s5H-aN-skh"/>
                         <outlet property="topExpensesTable" destination="o67-Pf-XX8" id="9wB-92-E5R"/>
                         <outlet property="topExpensesTitleLabel" destination="dnt-F5-4Ca" id="GVz-g3-Xci"/>
                         <outlet property="totalMonthTitle" destination="dnt-F5-4Ca" id="Pd8-oy-Ehj"/>
@@ -207,10 +208,10 @@
             </objects>
             <point key="canvasLocation" x="-2532" y="-3742.6108374384239"/>
         </scene>
-        <!--Report Category Details View Controller-->
+        <!--Transactions List-->
         <scene sceneID="a80-hf-LE1">
             <objects>
-                <viewController storyboardIdentifier="reportCategoryDetails" id="VlF-XB-vbs" customClass="ReportCategoryDetailsViewController" customModule="PersonalFinance" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="reportCategoryDetails" title="Transactions List" id="VlF-XB-vbs" customClass="ReportCategoryDetailsViewController" customModule="PersonalFinance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XNL-Th-3R5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -250,8 +251,8 @@
                                     <action selector="monthToggleButtonTapped:" destination="VlF-XB-vbs" eventType="touchUpInside" id="QiJ-tK-zYg"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorInsetReference="fromAutomaticInsets" sectionIndexMinimumDisplayRowCount="-1" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5MK-uS-PrW">
-                                <rect key="frame" x="0.0" y="85" width="375" height="605"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorInsetReference="fromAutomaticInsets" sectionIndexMinimumDisplayRowCount="-1" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5MK-uS-PrW">
+                                <rect key="frame" x="0.0" y="85" width="375" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="0.77123137953367871" green="0.77123137953367871" blue="0.77123137953367871" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -311,14 +312,14 @@
                                 </prototypes>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noun_Credit Card_48448" translatesAutoresizingMaskIntoConstraints="NO" id="wet-ia-3Jd">
-                                <rect key="frame" x="105.66666666666669" y="202" width="164" height="117"/>
+                                <rect key="frame" x="105.66666666666669" y="177.66666666666669" width="164" height="117"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="117" id="0cU-aT-y9b"/>
                                     <constraint firstAttribute="width" constant="164" id="pIC-7a-KQW"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Transactions" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8AV-Z0-IgE">
-                                <rect key="frame" x="69.333333333333329" y="327" width="236.33333333333337" height="36"/>
+                                <rect key="frame" x="69.333333333333329" y="302.66666666666669" width="236.33333333333337" height="36"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -348,6 +349,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="swe-hI-RCf"/>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="dUc-RW-qes">
+                        <barButtonItem key="rightBarButtonItem" title="Delete" style="plain" id="hNa-XV-Yr9">
+                            <connections>
+                                <action selector="editButton:" destination="VlF-XB-vbs" id="6z4-RJ-RJK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="backButton" destination="mtk-1n-KP4" id="pN3-d6-0kq"/>
                         <outlet property="displayedMonth" destination="I6z-77-814" id="ai0-zR-S1C"/>
@@ -356,11 +366,20 @@
                         <outlet property="nextButton" destination="bJG-7U-PId" id="3Td-XT-tKT"/>
                         <outlet property="noTransactionIcon" destination="wet-ia-3Jd" id="TEp-vT-A7t"/>
                         <outlet property="noTransactionLabel" destination="8AV-Z0-IgE" id="XmH-qJ-1fm"/>
+                        <outlet property="trashButton" destination="hNa-XV-Yr9" id="VSy-3p-sHP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ywI-np-jze" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1591.2" y="-3743.3497536945815"/>
+        </scene>
+        <!--editTransaction-->
+        <scene sceneID="J9H-Wp-Yhn">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1aW-7L-8lC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="IncomeExpense" referencedIdentifier="editTransaction" id="vYS-Pc-soh" sceneMemberID="viewController"/>
+            </objects>
+            <point key="canvasLocation" x="-840" y="-3743"/>
         </scene>
         <!--Report-->
         <scene sceneID="RzJ-bp-I73">
