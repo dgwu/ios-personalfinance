@@ -38,6 +38,14 @@ class OnBoardingViewController: UIPageViewController ,UIPageViewControllerDataSo
         
     }
     
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        return 3
+    }
+    
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        return 0
+    }
+    
     
     lazy var viewControllerList : [UIViewController] =
         {
@@ -59,6 +67,8 @@ class OnBoardingViewController: UIPageViewController ,UIPageViewControllerDataSo
             self.setViewControllers([FirstViewController], direction: .forward, animated: true, completion: nil)
             
         }
+        
+        self.view.backgroundColor = UIColor(hexString: "#107AC4")
     }
     
 }

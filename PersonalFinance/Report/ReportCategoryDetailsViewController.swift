@@ -18,14 +18,15 @@ class ReportCategoryDetailsViewController: UIViewController {
     @IBOutlet weak var displayedMonthBG: UIImageView!
     @IBOutlet weak var noTransactionIcon: UIImageView!
     @IBOutlet weak var noTransactionLabel: UILabel!
+    @IBOutlet var trashButton: UIBarButtonItem!
     
     // Passed Parameters:
     var selectedCategory : String = ""
-    var currentlyDisplayedDate = Date()
+    var currentlyDisplayedDate = Date() // Passed Parameter
     var backStep = 0
     var transactions = [Transaction]()
     var pageToLoad : Page = .categoryDetails
-    
+    var numberOfRow : Int = 0
     // End of passed parameters
     
     var filteredTransactions = [Transaction]()
@@ -54,8 +55,15 @@ class ReportCategoryDetailsViewController: UIViewController {
         print ("Selected Category: ", selectedCategory)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        trashButton.tag = 0
+        trashButton.title = "Delete"
+        expenseTable.setEditing(false, animated: true)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         filteredTransactions.removeAll()
+        loadData(fromDate: currentlyDisplayedDate)
         if pageToLoad == .categoryDetails {
             filteredTransactions = filterTransactions(withCategory: selectedCategory)
         } else {
@@ -117,7 +125,7 @@ class ReportCategoryDetailsViewController: UIViewController {
     
     func loadData (fromDate date: Date) {
         // REQUEST data untuk bulan ini
-        
+        print ("Load Data...")
         let myTransaction = myFinanceManager.getExpenseResultController(fromDate: date.startOfMonth(), toDate: date.endOfMonth().endOfDay) as? NSFetchedResultsController<NSFetchRequestResult>
         myTransaction?.delegate = self
         
@@ -139,21 +147,77 @@ class ReportCategoryDetailsViewController: UIViewController {
         checkTransactions()
         expenseTable.reloadData()
     }
+    
+    @IBAction func editButton(_ sender: UIBarButtonItem) {
+        if sender.tag == 0 {
+            sender.tag = 1
+            trashButton.title = "Done"
+            expenseTable.setEditing(true, animated: true)
+        } else {
+            sender.tag = 0
+            trashButton.title = "Delete"
+//            trashButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: nil)
+            expenseTable.setEditing(false, animated: true)
+        }
+    }
+   
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailVC = segue.destination as? ReportCategoryDetailsViewController {
+            detailVC.selectedCategory = self.selectedCategory
+            detailVC.transactions = self.transactions
+            detailVC.currentlyDisplayedDate = currentlyDisplayedDate
+            detailVC.backStep = self.backStep
+            detailVC.pageToLoad = self.pageToLoad
+        }
+    } // end of prepare(for segue: UIStoryboardSegue, sender: Any?)
+    
 }
 
 extension ReportCategoryDetailsViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var numberOfRow = 0
         if pageToLoad == .categoryDetails {
+            numberOfRow = 0
             for transaction in transactions {
                 if transaction.category?.desc == selectedCategory {numberOfRow += 1}
             }
             print ("Number of Row = ", numberOfRow)
             return numberOfRow
         } else {
-            return filteredTransactions.count
+            numberOfRow = filteredTransactions.count
+            return numberOfRow
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print ("\(String(describing: filteredTransactions[indexPath.row].category?.desc)) Selected")
+        performSegue(withIdentifier: "editTransaction", sender: nil)
+    }
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print ("\(filteredTransactions[indexPath.row].amount) DELETED; ROW: \(indexPath.row)")
+            
+            let transactionData = filteredTransactions[indexPath.row]
+            let context = myFinanceManager.objectContext
+            context.delete(transactionData)
+            
+            do {
+                try context.save()
+                filteredTransactions.remove(at: indexPath.row)
+                expenseTable.deleteRows(at: [indexPath], with: .left)
+//                loadData(fromDate: currentlyDisplayedDate)
+//                expenseTable.reloadData()
+            } catch {
+                // error handling
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -161,12 +225,20 @@ extension ReportCategoryDetailsViewController : UITableViewDelegate, UITableView
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd"
         let dateLabelWidth = cell.dateLabel.font.pointSize * 2.5
+//        print ("FILTERED TRANSACTION AT ROW = ", filteredTransactions[indexPath.row])
         cell.dateLabel.text = dateFormatter.string(from: filteredTransactions[indexPath.row].transactionDate!)
         cell.dateLabel.layer.borderWidth = dateLabelWidth / 8
         cell.dateLabel.layer.cornerRadius = dateLabelWidth / 2
-        
         cell.dateLabel.widthAnchor.constraint(equalToConstant: dateLabelWidth).isActive = true
+        cell.entryID = filteredTransactions[indexPath.row].objectID
         
+        if pageToLoad == .reportDetails {
+            cell.accessoryType = .disclosureIndicator
+            cell.selectionStyle = .blue
+        } else {
+            cell.accessoryType = .none
+            cell.selectionStyle = .none
+        }        
         
         let borderColor = filteredTransactions[indexPath.row].category!.colorCode!
         cell.dateLabel.layer.borderColor = UIColor(hexString: borderColor).cgColor
@@ -183,6 +255,9 @@ extension ReportCategoryDetailsViewController : UITableViewDelegate, UITableView
         formatter.maximumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
         let expenseValue = locale.currencySymbol! + " " + formatter.string(from: NSNumber(value: filteredTransactions[indexPath.row].amount))!
         cell.expenseDescValueLabel.text = expenseValue
+        
+        
+        
         return cell
     }
 }
