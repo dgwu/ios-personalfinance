@@ -169,6 +169,12 @@
                                             <action selector="selectCategoryAction:" destination="9nL-Ha-8cy" eventType="touchUpInside" id="jT6-yT-tZR"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount is required " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33r-Qh-RSC">
+                                        <rect key="frame" x="238" y="123" width="129" height="17"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
+                                        <color key="textColor" red="1" green="0.077552178701866814" blue="0.057948823598580557" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -177,6 +183,8 @@
                                     <constraint firstItem="WVm-r1-aaG" firstAttribute="top" secondItem="McB-P2-KVL" secondAttribute="bottom" constant="10" id="6K1-T9-kRR"/>
                                     <constraint firstItem="fAa-aA-xoe" firstAttribute="leading" secondItem="Wow-gH-1ZV" secondAttribute="leadingMargin" constant="12" id="Aud-iW-cIa"/>
                                     <constraint firstItem="WVm-r1-aaG" firstAttribute="leading" secondItem="Wow-gH-1ZV" secondAttribute="leadingMargin" constant="12" id="DMk-PO-jMW"/>
+                                    <constraint firstItem="Q1h-MY-9j4" firstAttribute="top" secondItem="33r-Qh-RSC" secondAttribute="bottom" id="FNc-dG-PSe"/>
+                                    <constraint firstItem="33r-Qh-RSC" firstAttribute="leading" secondItem="Wow-gH-1ZV" secondAttribute="leadingMargin" constant="230" id="Fkw-AH-BK4"/>
                                     <constraint firstItem="YD3-eL-ihA" firstAttribute="leading" secondItem="Wow-gH-1ZV" secondAttribute="leading" id="JJY-6W-HTs"/>
                                     <constraint firstItem="nOh-jm-ORc" firstAttribute="leading" secondItem="Wow-gH-1ZV" secondAttribute="leadingMargin" constant="12" id="KJH-QQ-bsj"/>
                                     <constraint firstItem="nOh-jm-ORc" firstAttribute="trailing" secondItem="Wow-gH-1ZV" secondAttribute="trailingMargin" id="Lnm-91-JHp"/>
@@ -185,6 +193,7 @@
                                     <constraint firstItem="tWY-cN-gG4" firstAttribute="leading" secondItem="Wow-gH-1ZV" secondAttribute="leadingMargin" constant="12" id="ROE-5g-j6D"/>
                                     <constraint firstItem="fAa-aA-xoe" firstAttribute="top" secondItem="WVm-r1-aaG" secondAttribute="bottom" constant="10" id="Ufv-Yp-uxQ"/>
                                     <constraint firstItem="fAa-aA-xoe" firstAttribute="trailing" secondItem="Wow-gH-1ZV" secondAttribute="trailingMargin" id="c39-Ud-3Tr"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="33r-Qh-RSC" secondAttribute="trailing" id="cVt-Tl-JB1"/>
                                     <constraint firstItem="4ig-cr-57j" firstAttribute="top" secondItem="OX3-fj-6Hc" secondAttribute="bottom" constant="10" id="cxH-2i-vhw"/>
                                     <constraint firstItem="Q1h-MY-9j4" firstAttribute="leading" secondItem="Wow-gH-1ZV" secondAttribute="leadingMargin" constant="12" id="ddW-Ak-bfB"/>
                                     <constraint firstItem="YD3-eL-ihA" firstAttribute="top" secondItem="Wow-gH-1ZV" secondAttribute="top" id="eLN-2w-xgD"/>
@@ -224,8 +233,10 @@
                         <outlet property="labelAddRecord" destination="fnB-7g-o0f" id="QLP-pg-jxb"/>
                         <outlet property="linelast" destination="tWY-cN-gG4" id="6Pp-cH-AeL"/>
                         <outlet property="nameExpenseLabel" destination="McB-P2-KVL" id="NJL-eF-Htl"/>
+                        <outlet property="requredAmount" destination="33r-Qh-RSC" id="TVW-yO-BOP"/>
                         <outlet property="saveButton" destination="n0t-U5-kQh" id="as0-0H-Dh6"/>
                         <outlet property="selectCategory" destination="fAa-aA-xoe" id="pqw-0H-aCx"/>
+                        <outlet property="swipeHandler" destination="YD3-eL-ihA" id="p1x-nX-m7O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FC6-PX-MdU" userLabel="First Responder" sceneMemberID="firstResponder"/>

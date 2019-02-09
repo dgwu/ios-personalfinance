@@ -10,6 +10,7 @@ import UIKit
 
 class CardViewRecordVC: UIViewController {
 
+    @IBOutlet weak var swipeHandler: UIView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var dateLabel: UITextField!
     @IBOutlet weak var saveButton: UIButton!
@@ -20,7 +21,7 @@ class CardViewRecordVC: UIViewController {
     @IBOutlet weak var handleView: UIView!
     @IBOutlet weak var linelast: UIView!
     @IBOutlet weak var selectCategory: UIButton!
-    
+    @IBOutlet weak var requredAmount: UILabel!
     var categorySelected : Category?
     var transactionSelected : Transaction?
     var amountTansact : Double?
@@ -48,8 +49,12 @@ class CardViewRecordVC: UIViewController {
     }
     
     func initialSetup (){
-        let gesture = UIPanGestureRecognizer.init(target: self, action: #selector(CardViewRecordVC.panGesture))
+        let gesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeDown))
+        gesture.direction = .down
+//        swipeHandler.addGestureRecognizer(gesture)
         view.addGestureRecognizer(gesture)
+        let tapGesture : UITapGestureRecognizer =  UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
         let frame = self.view.frame
         let yComponent = UIScreen.main.bounds.height - self.view.center.y
         self.view.frame = CGRect(x: 0, y: yComponent, width: frame.width, height: frame.height)
@@ -57,11 +62,12 @@ class CardViewRecordVC: UIViewController {
         self.view.layer.masksToBounds = true
         amountLabel.becomeFirstResponder()
         amountLabel.keyboardType = .decimalPad
-        nameExpenseLabel.returnKeyType = .done
+        nameExpenseLabel.returnKeyType = .default
         handleView.layer.cornerRadius = 2
         inputMode()
         pickerView.delegate = self
         pickerView.dataSource = self
+        requredAmount.isHidden = true
     }
     
     func inputMode() {
@@ -128,10 +134,13 @@ class CardViewRecordVC: UIViewController {
     }
     
     @IBAction func saveRecord(_ sender: Any) {
-
+        if (amountLabel.text?.isEmpty)!{
+            requredAmount.isHidden = false
+        }else{
         InsertExpenses()
         view.endEditing(true)
          self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func cancelRecord(_ sender: Any) {
@@ -139,16 +148,12 @@ class CardViewRecordVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @objc func panGesture(recognizer: UIPanGestureRecognizer) {
-        
-        let translation = recognizer.translation(in: self.view)
-        recognizer.setTranslation(CGPoint.zero, in: self.view)
-        
-        if recognizer.state == .ended
-        {
-            self.dismiss(animated: true, completion: nil)
-        }
-        
+    @objc func swipeDown() {
+         self.dismiss(animated: true, completion: nil)
+    }
+
+    @objc override func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 
@@ -164,7 +169,6 @@ extension CardViewRecordVC : UIPickerViewDelegate, UIPickerViewDataSource{
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectCategory.setTitle("\(getCategoryForPicker![row].desc ?? "-")", for: .normal)
-//        self.view.endEditing(true)
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -172,4 +176,5 @@ extension CardViewRecordVC : UIPickerViewDelegate, UIPickerViewDataSource{
     }
 
 }
+
 
