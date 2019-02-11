@@ -48,15 +48,18 @@ class LatestExpensesTVC: UITableViewCell {
         print("ini framenya = \(categoryImage.frame)")
         
         NSLayoutConstraint.activate([
-            trasactionNameLabel.leadingAnchor.constraint(equalTo: viewImage.trailingAnchor, constant : 20),
-            trasactionNameLabel.widthAnchor.constraint(equalToConstant: (contentView.frame.width / 2) - 10),
+            trasactionNameLabel.leadingAnchor.constraint(equalTo: viewImage.trailingAnchor, constant : 10),
+//            trasactionNameLabel.widthAnchor.constraint(equalToConstant: (contentView.frame.width / 2) - 30),
             trasactionNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor,constant : 5)
             ])
+        trasactionNameLabel.layoutIfNeeded()
 
         NSLayoutConstraint.activate([
             transactionAmountLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant : 5),
-            transactionAmountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            transactionAmountLabel.widthAnchor.constraint(equalToConstant: (contentView.frame.width / 2) - (contentView.frame.width / 8) - 10)
+            trasactionNameLabel.widthAnchor.constraint(equalToConstant: (contentView.frame.width / 2) - 30),
+            transactionAmountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
+//            transactionAmountLabel.widthAnchor.constraint(equalToConstant: (contentView.frame.width / 2) - (contentView.frame.width / 8) - 10),
+            transactionAmountLabel.leadingAnchor.constraint(equalTo: trasactionNameLabel.trailingAnchor)
             ])
 
 //        categoryImage.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
@@ -89,6 +92,7 @@ class LatestExpensesTVC: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
         label.text = "MC Donald's"
+        
         return label
     }()
     

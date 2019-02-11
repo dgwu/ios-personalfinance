@@ -17,14 +17,23 @@ class ViewController: UITabBarController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        //Check Onboarding
+        
+        if setupManager.userMonthlySalary == 0 || setupManager.userMonthlySaving == 0
+        {
+            let onBoardingStoryboard = UIStoryboard(name: "OnBoarding", bundle: nil)
+            let onBoardingController = onBoardingStoryboard.instantiateInitialViewController() as! OnBoardingViewController
+            self.present(onBoardingController, animated: false, completion: nil)
+        }
+        
         // pop up security check
-        if setupManager.isUserUsingFingerLock || setupManager.isUserUsingFaceLock {
-            
+       else if setupManager.isUserUsingFingerLock || setupManager.isUserUsingFaceLock {
+
             print("use security check")
             if setupManager.isNeedToAttemptSecurityCheck {
                 let securityStoryboard = UIStoryboard(name: "Security", bundle: nil)
                 let securityController = securityStoryboard.instantiateInitialViewController() as! SecurityViewController
-                
+
                 self.present(securityController, animated: false, completion: nil)
             }
         } else {

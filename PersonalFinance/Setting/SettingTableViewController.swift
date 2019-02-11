@@ -24,8 +24,10 @@ class SettingTableViewController: UITableViewController
     @IBOutlet weak var fingerPrintState: UISwitch!
     
     
+   
     //for Decimal
     @IBOutlet weak var decimalState: UISwitch!
+   
     @IBAction func actDecimal(_ sender: Any)
     {
         if (decimalState.isOn == true)
@@ -35,6 +37,7 @@ class SettingTableViewController: UITableViewController
         {
             setupManager.isUserUsingDecimal = false
         }
+        initialLoad()
     }
     
     @IBAction func actNotifState(_ sender: Any)
@@ -104,13 +107,32 @@ class SettingTableViewController: UITableViewController
     }
     
     
+    override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+       guard let footer = view as? UITableViewHeaderFooterView else { return }
+        footer.textLabel?.font = UIFont.boldSystemFont(ofSize: 10)
+        footer.textLabel?.textAlignment = .right
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let header = view as? UITableViewHeaderFooterView else {
+            return
+        }
+        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 25)
+//        header.textLabel?.font = ÷
+    }
+    
+    
     //defaults.setObject("Coding Explorer", forKey: "userNameKey")
     func initialLoad()
     {
-        print(isFaceIDSupported)
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
+        formatter.maximumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
         
-        lblSalary.text = "\(NumberFormatter.localizedString(from: NSNumber(value: setupManager.userMonthlySalary), 	number: .decimal))"
-        lblSaving.text = "\(NumberFormatter.localizedString(from: NSNumber(value: setupManager.userMonthlySaving), number: .decimal))"
+        lblSalary.text = "\(formatter.string(from: NSNumber(value: setupManager.userMonthlySalary)) ?? "$")"
+        lblSaving.text = "\(formatter.string(from: NSNumber(value: setupManager.userMonthlySaving)) ?? "$")"
+
         lblCurrency.text = setupManager.userDefaultCurrency
         
         notifState.isOn = setupManager.isUserAllowNotification
@@ -118,23 +140,41 @@ class SettingTableViewController: UITableViewController
         faceIdState.isOn = setupManager.isUserUsingFaceLock
         fingerPrintState.isOn = setupManager.isUserUsingFingerLock
         
+        
+        
+        
     }
     
     override func viewDidLoad()
     {
         initialLoad()
         super.viewDidLoad()
+        self.title = "Settings"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
+    
+ 
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         var rowHeight:CGFloat = 0.0
-        
-        if(indexPath.section == 0 && indexPath.row == 1){
-            // gambar profile
-            rowHeight = 123 // was 123
-        }else if(indexPath.section == 0 && indexPath.row == 0){
-            // login anchor
-            rowHeight = 45
+        if(indexPath.section == 0 && indexPath.row == 0)
+        {// hide profile Detail
+            rowHeight = 0
+        }
+        else if(indexPath.section == 0 && indexPath.row == 1){
+            // Hide gambar profile
+            //rowHeight = 123 // was 123
+            rowHeight = 0
+        }else if(indexPath.section == 1 && indexPath.row == 0)
+         {// buat hide notification
+                rowHeight = 0.0
+        }else if(indexPath.section == 1 && indexPath.row == 2)
+        {// buat hide currency
+            rowHeight = 0.0
+        }else if(indexPath.section == 3 && indexPath.row == 0)
+        {// buat hide currency
+            rowHeight = 0.0
         }else if(indexPath.section == 2 && indexPath.row == 0){
             if (BiometricHelper.biometricType() == .face)
             {
@@ -143,7 +183,8 @@ class SettingTableViewController: UITableViewController
             {
                 rowHeight = 0.0
             }
-        }else if(indexPath.section == 2 && indexPath.row == 1){
+        }
+        else if(indexPath.section == 2 && indexPath.row == 1){
             if (BiometricHelper.biometricType() == .touch)
             {
                 rowHeight = 45.0
@@ -161,9 +202,6 @@ class SettingTableViewController: UITableViewController
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        print("selected  section is \(indexPath.section)")
-        print("selected row is \(indexPath.row)")
-        
         if (indexPath.section == 0 && indexPath.row == 2)
         {
             showInputDialog(title: "Monthly Salary",
@@ -171,10 +209,10 @@ class SettingTableViewController: UITableViewController
                             actionTitle: "Save",
                             cancelTitle: "Cancel",
                             inputPlaceholder: "\(NumberFormatter.localizedString(from: NSNumber(value: setupManager.userMonthlySalary), number: .decimal))",
-                            inputKeyboardType: .numberPad)
+                            inputKeyboardType: .decimalPad)
             { (input:String?) in
                 print("The new number is \(input ?? "")")
-               self.setupManager.userMonthlySalary = Double(input!) ?? 0
+                self.setupManager.userMonthlySalary = Double(input!) ?? 0
                 self.initialLoad()
             }
         }
@@ -185,7 +223,7 @@ class SettingTableViewController: UITableViewController
                             actionTitle: "Save",
                             cancelTitle: "Cancel",
                             inputPlaceholder: "\(NumberFormatter.localizedString(from: NSNumber(value: setupManager.userMonthlySaving), number: .decimal))",
-                            inputKeyboardType: .numberPad)
+                            inputKeyboardType: .decimalPad)
             { (input:String?) in
                 print("The new number is \(input ?? "")")
                 self.setupManager.userMonthlySaving = Double(input!) ?? 0
@@ -227,6 +265,4 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 }
-
-
 
