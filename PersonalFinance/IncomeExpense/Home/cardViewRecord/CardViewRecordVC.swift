@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CardViewRecordVC: UIViewController {
 
@@ -81,6 +82,8 @@ class CardViewRecordVC: UIViewController {
             amountLabel.text = "\(transactionSelected!.amount )"
             nameExpenseLabel.text = "\(transactionSelected!.desc  ?? "-")"
             selectCategory.setTitle("\(transactionSelected?.category?.desc ?? "-")", for: .normal)
+           labelAddRecord.text = " Edit Transaction"
+            
         }
     }
     
@@ -117,6 +120,17 @@ class CardViewRecordVC: UIViewController {
         self.dateLabel.text = formatter.string(from: datePicker.date)
         }
     
+    func update (transaction: Transaction) {
+       let update = FinanceManager.shared.objectContext.object(with: transaction.objectID)
+        update.setValuesForKeys(["amount" : transaction.amount, "createdDate" : transaction.transactionDate!, "desc": transaction.desc!, "category": transaction.category! ] )
+        do {
+            try FinanceManager.shared.objectContext.save()
+            print("success")
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
     func InsertExpenses()   {
         print("insert Expenses")
         guard let cat = categorySelected else { return }
@@ -134,13 +148,24 @@ class CardViewRecordVC: UIViewController {
     }
     
     @IBAction func saveRecord(_ sender: Any) {
+        
         if (amountLabel.text?.isEmpty)!{
             requredAmount.isHidden = false
-        }else{
-        InsertExpenses()
+        } else if statusTemp == 0 {
+            InsertExpenses()
         view.endEditing(true)
-         self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
+        }else{
+            transactionSelected?.amount = (amountLabel.text! as NSString).doubleValue
+            transactionSelected?.category = categorySelected
+            transactionSelected?.transactionDate = datePicker.date
+            transactionSelected?.desc = nameExpenseLabel.text
+            update(transaction: transactionSelected!)
+        view.endEditing(true)
+        self.dismiss(animated: true, completion: nil)
         }
+            
+       
     }
     
     @IBAction func cancelRecord(_ sender: Any) {
@@ -168,6 +193,7 @@ extension CardViewRecordVC : UIPickerViewDelegate, UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        categorySelected = getCategoryForPicker![row]
         selectCategory.setTitle("\(getCategoryForPicker![row].desc ?? "-")", for: .normal)
     }
     

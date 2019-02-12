@@ -71,6 +71,18 @@ extension FinanceManager {
         let okMeter: Double = dailyBudget * currentDayNumber
         let worstMeter: Double = dailyBudget * currentDayNumber + (2 * dailyBudget)
         
-        return (0 - greatMeter, 0 - okMeter, 0 - worstMeter)
+        return (monthlyBudget - greatMeter, monthlyBudget - okMeter, monthlyBudget - worstMeter)
+    }
+    
+    // for inverted slider
+    public func dailyBudgetMeter() -> (great: Double, ok: Double, worst: Double) {
+        let daysInMonth = Double(exactly: Date().getDaysInMonth()) ?? 30
+        
+        let monthlySalary = SetupManager.shared.userMonthlySalary
+        let monthlySaving = SetupManager.shared.userMonthlySaving
+        let monthlyBudget = monthlySalary - monthlySaving
+        let dailyBudget = monthlyBudget / daysInMonth
+        
+        return (0, dailyBudget, dailyBudget*2)
     }
 }

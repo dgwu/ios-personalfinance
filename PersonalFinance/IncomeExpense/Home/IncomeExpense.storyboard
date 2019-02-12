@@ -13,6 +13,9 @@
         <array key="SF-Pro-Text-Bold.otf">
             <string>SFProText-Bold</string>
         </array>
+        <array key="SF-Pro-Text-Heavy.otf">
+            <string>SFProText-Heavy</string>
+        </array>
         <array key="SF-Pro-Text-Medium.otf">
             <string>SFProText-Medium</string>
         </array>
@@ -53,7 +56,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ymm-yz-ZT6">
-                                                <rect key="frame" x="18" y="19" width="63" height="20"/>
+                                                <rect key="frame" x="18" y="19" width="57" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="fq8-Sc-ar1"/>
                                                 </constraints>
@@ -74,12 +77,9 @@
                                                     <action selector="saveRecord:" destination="9nL-Ha-8cy" eventType="touchUpInside" id="Oyj-I8-Z2T"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnB-7g-o0f">
-                                                <rect key="frame" x="138" y="19" width="99" height="21"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="99" id="lzB-qc-2ok"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnB-7g-o0f">
+                                                <rect key="frame" x="141.66666666666666" y="19" width="102" height="21"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Heavy" family="SF Pro Text" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -97,8 +97,7 @@
                                             <constraint firstAttribute="height" constant="50" id="1Np-Md-W8A"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="n0t-U5-kQh" secondAttribute="trailing" constant="10" id="6QG-7R-2O6"/>
                                             <constraint firstItem="Ymm-yz-ZT6" firstAttribute="top" secondItem="YD3-eL-ihA" secondAttribute="topMargin" constant="11" id="6vs-P3-1yZ"/>
-                                            <constraint firstItem="fnB-7g-o0f" firstAttribute="centerX" secondItem="YD3-eL-ihA" secondAttribute="centerX" id="8ig-3Z-sQZ"/>
-                                            <constraint firstItem="fnB-7g-o0f" firstAttribute="leading" secondItem="Ymm-yz-ZT6" secondAttribute="trailing" constant="57" id="FyZ-Ef-Glp"/>
+                                            <constraint firstItem="fnB-7g-o0f" firstAttribute="centerX" secondItem="YD3-eL-ihA" secondAttribute="centerX" constant="5" id="8ig-3Z-sQZ"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="fnB-7g-o0f" secondAttribute="bottom" constant="2" id="Yb2-MF-lnN"/>
                                             <constraint firstItem="w9D-qk-6bc" firstAttribute="centerX" secondItem="YD3-eL-ihA" secondAttribute="centerX" id="p9J-Mo-1ET"/>
                                             <constraint firstItem="n0t-U5-kQh" firstAttribute="top" secondItem="YD3-eL-ihA" secondAttribute="topMargin" constant="11" id="pY0-8l-PHC"/>
