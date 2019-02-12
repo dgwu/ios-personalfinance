@@ -76,7 +76,7 @@ class IncomeExpenseViewController: UIViewController {
         slider.reloadInputViews()
         self.budgetAmountLabel.text = GeneralHelper.displayAmount(amount: financeManager.monthlyRemainingBudget())
         slideRemaining()
-         print("ini nilai :\(slider.maximumValue) \(slider.minimumValue)")
+        print("ini nilai :\(slider.maximumValue) \(slider.minimumValue)")
     }
     func InitialSetup()   {
         self.navigationController?.navigationBar.topItem?.title = "Cash Quest"
@@ -97,14 +97,38 @@ class IncomeExpenseViewController: UIViewController {
     }
     
     func slideRemaining() {
-        great = financeManager.monthlyBudgetMeter().great
-        ok = financeManager.monthlyBudgetMeter().ok
-        worst = financeManager.monthlyBudgetMeter().worst
-        slider.maximumValue = Float(great)
-        slider.minimumValue = Float(worst)
-        slider.value = 0 - (Float(financeManager.transactionSummaryInPeriod(fromDate: Date().startOfMonth(),  toDate: Date()).totalExpense))
+        great = financeManager.dailyBudgetMeter().great
+        ok = financeManager.dailyBudgetMeter().ok
+        worst = financeManager.dailyBudgetMeter().worst
+        print("ini nilai dailybudgetmeter \(financeManager.dailyBudgetMeter())")
+        
+        
+        slider.maximumValue = Float(worst)
+        slider.minimumValue = Float(great)
+        slider.value = Float(worst) - (Float(financeManager.transactionSummaryInPeriod(fromDate: Date().startOfDay,  toDate: Date()).totalExpense))
+        print("ini budi: \(financeManager.transactionSummaryInPeriod(fromDate: Date().startOfDay,  toDate: Date()).totalExpense)")
         print("ini nilai  slide remaining: \(slider.maximumValue) \(slider.value) \(slider.minimumValue)")
         print(Float(financeManager.transactionSummaryInPeriod(fromDate: Date().startOfMonth(),  toDate: Date()).totalExpense))
+    }
+    
+        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier ==  "goToCardViewRecord" {
+            let cell = segue.destination as! CardViewRecordVC
+            cell.transitioningDelegate = PresentationDelegate
+            cell.modalPresentationStyle = .custom
+            if status == 0 {
+                print("Status 0")
+                cell.categorySelected = selectCategory
+                cell.statusTemp = status
+            }else{
+                cell.categorySelected = selectCategory
+                cell.transactionSelected = selectTransaction
+                cell.statusTemp = status
+                print("status = 1")
+               
+            }
+        }
     }
     
     func UICostum()  {
@@ -205,7 +229,7 @@ class IncomeExpenseViewController: UIViewController {
             slider.trailingAnchor.constraint(equalTo: viewBudget.trailingAnchor, constant: -20),
             slider.bottomAnchor.constraint(equalTo: viewBudget.bottomAnchor, constant: -10)
             ])
-        slider.thumbTintColor = UIColor.blue
+        slider.thumbTintColor = #colorLiteral(red: 0.09286013991, green: 0.2634368837, blue: 0.05001136661, alpha: 1)
         slider.maximumTrackTintColor = #colorLiteral(red: 0.178917408, green: 0.4262605309, blue: 0.2830316126, alpha: 1)
         slider.minimumTrackTintColor = #colorLiteral(red: 0.9298180342, green: 0.9242905974, blue: 0.9340668321, alpha: 1)
         slider.isEnabled = false
@@ -213,6 +237,7 @@ class IncomeExpenseViewController: UIViewController {
         slider.layer.shadowColor = UIColor.black.cgColor
         slider.layer.shadowOffset = CGSize(width: 1, height: 1)
         slider.layer.shadowOpacity = 0.3
+       
         
         print("slider height :\(slider.frame.width)")
         
@@ -362,23 +387,7 @@ extension IncomeExpenseViewController : UICollectionViewDelegateFlowLayout {
         return width
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier ==  "goToCardViewRecord" {
-            let cell = segue.destination as! CardViewRecordVC
-            cell.transitioningDelegate = PresentationDelegate
-            cell.modalPresentationStyle = .custom
-            if status == 0 {
-                print("Status 0")
-                 cell.categorySelected = selectCategory
-                 cell.statusTemp = status
-            }else{
-                cell.categorySelected = selectCategory
-                cell.transactionSelected = selectTransaction
-                cell.statusTemp = status
-                print("status = 1")
-            }
-        }
-    }
+  
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         status = 0
         selectCategory = getCategory![indexPath.row]
@@ -441,15 +450,12 @@ extension IncomeExpenseViewController : UITableViewDelegate, UITableViewDataSour
 class CQSlider: UISlider {
     override func trackRect(forBounds bounds: CGRect) -> CGRect {
         let defaultBounds = super.trackRect(forBounds: bounds)
-        return CGRect(x: 0, y: 0, width: defaultBounds.size.width , height: 5)
+        return CGRect(x: 0, y: 0, width: defaultBounds.size.width , height: 1)
     }
     
-//    override func thumbRect(forBounds bounds: CGRect, trackRect rect: CGRect, value: Float) -> CGRect {
-//        let defaultBounds = super.trackRect(forBounds: bounds)
-//
-//        return
-//    }
-   
+    override func thumbRect(forBounds bounds: CGRect, trackRect rect: CGRect, value: Float) -> CGRect {
+        return CGRect(x: 20, y: 0, width: 2, height: 2)
+    }
 }
 
 
