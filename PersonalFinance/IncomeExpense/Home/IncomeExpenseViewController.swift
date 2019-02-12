@@ -450,7 +450,7 @@ extension IncomeExpenseViewController : UITableViewDelegate, UITableViewDataSour
 class CQSlider: UISlider {
     override func trackRect(forBounds bounds: CGRect) -> CGRect {
         let defaultBounds = super.trackRect(forBounds: bounds)
-        return CGRect(x: 0, y: 0, width: defaultBounds.size.width , height: 1)
+        return CGRect(x: 0, y: 0, width: defaultBounds.size.width , height: 5)
     }
     
     override func thumbRect(forBounds bounds: CGRect, trackRect rect: CGRect, value: Float) -> CGRect {
