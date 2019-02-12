@@ -31,6 +31,9 @@ class ReportViewController: UIViewController {
     
     var pageToLoad : Page = .categoryDetails
     
+    var maxOffset : CGFloat = 0
+    var initialTableToChartDistanceConstraint : CGFloat = 0
+    
     var expenses : [String : Double] = [:]
     var categories : [Category] = []
     var totalAmountThisMonth : Float = 0.0
@@ -48,6 +51,17 @@ class ReportViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //navigation bar
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.3568627451, green: 0.5921568627, blue: 0.8392156863, alpha: 1)
+//        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.3568627451, green: 0.5921568627, blue: 0.8392156863, alpha: 1)
+        navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 0.3568627451, green: 0.5921568627, blue: 0.8392156863, alpha: 1)
+//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+//        UINavigationBar.appearance().isTranslucent = false
+//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        
+//        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+//        topExpensesTable.addGestureRecognizer(panGestureRecognizer)
         
         displayedMonthBG.layer.cornerRadius = 9
         displayedMonthBG.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
@@ -102,7 +116,15 @@ class ReportViewController: UIViewController {
         date = Calendar.current.date(byAdding: .month, value: -(backStep), to: Date().startOfMonth().endOfDay )!
         loadData(fromDate: date)
         print ("Report - viewWillAppear - CATEGORIES COUNT: ", categories.count)
+        
+        maxOffset = CGFloat(categories.count - 5) * CGFloat(stackViewSpacing + barHeight)
        
+    }
+    
+    @objc func handlePan(gesture: UIPanGestureRecognizer) {
+        
+//        print (gesture.velocity(in: topExpensesTable).y)
+        
     }
     
     func highestExpenseValue () -> Double {

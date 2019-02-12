@@ -29,9 +29,10 @@ class ReportCategoryDetailsViewController: UIViewController {
     var numberOfRow : Int = 0
     // End of passed parameters
     
+    lazy var PresentationDelegate = PresentationManager()
     var filteredTransactions = [Transaction]()
     var prevIndex = 0
-    
+    var selectedTransaction : Transaction?
     let settingManager = SetupManager.shared
     let myFinanceManager = FinanceManager.shared
     
@@ -162,14 +163,21 @@ class ReportCategoryDetailsViewController: UIViewController {
     }
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let detailVC = segue.destination as? ReportCategoryDetailsViewController {
-            detailVC.selectedCategory = self.selectedCategory
-            detailVC.transactions = self.transactions
-            detailVC.currentlyDisplayedDate = currentlyDisplayedDate
-            detailVC.backStep = self.backStep
-            detailVC.pageToLoad = self.pageToLoad
+        if let editVC = segue.destination as? CardViewRecordVC {
+            editVC.transitioningDelegate = PresentationDelegate
+            editVC.modalPresentationStyle = .custom
+            editVC.transactionSelected = self.selectedTransaction
+            editVC.categorySelected = self.selectedTransaction?.category
+            editVC.title = "Edit Transaction"
         }
-    } // end of prepare(for segue: UIStoryboardSegue, sender: Any?)
+    }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: ReportCategoryDetailsTableViewCell) {
+//        if let editVC = segue.destination as? CardViewRecordVC {
+//            editVC.title = "Edit Transaction"
+//
+//        }
+//    } // end of prepare(for segue: UIStoryboardSegue, sender: Any?)
     
 }
 
@@ -191,7 +199,9 @@ extension ReportCategoryDetailsViewController : UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print ("\(String(describing: filteredTransactions[indexPath.row].category?.desc)) Selected")
+        self.selectedTransaction = filteredTransactions[indexPath.row]
         performSegue(withIdentifier: "editTransaction", sender: nil)
+        
     }
     
     
@@ -230,7 +240,7 @@ extension ReportCategoryDetailsViewController : UITableViewDelegate, UITableView
         cell.dateLabel.layer.borderWidth = dateLabelWidth / 8
         cell.dateLabel.layer.cornerRadius = dateLabelWidth / 2
         cell.dateLabel.widthAnchor.constraint(equalToConstant: dateLabelWidth).isActive = true
-        cell.entryID = filteredTransactions[indexPath.row].objectID
+        cell.transactionObject = filteredTransactions[indexPath.row]
         
         if pageToLoad == .reportDetails {
             cell.accessoryType = .disclosureIndicator
@@ -248,6 +258,7 @@ extension ReportCategoryDetailsViewController : UITableViewDelegate, UITableView
         } else {
             cell.expenseDescLabel.text = "No Description"
         }
+        
         let locale = Locale.current
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
