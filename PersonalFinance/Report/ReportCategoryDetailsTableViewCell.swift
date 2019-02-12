@@ -15,7 +15,7 @@ class ReportCategoryDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var expenseDescLabel: UILabel!
     @IBOutlet weak var expenseDescValueLabel: UILabel!
     
-    var entryID : NSManagedObjectID?
+    var transactionObject : Transaction?
     
     override func awakeFromNib() {
         super.awakeFromNib()
