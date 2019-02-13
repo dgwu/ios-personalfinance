@@ -253,10 +253,14 @@ extension ReportCategoryDetailsViewController : UITableViewDelegate, UITableView
         let borderColor = filteredTransactions[indexPath.row].category!.colorCode!
         cell.dateLabel.layer.borderColor = UIColor(hexString: borderColor).cgColor
         
-        if filteredTransactions[indexPath.row].desc != nil {
+        if filteredTransactions[indexPath.row].desc != "-" {
             cell.expenseDescLabel.text = filteredTransactions[indexPath.row].desc
+            cell.expenseDescLabel.font = UIFont.systemFont(ofSize: cell.expenseDescLabel.font.pointSize)
+            cell.expenseDescLabel.alpha = 1
         } else {
-            cell.expenseDescLabel.text = "No Description"
+            cell.expenseDescLabel.text = filteredTransactions[indexPath.row].category?.desc
+            cell.expenseDescLabel.font = UIFont.italicSystemFont(ofSize: cell.expenseDescLabel.font.pointSize)
+            cell.expenseDescLabel.alpha = 0.3
         }
         
         let locale = Locale.current
