@@ -12,6 +12,7 @@ import LocalAuthentication
 
 class SettingTableViewController: UITableViewController
 {
+    
     let setupManager = SetupManager.shared
     @IBOutlet weak var lblSalary: UILabel!
     @IBOutlet weak var lblSaving: UILabel!
@@ -125,13 +126,8 @@ class SettingTableViewController: UITableViewController
     //defaults.setObject("Coding Explorer", forKey: "userNameKey")
     func initialLoad()
     {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.minimumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
-        formatter.maximumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
-        
-        lblSalary.text = "\(formatter.string(from: NSNumber(value: setupManager.userMonthlySalary)) ?? "$")"
-        lblSaving.text = "\(formatter.string(from: NSNumber(value: setupManager.userMonthlySaving)) ?? "$")"
+        lblSalary.text = GeneralHelper.displayAmount(amount: setupManager.userMonthlySalary)
+        lblSaving.text = GeneralHelper.displayAmount(amount: setupManager.userMonthlySaving)
 
         lblCurrency.text = setupManager.userDefaultCurrency
         
