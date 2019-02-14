@@ -39,6 +39,7 @@
 		91606AEB21E2FE1A00182E03 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91606AEA21E2FE1A00182E03 /* CoreDataHelper.swift */; };
 		91606AF221E30A2300182E03 /* PersonalFinance.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91606AF021E30A2300182E03 /* PersonalFinance.xcdatamodeld */; };
 		9168811B2208B06700CA9B79 /* GeneralHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9168811A2208B06700CA9B79 /* GeneralHelper.swift */; };
+		91749D58221539E600312A57 /* String+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91749D57221539E600312A57 /* String+Double.swift */; };
 		9189BA7421F566E9004F9194 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9189BA7321F566E9004F9194 /* CategoryTableViewCell.swift */; };
 		9189BA7921F5838C004F9194 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9189BA7821F5838C004F9194 /* Wallet.storyboard */; };
 		9189BA7B21F583D3004F9194 /* WalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9189BA7A21F583D3004F9194 /* WalletTableViewCell.swift */; };
@@ -110,6 +111,7 @@
 		91606AEA21E2FE1A00182E03 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		91606AF121E30A2300182E03 /* PersonalFinance.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalFinance.xcdatamodel; sourceTree = "<group>"; };
 		9168811A2208B06700CA9B79 /* GeneralHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralHelper.swift; sourceTree = "<group>"; };
+		91749D57221539E600312A57 /* String+Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Double.swift"; sourceTree = "<group>"; };
 		9189BA7321F566E9004F9194 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		9189BA7821F5838C004F9194 /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		9189BA7A21F583D3004F9194 /* WalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTableViewCell.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				91FF50EE2204086700ADDECA /* AlertExt.swift */,
 				9197BA6C2205F96100CB0B3F /* BiometricHelper.swift */,
 				9168811A2208B06700CA9B79 /* GeneralHelper.swift */,
+				91749D57221539E600312A57 /* String+Double.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				9189BA7F21F5B3B4004F9194 /* WalletDetailViewController.swift in Sources */,
 				67DEF8C621F3874D007A7E6A /* LatestExpensesTVC.swift in Sources */,
 				F348A78A220ACF8800968197 /* ValidateOnboardingViewController.swift in Sources */,
+				91749D58221539E600312A57 /* String+Double.swift in Sources */,
 				F342487921EC3B10009EABDE /* AccountViewController.swift in Sources */,
 				91B41B6121FFFF8900F842A6 /* UIColorHelper.swift in Sources */,
 				F343F34C21EC6D870047F1F2 /* CategoryViewController.swift in Sources */,
@@ -681,7 +685,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4S25B8KB84;
+				DEVELOPMENT_TEAM = 7DQGP7DU26;
 				INFOPLIST_FILE = PersonalFinance/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -700,7 +704,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4S25B8KB84;
+				DEVELOPMENT_TEAM = 7DQGP7DU26;
 				INFOPLIST_FILE = PersonalFinance/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (

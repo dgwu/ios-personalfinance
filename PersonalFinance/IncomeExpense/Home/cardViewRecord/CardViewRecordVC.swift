@@ -17,12 +17,13 @@ class CardViewRecordVC: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var labelAddRecord: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var amountLabel: UITextField!
+    @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var nameExpenseLabel: UITextField!
     @IBOutlet weak var handleView: UIView!
     @IBOutlet weak var linelast: UIView!
     @IBOutlet weak var selectCategory: UIButton!
     @IBOutlet weak var requredAmount: UILabel!
+    var senderVC: UIViewController?
     var categorySelected : Category?
     var transactionSelected : Transaction?
     var amountTansact : Double?
@@ -42,11 +43,8 @@ class CardViewRecordVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
-        print("category : \(categorySelected)")
-        print("thi is category : \(transactionSelected)")
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+        
+        amountTextField.delegate = self
     }
     
     func initialSetup (){
@@ -61,8 +59,13 @@ class CardViewRecordVC: UIViewController {
         self.view.frame = CGRect(x: 0, y: yComponent, width: frame.width, height: frame.height)
         self.view.layer.cornerRadius = 15
         self.view.layer.masksToBounds = true
-        amountLabel.becomeFirstResponder()
-        amountLabel.keyboardType = .decimalPad
+        amountTextField.becomeFirstResponder()
+        if (SetupManager.shared.isUserUsingDecimal) {
+            amountTextField.keyboardType = .decimalPad
+        } else {
+            amountTextField.keyboardType = .numberPad
+        }
+        
         nameExpenseLabel.returnKeyType = .default
         handleView.layer.cornerRadius = 2
         inputMode()
@@ -79,10 +82,10 @@ class CardViewRecordVC: UIViewController {
          
         }else{
             GetDate()
-            amountLabel.text = "\(transactionSelected!.amount )"
+            amountTextField.text = transactionSelected!.amount.prettyAmount()
             nameExpenseLabel.text = "\(transactionSelected!.desc  ?? "-")"
             selectCategory.setTitle("\(transactionSelected?.category?.desc ?? "-")", for: .normal)
-           labelAddRecord.text = " Edit Transaction"
+            labelAddRecord.text = " Edit Transaction"
             
         }
     }
@@ -110,8 +113,8 @@ class CardViewRecordVC: UIViewController {
         }else{
             dates.inputView = datePicker
         }
-            self.view.endEditing(true)
-        }
+        self.view.endEditing(true)
+    }
         
     @objc func DatePickerValue(sender : UIDatePicker)   {
         let formatter = DateFormatter()
@@ -140,7 +143,9 @@ class CardViewRecordVC: UIViewController {
         if expenseDesc.count < 1 {
             expenseDesc = "-"
         }
-        FinanceManager.shared.insertExpense(date: datePicker.date, amount: (amountLabel.text! as NSString).doubleValue , category: cat, wallet: defaultWallet!, desc: expenseDesc)
+//        FinanceManager.shared.insertExpense(date: datePicker.date, amount: (amountTextField.text! as NSString).doubleValue , category: cat, wallet: defaultWallet!, desc: expenseDesc)
+        // modif by dg
+        FinanceManager.shared.insertExpense(date: datePicker.date, amount: amountTextField.text?.removePrettyNumberFormat() ?? 0 , category: cat, wallet: defaultWallet!, desc: expenseDesc)
     }
     
     @IBAction func selectCategoryAction(_ sender: Any) {
@@ -149,20 +154,22 @@ class CardViewRecordVC: UIViewController {
     
     @IBAction func saveRecord(_ sender: Any) {
         
-        if (amountLabel.text?.isEmpty)!{
+        if (amountTextField.text?.isEmpty)!{
             requredAmount.isHidden = false
         } else if statusTemp == 0 {
             InsertExpenses()
-        view.endEditing(true)
-        self.dismiss(animated: true, completion: nil)
+            view.endEditing(true)
+            self.dismiss(animated: true, completion: nil)
         }else{
-            transactionSelected?.amount = (amountLabel.text! as NSString).doubleValue
+//            transactionSelected?.amount = (amountTextField.text! as NSString).doubleValue
+            transactionSelected?.amount = amountTextField.text?.removePrettyNumberFormat() ?? 0
             transactionSelected?.category = categorySelected
             transactionSelected?.transactionDate = datePicker.date
             transactionSelected?.desc = nameExpenseLabel.text
             update(transaction: transactionSelected!)
-        view.endEditing(true)
-        self.dismiss(animated: true, completion: nil)
+            view.endEditing(true)
+            self.dismiss(animated: true, completion: nil)
+            senderVC?.viewWillAppear(false)
         }
             
        
@@ -204,3 +211,29 @@ extension CardViewRecordVC : UIPickerViewDelegate, UIPickerViewDataSource{
 }
 
 
+extension CardViewRecordVC: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == self.amountTextField {
+            let amountString = textField.text ?? ""
+            if amountString.isValidDouble() {
+                textField.text = amountString.removePrettyNumberFormat()?.prettyAmount()
+            }
+        }
+    }
+    
+    
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == self.amountTextField {
+            // User pressed the delete-key to remove a character, this is always valid, return true to allow change
+            if string.isEmpty { return true }
+            
+            let currentText = textField.text ?? ""
+            let replacementText = (currentText as NSString).replacingCharacters(in: range, with: string)
+            
+            return replacementText.isValidDouble()
+        }
+        
+        return true
+    }
+}
