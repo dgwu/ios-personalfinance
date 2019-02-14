@@ -97,16 +97,15 @@ class IncomeExpenseViewController: UIViewController {
     }
     
     func slideRemaining() {
-        great = financeManager.dailyBudgetMeter().great
-        ok = financeManager.dailyBudgetMeter().ok
-        worst = financeManager.dailyBudgetMeter().worst
-        print("ini nilai dailybudgetmeter \(financeManager.dailyBudgetMeter())")
+        great = financeManager.monthlyBudgetMeter().great
+        ok = financeManager.monthlyBudgetMeter().ok
+        worst = financeManager.monthlyBudgetMeter().worst
+        print("ini nilai dailybudgetmeter \(financeManager.monthlyBudgetMeter())")
         
-        
-        slider.maximumValue = Float(worst)
-        slider.minimumValue = Float(great)
-        slider.value = Float(worst) - (Float(financeManager.transactionSummaryInPeriod(fromDate: Date().startOfDay,  toDate: Date()).totalExpense))
-        print("ini budi: \(financeManager.transactionSummaryInPeriod(fromDate: Date().startOfDay,  toDate: Date()).totalExpense)")
+        slider.maximumValue = Float(great)
+        slider.minimumValue = Float(worst)
+        slider.value = Float(financeManager.monthlyRemainingBudget())
+        print(financeManager.monthlyRemainingBudget())
         print("ini nilai  slide remaining: \(slider.maximumValue) \(slider.value) \(slider.minimumValue)")
         print(Float(financeManager.transactionSummaryInPeriod(fromDate: Date().startOfMonth(),  toDate: Date()).totalExpense))
     }
