@@ -39,7 +39,7 @@ extension String {
             let decimalDigits = split.count == 2 ? split.last ?? "" : ""
             
             // Finally check if we're <= the allowed digits
-            return decimalDigits.characters.count <= maxDecimalPlaces    // TODO: Swift 4.0 replace with digits.count, YAY!
+            return decimalDigits.count <= maxDecimalPlaces    // TODO: Swift 4.0 replace with digits.count, YAY!
         }
         
         return false // couldn't turn string into a valid number
@@ -48,7 +48,6 @@ extension String {
     func removePrettyNumberFormat() -> Double? {
         let formatter = NumberFormatter()
         formatter.allowsFloats = true // Default is true, be explicit anyways
-        let decimalSeparator = formatter.decimalSeparator ?? "."  // Gets the locale specific decimal separator. If for some reason there is none we assume "." is used as separator.
         
         let thousandSeparator = formatter.groupingSeparator ?? ","
         let withoutThousandSeparator = self.replacingOccurrences(of: thousandSeparator, with: "")
