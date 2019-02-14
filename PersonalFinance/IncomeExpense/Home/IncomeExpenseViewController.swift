@@ -230,8 +230,8 @@ class IncomeExpenseViewController: UIViewController {
             slider.bottomAnchor.constraint(equalTo: viewBudget.bottomAnchor, constant: -10)
             ])
         slider.thumbTintColor = #colorLiteral(red: 0.09286013991, green: 0.2634368837, blue: 0.05001136661, alpha: 1)
-        slider.maximumTrackTintColor = #colorLiteral(red: 0.178917408, green: 0.4262605309, blue: 0.2830316126, alpha: 1)
-        slider.minimumTrackTintColor = #colorLiteral(red: 0.9298180342, green: 0.9242905974, blue: 0.9340668321, alpha: 1)
+        slider.maximumTrackTintColor = #colorLiteral(red: 0.9298180342, green: 0.9242905974, blue: 0.9340668321, alpha: 1)
+        slider.minimumTrackTintColor = #colorLiteral(red: 0.178917408, green: 0.4262605309, blue: 0.2830316126, alpha: 1)
         slider.isEnabled = false
         slider.layer.masksToBounds = false
         slider.layer.shadowColor = UIColor.black.cgColor
@@ -453,10 +453,9 @@ class CQSlider: UISlider {
         return CGRect(x: 0, y: 0, width: defaultBounds.size.width , height: 5)
     }
     
-    override func thumbRect(forBounds bounds: CGRect, trackRect rect: CGRect, value: Float) -> CGRect {
-        return CGRect(x: 20, y: 0, width: 2, height: 2)
-    }
+//    override func thumbRect(forBounds bounds: CGRect, trackRect rect: CGRect, value: Float) -> CGRect {
+//        return CGRect(x: 20, y: 0, width: 2, height: 2)
+//    }
 }
 
-
-
+//tool tip in thumb (daily expense & budget)

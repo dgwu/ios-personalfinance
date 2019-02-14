@@ -80,7 +80,7 @@ class CardViewRecordVC: UIViewController {
         }else{
             GetDate()
             amountLabel.text = "\(transactionSelected!.amount )"
-            nameExpenseLabel.text = "\(transactionSelected!.desc  ?? "-")"
+            nameExpenseLabel.text = "\(transactionSelected!.desc  ?? "\(transactionSelected?.category?.desc)")"
             selectCategory.setTitle("\(transactionSelected?.category?.desc ?? "-")", for: .normal)
            labelAddRecord.text = " Edit Transaction"
             
