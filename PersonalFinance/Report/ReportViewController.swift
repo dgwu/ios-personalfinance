@@ -52,6 +52,11 @@ class ReportViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
+        formatter.maximumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
+
         //navigation bar
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.3568627451, green: 0.5921568627, blue: 0.8392156863, alpha: 1)
         navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 0.3568627451, green: 0.5921568627, blue: 0.8392156863, alpha: 1)
@@ -104,6 +109,8 @@ class ReportViewController: UIViewController {
         */
         
     } // End of viewDidLoad()
+    
+  
     
     override func viewWillAppear(_ animated: Bool) {
         var date = Date()
