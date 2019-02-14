@@ -12,6 +12,7 @@ import LocalAuthentication
 
 class SettingTableViewController: UITableViewController
 {
+    
     let setupManager = SetupManager.shared
     @IBOutlet weak var lblSalary: UILabel!
     @IBOutlet weak var lblSaving: UILabel!
@@ -125,13 +126,8 @@ class SettingTableViewController: UITableViewController
     //defaults.setObject("Coding Explorer", forKey: "userNameKey")
     func initialLoad()
     {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.minimumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
-        formatter.maximumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
-        
-        lblSalary.text = "\(formatter.string(from: NSNumber(value: setupManager.userMonthlySalary)) ?? "$")"
-        lblSaving.text = "\(formatter.string(from: NSNumber(value: setupManager.userMonthlySaving)) ?? "$")"
+        lblSalary.text = GeneralHelper.displayAmount(amount: setupManager.userMonthlySalary)
+        lblSaving.text = GeneralHelper.displayAmount(amount: setupManager.userMonthlySaving)
 
         lblCurrency.text = setupManager.userDefaultCurrency
         
@@ -139,9 +135,6 @@ class SettingTableViewController: UITableViewController
         decimalState.isOn = setupManager.isUserUsingDecimal
         faceIdState.isOn = setupManager.isUserUsingFaceLock
         fingerPrintState.isOn = setupManager.isUserUsingFingerLock
-        
-        
-        
         
     }
     
@@ -151,9 +144,10 @@ class SettingTableViewController: UITableViewController
         super.viewDidLoad()
         self.title = "Settings"
         self.navigationController?.navigationBar.prefersLargeTitles = true
-    }
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.3568627451, green: 0.5921568627, blue: 0.8392156863, alpha: 1)
+        navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 0.3568627451, green: 0.5921568627, blue: 0.8392156863, alpha: 1)
     
- 
+    }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
@@ -163,6 +157,14 @@ class SettingTableViewController: UITableViewController
             rowHeight = 0
         }
         else if(indexPath.section == 0 && indexPath.row == 1){
+            // Hide gambar profile
+            //rowHeight = 123 // was 123
+            rowHeight = 0
+        }else if(indexPath.section == 0 && indexPath.row == 4){
+            // Hide gambar profile
+            //rowHeight = 123 // was 123
+            rowHeight = 0
+        }else if(indexPath.section == 0 && indexPath.row == 5){
             // Hide gambar profile
             //rowHeight = 123 // was 123
             rowHeight = 0
@@ -212,7 +214,7 @@ class SettingTableViewController: UITableViewController
                             inputKeyboardType: .decimalPad)
             { (input:String?) in
                 print("The new number is \(input ?? "")")
-                self.setupManager.userMonthlySalary = Double(input!) ?? 0
+                self.setupManager.userMonthlySalary = (input! as NSString).doubleValue  ?? 0
                 self.initialLoad()
             }
         }
@@ -226,7 +228,7 @@ class SettingTableViewController: UITableViewController
                             inputKeyboardType: .decimalPad)
             { (input:String?) in
                 print("The new number is \(input ?? "")")
-                self.setupManager.userMonthlySaving = Double(input!) ?? 0
+                self.setupManager.userMonthlySaving = (input! as NSString).doubleValue  ?? 0
                 self.initialLoad()
             }
         }
