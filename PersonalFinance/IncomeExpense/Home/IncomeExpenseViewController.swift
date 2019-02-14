@@ -427,6 +427,8 @@ extension IncomeExpenseViewController : UITableViewDelegate, UITableViewDataSour
             if transaction.desc != "-" {
                 // note from dg, mestinya transactionNameLabel, kurang N
                 cell.trasactionNameLabel.text = transaction.desc
+                cell.trasactionNameLabel.font = UIFont.systemFont(ofSize: cell.trasactionNameLabel.font.pointSize)
+                cell.trasactionNameLabel.alpha = 1
             } else {
                 cell.trasactionNameLabel.text = transaction.category?.desc
                 cell.trasactionNameLabel.font = UIFont.italicSystemFont(ofSize: cell.trasactionNameLabel.font.pointSize)
