@@ -74,6 +74,8 @@ class ReportCategoryDetailsViewController: UIViewController {
         checkTransactions()
         expenseTable.reloadData()
     }
+
+    
     
     func checkTransactions() {
         if filteredTransactions.count == 0 {
@@ -169,6 +171,8 @@ class ReportCategoryDetailsViewController: UIViewController {
             editVC.transactionSelected = self.selectedTransaction
             editVC.categorySelected = self.selectedTransaction?.category
             editVC.title = "Edit Transaction"
+            editVC.senderVC = self
+            
         }
     }
     
@@ -201,9 +205,17 @@ extension ReportCategoryDetailsViewController : UITableViewDelegate, UITableView
         print ("\(String(describing: filteredTransactions[indexPath.row].category?.desc)) Selected")
         self.selectedTransaction = filteredTransactions[indexPath.row]
         performSegue(withIdentifier: "editTransaction", sender: nil)
-        
     }
     
+    func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
+        trashButton.tag = 1
+        trashButton.title = "Done"
+    }
+    
+    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+        trashButton.tag = 0
+        trashButton.title = "Delete"
+    }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -253,10 +265,14 @@ extension ReportCategoryDetailsViewController : UITableViewDelegate, UITableView
         let borderColor = filteredTransactions[indexPath.row].category!.colorCode!
         cell.dateLabel.layer.borderColor = UIColor(hexString: borderColor).cgColor
         
-        if filteredTransactions[indexPath.row].desc != nil {
+        if filteredTransactions[indexPath.row].desc != "-" {
             cell.expenseDescLabel.text = filteredTransactions[indexPath.row].desc
+            cell.expenseDescLabel.font = UIFont.systemFont(ofSize: cell.expenseDescLabel.font.pointSize)
+            cell.expenseDescLabel.alpha = 1
         } else {
-            cell.expenseDescLabel.text = "No Description"
+            cell.expenseDescLabel.text = filteredTransactions[indexPath.row].category?.desc
+            cell.expenseDescLabel.font = UIFont.italicSystemFont(ofSize: cell.expenseDescLabel.font.pointSize)
+            cell.expenseDescLabel.alpha = 0.3
         }
         
         let locale = Locale.current
