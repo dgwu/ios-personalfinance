@@ -97,16 +97,15 @@ class IncomeExpenseViewController: UIViewController {
     }
     
     func slideRemaining() {
-        great = financeManager.dailyBudgetMeter().great
-        ok = financeManager.dailyBudgetMeter().ok
-        worst = financeManager.dailyBudgetMeter().worst
-        print("ini nilai dailybudgetmeter \(financeManager.dailyBudgetMeter())")
+        great = financeManager.monthlyBudgetMeter().great
+        ok = financeManager.monthlyBudgetMeter().ok
+        worst = financeManager.monthlyBudgetMeter().worst
+        print("ini nilai dailybudgetmeter \(financeManager.monthlyBudgetMeter())")
         
-        
-        slider.maximumValue = Float(worst)
-        slider.minimumValue = Float(great)
-        slider.value = Float(worst) - (Float(financeManager.transactionSummaryInPeriod(fromDate: Date().startOfDay,  toDate: Date()).totalExpense))
-        print("ini budi: \(financeManager.transactionSummaryInPeriod(fromDate: Date().startOfDay,  toDate: Date()).totalExpense)")
+        slider.maximumValue = Float(great)
+        slider.minimumValue = Float(worst)
+        slider.value = Float(financeManager.monthlyRemainingBudget())
+        print(financeManager.monthlyRemainingBudget())
         print("ini nilai  slide remaining: \(slider.maximumValue) \(slider.value) \(slider.minimumValue)")
         print(Float(financeManager.transactionSummaryInPeriod(fromDate: Date().startOfMonth(),  toDate: Date()).totalExpense))
     }
@@ -230,8 +229,8 @@ class IncomeExpenseViewController: UIViewController {
             slider.bottomAnchor.constraint(equalTo: viewBudget.bottomAnchor, constant: -10)
             ])
         slider.thumbTintColor = #colorLiteral(red: 0.09286013991, green: 0.2634368837, blue: 0.05001136661, alpha: 1)
-        slider.maximumTrackTintColor = #colorLiteral(red: 0.178917408, green: 0.4262605309, blue: 0.2830316126, alpha: 1)
-        slider.minimumTrackTintColor = #colorLiteral(red: 0.9298180342, green: 0.9242905974, blue: 0.9340668321, alpha: 1)
+        slider.maximumTrackTintColor = #colorLiteral(red: 0.9298180342, green: 0.9242905974, blue: 0.9340668321, alpha: 1)
+        slider.minimumTrackTintColor = #colorLiteral(red: 0.178917408, green: 0.4262605309, blue: 0.2830316126, alpha: 1)
         slider.isEnabled = false
         slider.layer.masksToBounds = false
         slider.layer.shadowColor = UIColor.black.cgColor
@@ -424,8 +423,18 @@ extension IncomeExpenseViewController : UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "latestCell", for: indexPath) as! LatestExpensesTVC
         if let transaction = transactionFecthControler.fetchedObjects?[indexPath.row] {
-           
-            cell.trasactionNameLabel.text = transaction.desc
+            
+            if transaction.desc != "-" {
+                // note from dg, mestinya transactionNameLabel, kurang N
+                cell.trasactionNameLabel.text = transaction.desc
+                cell.trasactionNameLabel.font = UIFont.systemFont(ofSize: cell.trasactionNameLabel.font.pointSize)
+                cell.trasactionNameLabel.alpha = 1
+            } else {
+                cell.trasactionNameLabel.text = transaction.category?.desc
+                cell.trasactionNameLabel.font = UIFont.italicSystemFont(ofSize: cell.trasactionNameLabel.font.pointSize)
+                cell.trasactionNameLabel.alpha = 0.3
+            }
+            
             cell.transactionAmountLabel.text = GeneralHelper.displayAmount(amount: transaction.amount)
             guard let category = transaction.category?.iconName else {
                 return cell
@@ -451,12 +460,8 @@ class CQSlider: UISlider {
     override func trackRect(forBounds bounds: CGRect) -> CGRect {
         let defaultBounds = super.trackRect(forBounds: bounds)
         return CGRect(x: 0, y: 0, width: defaultBounds.size.width , height: 5)
-    }
-    
-    override func thumbRect(forBounds bounds: CGRect, trackRect rect: CGRect, value: Float) -> CGRect {
-        return CGRect(x: 20, y: 0, width: 2, height: 2)
-    }
+
+}
 }
 
-
-
+//tool tip in thumb (daily expense & budget)

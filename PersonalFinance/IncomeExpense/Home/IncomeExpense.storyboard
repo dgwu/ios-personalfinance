@@ -224,7 +224,7 @@
                         <viewLayoutGuide key="safeArea" id="eEh-Bo-meK"/>
                     </view>
                     <connections>
-                        <outlet property="amountLabel" destination="nOh-jm-ORc" id="8OO-qE-1F0"/>
+                        <outlet property="amountTextField" destination="nOh-jm-ORc" id="dJd-fA-D3j"/>
                         <outlet property="cancelButton" destination="Ymm-yz-ZT6" id="BRI-tp-t9s"/>
                         <outlet property="containerView" destination="Wow-gH-1ZV" id="beE-Sx-IU7"/>
                         <outlet property="dateLabel" destination="OX3-fj-6Hc" id="OQ5-XJ-J5w"/>

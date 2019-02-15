@@ -211,7 +211,7 @@ class SettingTableViewController: UITableViewController
                             actionTitle: "Save",
                             cancelTitle: "Cancel",
                             inputPlaceholder: "\(NumberFormatter.localizedString(from: NSNumber(value: setupManager.userMonthlySalary), number: .decimal))",
-                            inputKeyboardType: .decimalPad)
+                            inputKeyboardType: .numberPad)
             { (input:String?) in
                 print("The new number is \(input ?? "")")
                 self.setupManager.userMonthlySalary = (input! as NSString).doubleValue  ?? 0
@@ -225,7 +225,7 @@ class SettingTableViewController: UITableViewController
                             actionTitle: "Save",
                             cancelTitle: "Cancel",
                             inputPlaceholder: "\(NumberFormatter.localizedString(from: NSNumber(value: setupManager.userMonthlySaving), number: .decimal))",
-                            inputKeyboardType: .decimalPad)
+                            inputKeyboardType: .numberPad)
             { (input:String?) in
                 print("The new number is \(input ?? "")")
                 self.setupManager.userMonthlySaving = (input! as NSString).doubleValue  ?? 0
