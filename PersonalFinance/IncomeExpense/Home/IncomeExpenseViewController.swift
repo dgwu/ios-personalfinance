@@ -53,10 +53,15 @@ class IncomeExpenseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if !SetupManager.shared.isExpenseCategoriesPreloaded {
             // add delay to make sure preloaded category are loaded in view
             sleep(1)
         }
+        
+        let tapGesture : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tiptool))
+        slider.addGestureRecognizer(tapGesture)
+        
         getCategory = FinanceManager.shared.categoryList(type: .expense)
         transactionFecthControler.delegate = self
         do {
@@ -101,11 +106,20 @@ class IncomeExpenseViewController: UIViewController {
         ok = financeManager.monthlyBudgetMeter().ok
         worst = financeManager.monthlyBudgetMeter().worst
         print("ini nilai dailybudgetmeter \(financeManager.monthlyBudgetMeter())")
-        
         slider.maximumValue = Float(great)
         slider.minimumValue = Float(worst)
         slider.value = Float(financeManager.monthlyRemainingBudget())
         print(financeManager.monthlyRemainingBudget())
+
+        if slider.value == slider.maximumValue || slider.value > Float(ok + (ok * 0.2) ){
+            slider.setThumbImage(UIImage(named: "greenIcon"), for: .normal)
+        }else if slider.value <= Float(ok + (ok * 0.2)) || slider.value >= Float(ok - (ok * 0.2)) {
+            slider.setThumbImage(UIImage(named: "redIcon"), for: .normal)
+            }else {
+            slider.setThumbImage(UIImage(named: "yellowIcon"), for: .normal)
+            }
+
+        
         print("ini nilai  slide remaining: \(slider.maximumValue) \(slider.value) \(slider.minimumValue)")
         print(Float(financeManager.transactionSummaryInPeriod(fromDate: Date().startOfMonth(),  toDate: Date()).totalExpense))
     }
@@ -187,12 +201,12 @@ class IncomeExpenseViewController: UIViewController {
             viewBudgetSection.topAnchor.constraint(equalTo: viewBudget.topAnchor),
             viewBudgetSection.leadingAnchor.constraint(equalTo: viewBudget.leadingAnchor),
             viewBudgetSection.trailingAnchor.constraint(equalTo: viewBudget.trailingAnchor),
-            viewBudgetSection.heightAnchor.constraint(equalToConstant: (view.frame.height/8)/3)
+            viewBudgetSection.heightAnchor.constraint(equalToConstant: (view.frame.height/8)/4)
             ])
         viewBudgetSection.clipsToBounds = true
         viewBudgetSection.backgroundColor = #colorLiteral(red: 0.258031249, green: 0.623462081, blue: 0.4137890041, alpha: 1)
         print("Height view section :\(viewBudgetSection.frame.size.height)")
-        
+        let heightViewbudget = (view.frame.height/8)
         //budget Label
         budgetLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -223,29 +237,24 @@ class IncomeExpenseViewController: UIViewController {
        
         slider.translatesAutoresizingMaskIntoConstraints =  false
         NSLayoutConstraint.activate([
-            slider.topAnchor.constraint(equalTo: viewBudgetSection.bottomAnchor, constant: 40),
+            slider.topAnchor.constraint(equalTo: greatLable.bottomAnchor, constant: heightViewbudget * 0.2),
             slider.leadingAnchor.constraint(equalTo: viewBudget.leadingAnchor, constant: 20),
             slider.trailingAnchor.constraint(equalTo: viewBudget.trailingAnchor, constant: -20),
-            slider.bottomAnchor.constraint(equalTo: viewBudget.bottomAnchor, constant: -10)
+           
             ])
-        slider.thumbTintColor = #colorLiteral(red: 0.09286013991, green: 0.2634368837, blue: 0.05001136661, alpha: 1)
         slider.maximumTrackTintColor = #colorLiteral(red: 0.9298180342, green: 0.9242905974, blue: 0.9340668321, alpha: 1)
         slider.minimumTrackTintColor = #colorLiteral(red: 0.178917408, green: 0.4262605309, blue: 0.2830316126, alpha: 1)
         slider.isEnabled = false
         slider.layer.masksToBounds = false
-        slider.layer.shadowColor = UIColor.black.cgColor
-        slider.layer.shadowOffset = CGSize(width: 1, height: 1)
-        slider.layer.shadowOpacity = 0.3
-       
-        
         print("slider height :\(slider.frame.width)")
+        slider.backgroundColor = UIColor.clear
         
 
         
         //label slider
         okLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            okLabel.topAnchor.constraint(equalTo: viewBudgetSection.bottomAnchor, constant: 10),
+            okLabel.topAnchor.constraint(equalTo: viewBudgetSection.bottomAnchor, constant :heightViewbudget * 0.05),
             okLabel.centerXAnchor.constraint(equalTo: viewBudget.centerXAnchor)
             ])
         okLabel.text = "Ok"
@@ -255,7 +264,7 @@ class IncomeExpenseViewController: UIViewController {
         
         greatLable.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            greatLable.topAnchor.constraint(equalTo: viewBudgetSection.bottomAnchor, constant: 10),
+            greatLable.topAnchor.constraint(equalTo: viewBudgetSection.bottomAnchor, constant :heightViewbudget * 0.05),
             greatLable.trailingAnchor.constraint(equalTo: viewBudget.trailingAnchor, constant : -20)
             ])
         greatLable.text = "Great"
@@ -265,7 +274,7 @@ class IncomeExpenseViewController: UIViewController {
         
         worseLable.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            worseLable.topAnchor.constraint(equalTo: viewBudgetSection.bottomAnchor, constant: 10),
+            worseLable.topAnchor.constraint(equalTo: viewBudgetSection.bottomAnchor, constant :heightViewbudget * 0.05),
             worseLable.leadingAnchor.constraint(equalTo: viewBudget.leadingAnchor, constant : 20)
             ])
         worseLable.text = "Worst"
@@ -281,15 +290,16 @@ class IncomeExpenseViewController: UIViewController {
             collectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.35),
             collectionView.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor),
-            collectionView.topAnchor.constraint(equalTo: headerCollectionLabel.bottomAnchor, constant : 10)
+            collectionView.topAnchor.constraint(equalTo: headerCollectionLabel.bottomAnchor, constant : 5)
             ])
         collectionView.layoutIfNeeded()
         print("Height collectionView frame :\(collectionView.frame)")
+
         
         //view container tabel expenses
         viewContainerTabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            viewContainerTabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 10),
+            viewContainerTabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 5),
             viewContainerTabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant : 10),
             viewContainerTabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant : -10),
             viewContainerTabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant : -10),
@@ -306,7 +316,7 @@ class IncomeExpenseViewController: UIViewController {
         NSLayoutConstraint.activate([
             headerCollectionLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant : 20  ),
             headerCollectionLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            headerCollectionLabel.topAnchor.constraint(equalTo: viewBudget.bottomAnchor, constant : 15 ),
+            headerCollectionLabel.topAnchor.constraint(equalTo: viewBudget.bottomAnchor, constant : 10 ),
             ])
         headerCollectionLabel.font = UIFont(name: "SF Pro Text", size: 15)
         headerCollectionLabel.text = "Add Record"
@@ -336,6 +346,10 @@ class IncomeExpenseViewController: UIViewController {
             tableLatestExpenses.bottomAnchor.constraint(equalTo: viewContainerTabel.bottomAnchor),
             tableLatestExpenses.widthAnchor.constraint(equalTo: viewContainerTabel.widthAnchor)
             ])
+    }
+    
+    @objc func tiptool (){
+        print(" asd ")
     }
 }
 

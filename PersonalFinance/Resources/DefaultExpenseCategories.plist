@@ -34,7 +34,7 @@
 	</dict>
 	<dict>
 		<key>desc</key>
-		<string>Gifts &amp; Donation</string>
+		<string>Donation</string>
 		<key>colorCode</key>
 		<string>#FF9898</string>
 		<key>iconName</key>
@@ -44,7 +44,7 @@
 	</dict>
 	<dict>
 		<key>desc</key>
-		<string>Health &amp; Fitness</string>
+		<string>Health</string>
 		<key>colorCode</key>
 		<string>#818181</string>
 		<key>iconName</key>
@@ -54,7 +54,7 @@
 	</dict>
 	<dict>
 		<key>desc</key>
-		<string>Transportation</string>
+		<string>Transport</string>
 		<key>colorCode</key>
 		<string>#2F6299</string>
 		<key>iconName</key>
@@ -84,7 +84,7 @@
 	</dict>
 	<dict>
 		<key>desc</key>
-		<string>Entertainment</string>
+		<string>Movie</string>
 		<key>colorCode</key>
 		<string>#DB7139</string>
 		<key>iconName</key>
@@ -114,7 +114,7 @@
 	</dict>
 	<dict>
 		<key>desc</key>
-		<string>Bills &amp; Utilities</string>
+		<string>Bills </string>
 		<key>colorCode</key>
 		<string>#64A977</string>
 		<key>iconName</key>
