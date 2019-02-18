@@ -82,6 +82,7 @@ class IncomeExpenseViewController: UIViewController {
         self.budgetAmountLabel.text = GeneralHelper.displayAmount(amount: financeManager.monthlyRemainingBudget())
         slideRemaining()
         print("ini nilai :\(slider.maximumValue) \(slider.minimumValue)")
+       
     }
     func InitialSetup()   {
         self.navigationController?.navigationBar.topItem?.title = "Cash Quest"
@@ -194,7 +195,8 @@ class IncomeExpenseViewController: UIViewController {
         viewBudget.backgroundColor = #colorLiteral(red: 0.2941176471, green: 0.7176470588, blue: 0.4666666667, alpha: 1)
         viewBudget.clipsToBounds = true
         viewBudget.layer.cornerRadius  = 5
-        
+        viewBudget.layoutIfNeeded()
+        print("height view budget : \(viewBudget.frame.height)")
         //View budget section
         viewBudgetSection.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -287,11 +289,12 @@ class IncomeExpenseViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         NSLayoutConstraint.activate([
-            collectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.35),
+            collectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.36),
             collectionView.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor),
             collectionView.topAnchor.constraint(equalTo: headerCollectionLabel.bottomAnchor, constant : 5)
             ])
+        collectionView.isScrollEnabled = false
         collectionView.layoutIfNeeded()
         print("Height collectionView frame :\(collectionView.frame)")
 
