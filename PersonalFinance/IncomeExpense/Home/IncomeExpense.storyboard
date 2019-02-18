@@ -39,7 +39,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jvx-CM-OhS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="197.59999999999999" y="-2269.2118226600987"/>
+            <point key="canvasLocation" x="-54" y="-2269"/>
         </scene>
         <!--Card View RecordVC-->
         <scene sceneID="6oh-Td-Lip">
@@ -240,7 +240,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FC6-PX-MdU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="928.79999999999995" y="-2269.2118226600987"/>
+            <point key="canvasLocation" x="620" y="-2269"/>
         </scene>
         <!--Home-->
         <scene sceneID="fiQ-0d-ui0">
