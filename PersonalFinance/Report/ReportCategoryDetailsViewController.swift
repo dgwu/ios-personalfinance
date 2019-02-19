@@ -18,7 +18,7 @@ class ReportCategoryDetailsViewController: UIViewController {
     @IBOutlet weak var displayedMonthBG: UIImageView!
     @IBOutlet weak var noTransactionIcon: UIImageView!
     @IBOutlet weak var noTransactionLabel: UILabel!
-    @IBOutlet var trashButton: UIBarButtonItem!
+    @IBOutlet var deleteButton: UIBarButtonItem!
     
     // Passed Parameters:
     var selectedCategory : String = ""
@@ -57,8 +57,8 @@ class ReportCategoryDetailsViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        trashButton.tag = 0
-        trashButton.title = "Delete"
+        deleteButton.tag = 0
+        deleteButton.title = "Delete"
         expenseTable.setEditing(false, animated: true)
     }
     
@@ -151,14 +151,14 @@ class ReportCategoryDetailsViewController: UIViewController {
         expenseTable.reloadData()
     }
     
-    @IBAction func editButton(_ sender: UIBarButtonItem) {
+    @IBAction func deleteButtonPressed(_ sender: UIBarButtonItem) {
         if sender.tag == 0 {
             sender.tag = 1
-            trashButton.title = "Done"
+            deleteButton.title = "Done"
             expenseTable.setEditing(true, animated: true)
         } else {
             sender.tag = 0
-            trashButton.title = "Delete"
+            deleteButton.title = "Delete"
 //            trashButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: nil)
             expenseTable.setEditing(false, animated: true)
         }
@@ -208,13 +208,13 @@ extension ReportCategoryDetailsViewController : UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
-        trashButton.tag = 1
-        trashButton.title = "Done"
+        deleteButton.tag = 1
+        deleteButton.title = "Done"
     }
     
     func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
-        trashButton.tag = 0
-        trashButton.title = "Delete"
+        deleteButton.tag = 0
+        deleteButton.title = "Delete"
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -249,10 +249,16 @@ extension ReportCategoryDetailsViewController : UITableViewDelegate, UITableView
         let dateLabelWidth = cell.dateLabel.font.pointSize * 2.5
 //        print ("FILTERED TRANSACTION AT ROW = ", filteredTransactions[indexPath.row])
         cell.dateLabel.text = dateFormatter.string(from: filteredTransactions[indexPath.row].transactionDate!)
-        cell.dateLabel.layer.borderWidth = dateLabelWidth / 8
-        cell.dateLabel.layer.cornerRadius = dateLabelWidth / 2
         cell.dateLabel.widthAnchor.constraint(equalToConstant: dateLabelWidth).isActive = true
         cell.transactionObject = filteredTransactions[indexPath.row]
+        
+//        let borderColor = filteredTransactions[indexPath.row].category!.colorCode!
+//        cell.dateLabel.layer.borderWidth = dateLabelWidth / 8
+//        cell.dateLabel.layer.borderColor = UIColor(hexString: borderColor).cgColor
+//        cell.dateLabel.layer.cornerRadius = dateLabelWidth / 2
+        
+        cell.categoryImage.image = UIImage(named: filteredTransactions[indexPath.row].category!.iconName!)
+        print (filteredTransactions[indexPath.row].category!.iconName!)
         
         if pageToLoad == .reportDetails {
             cell.accessoryType = .disclosureIndicator
@@ -262,8 +268,7 @@ extension ReportCategoryDetailsViewController : UITableViewDelegate, UITableView
             cell.selectionStyle = .none
         }        
         
-        let borderColor = filteredTransactions[indexPath.row].category!.colorCode!
-        cell.dateLabel.layer.borderColor = UIColor(hexString: borderColor).cgColor
+        
         
         if filteredTransactions[indexPath.row].desc != "-" {
             cell.expenseDescLabel.text = filteredTransactions[indexPath.row].desc

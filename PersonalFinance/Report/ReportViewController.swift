@@ -302,6 +302,7 @@ class ReportViewController: UIViewController {
                 
                 if highestExpenseVal != 0 {
                     barWidth = CGFloat(Float(expenses[category.desc!]!) / Float(highestExpenseVal) * (Float(chartStackView.bounds.width) * barChartMultiplier))
+                    barWidth = barWidth < barHeight ? barHeight : barWidth
                 }
                 
                 let categoryChartStackViewWidthConstraint = NSLayoutConstraint(item: categoryChartStackView, attribute: .width, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
