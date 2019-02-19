@@ -56,7 +56,43 @@ class SettingTableViewController: UITableViewController
     {
         if (faceIdState.isOn == true)
         {
-            setupManager.isUserUsingFaceLock = true
+            // do face id permission check
+            let context = LAContext()
+            if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
+            {
+                var localizedReason = ""
+                
+                switch context.biometryType {
+                case .none:
+                    print("handle face id type none")
+                case .touchID:
+                    print("handle face id type touch id")
+                    localizedReason = "Protect your data with Touch ID."
+                case .faceID:
+                    print("handle face id type face id")
+                    localizedReason = "Protect your data with Face ID."
+                }
+                
+                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: localizedReason) { (wasSuccessful, error) in
+                    if wasSuccessful
+                    {
+                        self.setupManager.isUserUsingFaceLock = true
+                    }
+                    else
+                    {
+                        Alert.ShowBasic(title: "Incorrect credentials", msg: "Please try again", vc: self)
+                        DispatchQueue.main.async {
+                            self.faceIdState.isOn = false
+                        }
+                        
+                    }
+                }
+            }else
+            {
+                Alert.ShowBasic(title: "Face ID/Touch ID Not Configured", msg: "Please Go To settigs", vc: self)
+                self.faceIdState.isOn = false
+            }
+            
         }else
         {
             setupManager.isUserUsingFaceLock = false
