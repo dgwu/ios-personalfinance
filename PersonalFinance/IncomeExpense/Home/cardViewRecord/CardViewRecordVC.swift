@@ -109,6 +109,7 @@ class CardViewRecordVC: UIViewController {
             formatter.timeStyle = DateFormatter.Style.none
             dates.inputView = datePicker
             dateEdit = transactionSelected?.transactionDate
+            print("date edit :\(dateEdit)")
             guard let datelabels = dateLabel else { return}
             datelabels.text = formatter.string(from: dateEdit!)
         }else{
@@ -127,6 +128,7 @@ class CardViewRecordVC: UIViewController {
     func update (transaction: Transaction) {
        let update = FinanceManager.shared.objectContext.object(with: transaction.objectID)
         update.setValuesForKeys(["amount" : transaction.amount, "createdDate" : transaction.transactionDate!, "desc": transaction.desc!, "category": transaction.category! ] )
+        print("Update \(update)")
         do {
             try FinanceManager.shared.objectContext.save()
             print("success")
@@ -166,6 +168,7 @@ class CardViewRecordVC: UIViewController {
             transactionSelected?.amount = amountTextField.text?.removePrettyNumberFormat() ?? 0
             transactionSelected?.category = categorySelected
             transactionSelected?.transactionDate = datePicker.date
+            print("date picker \(transactionSelected?.transactionDate)")
             transactionSelected?.desc = nameExpenseLabel.text
             update(transaction: transactionSelected!)
             view.endEditing(true)
