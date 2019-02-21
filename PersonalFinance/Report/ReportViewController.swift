@@ -28,6 +28,7 @@ class ReportViewController: UIViewController {
     @IBOutlet weak var totalMonthTitle: UILabel!
     @IBOutlet var arrowButtonCollection: [UIButton]!
     @IBOutlet weak var tableToChartDistanceConstraint: NSLayoutConstraint!
+   
     
     var pageToLoad : Page = .categoryDetails
     
@@ -44,13 +45,14 @@ class ReportViewController: UIViewController {
     var backStep = 0
     var stackViewSpacing : CGFloat = 8
     let maxStackViewSpacing = 20
-    var barHeight : CGFloat = 0
+    var categoryLabelHeight : CGFloat = 0
     var stackViewWidth : CGFloat = 0
     let settingManager = SetupManager.shared
     let barChartMultiplier : Float = 0.6 // faktor buat dikaliin ke tinggi bar chart-nya biar gak mentok ke atas
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -104,12 +106,13 @@ class ReportViewController: UIViewController {
         components.year = 2019
         components.timeZone = TimeZone.current
         
-        let myDate = calendar.date(from: components)
-        print ("COBA DATE START OF MONTH: ", myDate!.startOfMonth().description(with: Locale.current), ", ", myDate!.endOfMonth().endOfDay.description(with: Locale.current) )
-        */
+       */
+        
+//        myTextField.keyboardType = .decimalPad
+//        myTextField.delegate = self
+//        myTextField.isHidden = true
         
     } // End of viewDidLoad()
-    
   
     
     override func viewWillAppear(_ animated: Bool) {
@@ -120,7 +123,7 @@ class ReportViewController: UIViewController {
         loadData(fromDate: date)
         print ("Report - viewWillAppear - CATEGORIES COUNT: ", categories.count)
         
-        maxOffset = CGFloat(categories.count - 5) * CGFloat(stackViewSpacing + barHeight)
+        maxOffset = CGFloat(categories.count - 5) * CGFloat(stackViewSpacing + categoryLabelHeight)
        
     }
     
@@ -265,7 +268,7 @@ class ReportViewController: UIViewController {
         }
         
         if categories.count != 0 {
-            stackViewWidth = barHeight * CGFloat(categories.count) + (CGFloat(categories.count - 1) * stackViewSpacing)
+            stackViewWidth = categoryLabelHeight * CGFloat(categories.count) + (CGFloat(categories.count - 1) * stackViewSpacing)
             chartStackView.spacing = CGFloat(stackViewSpacing)
             view.addSubview(chartStackView)
             
@@ -295,51 +298,76 @@ class ReportViewController: UIViewController {
                 
                 var barWidth : CGFloat = 0
                 
-                let categoryLabel = UILabel()
+                let categoryLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 120, height: 20))
                 categoryLabel.font = categoryLabel.font.withSize(12)
                 categoryLabel.text = category.desc!
+                
                 categoryChartStackView.addArrangedSubview(categoryLabel)
+               
                 
                 if highestExpenseVal != 0 {
                     barWidth = CGFloat(Float(expenses[category.desc!]!) / Float(highestExpenseVal) * (Float(chartStackView.bounds.width) * barChartMultiplier))
-                    barWidth = barWidth < barHeight ? barHeight : barWidth
+                    
                 }
                 
                 let categoryChartStackViewWidthConstraint = NSLayoutConstraint(item: categoryChartStackView, attribute: .width, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100)
                 categoryChartStackView.addConstraint(categoryChartStackViewWidthConstraint)
                 
                 categoryChartStackView.layoutIfNeeded()
-                barHeight = (categoryLabel.frame.height)
+                categoryLabelHeight = (categoryLabel.frame.height)
+                let expenseBarHeight = categoryLabelHeight * 0.8
+                barWidth = barWidth < expenseBarHeight ? expenseBarHeight : barWidth
                 
-                let expenseBar = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: barWidth, height: barHeight))
+                let expenseBar = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: barWidth, height: expenseBarHeight))
                 expenseBar.image = #imageLiteral(resourceName: "emptyImage10px") // harus diisi image, kalo engga, gak nongol bar nya
                 expenseBar.backgroundColor = UIColor.init(hexString: category.colorCode!)
                 expenseBar.translatesAutoresizingMaskIntoConstraints = false;
                 
+                let expenseBarContainer = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: barWidth, height: categoryLabelHeight))
+                expenseBarContainer.image = #imageLiteral(resourceName: "emptyImage10px")
+                expenseBarContainer.translatesAutoresizingMaskIntoConstraints = false
+                expenseBarContainer.addSubview(expenseBar)
+                
                 let expenseBarWidthConstraint = NSLayoutConstraint(item: expenseBar, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(barWidth))
                 expenseBarWidthConstraint.isActive = true
                 
-                let expenseBarHeightConstraint = NSLayoutConstraint(item: expenseBar, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(barHeight))
+                let expenseBarHeightConstraint = NSLayoutConstraint(item: expenseBar, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(expenseBarHeight))
                 expenseBarHeightConstraint.isActive = true
                 
+                let expenseBarContWidthConstraint = NSLayoutConstraint(item: expenseBarContainer, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(barWidth))
+                expenseBarContWidthConstraint.isActive = true
+                
+                let expenseBarContHeightConstraint = NSLayoutConstraint(item: expenseBarContainer, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(categoryLabelHeight))
+                expenseBarContHeightConstraint.isActive = true
+                
+//                let expenseBarVerticalCenter = NSLayoutConstraint(item: expenseBar, attribute: .centerY, relatedBy: .equal, toItem: expenseBarContainer, attribute: .centerY, multiplier: 1, constant: 1)
+//                expenseBarVerticalCenter.isActive = true
+                
+                expenseBar.centerYAnchor.constraint(equalTo: expenseBarContainer.centerYAnchor).isActive = true
+                
+                expenseBarContainer.addConstraint(expenseBarContHeightConstraint)
+                expenseBarContainer.addConstraint(expenseBarContWidthConstraint)
+                expenseBarContainer.clipsToBounds = true
+                expenseBarContainer.layoutIfNeeded()
+                
+//                expenseBar.addConstraint(expenseBarVerticalCenter)
                 expenseBar.addConstraint(expenseBarHeightConstraint)
                 expenseBar.addConstraint(expenseBarWidthConstraint)
                 expenseBar.clipsToBounds = true
-                expenseBar.layer.cornerRadius = CGFloat(barHeight / 2)
+                expenseBar.layer.cornerRadius = CGFloat(expenseBarHeight / 2)
                 
                 // animasi batang memanjang
                 
                 if highestExpenseVal != 0 {
                     let animationDuration : Double = Double(expenses[category.desc!]!) / Double(highestExpenseVal) * 0.8
-                    expenseBar.frame = CGRect(x: 0.0, y: 0.0, width: 0.0, height: CGFloat(barHeight))
+                    expenseBar.frame = CGRect(x: 0.0, y: 0.0, width: 0.0, height: CGFloat(categoryLabelHeight))
                     UIView.animate(withDuration: animationDuration, delay: 0.0, options: .curveEaseOut, animations: {
-                        expenseBar.frame = CGRect(x: 0.0, y: 0.0, width: CGFloat(barWidth), height: CGFloat(self.barHeight))
+                        expenseBar.frame = CGRect(x: 0.0, y: 0.0, width: CGFloat(barWidth), height: CGFloat(self.categoryLabelHeight))
                     }, completion: { (Bool) in
-                        
                     })
                 }
                 
-                barChartStackView.addArrangedSubview(expenseBar)
+                barChartStackView.addArrangedSubview(expenseBarContainer)
                 barChartStackView.layoutIfNeeded()
                 totalAmountThisMonth += Float(expenses[category.desc!]!)
                 
@@ -423,6 +451,43 @@ extension ReportViewController: NSFetchedResultsControllerDelegate {
         if categories.count != 0 {
             topExpensesTable.reloadData()
         }
+    }
+}
+
+extension ReportViewController: UITextFieldDelegate {
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // Uses the number format corresponding to your Locale
+//        let formatter = NumberFormatter()
+//        formatter.numberStyle = .decimal
+//        formatter.locale = Locale.current
+//        formatter.maximumFractionDigits = 0
+//        
+//        
+//        // Uses the grouping separator corresponding to your Locale
+//        // e.g. "," in the US, a space in France, and so on
+//        if let groupingSeparator = formatter.groupingSeparator {
+//            
+//            if string == groupingSeparator {
+//                return true
+//            }
+//            
+//            if let textWithoutGroupingSeparator = textField.text?.replacingOccurrences(of: groupingSeparator, with: "") {
+//                var totalTextWithoutGroupingSeparators = textWithoutGroupingSeparator + string
+//                if string == "" { // pressed Backspace key
+//                    totalTextWithoutGroupingSeparators.removeLast()
+//                }
+//                if let numberWithoutGroupingSeparator = formatter.number(from: totalTextWithoutGroupingSeparators),
+//                    let formattedText = formatter.string(from: numberWithoutGroupingSeparator) {
+//                    
+//                    textField.text = formattedText
+//                    return false
+//                }
+//            }
+//        }
+        return true
+
+
     }
 }
 

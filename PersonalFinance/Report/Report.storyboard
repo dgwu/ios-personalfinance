@@ -188,7 +188,7 @@
                         <viewLayoutGuide key="safeArea" id="YO5-ZP-Dc2"/>
                     </view>
                     <navigationItem key="navigationItem" title="Report" id="6bm-H0-y4P">
-                        <barButtonItem key="rightBarButtonItem" title="Transactions" id="9h4-6Q-eNJ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="9h4-6Q-eNJ">
                             <connections>
                                 <action selector="detailsButtonTapped:" destination="Yym-3y-gWx" id="YeJ-95-y7D"/>
                             </connections>
@@ -273,7 +273,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6t-DV-E0y">
-                                                    <rect key="frame" x="10" y="6" width="32" height="32"/>
+                                                    <rect key="frame" x="10.000000000000002" y="6.0000000000000018" width="31.666666666666671" height="31.666666666666671"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="N6t-DV-E0y" secondAttribute="height" multiplier="1:1" id="pYm-cV-jl3"/>
                                                     </constraints>
@@ -282,7 +282,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="expenseDesc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8c0-JF-FAE">
-                                                    <rect key="frame" x="84" y="12" width="146" height="20"/>
+                                                    <rect key="frame" x="83.666666666666671" y="12" width="146.33333333333331" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="4vX-qK-lIU"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="q1l-J3-1Os"/>
@@ -302,7 +302,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SWI-Ju-bFm">
-                                                    <rect key="frame" x="52" y="11" width="22" height="22"/>
+                                                    <rect key="frame" x="51.666666666666664" y="11" width="21.999999999999993" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="22" id="Itm-oi-NgP"/>
                                                         <constraint firstAttribute="height" constant="22" id="gyF-kn-UCk"/>
@@ -361,7 +361,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Hx-Zx-MGZ">
-                                <rect key="frame" x="54" y="94.666666666666657" width="100" height="21"/>
+                                <rect key="frame" x="86" y="94.666666666666657" width="100" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="Asa-UW-XqV"/>
                                 </constraints>
@@ -403,7 +403,7 @@
                             <constraint firstItem="8dZ-dI-dU7" firstAttribute="top" secondItem="2dB-sQ-LXF" secondAttribute="bottom" constant="20" id="dVX-pz-jAi"/>
                             <constraint firstItem="8AV-Z0-IgE" firstAttribute="centerX" secondItem="swe-hI-RCf" secondAttribute="centerX" id="ef7-2Z-BI8"/>
                             <constraint firstItem="bJG-7U-PId" firstAttribute="height" secondItem="2dB-sQ-LXF" secondAttribute="height" id="fyn-9x-qC0"/>
-                            <constraint firstItem="0Hx-Zx-MGZ" firstAttribute="leading" secondItem="fUR-UZ-cCf" secondAttribute="trailing" constant="8" id="how-to-bZ1"/>
+                            <constraint firstItem="0Hx-Zx-MGZ" firstAttribute="leading" secondItem="fUR-UZ-cCf" secondAttribute="trailing" constant="40" id="how-to-bZ1"/>
                             <constraint firstItem="8AV-Z0-IgE" firstAttribute="centerY" secondItem="swe-hI-RCf" secondAttribute="centerY" id="kEM-cH-DbV"/>
                             <constraint firstItem="0Hx-Zx-MGZ" firstAttribute="height" secondItem="fUR-UZ-cCf" secondAttribute="height" id="mXT-z7-AMI"/>
                             <constraint firstItem="sAM-ho-yST" firstAttribute="centerY" secondItem="fUR-UZ-cCf" secondAttribute="centerY" id="scE-H8-ejD"/>
@@ -415,17 +415,10 @@
                         <viewLayoutGuide key="safeArea" id="swe-hI-RCf"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="dUc-RW-qes">
-                        <barButtonItem key="rightBarButtonItem" title="Delete" style="plain" id="hNa-XV-Yr9">
-                            <connections>
-                                <action selector="deleteButtonPressed:" destination="VlF-XB-vbs" id="6z4-RJ-RJK"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Title" id="dUc-RW-qes"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="backButton" destination="mtk-1n-KP4" id="pN3-d6-0kq"/>
-                        <outlet property="deleteButton" destination="hNa-XV-Yr9" id="VSy-3p-sHP"/>
                         <outlet property="displayedMonth" destination="I6z-77-814" id="ai0-zR-S1C"/>
                         <outlet property="displayedMonthBG" destination="2dB-sQ-LXF" id="Abl-vk-oLD"/>
                         <outlet property="expenseTable" destination="5MK-uS-PrW" id="5eg-42-uaD"/>
@@ -458,8 +451,8 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.35686274509803922" green="0.59215686274509804" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>

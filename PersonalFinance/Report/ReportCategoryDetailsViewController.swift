@@ -18,7 +18,9 @@ class ReportCategoryDetailsViewController: UIViewController {
     @IBOutlet weak var displayedMonthBG: UIImageView!
     @IBOutlet weak var noTransactionIcon: UIImageView!
     @IBOutlet weak var noTransactionLabel: UILabel!
-    @IBOutlet var deleteButton: UIBarButtonItem!
+    
+    var deleteButton = UIBarButtonItem()
+    var doneButton = UIBarButtonItem()
     
     // Passed Parameters:
     var selectedCategory : String = ""
@@ -41,6 +43,14 @@ class ReportCategoryDetailsViewController: UIViewController {
         self.title = selectedCategory
         expenseTable.dataSource = self
         expenseTable.delegate = self
+        expenseTable.allowsSelectionDuringEditing = false
+        
+        deleteButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteButtonPressed(_:)))
+        doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(deleteButtonPressed(_:)))
+        
+        deleteButton.tag = 0
+        doneButton.tag = 1
+        self.navigationItem.rightBarButtonItem = deleteButton
         
         displayedMonthBG.layer.cornerRadius = 9
         displayedMonthBG.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
@@ -151,15 +161,15 @@ class ReportCategoryDetailsViewController: UIViewController {
         expenseTable.reloadData()
     }
     
-    @IBAction func deleteButtonPressed(_ sender: UIBarButtonItem) {
-        if sender.tag == 0 {
-            sender.tag = 1
-            deleteButton.title = "Done"
+    @objc func deleteButtonPressed(_ sender: UIBarButtonItem) {
+        print ("Sender Tag = ", sender.tag)
+        if sender.tag == 0 { // delete button pressed
+            self.navigationItem.rightBarButtonItem = doneButton
             expenseTable.setEditing(true, animated: true)
-        } else {
-            sender.tag = 0
-            deleteButton.title = "Delete"
-//            trashButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: nil)
+           
+        } else { // done button pressed
+            deleteButton.tag = 0
+            self.navigationItem.rightBarButtonItem = deleteButton
             expenseTable.setEditing(false, animated: true)
         }
     }
@@ -175,13 +185,6 @@ class ReportCategoryDetailsViewController: UIViewController {
             
         }
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: ReportCategoryDetailsTableViewCell) {
-//        if let editVC = segue.destination as? CardViewRecordVC {
-//            editVC.title = "Edit Transaction"
-//
-//        }
-//    } // end of prepare(for segue: UIStoryboardSegue, sender: Any?)
     
 }
 
@@ -202,19 +205,21 @@ extension ReportCategoryDetailsViewController : UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print ("\(String(describing: filteredTransactions[indexPath.row].category?.desc)) Selected")
-        self.selectedTransaction = filteredTransactions[indexPath.row]
-        performSegue(withIdentifier: "editTransaction", sender: nil)
+        if self.navigationItem.rightBarButtonItem == deleteButton {
+            print ("\(String(describing: filteredTransactions[indexPath.row].category?.desc)) Selected")
+            self.selectedTransaction = filteredTransactions[indexPath.row]
+            performSegue(withIdentifier: "editTransaction", sender: nil)
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
-        deleteButton.tag = 1
-        deleteButton.title = "Done"
+        self.navigationItem.rightBarButtonItem = doneButton
+        
     }
     
     func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
-        deleteButton.tag = 0
-        deleteButton.title = "Delete"
+        self.navigationItem.rightBarButtonItem = deleteButton
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -260,16 +265,10 @@ extension ReportCategoryDetailsViewController : UITableViewDelegate, UITableView
         cell.categoryImage.image = UIImage(named: filteredTransactions[indexPath.row].category!.iconName!)
         print (filteredTransactions[indexPath.row].category!.iconName!)
         
-        if pageToLoad == .reportDetails {
-            cell.accessoryType = .disclosureIndicator
-            cell.selectionStyle = .blue
-        } else {
-            cell.accessoryType = .none
-            cell.selectionStyle = .none
-        }        
-        
-        
-        
+        cell.accessoryType = .disclosureIndicator
+        cell.selectionStyle = .blue
+        cell.backgroundColor = UIColor.clear
+            
         if filteredTransactions[indexPath.row].desc != "-" {
             cell.expenseDescLabel.text = filteredTransactions[indexPath.row].desc
             cell.expenseDescLabel.font = UIFont.systemFont(ofSize: cell.expenseDescLabel.font.pointSize)
@@ -287,9 +286,6 @@ extension ReportCategoryDetailsViewController : UITableViewDelegate, UITableView
         formatter.maximumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
         let expenseValue = locale.currencySymbol! + " " + formatter.string(from: NSNumber(value: filteredTransactions[indexPath.row].amount))!
         cell.expenseDescValueLabel.text = expenseValue
-        
-        
-        
         return cell
     }
 }
