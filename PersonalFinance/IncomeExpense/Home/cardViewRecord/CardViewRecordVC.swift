@@ -18,6 +18,7 @@ class CardViewRecordVC: UIViewController {
     @IBOutlet weak var labelAddRecord: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var amountTextField: UITextField!
+    var amountTextFieldCursorOffset = 0
     @IBOutlet weak var nameExpenseLabel: UITextField!
     @IBOutlet weak var handleView: UIView!
     @IBOutlet weak var linelast: UIView!
@@ -45,6 +46,7 @@ class CardViewRecordVC: UIViewController {
         initialSetup()
         
         amountTextField.delegate = self
+        amountTextField.addTarget(self, action: #selector(textFieldDidEndEditing), for: .editingChanged)
     }
     
     func initialSetup (){
@@ -213,26 +215,94 @@ extension CardViewRecordVC : UIPickerViewDelegate, UIPickerViewDataSource{
 
 
 extension CardViewRecordVC: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    @objc func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == self.amountTextField {
+            
             let amountString = textField.text ?? ""
+            print("bzz did end edit \(amountString)")
             if amountString.isValidDouble() {
                 textField.text = amountString.removePrettyNumberFormat()?.prettyAmount()
+                
+                let positionOriginal = textField.beginningOfDocument
+                if let amountTextFieldCursorPosition = textField.position(from: positionOriginal, offset: self.amountTextFieldCursorOffset) {
+                    print("bzz taruh cursor")
+                    textField.selectedTextRange = textField.textRange(from: amountTextFieldCursorPosition, to: amountTextFieldCursorPosition)
+                }
             }
         }
     }
     
-    
+//    @objc func amountValueDidChange(_ textField: UITextField) {
+//
+//    }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == self.amountTextField {
+            
             // User pressed the delete-key to remove a character, this is always valid, return true to allow change
-            if string.isEmpty { return true }
+//            if string.isEmpty { return true }
             
+
             let currentText = textField.text ?? ""
-            let replacementText = (currentText as NSString).replacingCharacters(in: range, with: string)
+            let replacementText = (currentText as NSString).replacingCharacters(in: range, with: string) // new text
+//            print("bzz new text \(replacementText)")
+//            print("bzz range location \(range.location)")
+            print("===========================")
             
-            return replacementText.isValidDouble()
+            if replacementText.isValidDouble() {
+                var cursorAdditionalOffset = 0
+                // referensi set cursor
+                // https://stackoverflow.com/questions/26284271/format-uitextfield-text-without-having-cursor-move-to-the-end/37031132
+                if SetupManager.shared.isUserUsingDecimal {
+                    // berarti ada extra 3 char ".00"
+                    
+                } else {
+                    // tanpa extra 3 char ".00"
+                    if string.isEmpty {
+                        // deleting
+                        if replacementText.count % 4 == 0 {
+                            cursorAdditionalOffset = -1
+                        } else {
+                            cursorAdditionalOffset = 0
+                        }
+                    } else {
+                        // inserting
+                        print("bzz replacement text count \(replacementText.count)")
+//                        print("bzz location \(range.location)")
+                        // (replacementText.count - range.location) > 2 &&
+                        if replacementText.count % 4 == 0 {
+                            cursorAdditionalOffset = 2
+                        } else {
+                            cursorAdditionalOffset = 1
+                        }
+                    }
+                }
+                
+                print("bzz cursorAdditionalOffset \(cursorAdditionalOffset)")
+                print("bzz cursorTotalOffset \(range.location + cursorAdditionalOffset)")
+                
+                self.amountTextFieldCursorOffset = range.location + cursorAdditionalOffset
+//                    textField.position(from: positionOriginal, offset: (range.location + cursorAdditionalOffset))
+                
+                print("bzz range location \(range.location)")
+                return true
+            } else {
+                if string.isEmpty { return true }
+                return false
+            }
+            
+            
+            
+//            let positionOriginal = textField.beginningOfDocument
+            
+//            let cursorLocation = textField.position(from: positionOriginal, offset: (range.location + string.count))
+//            if let cursorLocation = cursorLocation {
+//                textField.selectedTextRange = textField.textRange(from: cursorLocation, to: cursorLocation)
+//            }
+            
+//            textField.text = replacementText.removePrettyNumberFormat()?.prettyAmount()
+            
+//            return replacementText.isValidDouble()
         }
         
         return true

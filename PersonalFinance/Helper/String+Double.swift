@@ -53,6 +53,15 @@ extension String {
         let withoutThousandSeparator = self.replacingOccurrences(of: thousandSeparator, with: "")
         return formatter.number(from: withoutThousandSeparator)?.doubleValue
     }
+    
+    func removePrettyNumberFormatInString() -> String {
+        let formatter = NumberFormatter()
+        formatter.allowsFloats = true // Default is true, be explicit anyways
+        
+        let thousandSeparator = formatter.groupingSeparator ?? ","
+        let withoutThousandSeparator = self.replacingOccurrences(of: thousandSeparator, with: "")
+        return withoutThousandSeparator
+    }
 }
 
 extension Double {
@@ -60,6 +69,16 @@ extension Double {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
 //        formatter.groupingSeparator = ""
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
+        
+        return formatter.string(from: NSNumber(value: self))!
+    }
+    
+    func toStringDecimal() -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.groupingSeparator = ""
         formatter.minimumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
         formatter.maximumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
         
