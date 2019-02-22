@@ -253,48 +253,25 @@ extension CardViewRecordVC: UITextFieldDelegate {
                 var cursorAdditionalOffset = 0
                 // referensi set cursor
                 // https://stackoverflow.com/questions/26284271/format-uitextfield-text-without-having-cursor-move-to-the-end/37031132
-                if SetupManager.shared.isUserUsingDecimal {
-                    // berarti ada extra 3 char ".00"
-                    
-                    // cek apakah ada decimal point dlm text
-                    let numberFormatter = NumberFormatter()
-                    numberFormatter.allowsFloats = true
-                    let decimalSeparator = numberFormatter.decimalSeparator ?? "."
-                    let split = replacementText.components(separatedBy: decimalSeparator)
-                    
-                    if string.isEmpty {
-                        // deleting
-                        if split.first!.count > 0 && split.first!.count % 4 == 0 {
-                            cursorAdditionalOffset = -1
-                        } else {
-                            cursorAdditionalOffset = 0
-                        }
+                
+                let numberFormatter = NumberFormatter()
+                numberFormatter.allowsFloats = true
+                let decimalSeparator = numberFormatter.decimalSeparator ?? "."
+                let split = replacementText.components(separatedBy: decimalSeparator)
+                
+                if string.isEmpty {
+                    // deleting
+                    if split.first!.count > 0 && split.first!.count % 4 == 0 {
+                        cursorAdditionalOffset = -1
                     } else {
-                        // inserting
-                        print("bzz replacement text count \(replacementText.count)")
-                        if split.first!.count % 4 == 0 {
-                            cursorAdditionalOffset = 2
-                        } else {
-                            cursorAdditionalOffset = 1
-                        }
+                        cursorAdditionalOffset = 0
                     }
                 } else {
-                    // tanpa extra 3 char ".00"
-                    if string.isEmpty {
-                        // deleting
-                        if replacementText.count % 4 == 0 {
-                            cursorAdditionalOffset = -1
-                        } else {
-                            cursorAdditionalOffset = 0
-                        }
+                    // inserting
+                    if split.first!.count % 4 == 0 {
+                        cursorAdditionalOffset = 2
                     } else {
-                        // inserting
-                        print("bzz replacement text count \(replacementText.count)")
-                        if replacementText.count % 4 == 0 {
-                            cursorAdditionalOffset = 2
-                        } else {
-                            cursorAdditionalOffset = 1
-                        }
+                        cursorAdditionalOffset = 1
                     }
                 }
                 
