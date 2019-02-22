@@ -84,7 +84,7 @@ class IncomeExpenseViewController: UIViewController {
     }
     
     func InitialSetup()   {
-        self.navigationController?.navigationBar.topItem?.title = "Cash Quest"
+        self.navigationController?.navigationBar.topItem?.title = "Cash Quests"
         self.collectionView.register(UINib(nibName: "CategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "categoryCell")
         
         self.collectionView.delegate = self
@@ -108,20 +108,23 @@ class IncomeExpenseViewController: UIViewController {
         print("bzz ini nilai dailybudgetmeter \(financeManager.monthlyBudgetMeter())")
         
         statusValue = CGFloat(financeManager.monthlyRemainingBudget())
+        if great == 0 {
+            widthStatusBar = 0
+        }else {
         widthStatusBar = ((statusValue-CGFloat(worst)) / CGFloat(great-worst) ) * backGroundView.frame.width
-        
+        }
         print("bzz back : \(backGroundView.frame.width)")
-        print("bzz widthStatusBar : \(widthStatusBar)")
+        print("bzz widthStatus Bar : \(widthStatusBar)")
        
         
         widthStatusBar = widthStatusBar < 10 ? 10 : widthStatusBar
-//        self.statusBar.widthAnchor.constraint(equalToConstant: widthStatusBar).isActive = true
+       
 //        statusBar.frame.size.width = widthStatusBar
         self.statusBar.backgroundColor = getBarStatusColor(value: widthStatusBar, maxValue: backGroundView.frame.width)
         statusBar.frame = CGRect(x: 0, y: 0, width: widthStatusBar, height: 16)
         
         print(Float(financeManager.transactionSummaryInPeriod(fromDate: Date().startOfMonth(),  toDate: Date()).totalExpense))
-         print("bzz width statusbar :\(statusBar.frame.width)")
+         print("bzz width status bar :\(statusBar.frame.width)")
     }
     
     func getBarStatusColor (value: CGFloat, maxValue: CGFloat) -> UIColor {
@@ -220,8 +223,8 @@ class IncomeExpenseViewController: UIViewController {
         //view budget
         viewBudget.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            viewBudget.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant: 10),
-            viewBudget.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            viewBudget.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant: 15),
+            viewBudget.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
             viewBudget.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             viewBudget.heightAnchor.constraint(equalToConstant: view.frame.height/8)
             ])
@@ -247,7 +250,7 @@ class IncomeExpenseViewController: UIViewController {
         //budget Label
         budgetLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            budgetLabel.leftAnchor.constraint(equalTo: viewBudgetSection.leftAnchor, constant : 10),
+            budgetLabel.leftAnchor.constraint(equalTo: viewBudgetSection.leftAnchor, constant : 15),
             budgetLabel.topAnchor.constraint(equalTo: viewBudgetSection.topAnchor),
             budgetLabel.bottomAnchor.constraint(equalTo: viewBudgetSection.bottomAnchor)
             ])
@@ -259,7 +262,7 @@ class IncomeExpenseViewController: UIViewController {
         //amount Label
         budgetAmountLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            budgetAmountLabel.trailingAnchor.constraint(equalTo: viewBudgetSection.trailingAnchor, constant: -10),
+            budgetAmountLabel.trailingAnchor.constraint(equalTo: viewBudgetSection.trailingAnchor, constant: -15),
             budgetAmountLabel.leadingAnchor.constraint(equalTo: budgetLabel.trailingAnchor, constant: 10),
             budgetAmountLabel.topAnchor.constraint(equalTo: viewBudgetSection.topAnchor),
             budgetAmountLabel.bottomAnchor.constraint(equalTo: viewBudgetSection.bottomAnchor)
@@ -275,8 +278,8 @@ class IncomeExpenseViewController: UIViewController {
         backGroundView.translatesAutoresizingMaskIntoConstraints =  false
         NSLayoutConstraint.activate([
             backGroundView.topAnchor.constraint(equalTo: greatLable.bottomAnchor, constant: 15),
-            backGroundView.leadingAnchor.constraint(equalTo: viewBudget.leadingAnchor, constant: 20),
-            backGroundView.trailingAnchor.constraint(equalTo: viewBudget.trailingAnchor, constant: -20),
+            backGroundView.leadingAnchor.constraint(equalTo: viewBudget.leadingAnchor, constant: 15),
+            backGroundView.trailingAnchor.constraint(equalTo: viewBudget.trailingAnchor, constant: -15),
             backGroundView.heightAnchor.constraint(equalToConstant: 16)
             ])
         
@@ -290,7 +293,8 @@ class IncomeExpenseViewController: UIViewController {
         NSLayoutConstraint.activate([
             statusBar.topAnchor.constraint(equalTo: backGroundView.topAnchor),
             statusBar.leadingAnchor.constraint(equalTo: backGroundView.leadingAnchor),
-            statusBar.heightAnchor.constraint(equalToConstant: 16)
+            statusBar.heightAnchor.constraint(equalToConstant: 16),
+            self.statusBar.widthAnchor.constraint(equalToConstant: backGroundView.frame.width)
             ])
 
         statusBar.layoutIfNeeded()
@@ -311,7 +315,7 @@ class IncomeExpenseViewController: UIViewController {
         greatLable.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             greatLable.topAnchor.constraint(equalTo: viewBudgetSection.bottomAnchor, constant :heightViewbudget * 0.1),
-            greatLable.trailingAnchor.constraint(equalTo: viewBudget.trailingAnchor, constant : -20)
+            greatLable.trailingAnchor.constraint(equalTo: viewBudget.trailingAnchor, constant : -15)
             ])
         greatLable.text = "Fine"
         greatLable.textAlignment = .right
@@ -321,7 +325,7 @@ class IncomeExpenseViewController: UIViewController {
         worseLable.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             worseLable.topAnchor.constraint(equalTo: viewBudgetSection.bottomAnchor, constant :heightViewbudget * 0.1),
-            worseLable.leadingAnchor.constraint(equalTo: viewBudget.leadingAnchor, constant : 20)
+            worseLable.leadingAnchor.constraint(equalTo: viewBudget.leadingAnchor, constant : 15)
             ])
         worseLable.text = "Overspent"
         worseLable.textAlignment = .left
@@ -345,8 +349,8 @@ class IncomeExpenseViewController: UIViewController {
         viewContainerTabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             viewContainerTabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 5),
-            viewContainerTabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant : 10),
-            viewContainerTabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant : -10),
+            viewContainerTabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            viewContainerTabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
             viewContainerTabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant : -10),
             
             ])
@@ -359,7 +363,7 @@ class IncomeExpenseViewController: UIViewController {
         //header Category
         headerCollectionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            headerCollectionLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant : 20  ),
+            headerCollectionLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant : 25  ),
             headerCollectionLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             headerCollectionLabel.topAnchor.constraint(equalTo: viewBudget.bottomAnchor, constant : 20 ),
             ])

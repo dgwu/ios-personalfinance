@@ -32,7 +32,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CashQuest aims to make your financial journey easier." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ea-db-5TD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash Quests aims to make your financial journey simpler." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ea-db-5TD">
                                 <rect key="frame" x="30" y="366" width="315" height="89.666666666666686"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -68,22 +68,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Effortlessly record your transactions and understand your spending habits!" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="18" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2aA-sO-eDZ">
-                                <rect key="frame" x="30" y="326" width="315" height="119.66666666666669"/>
+                                <rect key="frame" x="30" y="331" width="315" height="119.66666666666669"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chart-2" translatesAutoresizingMaskIntoConstraints="NO" id="fP4-2R-tak">
-                                <rect key="frame" x="30" y="74" width="315" height="172"/>
+                                <rect key="frame" x="30" y="112" width="315" height="172"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.27270543580000001" green="0.50133627650000001" blue="0.76865714789999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="fP4-2R-tak" firstAttribute="top" secondItem="gPz-GG-C7s" secondAttribute="top" constant="30" id="9fc-1O-wKl"/>
+                            <constraint firstItem="fP4-2R-tak" firstAttribute="top" secondItem="gPz-GG-C7s" secondAttribute="top" constant="68" id="9fc-1O-wKl"/>
                             <constraint firstItem="2aA-sO-eDZ" firstAttribute="leading" secondItem="gPz-GG-C7s" secondAttribute="leading" constant="30" id="K2g-Ww-HIW"/>
                             <constraint firstItem="fP4-2R-tak" firstAttribute="leading" secondItem="gPz-GG-C7s" secondAttribute="leading" constant="30" id="Kob-Nd-DoU"/>
                             <constraint firstItem="gPz-GG-C7s" firstAttribute="trailing" secondItem="fP4-2R-tak" secondAttribute="trailing" constant="30" id="SDl-eA-rvl"/>
-                            <constraint firstItem="2aA-sO-eDZ" firstAttribute="top" secondItem="fP4-2R-tak" secondAttribute="bottom" constant="80" id="Uw2-VC-xPk"/>
+                            <constraint firstItem="2aA-sO-eDZ" firstAttribute="top" secondItem="fP4-2R-tak" secondAttribute="bottom" constant="47" id="Uw2-VC-xPk"/>
                             <constraint firstItem="gPz-GG-C7s" firstAttribute="trailing" secondItem="2aA-sO-eDZ" secondAttribute="trailing" constant="30" id="hoZ-a3-2Um"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gPz-GG-C7s"/>
@@ -134,7 +134,7 @@
                                     <constraint firstAttribute="height" constant="100" id="nXt-fl-Dhz"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get started by inputting your monthly income and budget." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OmG-kO-ntw">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get started by entering your monthly income and budget." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OmG-kO-ntw">
                                 <rect key="frame" x="30" y="320" width="315" height="89.666666666666686"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -146,6 +146,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Get Start &gt;&gt;">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="btnStart:" destination="fTY-OB-SdK" eventType="touchUpInside" id="Js5-vt-Kqk"/>

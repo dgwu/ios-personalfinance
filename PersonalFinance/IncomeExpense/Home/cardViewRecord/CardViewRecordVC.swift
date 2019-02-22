@@ -18,6 +18,7 @@ class CardViewRecordVC: UIViewController {
     @IBOutlet weak var labelAddRecord: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var amountTextField: UITextField!
+    var amountTextFieldCursorOffset = 0
     @IBOutlet weak var nameExpenseLabel: UITextField!
     @IBOutlet weak var handleView: UIView!
     @IBOutlet weak var linelast: UIView!
@@ -45,6 +46,7 @@ class CardViewRecordVC: UIViewController {
         initialSetup()
         
         amountTextField.delegate = self
+        amountTextField.addTarget(self, action: #selector(textFieldDidEndEditing), for: .editingChanged)
     }
     
     func initialSetup (){
@@ -109,6 +111,7 @@ class CardViewRecordVC: UIViewController {
             formatter.timeStyle = DateFormatter.Style.none
             dates.inputView = datePicker
             dateEdit = transactionSelected?.transactionDate
+            print("date edit :\(dateEdit)")
             guard let datelabels = dateLabel else { return}
             datelabels.text = formatter.string(from: dateEdit!)
         }else{
@@ -127,6 +130,7 @@ class CardViewRecordVC: UIViewController {
     func update (transaction: Transaction) {
        let update = FinanceManager.shared.objectContext.object(with: transaction.objectID)
         update.setValuesForKeys(["amount" : transaction.amount, "createdDate" : transaction.transactionDate!, "desc": transaction.desc!, "category": transaction.category! ] )
+        print("Update \(update)")
         do {
             try FinanceManager.shared.objectContext.save()
             print("success")
@@ -166,6 +170,7 @@ class CardViewRecordVC: UIViewController {
             transactionSelected?.amount = amountTextField.text?.removePrettyNumberFormat() ?? 0
             transactionSelected?.category = categorySelected
             transactionSelected?.transactionDate = datePicker.date
+            print("date picker \(transactionSelected?.transactionDate)")
             transactionSelected?.desc = nameExpenseLabel.text
             update(transaction: transactionSelected!)
             view.endEditing(true)
@@ -214,26 +219,73 @@ extension CardViewRecordVC : UIPickerViewDelegate, UIPickerViewDataSource{
 
 
 extension CardViewRecordVC: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    @objc func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == self.amountTextField {
             let amountString = textField.text ?? ""
             if amountString.isValidDouble() {
-                textField.text = amountString.removePrettyNumberFormat()?.prettyAmount()
+                if textField.text?.last != "." && textField.text?.first != "." {
+                    textField.text = amountString.removePrettyNumberFormat()?.prettyAmount()
+                }
+                
+                let positionOriginal = textField.beginningOfDocument
+                if let amountTextFieldCursorPosition = textField.position(from: positionOriginal, offset: self.amountTextFieldCursorOffset) {
+                    textField.selectedTextRange = textField.textRange(from: amountTextFieldCursorPosition, to: amountTextFieldCursorPosition)
+                }
             }
         }
     }
     
-    
-    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == self.amountTextField {
-            // User pressed the delete-key to remove a character, this is always valid, return true to allow change
-            if string.isEmpty { return true }
-            
+
             let currentText = textField.text ?? ""
-            let replacementText = (currentText as NSString).replacingCharacters(in: range, with: string)
+            let replacementText = (currentText as NSString).replacingCharacters(in: range, with: string) // new text
             
-            return replacementText.isValidDouble()
+            if SetupManager.shared.isUserUsingDecimal {
+                if replacementText.count > 21 {
+                    // cant go more than 99 billions
+                    return false
+                }
+            } else {
+                if replacementText.count > 18 {
+                    // cant go more than 99 billions
+                    return false
+                }
+            }
+            
+            if replacementText.isValidDouble() {
+                var cursorAdditionalOffset = 0
+                // referensi set cursor
+                // https://stackoverflow.com/questions/26284271/format-uitextfield-text-without-having-cursor-move-to-the-end/37031132
+                
+                let numberFormatter = NumberFormatter()
+                numberFormatter.allowsFloats = true
+                let decimalSeparator = numberFormatter.decimalSeparator ?? "."
+                let split = replacementText.components(separatedBy: decimalSeparator)
+                
+                if string.isEmpty {
+                    // deleting
+                    if split.first!.count > 0 && split.first!.count % 4 == 0 {
+                        cursorAdditionalOffset = -1
+                    } else {
+                        cursorAdditionalOffset = 0
+                    }
+                } else {
+                    // inserting
+                    if split.first!.count % 4 == 0 {
+                        cursorAdditionalOffset = 2
+                    } else {
+                        cursorAdditionalOffset = 1
+                    }
+                }
+                
+                // key point utk set cursor
+                self.amountTextFieldCursorOffset = range.location + cursorAdditionalOffset
+                return true
+            } else {
+                if string.isEmpty { return true }
+                return false
+            }
         }
         
         return true
