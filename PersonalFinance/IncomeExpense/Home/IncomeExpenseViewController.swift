@@ -302,15 +302,15 @@ class IncomeExpenseViewController: UIViewController {
         statusBar.layer.cornerRadius = statusBar.frame.height/2
         
         //label slider
-        okLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            okLabel.topAnchor.constraint(equalTo: viewBudgetSection.bottomAnchor, constant :heightViewbudget * 0.1),
-            okLabel.centerXAnchor.constraint(equalTo: viewBudget.centerXAnchor)
-            ])
-        okLabel.text = "Ok"
-        okLabel.textAlignment = .center
-        okLabel.font = UIFont(name: "SF Pro Text", size: 14)
-        okLabel.textColor = UIColor.darkGray
+//        okLabel.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            okLabel.topAnchor.constraint(equalTo: viewBudgetSection.bottomAnchor, constant :heightViewbudget * 0.1),
+//            okLabel.centerXAnchor.constraint(equalTo: viewBudget.centerXAnchor)
+//            ])
+//        okLabel.text = "Ok"
+//        okLabel.textAlignment = .center
+//        okLabel.font = UIFont(name: "SF Pro Text", size: 14)
+//        okLabel.textColor = UIColor.darkGray
         
         greatLable.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -427,7 +427,7 @@ extension IncomeExpenseViewController: UICollectionViewDataSource {
 extension IncomeExpenseViewController : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width * 0.8 / 4
+        let width = collectionView.frame.width * 0.85 / 4
         let height = collectionView.frame.height / 3
         
         return CGSize(width: width , height: height)
@@ -439,7 +439,7 @@ extension IncomeExpenseViewController : UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        let width = ( collectionView.frame.width - (collectionView.frame.width * 0.8) )/4
+        let width = ( collectionView.frame.width - (collectionView.frame.width * 0.85) )/4
         
         return width
     }
@@ -457,6 +457,7 @@ extension IncomeExpenseViewController: NSFetchedResultsControllerDelegate {
         self.getCategory = FinanceManager.shared.categoryList(type: .expense)
         self.budgetAmountLabel.text = GeneralHelper.displayAmount(amount: financeManager.monthlyRemainingBudget())
         self.statusBarFunc()
+        self.collectionView.reloadData()
         print("bzz budi lagi")
     }
 }

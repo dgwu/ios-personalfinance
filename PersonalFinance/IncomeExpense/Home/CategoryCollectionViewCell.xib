@@ -42,7 +42,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPE-hu-gmM">
-                        <rect key="frame" x="8" y="116" width="124" height="12"/>
+                        <rect key="frame" x="0.0" y="116" width="140" height="12"/>
                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="10"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -56,8 +56,8 @@
                 <constraint firstItem="jAy-3S-jCw" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="dBT-er-MtU"/>
                 <constraint firstItem="jAy-3S-jCw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="fvP-Fm-Pja"/>
                 <constraint firstItem="jAy-3S-jCw" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.8" id="h7X-op-h3Y"/>
-                <constraint firstItem="CPE-hu-gmM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="i6q-ZL-EA2"/>
-                <constraint firstAttribute="trailing" secondItem="CPE-hu-gmM" secondAttribute="trailing" constant="8" id="kVI-pu-hSn"/>
+                <constraint firstItem="CPE-hu-gmM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="i6q-ZL-EA2"/>
+                <constraint firstAttribute="trailing" secondItem="CPE-hu-gmM" secondAttribute="trailing" id="kVI-pu-hSn"/>
             </constraints>
             <size key="customSize" width="228" height="189"/>
             <connections>

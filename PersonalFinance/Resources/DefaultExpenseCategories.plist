@@ -14,11 +14,11 @@
 	</dict>
 	<dict>
 		<key>desc</key>
-		<string>Auto</string>
+		<string>Maintenance</string>
 		<key>colorCode</key>
 		<string>#5B97D6</string>
 		<key>iconName</key>
-		<string>category_icon_auto</string>
+		<string>category_icon_utilities</string>
 		<key>orderNumber</key>
 		<integer>9</integer>
 	</dict>
@@ -44,7 +44,7 @@
 	</dict>
 	<dict>
 		<key>desc</key>
-		<string>Health</string>
+		<string>Sport</string>
 		<key>colorCode</key>
 		<string>#818181</string>
 		<key>iconName</key>
@@ -84,7 +84,7 @@
 	</dict>
 	<dict>
 		<key>desc</key>
-		<string>Movie</string>
+		<string>Entertainment</string>
 		<key>colorCode</key>
 		<string>#DB7139</string>
 		<key>iconName</key>
@@ -114,11 +114,11 @@
 	</dict>
 	<dict>
 		<key>desc</key>
-		<string>Bills </string>
+		<string>Bills</string>
 		<key>colorCode</key>
 		<string>#64A977</string>
 		<key>iconName</key>
-		<string>category_icon_utilities</string>
+		<string>category_icon_bills</string>
 		<key>orderNumber</key>
 		<integer>3</integer>
 	</dict>

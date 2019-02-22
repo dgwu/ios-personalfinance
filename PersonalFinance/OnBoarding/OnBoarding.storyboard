@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Medium.otf">
+            <string>SFProText-Medium</string>
+        </array>
         <array key="SF-Pro-Text-Regular.otf">
             <string>SFProText-Regular</string>
         </array>
@@ -102,7 +105,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nfu-2y-6Zb">
-                                <rect key="frame" x="30" y="114" width="315" height="100"/>
+                                <rect key="frame" x="30" y="352" width="315" height="100"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Monthly Income" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uld-Eo-6P1">
                                         <rect key="frame" x="8" y="10" width="333" height="30"/>
@@ -134,17 +137,11 @@
                                     <constraint firstAttribute="height" constant="100" id="nXt-fl-Dhz"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get started by entering your monthly income and budget." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OmG-kO-ntw">
-                                <rect key="frame" x="30" y="320" width="315" height="89.666666666666686"/>
-                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="25"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUe-eN-RHB">
-                                <rect key="frame" x="30" y="234" width="315" height="36"/>
-                                <color key="backgroundColor" red="0.25910375320000001" green="0.80081459180000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Get Start &gt;&gt;">
+                                <rect key="frame" x="30" y="472" width="315" height="33"/>
+                                <color key="backgroundColor" red="0.34732090285908879" green="0.6439067012002897" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="17"/>
+                                <state key="normal" title="Get Started">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -152,11 +149,17 @@
                                     <action selector="btnStart:" destination="fTY-OB-SdK" eventType="touchUpInside" id="Js5-vt-Kqk"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get started by entering your monthly income and budget below." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OmG-kO-ntw">
+                                <rect key="frame" x="30" y="215" width="315" height="89.666666666666686"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.27270543580000001" green="0.50133627650000001" blue="0.76865714789999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="saa-ve-R8s" firstAttribute="trailing" secondItem="OmG-kO-ntw" secondAttribute="trailing" constant="30" id="Cok-wJ-Y2n"/>
-                            <constraint firstItem="Nfu-2y-6Zb" firstAttribute="top" secondItem="saa-ve-R8s" secondAttribute="top" constant="70" id="Frg-3Q-oYR"/>
+                            <constraint firstItem="Nfu-2y-6Zb" firstAttribute="top" secondItem="saa-ve-R8s" secondAttribute="top" constant="308" id="Frg-3Q-oYR"/>
                             <constraint firstItem="Nfu-2y-6Zb" firstAttribute="leading" secondItem="saa-ve-R8s" secondAttribute="leading" constant="30" id="JEM-cj-GsJ"/>
                             <constraint firstItem="saa-ve-R8s" firstAttribute="trailing" secondItem="hUe-eN-RHB" secondAttribute="trailing" constant="30" id="Nq2-QR-oqD"/>
                             <constraint firstItem="OmG-kO-ntw" firstAttribute="centerX" secondItem="YVh-Rb-rZn" secondAttribute="centerX" id="Y72-sr-G68"/>
@@ -165,7 +168,7 @@
                             <constraint firstItem="saa-ve-R8s" firstAttribute="trailing" secondItem="Nfu-2y-6Zb" secondAttribute="trailing" constant="30" id="gom-ad-EBz"/>
                             <constraint firstItem="OmG-kO-ntw" firstAttribute="leading" secondItem="saa-ve-R8s" secondAttribute="leading" constant="30" id="s0R-N1-8K2"/>
                             <constraint firstItem="hUe-eN-RHB" firstAttribute="leading" secondItem="saa-ve-R8s" secondAttribute="leading" constant="30" id="wng-0e-ngf"/>
-                            <constraint firstItem="OmG-kO-ntw" firstAttribute="top" secondItem="hUe-eN-RHB" secondAttribute="bottom" constant="50" id="xkY-GU-7No"/>
+                            <constraint firstItem="OmG-kO-ntw" firstAttribute="top" secondItem="hUe-eN-RHB" secondAttribute="bottom" constant="-290" id="xkY-GU-7No"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="saa-ve-R8s"/>
                     </view>
