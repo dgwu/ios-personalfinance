@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        preloadExpenseCategory()
 //        preloadExpenseCategory2()
 //        preloadSimulationData()
+        migrateCategory()
         
         return true
     }
@@ -227,6 +228,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             setupManager.isSimulationPreloaded = true;
             print("Successfully preloaded transaction simulation")
+        }
+    }
+    
+    public func migrateCategory() {
+        
+        let setupManager = SetupManager.shared
+        if setupManager.appMigrateVersion == 0 {
+            if let categoryList = FinanceManager.shared.categoryList(type: .expense) {
+                let coreDataContext = FinanceManager.shared.objectContext
+                
+                for category in categoryList {
+                    if category.desc == "Bills " {
+                        category.setValuesForKeys([
+                            "desc" : "Bills",
+                            "iconName": "category_icon_bills"
+                            ])
+                    }
+                    if category.desc == "Movie" {
+                        category.setValuesForKeys([
+                            "desc" : "Entertainment"
+                            ])
+                    }
+                    if category.desc == "Health" {
+                        category.setValuesForKeys([
+                            "desc" : "Sport"
+                            ])
+                    }
+                    if category.desc == "Auto" {
+                        category.setValuesForKeys([
+                            "desc" : "Maintenance",
+                            "iconName": "category_icon_utilities"
+                            ])
+                    }
+                }
+                do {
+                    try coreDataContext.save()
+                    print("migrateCategory success")
+                    
+                    setupManager.appMigrateVersion = 1
+                } catch {
+                    print("migrateCategory failed: \(error.localizedDescription)")
+                }
+            }
         }
     }
 

@@ -96,4 +96,10 @@ class SetupManager {
             UserDefaults.standard.set(userDefaultCurrency ,forKey: "userDefaultCurrencyName")
         }
     }
+    
+    public var appMigrateVersion = UserDefaults.standard.integer(forKey: "appMigrateVersion") ?? 0 {
+        didSet {
+            UserDefaults.standard.set(appMigrateVersion ,forKey: "appMigrateVersion")
+        }
+    }
 }
