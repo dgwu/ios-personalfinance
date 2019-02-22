@@ -84,7 +84,7 @@ class IncomeExpenseViewController: UIViewController {
     }
     
     func InitialSetup()   {
-        self.navigationController?.navigationBar.topItem?.title = "Cash Quest"
+        self.navigationController?.navigationBar.topItem?.title = "Cash Quests"
         self.collectionView.register(UINib(nibName: "CategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "categoryCell")
         
         self.collectionView.delegate = self
@@ -108,20 +108,23 @@ class IncomeExpenseViewController: UIViewController {
         print("bzz ini nilai dailybudgetmeter \(financeManager.monthlyBudgetMeter())")
         
         statusValue = CGFloat(financeManager.monthlyRemainingBudget())
+        if great == 0 {
+            widthStatusBar = 0
+        }else {
         widthStatusBar = ((statusValue-CGFloat(worst)) / CGFloat(great-worst) ) * backGroundView.frame.width
-        
+        }
         print("bzz back : \(backGroundView.frame.width)")
-        print("bzz widthStatusBar : \(widthStatusBar)")
+        print("bzz widthStatus Bar : \(widthStatusBar)")
        
         
         widthStatusBar = widthStatusBar < 10 ? 10 : widthStatusBar
-//        self.statusBar.widthAnchor.constraint(equalToConstant: widthStatusBar).isActive = true
+       
 //        statusBar.frame.size.width = widthStatusBar
         self.statusBar.backgroundColor = getBarStatusColor(value: widthStatusBar, maxValue: backGroundView.frame.width)
         statusBar.frame = CGRect(x: 0, y: 0, width: widthStatusBar, height: 16)
         
         print(Float(financeManager.transactionSummaryInPeriod(fromDate: Date().startOfMonth(),  toDate: Date()).totalExpense))
-         print("bzz width statusbar :\(statusBar.frame.width)")
+         print("bzz width status bar :\(statusBar.frame.width)")
     }
     
     func getBarStatusColor (value: CGFloat, maxValue: CGFloat) -> UIColor {
@@ -290,7 +293,8 @@ class IncomeExpenseViewController: UIViewController {
         NSLayoutConstraint.activate([
             statusBar.topAnchor.constraint(equalTo: backGroundView.topAnchor),
             statusBar.leadingAnchor.constraint(equalTo: backGroundView.leadingAnchor),
-            statusBar.heightAnchor.constraint(equalToConstant: 16)
+            statusBar.heightAnchor.constraint(equalToConstant: 16),
+            self.statusBar.widthAnchor.constraint(equalToConstant: backGroundView.frame.width)
             ])
 
         statusBar.layoutIfNeeded()

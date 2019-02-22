@@ -10,14 +10,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="SF-Pro-Text-Bold.otf">
-            <string>SFProText-Bold</string>
-        </array>
-        <array key="SF-Pro-Text-Heavy.otf">
-            <string>SFProText-Heavy</string>
-        </array>
         <array key="SF-Pro-Text-Medium.otf">
             <string>SFProText-Medium</string>
+        </array>
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
         </array>
     </customFonts>
     <scenes>
@@ -56,30 +56,30 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ymm-yz-ZT6">
-                                                <rect key="frame" x="18" y="19" width="57" height="20"/>
+                                                <rect key="frame" x="18" y="19" width="55" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="fq8-Sc-ar1"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                 <state key="normal" title="Cancel"/>
                                                 <connections>
                                                     <action selector="cancelRecord:" destination="9nL-Ha-8cy" eventType="touchUpInside" id="IxO-GF-TRZ"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n0t-U5-kQh">
-                                                <rect key="frame" x="316" y="19" width="41" height="20"/>
+                                                <rect key="frame" x="317" y="19" width="40" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="B3l-hz-oyp"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                                 <state key="normal" title="Save"/>
                                                 <connections>
                                                     <action selector="saveRecord:" destination="9nL-Ha-8cy" eventType="touchUpInside" id="Oyj-I8-Z2T"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnB-7g-o0f">
-                                                <rect key="frame" x="141.66666666666666" y="19" width="102" height="21"/>
-                                                <fontDescription key="fontDescription" name="SFProText-Heavy" family="SF Pro Text" pointSize="17"/>
+                                                <rect key="frame" x="144" y="19" width="97" height="21"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
