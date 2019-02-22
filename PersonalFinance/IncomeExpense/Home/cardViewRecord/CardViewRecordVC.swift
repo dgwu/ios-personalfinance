@@ -129,6 +129,7 @@ class CardViewRecordVC: UIViewController {
     func update (transaction: Transaction) {
        let update = FinanceManager.shared.objectContext.object(with: transaction.objectID)
         update.setValuesForKeys(["amount" : transaction.amount, "createdDate" : transaction.transactionDate!, "desc": transaction.desc!, "category": transaction.category! ] )
+        print("Update \(update)")
         do {
             try FinanceManager.shared.objectContext.save()
             print("success")

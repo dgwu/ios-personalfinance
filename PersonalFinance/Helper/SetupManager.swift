@@ -97,7 +97,7 @@ class SetupManager {
         }
     }
     
-    public var appMigrateVersion = UserDefaults.standard.integer(forKey: "appMigrateVersion") ?? 0 {
+    public var appMigrateVersion = UserDefaults.standard.integer(forKey: "appMigrateVersion") {
         didSet {
             UserDefaults.standard.set(appMigrateVersion ,forKey: "appMigrateVersion")
         }
