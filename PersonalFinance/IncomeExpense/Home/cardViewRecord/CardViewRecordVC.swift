@@ -56,12 +56,16 @@ class CardViewRecordVC: UIViewController {
         view.addGestureRecognizer(gesture)
         let tapGesture : UITapGestureRecognizer =  UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
+
         let frame = self.view.frame
         let yComponent = UIScreen.main.bounds.height - self.view.center.y
+       
         self.view.frame = CGRect(x: 0, y: yComponent, width: frame.width, height: frame.height)
         self.view.layer.cornerRadius = 15
         self.view.layer.masksToBounds = true
+       
         amountTextField.becomeFirstResponder()
+        
         if (SetupManager.shared.isUserUsingDecimal) {
             amountTextField.keyboardType = .decimalPad
         } else {
@@ -73,16 +77,17 @@ class CardViewRecordVC: UIViewController {
         inputMode()
         pickerView.delegate = self
         pickerView.dataSource = self
-        requredAmount.isHidden = true
     }
     
     func inputMode() {
         if statusTemp == 0 {
             selectCategory.isHidden = true
             linelast.isHidden = true
+            saveButton.isEnabled = false
             GetDate()
          
         }else{
+            saveButton.isEnabled = true
             GetDate()
 
             amountTextField.text = transactionSelected!.amount.prettyAmount()
@@ -105,7 +110,7 @@ class CardViewRecordVC: UIViewController {
                 dates.inputView = datePicker
                 dates.text = "Today"
             }
-        }else if statusTemp == 1{
+        }else {
             let formatter = DateFormatter()
             formatter.dateStyle = DateFormatter.Style.long
             formatter.timeStyle = DateFormatter.Style.none
@@ -114,8 +119,6 @@ class CardViewRecordVC: UIViewController {
             print("date edit :\(dateEdit)")
             guard let datelabels = dateLabel else { return}
             datelabels.text = formatter.string(from: dateEdit!)
-        }else{
-            dates.inputView = datePicker
         }
         self.view.endEditing(true)
     }
@@ -159,9 +162,7 @@ class CardViewRecordVC: UIViewController {
     
     @IBAction func saveRecord(_ sender: Any) {
         
-        if (amountTextField.text?.isEmpty)!{
-            requredAmount.isHidden = false
-        } else if statusTemp == 0 {
+      if statusTemp == 0 {
             InsertExpenses()
             view.endEditing(true)
             self.dismiss(animated: true, completion: nil)
@@ -221,6 +222,13 @@ extension CardViewRecordVC: UITextFieldDelegate {
     @objc func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == self.amountTextField {
             let amountString = textField.text ?? ""
+            
+            if (amountTextField.text?.isEmpty)! {
+                saveButton.isEnabled = false
+            }else{
+                saveButton.isEnabled = true
+            }
+            
             if amountString.isValidDouble() {
                 if textField.text?.last != "." && textField.text?.first != "." {
                     textField.text = amountString.removePrettyNumberFormat()?.prettyAmount()
