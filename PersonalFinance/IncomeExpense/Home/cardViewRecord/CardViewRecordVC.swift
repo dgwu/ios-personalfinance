@@ -182,6 +182,7 @@ class CardViewRecordVC: UIViewController {
     @IBAction func cancelRecord(_ sender: Any) {
         view.endEditing(true)
         self.dismiss(animated: true, completion: nil)
+        senderVC?.viewWillAppear(false)
     }
     
     @objc func swipeDown() {

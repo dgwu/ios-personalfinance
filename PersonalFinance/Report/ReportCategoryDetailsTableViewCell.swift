@@ -14,6 +14,7 @@ class ReportCategoryDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var expenseDescLabel: UILabel!
     @IBOutlet weak var expenseDescValueLabel: UILabel!
+    @IBOutlet weak var categoryImage: UIImageView!
     
     var transactionObject : Transaction?
     
