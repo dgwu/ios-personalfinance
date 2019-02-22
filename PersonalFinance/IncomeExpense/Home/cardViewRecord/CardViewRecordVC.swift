@@ -116,7 +116,6 @@ class CardViewRecordVC: UIViewController {
             formatter.timeStyle = DateFormatter.Style.none
             dates.inputView = datePicker
             dateEdit = transactionSelected?.transactionDate
-            print("date edit :\(dateEdit)")
             guard let datelabels = dateLabel else { return}
             datelabels.text = formatter.string(from: dateEdit!)
         }
@@ -171,7 +170,6 @@ class CardViewRecordVC: UIViewController {
             transactionSelected?.amount = amountTextField.text?.removePrettyNumberFormat() ?? 0
             transactionSelected?.category = categorySelected
             transactionSelected?.transactionDate = datePicker.date
-            print("date picker \(transactionSelected?.transactionDate)")
             transactionSelected?.desc = nameExpenseLabel.text
             update(transaction: transactionSelected!)
             view.endEditing(true)
@@ -185,6 +183,7 @@ class CardViewRecordVC: UIViewController {
     @IBAction func cancelRecord(_ sender: Any) {
         view.endEditing(true)
         self.dismiss(animated: true, completion: nil)
+        senderVC?.viewWillAppear(false)
     }
     
     @objc func swipeDown() {

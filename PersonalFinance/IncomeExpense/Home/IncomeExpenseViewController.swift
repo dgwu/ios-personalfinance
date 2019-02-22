@@ -457,6 +457,7 @@ extension IncomeExpenseViewController: NSFetchedResultsControllerDelegate {
         self.getCategory = FinanceManager.shared.categoryList(type: .expense)
         self.budgetAmountLabel.text = GeneralHelper.displayAmount(amount: financeManager.monthlyRemainingBudget())
         self.statusBarFunc()
+        self.collectionView.reloadData()
         print("bzz budi lagi")
     }
 }
