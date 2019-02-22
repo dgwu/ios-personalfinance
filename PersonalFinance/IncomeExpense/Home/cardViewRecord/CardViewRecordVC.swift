@@ -23,7 +23,8 @@ class CardViewRecordVC: UIViewController {
     @IBOutlet weak var handleView: UIView!
     @IBOutlet weak var linelast: UIView!
     @IBOutlet weak var selectCategory: UIButton!
-    @IBOutlet weak var requredAmount: UILabel!
+    
+    @IBOutlet weak var iconDrop: UIImageView!
     var senderVC: UIViewController?
     var categorySelected : Category?
     var transactionSelected : Transaction?
@@ -93,6 +94,7 @@ class CardViewRecordVC: UIViewController {
             amountTextField.text = transactionSelected!.amount.prettyAmount()
             nameExpenseLabel.text = "\(transactionSelected!.desc  ?? "-")"
             selectCategory.setTitle("\(transactionSelected?.category?.desc ?? "-")", for: .normal)
+            datePicker.date = transactionSelected!.transactionDate!
             labelAddRecord.text = " Edit Transaction"
             
         }
