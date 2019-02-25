@@ -83,6 +83,7 @@ class CardViewRecordVC: UIViewController {
     func inputMode() {
         if statusTemp == 0 {
             selectCategory.isHidden = true
+            iconDrop.isHidden = true
             linelast.isHidden = true
             saveButton.isEnabled = false
             GetDate()
