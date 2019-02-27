@@ -219,7 +219,7 @@
         <!--Transactions List-->
         <scene sceneID="a80-hf-LE1">
             <objects>
-                <viewController storyboardIdentifier="reportCategoryDetails" title="Transactions List" id="VlF-XB-vbs" customClass="ReportCategoryDetailsViewController" customModule="PersonalFinance" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="reportCategoryDetails" title="Transactions List" hidesBottomBarWhenPushed="YES" id="VlF-XB-vbs" customClass="ReportCategoryDetailsViewController" customModule="PersonalFinance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XNL-Th-3R5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -260,7 +260,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorInsetReference="fromAutomaticInsets" sectionIndexMinimumDisplayRowCount="-1" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5MK-uS-PrW">
-                                <rect key="frame" x="0.0" y="95" width="375" height="546"/>
+                                <rect key="frame" x="0.0" y="95" width="375" height="595"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="0.77123137953367871" green="0.77123137953367871" blue="0.77123137953367871" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -331,14 +331,14 @@
                                 </prototypes>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noun_Credit Card_48448" translatesAutoresizingMaskIntoConstraints="NO" id="wet-ia-3Jd">
-                                <rect key="frame" x="105.66666666666669" y="177.66666666666669" width="164" height="117"/>
+                                <rect key="frame" x="105.66666666666669" y="202" width="164" height="117"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="117" id="0cU-aT-y9b"/>
                                     <constraint firstAttribute="width" constant="164" id="pIC-7a-KQW"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Transactions" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8AV-Z0-IgE">
-                                <rect key="frame" x="69.333333333333329" y="302.66666666666669" width="236.33333333333337" height="36"/>
+                                <rect key="frame" x="69.333333333333329" y="327" width="236.33333333333337" height="36"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -466,11 +466,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backArrow" width="12" height="22"/>
+        <image name="backArrow" width="12" height="20"/>
         <image name="emptyImage10px" width="2.4000000953674316" height="2.4000000953674316"/>
-        <image name="main_tabbar_report" width="22" height="28"/>
-        <image name="main_tabbar_report_active" width="22" height="28"/>
-        <image name="nextArrow" width="12" height="22"/>
+        <image name="main_tabbar_report" width="28" height="36"/>
+        <image name="main_tabbar_report_active" width="28" height="36"/>
+        <image name="nextArrow" width="12" height="20"/>
         <image name="noun_Credit Card_48448" width="164" height="117"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
