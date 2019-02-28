@@ -363,7 +363,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="  " footerTitle="Version 1.0.3" id="5lE-rz-fA7" userLabel="footer">
+                            <tableViewSection headerTitle="  " footerTitle="Version 1.0.4" id="5lE-rz-fA7" userLabel="footer">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="50" id="MDn-Di-Yka">
                                         <rect key="frame" x="0.0" y="735" width="375" height="50"/>
