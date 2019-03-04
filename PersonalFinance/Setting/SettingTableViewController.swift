@@ -28,6 +28,7 @@ class SettingTableViewController: UITableViewController
    
     //for Decimal
     @IBOutlet weak var decimalState: UISwitch!
+    var amountTextFieldCursorOffset = 0
    
     @IBAction func actDecimal(_ sender: Any)
     {
@@ -287,7 +288,7 @@ class SettingTableViewController: UITableViewController
     {
         if (indexPath.section == 0 && indexPath.row == 2)
         {
-            showInputDialog(title: "Monthly Salary",
+            showDecimalInputDialog(title: "Monthly Salary",
                             subtitle: "Please enter your salary.",
                             actionTitle: "Save",
                             cancelTitle: "Cancel",
@@ -295,13 +296,17 @@ class SettingTableViewController: UITableViewController
                             inputKeyboardType: .numberPad)
             { (input:String?) in
                 print("The new number is \(input ?? "")")
-                self.setupManager.userMonthlySalary = (input! as NSString).doubleValue  ?? 0
-                self.initialLoad()
+                if let input = input?.removePrettyNumberFormat(){
+                    self.setupManager.userMonthlySalary = input
+                    self.initialLoad()
+                }else {
+                    print("Not a valid number")
+                }
             }
         }
         if (indexPath.section == 0 && indexPath.row == 3)
         {
-            showInputDialog(title: "Monthly Saving",
+            showDecimalInputDialog(title: "Monthly Saving",
                             subtitle: "Please enter your Saving.",
                             actionTitle: "Save",
                             cancelTitle: "Cancel",
@@ -309,8 +314,12 @@ class SettingTableViewController: UITableViewController
                             inputKeyboardType: .numberPad)
             { (input:String?) in
                 print("The new number is \(input ?? "")")
-                self.setupManager.userMonthlySaving = (input! as NSString).doubleValue  ?? 0
-                self.initialLoad()
+                if let input = input?.removePrettyNumberFormat(){
+                    self.setupManager.userMonthlySaving = input
+                    self.initialLoad()
+                }else {
+                    print("Not a valid number")
+                }
             }
         }
     }
@@ -349,3 +358,95 @@ extension UIViewController {
     }
 }
 
+extension SettingTableViewController: UITextFieldDelegate {
+    
+    func showDecimalInputDialog(title:String? = nil,
+                                subtitle:String? = nil,
+                                actionTitle:String? = "Add",
+                                cancelTitle:String? = "Cancel",
+                                inputPlaceholder:String? = nil,
+                                inputKeyboardType:UIKeyboardType = UIKeyboardType.default,
+                                cancelHandler: ((UIAlertAction) -> Swift.Void)? = nil,
+                                actionHandler: ((_ text: String?) -> Void)? = nil) {
+        
+        let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
+        alert.addTextField { (textField:UITextField) in
+            textField.placeholder = inputPlaceholder
+            textField.keyboardType = inputKeyboardType
+            textField.delegate = self
+            textField.addTarget(self, action: #selector(self.textFieldDidEndEditing), for: .editingChanged)
+        }
+        alert.addAction(UIAlertAction(title: actionTitle, style: .destructive, handler: { (action:UIAlertAction) in
+            guard let textField =  alert.textFields?.first else {
+                actionHandler?(nil)
+                return
+            }
+            actionHandler?(textField.text)
+        }))
+        alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: cancelHandler))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let amountString = textField.text ?? ""
+        if amountString.isValidDouble() {
+            if textField.text?.last != "." && textField.text?.first != "." {
+                textField.text = amountString.removePrettyNumberFormat()?.prettyAmount()
+            }
+            
+            let positionOriginal = textField.beginningOfDocument
+            if let amountTextFieldCursorPosition = textField.position(from: positionOriginal, offset: self.amountTextFieldCursorOffset) {
+                textField.selectedTextRange = textField.textRange(from: amountTextFieldCursorPosition, to: amountTextFieldCursorPosition)
+            }
+        }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        let replacementText = (currentText as NSString).replacingCharacters(in: range, with: string) // new text
+        
+        if SetupManager.shared.isUserUsingDecimal {
+            if replacementText.count > 21 {
+                // cant go more than 99 billions
+                return false
+            }
+        } else {
+            if replacementText.count > 18 {
+                // cant go more than 99 billions
+                return false
+            }
+        }
+        
+        if replacementText.isValidDouble() {
+            var cursorAdditionalOffset = 0
+            
+            let numberFormatter = NumberFormatter()
+            numberFormatter.allowsFloats = true
+            let decimalSeparator = numberFormatter.decimalSeparator ?? "."
+            let split = replacementText.components(separatedBy: decimalSeparator)
+            
+            if string.isEmpty {
+                // deleting
+                if split.first!.count > 0 && split.first!.count % 4 == 0 {
+                    cursorAdditionalOffset = -1
+                } else {
+                    cursorAdditionalOffset = 0
+                }
+            } else {
+                // inserting
+                if split.first!.count % 4 == 0 {
+                    cursorAdditionalOffset = 2
+                } else {
+                    cursorAdditionalOffset = 1
+                }
+            }
+            
+            // key point utk set cursor
+            self.amountTextFieldCursorOffset = range.location + cursorAdditionalOffset
+            return true
+        } else {
+            if string.isEmpty { return true }
+            return false
+        }
+    }
+}
