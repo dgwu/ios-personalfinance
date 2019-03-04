@@ -231,7 +231,7 @@ extension CardViewRecordVC: UITextFieldDelegate {
             }
             
             if amountString.isValidDouble() {
-                if textField.text?.last != "." && textField.text?.first != "." {
+                if textField.text?.last != "." && textField.text?.first != "." && textField.text?.first != "0" {
                     textField.text = amountString.removePrettyNumberFormat()?.prettyAmount()
                 }
                 
