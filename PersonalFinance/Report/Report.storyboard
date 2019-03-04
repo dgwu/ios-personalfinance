@@ -204,7 +204,6 @@
                         <outlet property="prevMonthButton" destination="YW5-HQ-rxi" id="WWB-oA-jb4"/>
                         <outlet property="tableToChartDistanceConstraint" destination="IfE-LD-gvn" id="s5H-aN-skh"/>
                         <outlet property="topExpensesTable" destination="o67-Pf-XX8" id="9wB-92-E5R"/>
-                        <outlet property="topExpensesTitleLabel" destination="dnt-F5-4Ca" id="GVz-g3-Xci"/>
                         <outlet property="totalMonthTitle" destination="dnt-F5-4Ca" id="Pd8-oy-Ehj"/>
                         <outlet property="totalMonthlyAmount" destination="u8f-tW-Wvd" id="70z-bK-0OF"/>
                         <outletCollection property="arrowButtonCollection" destination="TvF-nI-VJI" collectionClass="NSMutableArray" id="HyZ-BF-zzo"/>

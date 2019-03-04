@@ -182,10 +182,8 @@ class ReportCategoryDetailsViewController: UIViewController {
             editVC.categorySelected = self.selectedTransaction?.category
             editVC.title = "Edit Transaction"
             editVC.senderVC = self
-            
         }
     }
-    
 }
 
 extension ReportCategoryDetailsViewController : UITableViewDelegate, UITableViewDataSource {

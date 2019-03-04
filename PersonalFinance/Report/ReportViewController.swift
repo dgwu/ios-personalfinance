@@ -21,7 +21,6 @@ class ReportViewController: UIViewController {
     @IBOutlet weak var topExpensesTable: UITableView!
     @IBOutlet weak var noTransactionsLabel: UILabel!
     @IBOutlet weak var noTransactionsIcon: UIImageView!
-    @IBOutlet weak var topExpensesTitleLabel: UILabel!
     @IBOutlet weak var chartStackView: UIStackView!
     @IBOutlet weak var displayedMonthBG: UIImageView!
     @IBOutlet weak var totalMonthlyAmount: UILabel!
@@ -254,7 +253,7 @@ class ReportViewController: UIViewController {
             topExpensesTable.isHidden = true
             chartStackView.isHidden = true
             topExpensesTable.isHidden = true
-            topExpensesTitleLabel.isHidden = true
+            totalMonthTitle.isHidden = true
             totalMonthlyAmount.isHidden = true
             
         } else {
@@ -263,7 +262,7 @@ class ReportViewController: UIViewController {
             topExpensesTable.isHidden = false
             chartStackView.isHidden = false
             topExpensesTable.isHidden = false
-            topExpensesTitleLabel.isHidden = false
+            totalMonthTitle.isHidden = false
             totalMonthlyAmount.isHidden = false
         }
         
@@ -389,9 +388,13 @@ class ReportViewController: UIViewController {
             formatter.numberStyle = .decimal
             formatter.minimumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
             formatter.maximumFractionDigits = SetupManager.shared.isUserUsingDecimal ? 2 : 0
-            totalMonthlyAmount.text = "\(locale.currencySymbol!) \(formatter.string(from: NSNumber(value: totalAmountThisMonth)) ?? "$")"
-            totalMonthlyAmount.textColor = totalMonthTitle.textColor
-            totalMonthTitle.text = "   Total \(displayedMonth.text!)"
+            
+            DispatchQueue.main.async {
+                self.totalMonthlyAmount.text = "\(locale.currencySymbol!) \(formatter.string(from: NSNumber(value: self.totalAmountThisMonth)) ?? "$")"
+                self.totalMonthlyAmount.textColor = self.totalMonthTitle.textColor
+                self.totalMonthTitle.text = "   Total \(self.displayedMonth.text!)"
+            }
+            
             chartStackView.layoutIfNeeded()
             self.view.sendSubviewToBack(chartStackView)
             print("CHART STACK VIEW HEIGHT: ", chartStackView.frame.height)
